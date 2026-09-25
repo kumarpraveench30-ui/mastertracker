@@ -1,0 +1,7 @@
+.vercel
+__pycache__/
+*.pyc
+node_modules/
+.env
+.env.local
+deploy_mastertracker/

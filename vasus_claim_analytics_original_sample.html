@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vasus Claim Analytics - Sample</title>
+<style>
+:root{--blue:#173f78;--blue2:#2867bd;--light:#eef4fb;--text:#172033;--muted:#687386;--green:#2e9b67;--orange:#f2a33a;--red:#d95b63}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:var(--text)}
+.header{background:linear-gradient(135deg,#173f78,#2867bd);color:#fff;padding:18px 28px;display:flex;justify-content:space-between;align-items:center}
+.header h1{margin:0;font-size:22px}.header small{opacity:.85}
+.container{padding:20px;max-width:1500px;margin:auto}
+.filters{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 10px #dbe3ef;margin-bottom:18px}
+.filter-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+label{font-size:12px;font-weight:bold;color:#566276;display:block;margin-bottom:6px}
+select,input{width:100%;padding:10px;border:1px solid #d5ddea;border-radius:7px;background:#fff}
+.cards{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:18px}
+.card{background:#fff;border-radius:12px;padding:15px;box-shadow:0 2px 10px #dbe3ef}
+.card .num{font-size:25px;font-weight:700;margin-top:7px}.card .label{font-size:12px;color:var(--muted)} .card .amount{font-size:15px;font-weight:700;margin-top:8px;letter-spacing:.2px}
+.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-bottom:18px}
+.panel{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 10px #dbe3ef}
+.panel h2{font-size:16px;margin:0 0 15px}
+.chart{height:240px;display:flex;align-items:flex-end;gap:14px;padding:15px 10px 0;border-bottom:1px solid #dce3ed}
+.barwrap{flex:1;height:100%;display:flex;align-items:flex-end;justify-content:center;position:relative}
+.bar{width:55%;background:linear-gradient(#5f91dc,#2867bd);border-radius:5px 5px 0 0;min-height:3px}
+.barvalue{position:absolute;bottom:calc(var(--h) + 6px);font-size:11px;font-weight:bold}
+.barlabel{font-size:10px;color:#657086;position:absolute;bottom:-25px;text-align:center;white-space:nowrap}
+.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:#687386;margin-top:12px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+table{width:100%;border-collapse:collapse;font-size:13px}th{background:#edf3fa;color:#536176;text-align:left;padding:10px}td{padding:10px;border-bottom:1px solid #edf0f5}tr:hover{background:#f8fbff}
+.right{text-align:right}.pill{padding:4px 8px;border-radius:12px;background:#e9f6ef;color:#23764d;font-size:11px;font-weight:bold}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:14px}
+button{border:0;border-radius:7px;padding:10px 14px;background:var(--blue2);color:#fff;cursor:pointer;font-weight:bold}
+button.secondary{background:#eef3fa;color:#25466f}
+.tabs{display:flex;gap:8px;margin-bottom:18px}.tab{background:#fff;color:#3e5575}.tab.active{background:var(--blue);color:#fff}
+.note{font-size:12px;color:#687386;margin-top:7px}
+@media(max-width:1000px){.filter-grid{grid-template-columns:repeat(3,1fr)}.cards{grid-template-columns:repeat(3,1fr)}.grid{grid-template-columns:1fr}}
+@media(max-width:600px){.filter-grid{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}.container{padding:10px}}
+
+.report-chart-controls{display:flex;gap:7px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.report-chart-controls button{padding:7px 12px;font-size:12px}
+.report-chart-controls button.active{background:#173f78;color:#fff}
+.report-chart{height:300px;background:#343434;border-radius:6px;padding:10px 12px 30px;position:relative;overflow:hidden}
+.report-chart-title{color:#fff;text-align:center;font-weight:700;font-size:14px;margin-bottom:4px}
+.report-chart-area{height:245px;position:relative;border-left:1px solid #8c8c8c;border-bottom:1px solid #8c8c8c;margin-left:35px}
+.report-gridline{position:absolute;left:0;right:0;border-top:1px solid rgba(255,255,255,.16)}
+.report-ylabel{position:absolute;left:-34px;color:#cfd4db;font-size:9px;transform:translateY(-6px)}
+.report-line-svg{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible}
+.report-xlabels{position:absolute;left:0;right:0;bottom:-27px;display:flex;justify-content:space-between;color:#d5d9df;font-size:8px;gap:2px}
+.report-xlabels span{flex:1;text-align:center;white-space:nowrap}
+.report-quarter-labels{position:absolute;left:0;right:0;bottom:-47px;display:flex;color:#fff;font-size:9px}
+.report-quarter-labels span{flex:1;text-align:center;border-left:1px solid #aaa;padding-top:4px}
+.report-tooltip{position:absolute;display:none;background:#fff;color:#1d2940;padding:5px 7px;border-radius:5px;font-size:11px;font-weight:700;pointer-events:none;box-shadow:0 2px 8px #1118;z-index:3}
+@media(max-width:700px){.report-chart{height:280px}.report-chart-area{height:225px}.report-xlabels{font-size:7px}.report-quarter-labels{font-size:8px}}
+</style>
+</head>
+<body>
+<div class="header">
+  <div><h1>VASUS CLAIM ANALYTICS</h1><small>Sample website • Google Sheets connected version will use live data</small></div>
+  <div><small>Report Date: 23 Sep 2026</small></div>
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <button class="tab active" onclick="showTab('dashboard',this)">Dashboard</button>
+    <button class="tab" onclick="showTab('employee',this)">Employee Report</button>
+    <button class="tab" onclick="showTab('doctor',this)">Doctor Report</button>
+  </div>
+
+  <div class="filters">
+    <div class="filter-grid">
+      <div><label>FROM DATE</label><input type="date" value="2026-09-23"></div>
+      <div><label>TO DATE</label><input type="date" value="2026-09-23"></div>
+      <div><label>EMPLOYEE — SEPARATE</label>
+        <select id="employee"><option>All Employees</option><option>Sirisha</option><option>Chanikiya</option><option>Phani</option><option>Laxminarayana</option><option>Sai Kumar</option><option>Vaidehi</option><option>Ch Praveen</option><option>Vani</option><option>Neelima</option></select>
+      </div>
+      <div><label>DOCTOR — SEPARATE</label>
+        <select id="doctor"><option>All Doctors</option><option>Dr Sunitha</option><option>Dr Bindu</option><option>Dr Angel</option><option>Dr Pranay</option><option>Dr Chinju</option></select>
+      </div>
+      <div><label>HOSPITAL</label>
+        <select><option>All Hospitals</option><option>KMCT</option><option>Pushpagiri</option><option>SGMC</option><option>RMDH</option><option>SMCI</option><option>SNIM</option><option>SUTAM</option><option>CMH</option><option>AMCH</option></select>
+      </div>
+      <div><label>CASE TYPE</label>
+        <select><option>All Case Types</option><option>Claim</option><option>Preauth</option><option>Enhancement</option><option>Resubmit</option><option>Claim Query</option></select>
+      </div>
+    </div>
+    <div class="note">Employee and Doctor filters are independent. Selecting an employee will not change the doctor filter.</div>
+  </div>
+
+  <section id="dashboard">
+    <div class="cards">
+      <div class="card"><div class="label">TOTAL CASES</div><div class="num">790</div></div>
+      <div class="card amount-card"><div class="label">CLAIMS</div><div class="num">236</div><div class="amount">₹25,73,096</div></div>
+      <div class="card amount-card"><div class="label">PREAUTH</div><div class="num">184</div><div class="amount">₹23,14,131</div></div>
+      <div class="card"><div class="label">ENHANCEMENT</div><div class="num">101</div></div>
+      <div class="card"><div class="label">RESUBMIT</div><div class="num">14</div></div>
+      <div class="card"><div class="label">TOTAL POINTS</div><div class="num">545.5</div></div>
+    </div>
+
+    <!-- Claim & Preauth amount section moved UP -->
+    <div class="grid">
+      <div class="panel">
+        <h2>Hospital-wise Claim & Preauth Amount</h2>
+        <table><tr><th>Hospital</th><th>Claim</th><th>Claim Amt</th><th>Preauth</th><th>Preauth Amt</th></tr>
+          <tr><td>KMCT</td><td>70</td><td>₹911,994</td><td>23</td><td>₹370,524</td></tr>
+          <tr><td>Pushpagiri</td><td>28</td><td>₹216,828</td><td>—</td><td>—</td></tr>
+          <tr><td>SGMC</td><td>9</td><td>₹97,200</td><td>—</td><td>—</td></tr>
+          <tr><td>RMDH</td><td>0</td><td>₹0</td><td>4</td><td>₹0</td></tr>
+          <tr><td>SMCI</td><td>48</td><td>₹696,555</td><td>27</td><td>₹257,877</td></tr>
+          <tr><td>SNIM</td><td>57</td><td>₹650,520</td><td>50</td><td>₹543,530</td></tr>
+          <tr><td>SUTAM</td><td>57</td><td>₹650,520</td><td>37</td><td>₹829,500</td></tr>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>Employee Performance</h2>
+        <table><tr><th>Employee</th><th class="right">Cases</th><th class="right">Points</th></tr>
+          <tr><td>Sirisha</td><td class="right">140</td><td class="right">80.75</td></tr>
+          <tr><td>Chanikiya</td><td class="right">138</td><td class="right">100.60</td></tr>
+          <tr><td>Phani</td><td class="right">116</td><td class="right">80.70</td></tr>
+          <tr><td>Laxminarayana</td><td class="right">112</td><td class="right">85.15</td></tr>
+          <tr><td>Sai Kumar</td><td class="right">102</td><td class="right">64.55</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Hospital total cases moved DOWN -->
+    <div class="grid">
+      <div class="panel">
+        <h2>Hospital-wise Total Cases</h2>
+        <div class="chart">
+          <div class="barwrap" style="--h:85%"><span class="barvalue">93</span><div class="bar" style="height:85%"></div><span class="barlabel">KMCT</span></div>
+          <div class="barwrap" style="--h:25%"><span class="barvalue">28</span><div class="bar" style="height:25%"></div><span class="barlabel">Pushpagiri</span></div>
+          <div class="barwrap" style="--h:12%"><span class="barvalue">17</span><div class="bar" style="height:12%"></div><span class="barlabel">AMCH</span></div>
+          <div class="barwrap" style="--h:52%"><span class="barvalue">57</span><div class="bar" style="height:52%"></div><span class="barlabel">SUTAM</span></div>
+          <div class="barwrap" style="--h:44%"><span class="barvalue">50</span><div class="bar" style="height:44%"></div><span class="barlabel">SNIM</span></div>
+          <div class="barwrap" style="--h:38%"><span class="barvalue">48</span><div class="bar" style="height:38%"></div><span class="barlabel">SMCI</span></div>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Doctor Performance</h2>
+        <table><tr><th>Doctor</th><th class="right">Cases</th><th class="right">Points</th></tr>
+          <tr><td>Dr Sunitha</td><td class="right">175</td><td class="right">141.30</td></tr>
+          <tr><td>Dr Bindu</td><td class="right">133</td><td class="right">114.70</td></tr>
+          <tr><td>Dr Angel</td><td class="right">78</td><td class="right">74.50</td></tr>
+          <tr><td>Dr Pranay</td><td class="right">56</td><td class="right">56.00</td></tr>
+          <tr><td>Dr Chinju</td><td class="right">5</td><td class="right">2.35</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="employee" style="display:none">
+    <div class="panel">
+      <h2>Individual Employee Report</h2>
+      <p><b>Selected Employee:</b> <span id="empName">Sirisha</span></p>
+      <div class="cards">
+        <div class="card"><div class="label">TOTAL CASES</div><div class="num">140</div></div>
+        <div class="card"><div class="label">CLAIM</div><div class="num">14</div></div>
+        <div class="card"><div class="label">CLAIM QUERY</div><div class="num">104</div></div>
+        <div class="card"><div class="label">PREAUTH</div><div class="num">11</div></div>
+        <div class="card"><div class="label">RESUBMIT</div><div class="num">2</div></div>
+        <div class="card"><div class="label">POINTS</div><div class="num">80.75</div></div>
+      </div>
+      <div class="panel" style="padding:0;box-shadow:none;margin-top:18px">
+        <div class="report-chart-controls">
+          <span style="font-size:12px;font-weight:700;color:#566276;margin-right:4px">WORKFLOW:</span>
+          <button class="active" onclick="setReportChart('employeeChart','daily','Employee Daily Workflow',this)">Daily</button>
+          <button onclick="setReportChart('employeeChart','monthly','Employee Monthly Workflow',this)">Monthly</button>
+          <button onclick="setReportChart('employeeChart','quarterly','Employee Quarterly Workflow',this)">Quarterly</button>
+        </div>
+        <div id="employeeChart" class="report-chart"></div>
+      </div>
+      <h2>Employee Case Details</h2>
+      <table><tr><th>Case Type</th><th class="right">Count</th><th class="right">Points</th></tr>
+        <tr><td>Claim</td><td class="right">14</td><td class="right">14</td></tr>
+        <tr><td>Claim Query</td><td class="right">104</td><td class="right">41.6</td></tr>
+        <tr><td>Claim Submit</td><td class="right">8</td><td class="right">8</td></tr>
+        <tr><td>Highend</td><td class="right">1</td><td class="right">1.0</td></tr>
+        <tr><td>Preauth</td><td class="right">11</td><td class="right">11</td></tr>
+        <tr><td>Resubmit</td><td class="right">2</td><td class="right">2</td></tr>
+      </table>
+      <div class="actions"><button class="secondary" onclick="downloadCSV('employee')">Download Individual CSV</button><button onclick="downloadCSV('employee')">Download Individual Excel</button></div>
+    </div>
+  </section>
+
+  <section id="doctor" style="display:none">
+    <div class="panel">
+      <h2>Individual Doctor Report</h2>
+      <p><b>Selected Doctor:</b> <span id="docName">Dr Sunitha</span></p>
+      <div class="cards">
+        <div class="card"><div class="label">TOTAL CASES</div><div class="num">175</div></div>
+        <div class="card"><div class="label">CLAIM</div><div class="num">45</div></div>
+        <div class="card"><div class="label">HD CI</div><div class="num">0</div></div>
+        <div class="card"><div class="label">HD PA</div><div class="num">14</div></div>
+        <div class="card"><div class="label">PREAUTH</div><div class="num">116</div></div>
+        <div class="card"><div class="label">POINTS</div><div class="num">141.30</div></div>
+      </div>
+      <div class="panel" style="padding:0;box-shadow:none;margin-top:18px">
+        <div class="report-chart-controls">
+          <span style="font-size:12px;font-weight:700;color:#566276;margin-right:4px">WORKFLOW:</span>
+          <button class="active" onclick="setReportChart('doctorChart','daily','Doctor Daily Workflow',this)">Daily</button>
+          <button onclick="setReportChart('doctorChart','monthly','Doctor Monthly Workflow',this)">Monthly</button>
+          <button onclick="setReportChart('doctorChart','quarterly','Doctor Quarterly Workflow',this)">Quarterly</button>
+        </div>
+        <div id="doctorChart" class="report-chart"></div>
+      </div>
+      <h2>Doctor Case Details</h2>
+      <table><tr><th>Type</th><th class="right">Count</th></tr>
+        <tr><td>Claim</td><td class="right">45</td></tr>
+        <tr><td>HD CI</td><td class="right">0</td></tr>
+        <tr><td>HD PA</td><td class="right">14</td></tr>
+        <tr><td>Preauth</td><td class="right">116</td></tr>
+        <tr><td><b>Grand Total</b></td><td class="right"><b>175</b></td></tr>
+      </table>
+      <div class="actions"><button class="secondary" onclick="downloadCSV('doctor')">Download Doctor CSV</button><button onclick="downloadCSV('doctor')">Download Doctor Excel</button></div>
+    </div>
+  </section>
+</div>
+
+<script>
+
+const reportSeries = {
+  daily: [32,41,38,45,52,47,55,61,49,58,64,60,67,54,71,63,59,73,68,76,70,65,79,72,81,77,84,69,88,75,91],
+  monthly: [1074,1249,1082,1318,900,1211,1023,1215,1352,1361,1496,1515],
+  quarterly: [3405,3429,3590,4372]
+};
+
+function renderReportChart(containerId, mode, title){
+  const c = document.getElementById(containerId);
+  if(!c) return;
+  const values = reportSeries[mode];
+  const labels = mode==='daily' ? values.map((_,i)=>String(i+1)) :
+                 mode==='monthly' ? ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] :
+                 ['Q1','Q2','Q3','Q4'];
+  const max = Math.max(...values);
+  const min = 0;
+  const w = 1000, h = 245, padX = 10, padY = 10;
+  const step = values.length===1 ? 0 : (w-padX*2)/(values.length-1);
+  const pts = values.map((v,i)=>{
+    const x=padX+i*step;
+    const y=h-padY-((v-min)/(max-min||1))*(h-padY*2);
+    return {x,y,v,label:labels[i]};
+  });
+  const poly = pts.map(p=>`${p.x},${p.y}`).join(' ');
+  const circles = pts.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="${mode==='daily'?3:4}" fill="#fff" stroke="#4f86d9" stroke-width="2"><title>${p.label}: ${p.v}</title></circle>`).join('');
+  const vals = pts.map(p=>`<text x="${p.x}" y="${Math.max(13,p.y-9)}" text-anchor="middle" fill="#fff" font-size="${mode==='daily'?8:11}" font-weight="700">${p.v}</text>`).join('');
+  const xlabels = labels.map(l=>`<span>${l}</span>`).join('');
+  const qlabels = mode==='monthly' ? '<span>Q1</span><span>Q2</span><span>Q3</span><span>Q4</span>' : '';
+  c.innerHTML = `
+    <div class="report-chart-title">${title}</div>
+    <div class="report-chart-area">
+      <div class="report-gridline" style="top:0"></div>
+      <div class="report-gridline" style="top:25%"></div>
+      <div class="report-gridline" style="top:50%"></div>
+      <div class="report-gridline" style="top:75%"></div>
+      <div class="report-ylabel" style="top:0">${max}</div>
+      <div class="report-ylabel" style="top:25%">${Math.round(max*.75)}</div>
+      <div class="report-ylabel" style="top:50%">${Math.round(max*.5)}</div>
+      <div class="report-ylabel" style="top:75%">${Math.round(max*.25)}</div>
+      <svg class="report-line-svg" viewBox="0 0 1000 245" preserveAspectRatio="none">
+        <polyline points="${poly}" fill="none" stroke="#fff" stroke-width="2.5" vector-effect="non-scaling-stroke"/>
+        ${circles}${vals}
+      </svg>
+      <div class="report-xlabels">${xlabels}</div>
+      ${qlabels ? `<div class="report-quarter-labels">${qlabels}</div>` : ''}
+    </div>`;
+}
+
+function setReportChart(containerId, mode, title, btn){
+  const parent=btn.parentElement;
+  parent.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderReportChart(containerId, mode, title);
+}
+
+function showTab(id,btn){
+  ['dashboard','employee','doctor'].forEach(x=>document.getElementById(x).style.display=x===id?'block':'none');
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); btn.classList.add('active');
+}
+document.getElementById('employee').addEventListener('change',e=>{document.getElementById('empName').textContent=e.target.value==='All Employees'?'All Employees':e.target.value;});
+document.getElementById('doctor').addEventListener('change',e=>{document.getElementById('docName').textContent=e.target.value==='All Doctors'?'All Doctors':e.target.value;});
+function downloadCSV(type){
+  let rows = type==='employee'
+    ? [['Employee','Case Type','Count','Points'],['Sirisha','Claim',14,14],['Sirisha','Claim Query',104,41.6],['Sirisha','Claim Submit',8,8],['Sirisha','Preauth',11,11],['Sirisha','Resubmit',2,2]]
+    : [['Doctor','Type','Count'],['Dr Sunitha','Claim',45],['Dr Sunitha','HD CI',0],['Dr Sunitha','HD PA',14],['Dr Sunitha','Preauth',116]];
+  let csv=rows.map(r=>r.join(',')).join('\\n');
+  let a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download=(type==='employee'?'Employee_Report':'Doctor_Report')+'.csv';a.click();
+}
+renderReportChart('employeeChart','daily','Employee Daily Workflow');
+renderReportChart('doctorChart','daily','Doctor Daily Workflow');
+</script>
+</body>
+</html>
