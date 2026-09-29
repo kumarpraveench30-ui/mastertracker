@@ -1250,6 +1250,10 @@ table.doc-leader-table th {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       Package Master
     </button>
+    <button class="tab" onclick="switchNavTab('daily-hospital', this)" id="tabBtnDailyHospital">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/></svg>
+      Daily Hospital Claims
+    </button>
     <button class="tab" onclick="switchNavTab('improvement', this)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Individual Improvement Analysis
@@ -2300,6 +2304,149 @@ table.doc-leader-table th {
     </div>
   </section>
 
+
+  <!-- ==================== DAILY HOSPITAL CLAIMS TAB ==================== -->
+  <section id="tab-daily-hospital" style="display:none">
+    <div class="panel">
+      <!-- Section Header -->
+      <div class="panel-header">
+        <div>
+          <h2>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/></svg>
+            Daily Hospital Claim Dispatcher
+          </h2>
+          <div style="font-size:12px;color:var(--muted);font-weight:600;margin-top:2px">
+            Official daily claim report for hospital submission (Strictly <b>Claim</b> cases only — excludes Claim submit and Claim Query)
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <button onclick="openAppsScriptGuideModal()" class="secondary" style="display:inline-flex;align-items:center;gap:6px;padding:8px 12px;font-size:12px;font-weight:700" title="View 6:00 PM automated Google Cloud email trigger setup">
+            ⚙️ 6:00 PM Auto-Dispatch Setup
+          </button>
+          <button onclick="downloadHospitalClaimsExcel()" style="display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Excel (.xlsx)
+          </button>
+        </div>
+      </div>
+
+      <!-- Filters & Email Config Bar -->
+      <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:10px;padding:16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end">
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:var(--muted,#64748b);margin-bottom:4px;text-transform:uppercase">Hospital</label>
+          <select id="dailyHospSelect" onchange="fetchDailyHospitalClaims()" style="padding:8px 12px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:13px;font-weight:600;min-width:180px">
+            <option value="Pushpagiri" selected>Pushpagiri (PG)</option>
+            <option value="KMCT">KMCT</option>
+            <option value="SGMC">SGMC</option>
+            <option value="RMDH">RMDH</option>
+            <option value="SMCI">SMCI</option>
+            <option value="SNIM">SNIM</option>
+            <option value="SUTAM">SUTAM</option>
+            <option value="AMCH">AMCH</option>
+            <option value="ALL">All Hospitals</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:11px;font-weight:700;color:var(--muted,#64748b);margin-bottom:4px;text-transform:uppercase">Report Date</label>
+          <div style="display:flex;gap:6px;align-items:center">
+            <input type="date" id="dailyHospDateInput" onchange="fetchDailyHospitalClaims()" style="padding:7px 10px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:12px">
+            <button onclick="setDailyHospDateToday()" class="secondary" style="padding:7px 10px;font-size:11px;font-weight:700">Today</button>
+            <button onclick="setDailyHospDateYesterday()" class="secondary" style="padding:7px 10px;font-size:11px;font-weight:700">Yesterday</button>
+          </div>
+        </div>
+
+        <div style="flex:1;min-width:260px">
+          <label style="display:block;font-size:11px;font-weight:700;color:var(--muted,#64748b);margin-bottom:4px;text-transform:uppercase">
+            Recipient Email(s) for Daily Dispatch
+          </label>
+          <div style="display:flex;gap:6px">
+            <input type="text" id="dailyHospEmailInput" placeholder="e.g. claims@pushpagiri.org, tpa@pushpagiri.org" style="flex:1;padding:8px 10px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:12px;box-sizing:border-box">
+            <button onclick="saveDailyHospEmail()" class="secondary" style="padding:8px 12px;font-size:12px;font-weight:700">💾 Save</button>
+          </div>
+        </div>
+
+        <div>
+          <button onclick="fetchDailyHospitalClaims()" style="padding:8px 14px;background:#2563eb;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            Refresh Cases
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Metrics Strip -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;margin-bottom:16px">
+        <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:8px;padding:12px 16px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase">Total Claim Cases</div>
+          <div id="dailyHospKpiCount" style="font-size:22px;font-weight:800;color:#2563eb;margin-top:4px">--</div>
+        </div>
+        <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:8px;padding:12px 16px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase">Total Claim Amount</div>
+          <div id="dailyHospKpiAmt" style="font-size:22px;font-weight:800;color:#16a34a;margin-top:4px">--</div>
+        </div>
+        <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:8px;padding:12px 16px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase">Target Hospital</div>
+          <div id="dailyHospKpiTarget" style="font-size:18px;font-weight:700;color:var(--text,#1e293b);margin-top:6px">Pushpagiri</div>
+        </div>
+        <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:8px;padding:12px 16px">
+          <div style="font-size:11px;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase">Case Type Filter</div>
+          <div style="font-size:13px;font-weight:700;color:#c2410c;margin-top:6px;display:flex;align-items:center;gap:6px">
+            <span class="pill pill-orange" style="font-size:11px">Strictly "Claim" Only</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Preview Table -->
+      <div class="table-responsive" style="border:1px solid var(--border,#e2e8f0);border-radius:8px">
+        <table style="width:100%">
+          <thead>
+            <tr>
+              <th style="width:160px">Date</th>
+              <th style="width:220px">Case Number</th>
+              <th style="width:200px">Hospital</th>
+              <th style="width:180px;text-align:right">Claim Amt</th>
+              <th style="width:180px;text-align:center">Discharge Date</th>
+            </tr>
+          </thead>
+          <tbody id="dailyHospTableBody">
+            <tr><td colspan="5" style="text-align:center;padding:30px;color:var(--muted)">Loading today's claims from Google Sheets...</td></tr>
+          </tbody>
+          <tfoot id="dailyHospTableFoot" style="font-weight:bold;background:#f8fafc;border-top:2px solid var(--border,#cbd5e1)">
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== APPS SCRIPT GUIDE MODAL ==================== -->
+  <div id="appsScriptGuideModal" class="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(15,23,42,0.65);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(3px)">
+    <div class="modal-card" style="background:var(--card-bg,#fff);border-radius:12px;max-width:680px;width:92%;max-height:88vh;overflow-y:auto;padding:24px;box-shadow:0 20px 25px -5px rgba(0,0,0,0.2);border:1px solid var(--border,#e2e8f0)">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid var(--border,#e2e8f0);padding-bottom:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:20px">⚙️</span>
+          <h3 style="margin:0;font-size:16px;font-weight:700">6:00 PM Automated Cloud Email Setup</h3>
+        </div>
+        <button onclick="closeAppsScriptGuideModal()" style="background:none;border:none;font-size:18px;cursor:pointer;color:var(--muted,#64748b)">✕</button>
+      </div>
+      <p style="font-size:12px;color:var(--muted,#64748b);line-height:1.5;margin-bottom:12px">
+        To have Google send the Pushpagiri Daily Claim Excel report automatically at 6:00 PM every day even when your computer is off, paste this script into your Google Sheet (<b>Extensions &gt; Apps Script</b>):
+      </p>
+      <div style="position:relative">
+        <pre id="appsScriptCodeText" style="background:#0f172a;color:#e2e8f0;padding:14px;border-radius:8px;font-size:11px;line-height:1.45;max-height:280px;overflow-y:auto;font-family:monospace"></pre>
+        <button onclick="copyAppsScriptCode()" style="position:absolute;top:8px;right:8px;background:#2563eb;color:#fff;border:none;border-radius:4px;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer">
+          📋 Copy Code
+        </button>
+      </div>
+      <div style="margin-top:14px;padding:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;font-size:12px;color:#166534;line-height:1.5">
+        <b>Trigger Instructions:</b> In Apps Script, click on the Alarm icon (<b>Triggers</b>) on the left sidebar &gt; <b>Add Trigger</b> &gt; Select Function: <code>sendDailyPushpagiriClaimReport</code> &gt; Event Source: <b>Time-driven</b> &gt; Type: <b>Day timer</b> &gt; Select: <b>6pm to 7pm</b>. Done!
+      </div>
+      <div style="display:flex;justify-content:flex-end;margin-top:16px">
+        <button class="secondary" onclick="closeAppsScriptGuideModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+
   <!-- ==================== INDIVIDUAL IMPROVEMENT ANALYSIS TAB ==================== -->
   <section id="tab-improvement" style="display:none">
     
@@ -2854,7 +3001,7 @@ function switchNavTab(tabId, btn){
   document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
   if(btn) btn.classList.add('active');
 
-  ['dashboard','employee','doctor','attendance','package','improvement'].forEach(t => {
+  ['dashboard','employee','doctor','attendance','package','improvement','daily-hospital'].forEach(t => {
     const el = document.getElementById('tab-' + t);
     if(el) el.style.display = (t === tabId ? 'block' : 'none');
   });
@@ -2871,14 +3018,350 @@ function switchNavTab(tabId, btn){
     initPackageMasterTab();
   } else if(tabId === 'improvement'){
     initImprovementTab();
+  } else if(tabId === 'daily-hospital'){
+    initDailyHospitalTab();
   }
 }
 
 /**
  * ==========================================================
- * 1. LIVE GOOGLE VISUALIZATION QUERY ENGINE (JSONP)
+ * DAILY HOSPITAL CLAIM DISPATCHER & EXCEL GENERATOR
+ * Strictly filters "Claim" cases (excludes Claim submit & Claim Query)
+ * Excludes Medisep and Doctors
+ * Formats date without time (DD-MM-YYYY)
  * ==========================================================
  */
+let currentDailyHospCases = [];
+
+function getLocalDateString(d = new Date()) {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${y}-${m}-${day}`;
+}
+
+function formatDateOnly(dInput) {
+  if (!dInput) return '-';
+  if (dInput instanceof Date && !isNaN(dInput.getTime())) {
+    const day = String(dInput.getDate()).padStart(2, '0');
+    const month = String(dInput.getMonth() + 1).padStart(2, '0');
+    const year = dInput.getFullYear();
+    return `${day}-${month}-${year}`;
+  }
+  const str = String(dInput).trim();
+  const datePart = str.split(/[ T]/)[0];
+  const parts = datePart.split(/[\/\-]/);
+  if (parts.length === 3) {
+    if (parts[0].length === 4) {
+      return `${parts[2].padStart(2, '0')}-${parts[1].padStart(2, '0')}-${parts[0]}`;
+    } else {
+      return `${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}-${parts[2]}`;
+    }
+  }
+  return datePart;
+}
+
+function cleanHospitalDisplayName(hosp) {
+  if (!hosp) return '';
+  return hosp.replace(/^\d+\.\s*/, '').trim();
+}
+
+function initDailyHospitalTab() {
+  const dateInput = document.getElementById("dailyHospDateInput");
+  if (dateInput && !dateInput.value) {
+    dateInput.value = getLocalDateString();
+  }
+  loadDailyHospEmail();
+  fetchDailyHospitalClaims();
+}
+
+function setDailyHospDateToday() {
+  const dateInput = document.getElementById("dailyHospDateInput");
+  if (dateInput) {
+    dateInput.value = getLocalDateString();
+    fetchDailyHospitalClaims();
+  }
+}
+
+function setDailyHospDateYesterday() {
+  const dateInput = document.getElementById("dailyHospDateInput");
+  if (dateInput) {
+    const yest = new Date();
+    yest.setDate(yest.getDate() - 1);
+    dateInput.value = getLocalDateString(yest);
+    fetchDailyHospitalClaims();
+  }
+}
+
+function loadDailyHospEmail() {
+  const hospSelect = document.getElementById("dailyHospSelect");
+  const hosp = hospSelect ? hospSelect.value : "Pushpagiri";
+  const emailInput = document.getElementById("dailyHospEmailInput");
+  if (!emailInput) return;
+  try {
+    const emailsMap = JSON.parse(localStorage.getItem("vasus_hospital_emails") || "{}");
+    emailInput.value = emailsMap[hosp] || (hosp === "Pushpagiri" ? "claims@pushpagiri.org, tpa@pushpagiri.org" : "");
+  } catch(e) {
+    emailInput.value = "";
+  }
+}
+
+function saveDailyHospEmail() {
+  const hospSelect = document.getElementById("dailyHospSelect");
+  const hosp = hospSelect ? hospSelect.value : "Pushpagiri";
+  const emailInput = document.getElementById("dailyHospEmailInput");
+  if (!emailInput) return;
+  const val = emailInput.value.trim();
+  try {
+    const emailsMap = JSON.parse(localStorage.getItem("vasus_hospital_emails") || "{}");
+    emailsMap[hosp] = val;
+    localStorage.setItem("vasus_hospital_emails", JSON.stringify(emailsMap));
+    showNotification(`Recipient email for ${hosp} saved!`, "success");
+  } catch(e) {
+    showNotification("Failed to save email.", "error");
+  }
+}
+
+async function fetchDailyHospitalClaims() {
+  const hospSelect = document.getElementById("dailyHospSelect");
+  const hospVal = hospSelect ? hospSelect.value : "Pushpagiri";
+  const dateInput = document.getElementById("dailyHospDateInput");
+  const targetDateStr = (dateInput && dateInput.value) ? dateInput.value : getLocalDateString();
+  if (dateInput && !dateInput.value) dateInput.value = targetDateStr;
+
+  const tbody = document.getElementById("dailyHospTableBody");
+  const tfoot = document.getElementById("dailyHospTableFoot");
+  const kpiCount = document.getElementById("dailyHospKpiCount");
+  const kpiAmt = document.getElementById("dailyHospKpiAmt");
+  const kpiTarget = document.getElementById("dailyHospKpiTarget");
+
+  if (kpiTarget) kpiTarget.textContent = (hospVal === "ALL") ? "All Hospitals" : hospVal;
+  if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--muted)">Fetching ${hospVal} claims for ${targetDateStr}...</td></tr>`;
+  if (tfoot) tfoot.innerHTML = "";
+
+  loadDailyHospEmail();
+
+  // Strict SQL query:
+  // 1. Case type = 'claim' (strict)
+  // 2. Exclude Medisep: not lower(D) contains 'medisep'
+  // 3. Exclude Doctors: not lower(C) like '%dr %'
+  let whereClauses = [
+    "lower(E) = 'claim'",
+    "not lower(D) contains 'medisep'",
+    "not lower(C) like '%dr %'"
+  ];
+
+  if (hospVal !== "ALL") {
+    whereClauses.push(`lower(D) contains '${hospVal.toLowerCase()}'`);
+  }
+  const queryStr = `select A, B, C, D, E, F, G where ${whereClauses.join(" and ")} order by A desc`;
+
+  try {
+    const rawData = await queryGviz(queryStr, "Cases");
+    const rows = (rawData && rawData.rows) ? rawData.rows : (rawData && rawData.table && rawData.table.rows ? rawData.table.rows : []);
+    
+    // Parse target date (YYYY-MM-DD)
+    const [tY, tM, tD] = targetDateStr.split("-").map(Number);
+
+    const filtered = [];
+    rows.forEach(r => {
+      if (!r || !r.c) return;
+      const c = r.c;
+
+      // Date parsing
+      let dateObj = null;
+      let dateRaw = "";
+      if (c[0]) {
+        dateRaw = c[0].f || String(c[0].v || "");
+        if (typeof c[0].v === "string" && c[0].v.startsWith("Date(")) {
+          dateObj = parseGoogleDate(c[0].v, dateRaw);
+        } else if (c[0].v instanceof Date) {
+          dateObj = c[0].v;
+        } else if (dateRaw) {
+          dateObj = parseGoogleDate(null, dateRaw);
+        }
+      }
+
+      // Match target date
+      if (dateObj) {
+        if (dateObj.getFullYear() !== tY || (dateObj.getMonth() + 1) !== tM || dateObj.getDate() !== tD) {
+          return;
+        }
+      } else if (dateRaw) {
+        const padD = String(tD).padStart(2, "0");
+        const padM = String(tM).padStart(2, "0");
+        const check1 = `${padD}/${padM}/${tY}`;
+        const check2 = `${padD}-${padM}-${tY}`;
+        const check3 = `${tY}-${padM}-${padD}`;
+        if (!dateRaw.includes(check1) && !dateRaw.includes(check2) && !dateRaw.includes(check3)) {
+          return;
+        }
+      } else {
+        return;
+      }
+
+      const caseNum = c[1] ? String(c[1].v || "") : "";
+      const uploader = c[2] ? String(c[2].v || "").trim() : "";
+      const rawHosp = c[3] ? String(c[3].v || "").trim() : "";
+      const caseType = c[4] ? String(c[4].v || "").trim() : "";
+      const amt = c[5] ? Number(c[5].v) || 0 : 0;
+
+      // Strict filters:
+      // 1. Strict 'Claim' only
+      if (caseType.toLowerCase() !== "claim") return;
+      // 2. Exclude Medisep
+      if (rawHosp.toLowerCase().includes("medisep")) return;
+      // 3. Exclude Doctors
+      if (uploader.toLowerCase().includes("dr ")) return;
+
+      // Format Date without time: e.g. 28-09-2026
+      const dateFormatted = dateObj ? formatDateOnly(dateObj) : formatDateOnly(dateRaw);
+      
+      let dischargeFormatted = "-";
+      if (c[6]) {
+        if (c[6].f) {
+          dischargeFormatted = formatDateOnly(c[6].f);
+        } else if (typeof c[6].v === "string" && c[6].v.startsWith("Date(")) {
+          const dcObj = parseGoogleDate(c[6].v);
+          dischargeFormatted = dcObj ? formatDateOnly(dcObj) : formatDateOnly(c[6].v);
+        } else if (c[6].v instanceof Date) {
+          dischargeFormatted = formatDateOnly(c[6].v);
+        } else if (c[6].v) {
+          dischargeFormatted = formatDateOnly(c[6].v);
+        }
+      }
+      
+      const cleanHosp = cleanHospitalDisplayName(rawHosp);
+
+      filtered.push({
+        date: dateFormatted,
+        caseNum,
+        hospital: cleanHosp,
+        amt,
+        dischargeDate: dischargeFormatted
+      });
+    });
+
+    currentDailyHospCases = filtered;
+
+    // Update KPI counters
+    const totalAmt = filtered.reduce((sum, item) => sum + item.amt, 0);
+    if (kpiCount) kpiCount.textContent = `${filtered.length.toLocaleString()} Claims`;
+    if (kpiAmt) kpiAmt.textContent = `₹${totalAmt.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+    if (filtered.length === 0) {
+      if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:35px;color:var(--muted)">No "Claim" cases found for <b>${hospVal}</b> on ${targetDateStr}.<br><span style="font-size:11px;color:var(--text-muted)">Tip: Use the "Yesterday" button or date picker to view claims from recent days.</span></td></tr>`;
+      return;
+    }
+
+    let rowsHtml = "";
+    filtered.forEach((r) => {
+      rowsHtml += `
+        <tr>
+          <td><span style="font-weight:700;font-size:12px;color:var(--text-main,#0f172a)">${r.date}</span></td>
+          <td><span class="pkg-code-badge" onclick="navigator.clipboard.writeText('${r.caseNum}');showNotification('Copied case ${r.caseNum}','success')" title="Click to copy">${r.caseNum}</span></td>
+          <td style="font-weight:600">${r.hospital}</td>
+          <td style="text-align:right;font-weight:800;color:var(--green,#16a34a)">₹${r.amt.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td style="text-align:center;font-size:12px;font-weight:600;color:var(--text-main,#334155)">${r.dischargeDate}</td>
+        </tr>
+      `;
+    });
+
+    if (tbody) tbody.innerHTML = rowsHtml;
+    if (tfoot) {
+      tfoot.innerHTML = `
+        <tr>
+          <td colspan="3" style="padding:10px 12px">Total (${filtered.length} Claims)</td>
+          <td style="text-align:right;color:#16a34a;padding:10px 12px;font-size:14px">₹${totalAmt.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+          <td></td>
+        </tr>
+      `;
+    }
+
+  } catch(e) {
+    console.error("Error fetching daily hospital claims:", e);
+    if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:#dc2626">Error loading claims: ${e.message}</td></tr>`;
+  }
+}
+
+/**
+ * 1-CLICK EXCEL DOWNLOAD (.xlsx)
+ * Exactly 5 columns: Date, Case Number, Hospital, Claim Amt, Discharge Date
+ */
+function downloadHospitalClaimsExcel(specifiedHosp) {
+  const hospSelect = document.getElementById("dailyHospSelect");
+  const hospName = specifiedHosp || (hospSelect ? hospSelect.value : "Pushpagiri");
+  const dateInput = document.getElementById("dailyHospDateInput");
+  const dateStr = dateInput && dateInput.value ? dateInput.value : new Date().toISOString().split("T")[0];
+
+  const list = currentDailyHospCases;
+  if (!list || list.length === 0) {
+    alert(`No claims currently loaded for ${hospName} on ${dateStr}. Please refresh or choose another date first.`);
+    return;
+  }
+
+  // Format data for Excel with the exact 5 requested columns
+  const excelData = list.map((item) => ({
+    "Date": item.date,
+    "Case Number": item.caseNum,
+    "Hospital": item.hospital,
+    "Claim Amt": item.amt,
+    "Discharge Date": item.dischargeDate || "NA"
+  }));
+
+  // Create worksheet using SheetJS
+  if (typeof XLSX === "undefined") {
+    alert("Excel export engine is loading. Please try again in a moment.");
+    return;
+  }
+
+  const ws = XLSX.utils.json_to_sheet(excelData);
+  // Column widths
+  ws["!cols"] = [
+    { wch: 16 }, // Date (e.g. 28-09-2026)
+    { wch: 22 }, // Case Number
+    { wch: 20 }, // Hospital
+    { wch: 16 }, // Claim Amt
+    { wch: 16 }  // Discharge Date
+  ];
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Daily_Claims");
+  const cleanHosp = hospName.replace(/[^a-zA-Z0-9]/g, "_");
+  XLSX.writeFile(wb, `Daily_Claim_Report_${cleanHosp}_${dateStr}.xlsx`);
+  showNotification(`Downloaded Daily_Claim_Report_${cleanHosp}_${dateStr}.xlsx`, "success");
+}
+
+/**
+ * APPS SCRIPT GUIDE MODAL
+ */
+function openAppsScriptGuideModal() {
+  const modal = document.getElementById("appsScriptGuideModal");
+  const pre = document.getElementById("appsScriptCodeText");
+  const emailInput = document.getElementById("dailyHospEmailInput");
+  const recipientEmail = (emailInput && emailInput.value) ? emailInput.value : "claims@pushpagiri.org";
+
+  const template = "/**\n * VASUS HEALTHCARE RCM - AUTOMATED DAILY HOSPITAL CLAIM DISPATCHER\n * Triggers daily at 6:00 PM IST\n * Sends formatted Excel with: Date, Case Number, Hospital, Claim Amt, Discharge Date\n * Excludes Medisep and non-Claim types\n */\nfunction sendDailyPushpagiriClaimReport() {\n  var SPREADSHEET_ID = \"1mqve1wxOa-T37uQFOb4Lvv2QmjR2_k1EHRZT8zv_rcA\";\n  var RECIPIENT_EMAILS = \"RECIPIENT_PLACEHOLDER\";\n  var TARGET_HOSPITAL = \"Pushpagiri\";\n  \n  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);\n  var sheet = ss.getSheetByName(\"Cases\");\n  if (!sheet) return;\n  \n  var data = sheet.getDataRange().getValues();\n  var today = new Date();\n  var tD = today.getDate();\n  var tM = today.getMonth();\n  var tY = today.getFullYear();\n  \n  var matchingRows = [];\n  var totalAmt = 0;\n  \n  for (var i = 1; i < data.length; i++) {\n    var row = data[i];\n    var rowDate = new Date(row[0]);\n    if (isNaN(rowDate.getTime())) continue;\n    \n    if (rowDate.getDate() === tD && rowDate.getMonth() === tM && rowDate.getFullYear() === tY) {\n      var uploader = String(row[2] || \"\").toLowerCase();\n      var hosp = String(row[3] || \"\").toLowerCase();\n      var type = String(row[4] || \"\").trim().toLowerCase();\n      \n      if (hosp.indexOf(TARGET_HOSPITAL.toLowerCase()) !== -1 &&\n          hosp.indexOf(\"medisep\") === -1 &&\n          uploader.indexOf(\"dr \") === -1 &&\n          type === \"claim\") {\n        \n        var amt = Number(row[5]) || 0;\n        totalAmt += amt;\n        var dateOnlyStr = Utilities.formatDate(rowDate, \"Asia/Kolkata\", \"dd-MM-yyyy\");\n        var dcStr = row[6] ? Utilities.formatDate(new Date(row[6]), \"Asia/Kolkata\", \"dd-MM-yyyy\") : \"NA\";\n        \n        matchingRows.push([dateOnlyStr, String(row[1] || \"\"), TARGET_HOSPITAL, amt, dcStr]);\n      }\n    }\n  }\n  \n  if (matchingRows.length === 0) return;\n  \n  var csvContent = \"Date,Case Number,Hospital,Claim Amt,Discharge Date\\n\";\n  for (var j = 0; j < matchingRows.length; j++) {\n    var r = matchingRows[j];\n    csvContent += '\"' + r[0] + '\",\"' + r[1] + '\",\"' + r[2] + '\",' + r[3] + ',\"' + r[4] + '\"\\n';\n  }\n  \n  var dateStr = Utilities.formatDate(today, \"Asia/Kolkata\", \"dd-MM-yyyy\");\n  var attachment = Utilities.newBlob(csvContent, \"text/csv\", \"Daily_Claim_Report_Pushpagiri_\" + dateStr + \".csv\");\n  var subject = \"Daily Claim Report - Pushpagiri Hospital - \" + dateStr + \" (\" + matchingRows.length + \" Cases)\";\n  var body = \"Dear Pushpagiri Team,\\n\\nPlease find attached the Daily Claim Report for \" + dateStr + \".\\n\\nTotal Claims Processed: \" + matchingRows.length + \"\\nTotal Claim Amount: \u20b9\" + totalAmt.toLocaleString(\"en-IN\") + \"\\n\\nBest regards,\\nVasus Healthcare RCM\";\n  GmailApp.sendEmail(RECIPIENT_EMAILS, subject, body, { attachments: [attachment] });\n}";
+  const scriptCode = template.replace("RECIPIENT_PLACEHOLDER", recipientEmail);
+
+  if (pre) pre.textContent = scriptCode;
+  if (modal) modal.style.display = "flex";
+}
+
+function closeAppsScriptGuideModal() {
+  const modal = document.getElementById("appsScriptGuideModal");
+  if (modal) modal.style.display = "none";
+}
+
+function copyAppsScriptCode() {
+  const pre = document.getElementById("appsScriptCodeText");
+  if (pre) {
+    navigator.clipboard.writeText(pre.textContent);
+    showNotification("Copied Google Apps Script code to clipboard!", "success");
+  }
+}
+
+
 function queryGviz(queryString, sheetName = 'Cases'){
   const cacheKey = sheetName + '::' + queryString;
   if(queryCache[cacheKey]) return Promise.resolve(queryCache[cacheKey]);
