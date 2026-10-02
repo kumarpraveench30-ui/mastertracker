@@ -191,10 +191,6 @@ tr.silver-row-highlight {
   border-left: 4px solid #cbd5e1;
 }
 
-/* Attendance Tracker Tab */
-#tab-attendance {
-  width: 100%;
-}
 
 /* Package Master Styles */
 .pkg-search-box {
@@ -1242,17 +1238,9 @@ table.doc-leader-table th {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
       Doctor Report
     </button>
-    <button class="tab" onclick="switchNavTab('attendance', this)">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-      Attendance Tracker
-    </button>
     <button class="tab" onclick="switchNavTab('package', this)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
       Package Master
-    </button>
-    <button class="tab" onclick="switchNavTab('daily-hospital', this)" id="tabBtnDailyHospital">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/></svg>
-      Daily Hospital Claims
     </button>
     <button class="tab" onclick="switchNavTab('improvement', this)">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
@@ -2189,20 +2177,6 @@ table.doc-leader-table th {
   </section>
 
 
-  <!-- ==================== ATTENDANCE TRACKER TAB ==================== -->
-  <section id="tab-attendance" style="display:none">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; background:#fff; padding:10px 16px; border-radius:10px; border:1px solid #dbe3ee;">
-      <div style="display:flex; align-items:center; gap:8px;">
-        <span style="font-size:16px;">📅</span>
-        <b style="font-size:14px; color:#172033;">Vasus Attendance Tracker</b>
-        <span style="font-size:12px; color:#64748b;">(01-Oct-2025 to 31-Jan-2027)</span>
-      </div>
-      <a href="attendance.html" target="_blank" style="display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:700; color:#1557c0; text-decoration:none; background:#e8f1ff; border:1px solid #a8c6f5; padding:6px 14px; border-radius:8px;">
-        <span>↗ Open Standalone Tracker</span>
-      </a>
-    </div>
-    <iframe id="attendanceIframe" src="attendance.html" style="width:100%; height:calc(100vh - 170px); min-height:920px; border:1px solid #dbe3ee; border-radius:12px; display:block; background:#f4f7fb;"></iframe>
-  </section>
 
   <!-- ==================== PACKAGE MASTER TAB ==================== -->
   <section id="tab-package" style="display:none">
@@ -2305,146 +2279,6 @@ table.doc-leader-table th {
   </section>
 
 
-  <!-- ==================== DAILY HOSPITAL CLAIMS TAB ==================== -->
-  <section id="tab-daily-hospital" style="display:none">
-    <div class="panel">
-      <!-- Section Header -->
-      <div class="panel-header">
-        <div>
-          <h2>
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16M9 9h6M9 13h6M9 17h6"/></svg>
-            Daily Hospital Claim Dispatcher
-          </h2>
-          <div style="font-size:12px;color:var(--muted);font-weight:600;margin-top:2px">
-            Official daily claim report for hospital submission (Strictly <b>Claim</b> cases only — excludes Claim submit and Claim Query)
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-          <button onclick="openAppsScriptGuideModal()" class="secondary" style="display:inline-flex;align-items:center;gap:6px;padding:8px 12px;font-size:12px;font-weight:700" title="View 6:00 PM automated Google Cloud email trigger setup">
-            ⚙️ 6:00 PM Auto-Dispatch Setup
-          </button>
-          <button onclick="downloadHospitalClaimsExcel()" style="display:inline-flex;align-items:center;gap:6px;background:#16a34a;color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download Excel (.xlsx)
-          </button>
-        </div>
-      </div>
-
-      <!-- Filters & Email Config Bar -->
-      <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:10px;padding:16px;margin-bottom:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end">
-        <div>
-          <label style="display:block;font-size:11px;font-weight:700;color:var(--muted,#64748b);margin-bottom:4px;text-transform:uppercase">Hospital</label>
-          <select id="dailyHospSelect" onchange="fetchDailyHospitalClaims()" style="padding:8px 12px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:13px;font-weight:600;min-width:180px">
-            <option value="Pushpagiri" selected>Pushpagiri (PG)</option>
-            <option value="KMCT">KMCT</option>
-            <option value="SGMC">SGMC</option>
-            <option value="RMDH">RMDH</option>
-            <option value="SMCI">SMCI</option>
-            <option value="SNIM">SNIM</option>
-            <option value="SUTAM">SUTAM</option>
-            <option value="AMCH">AMCH</option>
-            <option value="ALL">All Hospitals</option>
-          </select>
-        </div>
-
-        <div>
-          <label style="display:block;font-size:11px;font-weight:700;color:var(--muted,#64748b);margin-bottom:4px;text-transform:uppercase">Report Date</label>
-          <div style="display:flex;gap:6px;align-items:center">
-            <input type="date" id="dailyHospDateInput" onchange="fetchDailyHospitalClaims()" style="padding:7px 10px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:12px">
-            <button onclick="setDailyHospDateToday()" class="secondary" style="padding:7px 10px;font-size:11px;font-weight:700">Today</button>
-            <button onclick="setDailyHospDateYesterday()" class="secondary" style="padding:7px 10px;font-size:11px;font-weight:700">Yesterday</button>
-          </div>
-        </div>
-
-        <div style="flex:1;min-width:260px">
-          <label style="display:block;font-size:11px;font-weight:700;color:var(--muted,#64748b);margin-bottom:4px;text-transform:uppercase">
-            Recipient Email(s) for Daily Dispatch
-          </label>
-          <div style="display:flex;gap:6px">
-            <input type="text" id="dailyHospEmailInput" placeholder="e.g. claims@pushpagiri.org, tpa@pushpagiri.org" style="flex:1;padding:8px 10px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:12px;box-sizing:border-box">
-            <button onclick="saveDailyHospEmail()" class="secondary" style="padding:8px 12px;font-size:12px;font-weight:700">💾 Save</button>
-          </div>
-        </div>
-
-        <div>
-          <button onclick="fetchDailyHospitalClaims()" style="padding:8px 14px;background:#2563eb;color:#fff;border:none;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-            Refresh Cases
-          </button>
-        </div>
-      </div>
-
-      <!-- KPI Metrics Strip -->
-      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(180px, 1fr));gap:12px;margin-bottom:16px">
-        <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:8px;padding:12px 16px">
-          <div style="font-size:11px;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase">Total Claim Cases</div>
-          <div id="dailyHospKpiCount" style="font-size:22px;font-weight:800;color:#2563eb;margin-top:4px">--</div>
-        </div>
-        <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:8px;padding:12px 16px">
-          <div style="font-size:11px;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase">Total Claim Amount</div>
-          <div id="dailyHospKpiAmt" style="font-size:22px;font-weight:800;color:#16a34a;margin-top:4px">--</div>
-        </div>
-        <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:8px;padding:12px 16px">
-          <div style="font-size:11px;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase">Target Hospital</div>
-          <div id="dailyHospKpiTarget" style="font-size:18px;font-weight:700;color:var(--text,#1e293b);margin-top:6px">Pushpagiri</div>
-        </div>
-        <div style="background:var(--card-bg,#fff);border:1px solid var(--border,#e2e8f0);border-radius:8px;padding:12px 16px">
-          <div style="font-size:11px;font-weight:700;color:var(--muted,#64748b);text-transform:uppercase">Case Type Filter</div>
-          <div style="font-size:13px;font-weight:700;color:#c2410c;margin-top:6px;display:flex;align-items:center;gap:6px">
-            <span class="pill pill-orange" style="font-size:11px">Strictly "Claim" Only</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Preview Table -->
-      <div class="table-responsive" style="border:1px solid var(--border,#e2e8f0);border-radius:8px">
-        <table style="width:100%">
-          <thead>
-            <tr>
-              <th style="width:160px">Date</th>
-              <th style="width:220px">Case Number</th>
-              <th style="width:200px">Hospital</th>
-              <th style="width:180px;text-align:right">Claim Amt</th>
-              <th style="width:180px;text-align:center">Discharge Date</th>
-            </tr>
-          </thead>
-          <tbody id="dailyHospTableBody">
-            <tr><td colspan="5" style="text-align:center;padding:30px;color:var(--muted)">Loading today's claims from Google Sheets...</td></tr>
-          </tbody>
-          <tfoot id="dailyHospTableFoot" style="font-weight:bold;background:#f8fafc;border-top:2px solid var(--border,#cbd5e1)">
-          </tfoot>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== APPS SCRIPT GUIDE MODAL ==================== -->
-  <div id="appsScriptGuideModal" class="modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(15,23,42,0.65);z-index:9999;align-items:center;justify-content:center;backdrop-filter:blur(3px)">
-    <div class="modal-card" style="background:var(--card-bg,#fff);border-radius:12px;max-width:680px;width:92%;max-height:88vh;overflow-y:auto;padding:24px;box-shadow:0 20px 25px -5px rgba(0,0,0,0.2);border:1px solid var(--border,#e2e8f0)">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;border-bottom:1px solid var(--border,#e2e8f0);padding-bottom:10px">
-        <div style="display:flex;align-items:center;gap:8px">
-          <span style="font-size:20px">⚙️</span>
-          <h3 style="margin:0;font-size:16px;font-weight:700">6:00 PM Automated Cloud Email Setup</h3>
-        </div>
-        <button onclick="closeAppsScriptGuideModal()" style="background:none;border:none;font-size:18px;cursor:pointer;color:var(--muted,#64748b)">✕</button>
-      </div>
-      <p style="font-size:12px;color:var(--muted,#64748b);line-height:1.5;margin-bottom:12px">
-        To have Google send the Pushpagiri Daily Claim Excel report automatically at 6:00 PM every day even when your computer is off, paste this script into your Google Sheet (<b>Extensions &gt; Apps Script</b>):
-      </p>
-      <div style="position:relative">
-        <pre id="appsScriptCodeText" style="background:#0f172a;color:#e2e8f0;padding:14px;border-radius:8px;font-size:11px;line-height:1.45;max-height:280px;overflow-y:auto;font-family:monospace"></pre>
-        <button onclick="copyAppsScriptCode()" style="position:absolute;top:8px;right:8px;background:#2563eb;color:#fff;border:none;border-radius:4px;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer">
-          📋 Copy Code
-        </button>
-      </div>
-      <div style="margin-top:14px;padding:12px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;font-size:12px;color:#166534;line-height:1.5">
-        <b>Trigger Instructions:</b> In Apps Script, click on the Alarm icon (<b>Triggers</b>) on the left sidebar &gt; <b>Add Trigger</b> &gt; Select Function: <code>sendDailyPushpagiriClaimReport</code> &gt; Event Source: <b>Time-driven</b> &gt; Type: <b>Day timer</b> &gt; Select: <b>6pm to 7pm</b>. Done!
-      </div>
-      <div style="display:flex;justify-content:flex-end;margin-top:16px">
-        <button class="secondary" onclick="closeAppsScriptGuideModal()">Close</button>
-      </div>
-    </div>
-  </div>
 
 
   <!-- ==================== INDIVIDUAL IMPROVEMENT ANALYSIS TAB ==================== -->
@@ -2455,17 +2289,17 @@ table.doc-leader-table th {
       <div class="imp-kpi-card accent-blue">
         <div class="imp-kpi-lbl">Workforce Evaluated</div>
         <div class="imp-kpi-num" id="kpiImpPersonnel">19</div>
-        <div class="imp-kpi-sub">13 Operations • 6 Clinical Scrutiny Doctors</div>
+        <div class="imp-kpi-sub" id="kpiImpPersonnelSub">13 Operations • 6 Clinical Scrutiny Doctors</div>
       </div>
       <div class="imp-kpi-card accent-green">
         <div class="imp-kpi-lbl">Live Cases Mapped</div>
         <div class="imp-kpi-num" id="kpiImpTotalCases">87,274</div>
-        <div class="imp-kpi-sub">72,300+ Total Points • ₹58.3+ Cr Approved</div>
+        <div class="imp-kpi-sub" id="kpiImpTotalCasesSub">72,300+ Total Points • ₹58.3+ Cr Approved</div>
       </div>
       <div class="imp-kpi-card accent-orange">
         <div class="imp-kpi-lbl">Rework & Resubmissions</div>
         <div class="imp-kpi-num" id="kpiImpResubmissions">1,480</div>
-        <div class="imp-kpi-sub">1.7% Overall Rework • Top 3 make up 53%</div>
+        <div class="imp-kpi-sub" id="kpiImpResubmissionsSub">1.7% Overall Rework Rate</div>
       </div>
       <div class="imp-kpi-card accent-purple">
         <div class="imp-kpi-lbl">Capacity Unlock Potential</div>
@@ -2474,26 +2308,33 @@ table.doc-leader-table th {
       </div>
     </div>
 
-    <!-- Toolbar: Filter by Role, Tier, Search & View Switcher -->
+    <!-- Toolbar: Filter by Role, Tier, Search, Live Refresh & View Switcher -->
     <div class="imp-toolbar">
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
         <span style="font-size:12px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-right:4px">Role:</span>
-        <button class="imp-filter-btn active" id="btnRoleAll" onclick="setImpRoleFilter('ALL')">All Personnel (19)</button>
-        <button class="imp-filter-btn" id="btnRoleOps" onclick="setImpRoleFilter('OPS')">Operations (13)</button>
-        <button class="imp-filter-btn" id="btnRoleDoc" onclick="setImpRoleFilter('DOC')">Clinical Doctors (6)</button>
+        <button class="imp-filter-btn active" id="btnRoleAll" onclick="setImpRoleFilter('ALL')">All Personnel</button>
+        <button class="imp-filter-btn" id="btnRoleOps" onclick="setImpRoleFilter('OPS')">Operations</button>
+        <button class="imp-filter-btn" id="btnRoleDoc" onclick="setImpRoleFilter('DOC')">Clinical Doctors</button>
+        <span id="impSyncStatusBadge" style="font-size:11px;font-weight:700;color:#059669;background:#ecfdf5;padding:5px 10px;border-radius:6px;border:1px solid #a7f3d0;display:inline-flex;align-items:center;gap:5px">
+          🟢 Live Sync
+        </span>
       </div>
 
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <div style="position:relative">
-          <input type="text" id="impSearchInput" placeholder="🔍 Search person, skill, bottleneck..." oninput="onImpSearch(this.value)" style="padding:7px 12px;border:1px solid var(--border);border-radius:6px;font-size:12px;width:230px;outline:none">
+          <input type="text" id="impSearchInput" placeholder="🔍 Search person, skill, bottleneck..." oninput="onImpSearch(this.value)" style="padding:7px 12px;border:1px solid var(--border);border-radius:6px;font-size:12px;width:210px;outline:none">
         </div>
+        <button onclick="fetchLiveImprovementData(true)" class="btn secondary" style="padding:7px 12px;font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:5px;cursor:pointer;background:#f8fafc" title="Fetch latest real-time workforce metrics from Google Sheets">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+          Refresh Live Data
+        </button>
         <div style="display:flex;gap:6px">
           <button class="btn secondary imp-subtab active" id="btnViewMatrix" onclick="switchImpView('matrix')">📊 Scorecard Matrix</button>
           <button class="btn secondary imp-subtab" id="btnViewDual" onclick="switchImpView('dual')">⚔️ Head-to-Head Compare</button>
           <button class="btn secondary imp-subtab" id="btnViewCards" onclick="switchImpView('cards')">📇 Deep-Dive Profiles</button>
           <button class="btn secondary imp-subtab" id="btnViewPillars" onclick="switchImpView('pillars')">🏛️ Strategic Pillars</button>
         </div>
-        <div style="display:flex;gap:6px;margin-left:6px">
+        <div style="display:flex;gap:6px;margin-left:4px">
           <button class="btn primary" onclick="exportImprovementAnalysis('csv')" style="padding:7px 12px;font-size:11px;font-weight:700;display:inline-flex;align-items:center;gap:5px;background:#059669;border-color:#059669">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             CSV
@@ -2512,7 +2353,7 @@ table.doc-leader-table th {
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
           <div>
             <h3 style="margin:0;font-size:15px;color:var(--blue);font-weight:800">Operational & Clinical Performance Scorecard</h3>
-            <p style="margin:3px 0 0;font-size:11px;color:var(--muted)">Comprehensive cross-workforce evaluation ranked by points, efficiency, accuracy, and workflow mix.</p>
+            <p style="margin:3px 0 0;font-size:11px;color:var(--muted)">Clinical Scrutiny Doctors perform pre-processing medical scrutiny; Operations Employees thereafter execute claim processing and submission. Evaluated within their respective disciplines (Employees higher to lower, then Doctors higher to lower).</p>
           </div>
           <div style="font-size:11px;font-weight:700;color:var(--muted)" id="impTableCount">Showing 19 of 19 Personnel</div>
         </div>
@@ -2549,10 +2390,14 @@ table.doc-leader-table th {
       <div class="card" style="padding:18px;border-radius:10px;margin-bottom:20px">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px">
           <div>
-            <h3 style="margin:0;font-size:15px;color:var(--blue);font-weight:800">⚔️ Head-to-Head Comparative Diagnostic</h3>
-            <p style="margin:3px 0 0;font-size:11px;color:var(--muted)">Select any two performers to benchmark volume, point yield, accuracy, and discover complementary pairing synergy.</p>
+            <h3 style="margin:0;font-size:15px;color:var(--blue);font-weight:800">⚔️ Peer-to-Peer Comparative Diagnostic</h3>
+            <p style="margin:3px 0 0;font-size:11px;color:var(--muted)">Clinical Scrutiny Doctors review and approve medical necessity prior to processing, after which Operations Employees execute claim processing. Comparisons are strictly peer-to-peer within the same discipline (Employee vs Employee, Doctor vs Doctor).</p>
           </div>
-          <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <div style="display:flex;gap:6px">
+              <button type="button" class="scheme-pill-btn active" id="btnDualRoleOps" onclick="setDualCategoryFilter('OPS')">👥 Compare Employees</button>
+              <button type="button" class="scheme-pill-btn" id="btnDualRoleDoc" onclick="setDualCategoryFilter('DOC')">🩺 Compare Doctors</button>
+            </div>
             <div style="display:flex;align-items:center;gap:6px">
               <span style="font-size:11px;font-weight:800;color:#2563eb">Performer A:</span>
               <select id="compSelectA" onchange="onDualCompareChange()" style="padding:6px 10px;border-radius:6px;border:1px solid var(--border);font-size:12px;font-weight:700">
@@ -3001,7 +2846,7 @@ function switchNavTab(tabId, btn){
   document.querySelectorAll('.tabs .tab').forEach(t => t.classList.remove('active'));
   if(btn) btn.classList.add('active');
 
-  ['dashboard','employee','doctor','attendance','package','improvement','daily-hospital'].forEach(t => {
+  ['dashboard','employee','doctor','package','improvement'].forEach(t => {
     const el = document.getElementById('tab-' + t);
     if(el) el.style.display = (t === tabId ? 'block' : 'none');
   });
@@ -3012,352 +2857,10 @@ function switchNavTab(tabId, btn){
     loadDoctorData(docState ? docState.name : 'Dr Sunitha');
   } else if(tabId === 'dashboard'){
     filterDashboard();
-  } else if(tabId === 'attendance'){
-    // Attendance loaded via isolated iframe
   } else if(tabId === 'package'){
     initPackageMasterTab();
   } else if(tabId === 'improvement'){
-    initImprovementTab();
-  } else if(tabId === 'daily-hospital'){
-    initDailyHospitalTab();
-  }
-}
-
-/**
- * ==========================================================
- * DAILY HOSPITAL CLAIM DISPATCHER & EXCEL GENERATOR
- * Strictly filters "Claim" cases (excludes Claim submit & Claim Query)
- * Excludes Medisep and Doctors
- * Formats date without time (DD-MM-YYYY)
- * ==========================================================
- */
-let currentDailyHospCases = [];
-
-function getLocalDateString(d = new Date()) {
-  const y = d.getFullYear();
-  const m = String(d.getMonth() + 1).padStart(2, '0');
-  const day = String(d.getDate()).padStart(2, '0');
-  return `${y}-${m}-${day}`;
-}
-
-function formatDateOnly(dInput) {
-  if (!dInput) return '-';
-  if (dInput instanceof Date && !isNaN(dInput.getTime())) {
-    const day = String(dInput.getDate()).padStart(2, '0');
-    const month = String(dInput.getMonth() + 1).padStart(2, '0');
-    const year = dInput.getFullYear();
-    return `${day}-${month}-${year}`;
-  }
-  const str = String(dInput).trim();
-  const datePart = str.split(/[ T]/)[0];
-  const parts = datePart.split(/[\/\-]/);
-  if (parts.length === 3) {
-    if (parts[0].length === 4) {
-      return `${parts[2].padStart(2, '0')}-${parts[1].padStart(2, '0')}-${parts[0]}`;
-    } else {
-      return `${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}-${parts[2]}`;
-    }
-  }
-  return datePart;
-}
-
-function cleanHospitalDisplayName(hosp) {
-  if (!hosp) return '';
-  return hosp.replace(/^\d+\.\s*/, '').trim();
-}
-
-function initDailyHospitalTab() {
-  const dateInput = document.getElementById("dailyHospDateInput");
-  if (dateInput && !dateInput.value) {
-    dateInput.value = getLocalDateString();
-  }
-  loadDailyHospEmail();
-  fetchDailyHospitalClaims();
-}
-
-function setDailyHospDateToday() {
-  const dateInput = document.getElementById("dailyHospDateInput");
-  if (dateInput) {
-    dateInput.value = getLocalDateString();
-    fetchDailyHospitalClaims();
-  }
-}
-
-function setDailyHospDateYesterday() {
-  const dateInput = document.getElementById("dailyHospDateInput");
-  if (dateInput) {
-    const yest = new Date();
-    yest.setDate(yest.getDate() - 1);
-    dateInput.value = getLocalDateString(yest);
-    fetchDailyHospitalClaims();
-  }
-}
-
-function loadDailyHospEmail() {
-  const hospSelect = document.getElementById("dailyHospSelect");
-  const hosp = hospSelect ? hospSelect.value : "Pushpagiri";
-  const emailInput = document.getElementById("dailyHospEmailInput");
-  if (!emailInput) return;
-  try {
-    const emailsMap = JSON.parse(localStorage.getItem("vasus_hospital_emails") || "{}");
-    emailInput.value = emailsMap[hosp] || (hosp === "Pushpagiri" ? "claims@pushpagiri.org, tpa@pushpagiri.org" : "");
-  } catch(e) {
-    emailInput.value = "";
-  }
-}
-
-function saveDailyHospEmail() {
-  const hospSelect = document.getElementById("dailyHospSelect");
-  const hosp = hospSelect ? hospSelect.value : "Pushpagiri";
-  const emailInput = document.getElementById("dailyHospEmailInput");
-  if (!emailInput) return;
-  const val = emailInput.value.trim();
-  try {
-    const emailsMap = JSON.parse(localStorage.getItem("vasus_hospital_emails") || "{}");
-    emailsMap[hosp] = val;
-    localStorage.setItem("vasus_hospital_emails", JSON.stringify(emailsMap));
-    showNotification(`Recipient email for ${hosp} saved!`, "success");
-  } catch(e) {
-    showNotification("Failed to save email.", "error");
-  }
-}
-
-async function fetchDailyHospitalClaims() {
-  const hospSelect = document.getElementById("dailyHospSelect");
-  const hospVal = hospSelect ? hospSelect.value : "Pushpagiri";
-  const dateInput = document.getElementById("dailyHospDateInput");
-  const targetDateStr = (dateInput && dateInput.value) ? dateInput.value : getLocalDateString();
-  if (dateInput && !dateInput.value) dateInput.value = targetDateStr;
-
-  const tbody = document.getElementById("dailyHospTableBody");
-  const tfoot = document.getElementById("dailyHospTableFoot");
-  const kpiCount = document.getElementById("dailyHospKpiCount");
-  const kpiAmt = document.getElementById("dailyHospKpiAmt");
-  const kpiTarget = document.getElementById("dailyHospKpiTarget");
-
-  if (kpiTarget) kpiTarget.textContent = (hospVal === "ALL") ? "All Hospitals" : hospVal;
-  if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--muted)">Fetching ${hospVal} claims for ${targetDateStr}...</td></tr>`;
-  if (tfoot) tfoot.innerHTML = "";
-
-  loadDailyHospEmail();
-
-  // Strict SQL query:
-  // 1. Case type = 'claim' (strict)
-  // 2. Exclude Medisep: not lower(D) contains 'medisep'
-  // 3. Exclude Doctors: not lower(C) like '%dr %'
-  let whereClauses = [
-    "lower(E) = 'claim'",
-    "not lower(D) contains 'medisep'",
-    "not lower(C) like '%dr %'"
-  ];
-
-  if (hospVal !== "ALL") {
-    whereClauses.push(`lower(D) contains '${hospVal.toLowerCase()}'`);
-  }
-  const queryStr = `select A, B, C, D, E, F, G where ${whereClauses.join(" and ")} order by A desc`;
-
-  try {
-    const rawData = await queryGviz(queryStr, "Cases");
-    const rows = (rawData && rawData.rows) ? rawData.rows : (rawData && rawData.table && rawData.table.rows ? rawData.table.rows : []);
-    
-    // Parse target date (YYYY-MM-DD)
-    const [tY, tM, tD] = targetDateStr.split("-").map(Number);
-
-    const filtered = [];
-    rows.forEach(r => {
-      if (!r || !r.c) return;
-      const c = r.c;
-
-      // Date parsing
-      let dateObj = null;
-      let dateRaw = "";
-      if (c[0]) {
-        dateRaw = c[0].f || String(c[0].v || "");
-        if (typeof c[0].v === "string" && c[0].v.startsWith("Date(")) {
-          dateObj = parseGoogleDate(c[0].v, dateRaw);
-        } else if (c[0].v instanceof Date) {
-          dateObj = c[0].v;
-        } else if (dateRaw) {
-          dateObj = parseGoogleDate(null, dateRaw);
-        }
-      }
-
-      // Match target date
-      if (dateObj) {
-        if (dateObj.getFullYear() !== tY || (dateObj.getMonth() + 1) !== tM || dateObj.getDate() !== tD) {
-          return;
-        }
-      } else if (dateRaw) {
-        const padD = String(tD).padStart(2, "0");
-        const padM = String(tM).padStart(2, "0");
-        const check1 = `${padD}/${padM}/${tY}`;
-        const check2 = `${padD}-${padM}-${tY}`;
-        const check3 = `${tY}-${padM}-${padD}`;
-        if (!dateRaw.includes(check1) && !dateRaw.includes(check2) && !dateRaw.includes(check3)) {
-          return;
-        }
-      } else {
-        return;
-      }
-
-      const caseNum = c[1] ? String(c[1].v || "") : "";
-      const uploader = c[2] ? String(c[2].v || "").trim() : "";
-      const rawHosp = c[3] ? String(c[3].v || "").trim() : "";
-      const caseType = c[4] ? String(c[4].v || "").trim() : "";
-      const amt = c[5] ? Number(c[5].v) || 0 : 0;
-
-      // Strict filters:
-      // 1. Strict 'Claim' only
-      if (caseType.toLowerCase() !== "claim") return;
-      // 2. Exclude Medisep
-      if (rawHosp.toLowerCase().includes("medisep")) return;
-      // 3. Exclude Doctors
-      if (uploader.toLowerCase().includes("dr ")) return;
-
-      // Format Date without time: e.g. 28-09-2026
-      const dateFormatted = dateObj ? formatDateOnly(dateObj) : formatDateOnly(dateRaw);
-      
-      let dischargeFormatted = "-";
-      if (c[6]) {
-        if (c[6].f) {
-          dischargeFormatted = formatDateOnly(c[6].f);
-        } else if (typeof c[6].v === "string" && c[6].v.startsWith("Date(")) {
-          const dcObj = parseGoogleDate(c[6].v);
-          dischargeFormatted = dcObj ? formatDateOnly(dcObj) : formatDateOnly(c[6].v);
-        } else if (c[6].v instanceof Date) {
-          dischargeFormatted = formatDateOnly(c[6].v);
-        } else if (c[6].v) {
-          dischargeFormatted = formatDateOnly(c[6].v);
-        }
-      }
-      
-      const cleanHosp = cleanHospitalDisplayName(rawHosp);
-
-      filtered.push({
-        date: dateFormatted,
-        caseNum,
-        hospital: cleanHosp,
-        amt,
-        dischargeDate: dischargeFormatted
-      });
-    });
-
-    currentDailyHospCases = filtered;
-
-    // Update KPI counters
-    const totalAmt = filtered.reduce((sum, item) => sum + item.amt, 0);
-    if (kpiCount) kpiCount.textContent = `${filtered.length.toLocaleString()} Claims`;
-    if (kpiAmt) kpiAmt.textContent = `₹${totalAmt.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-
-    if (filtered.length === 0) {
-      if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:35px;color:var(--muted)">No "Claim" cases found for <b>${hospVal}</b> on ${targetDateStr}.<br><span style="font-size:11px;color:var(--text-muted)">Tip: Use the "Yesterday" button or date picker to view claims from recent days.</span></td></tr>`;
-      return;
-    }
-
-    let rowsHtml = "";
-    filtered.forEach((r) => {
-      rowsHtml += `
-        <tr>
-          <td><span style="font-weight:700;font-size:12px;color:var(--text-main,#0f172a)">${r.date}</span></td>
-          <td><span class="pkg-code-badge" onclick="navigator.clipboard.writeText('${r.caseNum}');showNotification('Copied case ${r.caseNum}','success')" title="Click to copy">${r.caseNum}</span></td>
-          <td style="font-weight:600">${r.hospital}</td>
-          <td style="text-align:right;font-weight:800;color:var(--green,#16a34a)">₹${r.amt.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td style="text-align:center;font-size:12px;font-weight:600;color:var(--text-main,#334155)">${r.dischargeDate}</td>
-        </tr>
-      `;
-    });
-
-    if (tbody) tbody.innerHTML = rowsHtml;
-    if (tfoot) {
-      tfoot.innerHTML = `
-        <tr>
-          <td colspan="3" style="padding:10px 12px">Total (${filtered.length} Claims)</td>
-          <td style="text-align:right;color:#16a34a;padding:10px 12px;font-size:14px">₹${totalAmt.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-          <td></td>
-        </tr>
-      `;
-    }
-
-  } catch(e) {
-    console.error("Error fetching daily hospital claims:", e);
-    if (tbody) tbody.innerHTML = `<tr><td colspan="5" style="text-align:center;padding:30px;color:#dc2626">Error loading claims: ${e.message}</td></tr>`;
-  }
-}
-
-/**
- * 1-CLICK EXCEL DOWNLOAD (.xlsx)
- * Exactly 5 columns: Date, Case Number, Hospital, Claim Amt, Discharge Date
- */
-function downloadHospitalClaimsExcel(specifiedHosp) {
-  const hospSelect = document.getElementById("dailyHospSelect");
-  const hospName = specifiedHosp || (hospSelect ? hospSelect.value : "Pushpagiri");
-  const dateInput = document.getElementById("dailyHospDateInput");
-  const dateStr = dateInput && dateInput.value ? dateInput.value : new Date().toISOString().split("T")[0];
-
-  const list = currentDailyHospCases;
-  if (!list || list.length === 0) {
-    alert(`No claims currently loaded for ${hospName} on ${dateStr}. Please refresh or choose another date first.`);
-    return;
-  }
-
-  // Format data for Excel with the exact 5 requested columns
-  const excelData = list.map((item) => ({
-    "Date": item.date,
-    "Case Number": item.caseNum,
-    "Hospital": item.hospital,
-    "Claim Amt": item.amt,
-    "Discharge Date": item.dischargeDate || "NA"
-  }));
-
-  // Create worksheet using SheetJS
-  if (typeof XLSX === "undefined") {
-    alert("Excel export engine is loading. Please try again in a moment.");
-    return;
-  }
-
-  const ws = XLSX.utils.json_to_sheet(excelData);
-  // Column widths
-  ws["!cols"] = [
-    { wch: 16 }, // Date (e.g. 28-09-2026)
-    { wch: 22 }, // Case Number
-    { wch: 20 }, // Hospital
-    { wch: 16 }, // Claim Amt
-    { wch: 16 }  // Discharge Date
-  ];
-
-  const wb = XLSX.utils.book_new();
-  XLSX.utils.book_append_sheet(wb, ws, "Daily_Claims");
-  const cleanHosp = hospName.replace(/[^a-zA-Z0-9]/g, "_");
-  XLSX.writeFile(wb, `Daily_Claim_Report_${cleanHosp}_${dateStr}.xlsx`);
-  showNotification(`Downloaded Daily_Claim_Report_${cleanHosp}_${dateStr}.xlsx`, "success");
-}
-
-/**
- * APPS SCRIPT GUIDE MODAL
- */
-function openAppsScriptGuideModal() {
-  const modal = document.getElementById("appsScriptGuideModal");
-  const pre = document.getElementById("appsScriptCodeText");
-  const emailInput = document.getElementById("dailyHospEmailInput");
-  const recipientEmail = (emailInput && emailInput.value) ? emailInput.value : "claims@pushpagiri.org";
-
-  const template = "/**\n * VASUS HEALTHCARE RCM - AUTOMATED DAILY HOSPITAL CLAIM DISPATCHER\n * Triggers daily at 6:00 PM IST\n * Sends formatted Excel with: Date, Case Number, Hospital, Claim Amt, Discharge Date\n * Excludes Medisep and non-Claim types\n */\nfunction sendDailyPushpagiriClaimReport() {\n  var SPREADSHEET_ID = \"1mqve1wxOa-T37uQFOb4Lvv2QmjR2_k1EHRZT8zv_rcA\";\n  var RECIPIENT_EMAILS = \"RECIPIENT_PLACEHOLDER\";\n  var TARGET_HOSPITAL = \"Pushpagiri\";\n  \n  var ss = SpreadsheetApp.openById(SPREADSHEET_ID);\n  var sheet = ss.getSheetByName(\"Cases\");\n  if (!sheet) return;\n  \n  var data = sheet.getDataRange().getValues();\n  var today = new Date();\n  var tD = today.getDate();\n  var tM = today.getMonth();\n  var tY = today.getFullYear();\n  \n  var matchingRows = [];\n  var totalAmt = 0;\n  \n  for (var i = 1; i < data.length; i++) {\n    var row = data[i];\n    var rowDate = new Date(row[0]);\n    if (isNaN(rowDate.getTime())) continue;\n    \n    if (rowDate.getDate() === tD && rowDate.getMonth() === tM && rowDate.getFullYear() === tY) {\n      var uploader = String(row[2] || \"\").toLowerCase();\n      var hosp = String(row[3] || \"\").toLowerCase();\n      var type = String(row[4] || \"\").trim().toLowerCase();\n      \n      if (hosp.indexOf(TARGET_HOSPITAL.toLowerCase()) !== -1 &&\n          hosp.indexOf(\"medisep\") === -1 &&\n          uploader.indexOf(\"dr \") === -1 &&\n          type === \"claim\") {\n        \n        var amt = Number(row[5]) || 0;\n        totalAmt += amt;\n        var dateOnlyStr = Utilities.formatDate(rowDate, \"Asia/Kolkata\", \"dd-MM-yyyy\");\n        var dcStr = row[6] ? Utilities.formatDate(new Date(row[6]), \"Asia/Kolkata\", \"dd-MM-yyyy\") : \"NA\";\n        \n        matchingRows.push([dateOnlyStr, String(row[1] || \"\"), TARGET_HOSPITAL, amt, dcStr]);\n      }\n    }\n  }\n  \n  if (matchingRows.length === 0) return;\n  \n  var csvContent = \"Date,Case Number,Hospital,Claim Amt,Discharge Date\\n\";\n  for (var j = 0; j < matchingRows.length; j++) {\n    var r = matchingRows[j];\n    csvContent += '\"' + r[0] + '\",\"' + r[1] + '\",\"' + r[2] + '\",' + r[3] + ',\"' + r[4] + '\"\\n';\n  }\n  \n  var dateStr = Utilities.formatDate(today, \"Asia/Kolkata\", \"dd-MM-yyyy\");\n  var attachment = Utilities.newBlob(csvContent, \"text/csv\", \"Daily_Claim_Report_Pushpagiri_\" + dateStr + \".csv\");\n  var subject = \"Daily Claim Report - Pushpagiri Hospital - \" + dateStr + \" (\" + matchingRows.length + \" Cases)\";\n  var body = \"Dear Pushpagiri Team,\\n\\nPlease find attached the Daily Claim Report for \" + dateStr + \".\\n\\nTotal Claims Processed: \" + matchingRows.length + \"\\nTotal Claim Amount: \u20b9\" + totalAmt.toLocaleString(\"en-IN\") + \"\\n\\nBest regards,\\nVasus Healthcare RCM\";\n  GmailApp.sendEmail(RECIPIENT_EMAILS, subject, body, { attachments: [attachment] });\n}";
-  const scriptCode = template.replace("RECIPIENT_PLACEHOLDER", recipientEmail);
-
-  if (pre) pre.textContent = scriptCode;
-  if (modal) modal.style.display = "flex";
-}
-
-function closeAppsScriptGuideModal() {
-  const modal = document.getElementById("appsScriptGuideModal");
-  if (modal) modal.style.display = "none";
-}
-
-function copyAppsScriptCode() {
-  const pre = document.getElementById("appsScriptCodeText");
-  if (pre) {
-    navigator.clipboard.writeText(pre.textContent);
-    showNotification("Copied Google Apps Script code to clipboard!", "success");
+    initImprovementTab(true);
   }
 }
 
@@ -5839,6 +5342,8 @@ function syncCurrentTab(){
   } else if(currentActiveTab === 'doctor'){
     delete sheetCache[docState.name];
     loadDoctorData(docState.name);
+  } else if(currentActiveTab === 'improvement'){
+    fetchLiveImprovementData(true);
   } else {
     filterDashboard();
   }
@@ -5859,9 +5364,9 @@ function setSyncButtonState(isLoading){
 window.addEventListener('DOMContentLoaded', () => {
   // Pre-load employee data in background
   loadEmployeeData('Sirisha');
-  if(typeof loadAttendanceFromStorage === 'function') loadAttendanceFromStorage();
   if(typeof initPackageMasterTab === 'function') initPackageMasterTab();
   filterDashboard();
+  if(typeof fetchLiveImprovementData === 'function') fetchLiveImprovementData(false);
 });
 
 
@@ -6767,372 +6272,31 @@ function exportPackageMasterData() {
  * ==========================================================
  */
 
-const IMPROVEMENT_DATA = [
-  // --- OPERATIONS TEAM (15 Personnel) ---
-  {
-    id: 'Laxminarayana',
-    name: 'Laxminarayana',
-    role: 'OPS',
-    roleLabel: 'Senior Operations Executive',
-    tier: 'Top Tier / Volume Leader',
-    cases: 6928,
-    points: 5054.6,
-    ratio: 0.73,
-    amount: 41223400,
-    cleanRate: 95.57,
-    resubmitCount: 307,
-    breakdown: { claim: 3745, submit: 1327, resubmit: 307, enhancement: 588, query: 826, preauth: 135 },
-    strength: '#1 Volume leader across the operations workforce (6,928 cases). Exceptional processing stamina in claim submissions (1,327) and high-volume hospital query clearance (826 queries).',
-    improvement: 'Highest resubmission count in the entire company (307 cases, 4.4% rework rate), indicating significant time lost to preventable clerical re-uploads. Severe Preauth deficit (only 135 cases, 1.9% of portfolio).',
-    roadmap: '1. Institute a 5-point pre-dispatch audit gate to cut resubmissions by 50% (<150 cases). 2. Cross-train on Preauth admission queues to handle 500+ cases/quarter. 3. Standardize query responses to compress resolution time.',
-    avatarBg: '#dbeafe',
-    avatarColor: '#1d4ed8'
-  },
-  {
-    id: 'Sirisha',
-    name: 'Sirisha',
-    role: 'OPS',
-    roleLabel: 'Senior Operations Executive',
-    tier: 'Top Tier / Value Leader',
-    cases: 6624,
-    points: 5060.6,
-    ratio: 0.76,
-    amount: 59124800,
-    cleanRate: 96.04,
-    resubmitCount: 262,
-    breakdown: { claim: 3889, submit: 1489, resubmit: 262, enhancement: 703, query: 221, preauth: 261 },
-    strength: 'Manages the highest financial claim portfolio in operations (₹5.91 Cr) and #1 in settled claims (3,889 cases). Deep institutional knowledge and unwavering consistency across tertiary hospital networks.',
-    improvement: 'Elevated rework burden (262 resubmissions + 221 queries). Heavy dependence on claims with low Preauth exposure (261 cases, 3.9%). Vulnerable to throughput slowdowns when hospital query spikes occur.',
-    roadmap: '1. Adopt standardized query macro templates to resolve queries in under 4 hours. 2. Implement pre-upload documentation checklist to drop resubmissions below 120. 3. Expand Preauth queue mix to 15%.',
-    avatarBg: '#fef3c7',
-    avatarColor: '#b45309'
-  },
-  {
-    id: 'Chanikya',
-    name: 'Chanikya',
-    role: 'OPS',
-    roleLabel: 'Senior Operations Executive',
-    tier: 'Core Steady Performer',
-    cases: 6002,
-    points: 4668.4,
-    ratio: 0.78,
-    amount: 42518900,
-    cleanRate: 96.47,
-    resubmitCount: 212,
-    breakdown: { claim: 3694, submit: 1185, resubmit: 212, enhancement: 741, query: 147, preauth: 23 },
-    strength: 'Enhancement management powerhouse (#2 in team with 741 cases). Strong 0.78 efficiency ratio, handling ₹4.25 Cr with rapid adjudication across claim and submit queues.',
-    improvement: 'Extreme claims silo (97.6% of volume in Claim/Submit/Enhancement; only 23 Preauth cases). 212 resubmissions represent avoidable rework. Zero high-end surgical package experience.',
-    roadmap: '1. Integrate 15-20 Preauth cases/day into daily queue. 2. Conduct weekly rejection analysis to bring resubmissions under 2%. 3. Shadow senior team on complex high-end package requirements.',
-    avatarBg: '#e0e7ff',
-    avatarColor: '#3730a3'
-  },
-  {
-    id: 'Vani',
-    name: 'Vani',
-    role: 'OPS',
-    roleLabel: 'Preauth Lead Specialist',
-    tier: 'Workflow Silo / Specialist',
-    cases: 5867,
-    points: 4532.1,
-    ratio: 0.77,
-    amount: 68245000,
-    cleanRate: 100.0,
-    resubmitCount: 0,
-    breakdown: { preauth: 5582, enhancement: 149, hd: 136, claim: 0, submit: 0 },
-    strength: 'Undisputed Preauth speed and volume champion (5,582 cases approved) securing ₹6.82 Cr in hospital authorizations (highest value in company) with a perfect 100% clean record (zero resubmissions).',
-    improvement: '100% single-workflow siloing: 0 claims and 0 claim submissions. Cannot absorb discharge claim surges at month-end, creating team capacity vulnerability.',
-    roadmap: '1. Structured 2-phase cross-training in Claim settlement (10 claims/day Month 1, scaling to 25/day Month 2). 2. Maintain preauth mastery while becoming a dual-threat operations anchor.',
-    avatarBg: '#fce7f3',
-    avatarColor: '#be185d'
-  },
-  {
-    id: 'Kavitha',
-    name: 'Kavitha',
-    role: 'OPS',
-    roleLabel: 'Senior Operations Executive',
-    tier: 'High Efficiency Specialist',
-    cases: 5301,
-    points: 4346.8,
-    ratio: 0.82,
-    amount: 46312000,
-    cleanRate: 97.09,
-    resubmitCount: 154,
-    breakdown: { claim: 3459, submit: 1029, resubmit: 154, enhancement: 366, query: 59, preauth: 234 },
-    strength: 'High efficiency ratio (0.82 pts/case), leading direct claim closures (3,459 claims) with an impressively low query rate (only 59 queries out of 5,301 cases — 1.1%).',
-    improvement: 'Preauth mix is modest at 4.4% (234 cases). 154 resubmissions indicate occasional documentation oversight during month-end billing rushes.',
-    roadmap: '1. Scale Preauth allocation to 15-20% to support admission surges. 2. Implement end-of-day quality checklist before dispatch to reduce resubmits below 70.',
-    avatarBg: '#dcfce7',
-    avatarColor: '#15803d'
-  },
-  {
-    id: 'Neelima',
-    name: 'Neelima',
-    role: 'OPS',
-    roleLabel: 'Senior Preauth Executive',
-    tier: 'Benchmark Accuracy / Silo',
-    cases: 5136,
-    points: 3783.3,
-    ratio: 0.74,
-    amount: 50410000,
-    cleanRate: 99.84,
-    resubmitCount: 8,
-    breakdown: { preauth: 5128, resubmit: 8, claim: 0, submit: 0 },
-    strength: 'Gold Standard Accuracy! Only 8 resubmissions across 5,136 cases (99.84% clean rate — lowest error rate in the company). Unmatched procedural compliance on ₹5.04 Cr preauth approvals.',
-    improvement: 'Total isolation from Claims workflow (0 Claims). Point yield ratio (0.74) is constrained by exclusive 0.8-point Preauth weighting.',
-    roadmap: '1. Pair with senior claim specialists (Kavitha/Sirisha) to master claim adjudication. 2. Lead the team Pre-Dispatch Quality Gate, mentoring peers on zero-error filing habits.',
-    avatarBg: '#ede9fe',
-    avatarColor: '#6d28d9'
-  },
-  {
-    id: 'Phani',
-    name: 'Phani',
-    role: 'OPS',
-    roleLabel: 'Operations Executive (Generalist)',
-    tier: 'Core Steady Performer',
-    cases: 4980,
-    points: 3828.7,
-    ratio: 0.77,
-    amount: 29630000,
-    cleanRate: 97.05,
-    resubmitCount: 147,
-    breakdown: { claim: 2752, submit: 1093, preauth: 727, enhancement: 226, resubmit: 147, query: 35 },
-    strength: 'Most versatile generalist in the operations team: actively handles both Claims (2,752) and Preauth (727) with minimal query friction (only 35 queries). Flexible across multiple queues.',
-    improvement: 'Average financial ticket size is the lowest among senior peers (₹5,950/case vs team average ₹8,900/case). 147 resubmissions require quality gating.',
-    roadmap: '1. Shift portfolio allocation toward tertiary hospital packages and surgical cases to increase value yield to ₹4.5+ Cr. 2. Apply document verification checklist to cut resubmissions below 75.',
-    avatarBg: '#ffedd5',
-    avatarColor: '#c2410c'
-  },
-  {
-    id: 'Sai Kumar',
-    name: 'Sai Kumar',
-    role: 'OPS',
-    roleLabel: 'Enhancement & HD Specialist',
-    tier: 'Workflow Specialist',
-    cases: 4469,
-    points: 2750.4,
-    ratio: 0.62,
-    amount: 39015000,
-    cleanRate: 96.71,
-    resubmitCount: 147,
-    breakdown: { preauth: 2839, enhancement: 963, hd: 381, resubmit: 147, claim: 139 },
-    strength: 'Company #1 Enhancement Specialist (963 cases) and High-Dependency Preauth titan (381 HD cases). Fast-response emergency coordinator on urgent hospital stay extensions.',
-    improvement: 'Lowest point efficiency ratio (0.62 pts/case) among core staff because enhancements carry 0.25 pt weight and claims are only 139 cases (3.1%).',
-    roadmap: '1. Balance queue intake by adding 15-20 full discharge claims daily (1.0 pt) to elevate point yield from 0.62 to 0.75+. 2. Streamline enhancement documentation to reduce 147 resubmissions.',
-    avatarBg: '#fee2e2',
-    avatarColor: '#b91c1c'
-  },
-  {
-    id: 'Vaishnavi',
-    name: 'Vaishnavi',
-    role: 'OPS',
-    roleLabel: 'Critical Care & HD Executive',
-    tier: 'High Accuracy Specialist',
-    cases: 3800,
-    points: 2506.7,
-    ratio: 0.66,
-    amount: 36280000,
-    cleanRate: 99.00,
-    resubmitCount: 38,
-    breakdown: { preauth: 2476, hd: 661, enhancement: 588, resubmit: 38, claim: 37 },
-    strength: 'Top specialist for High-Dependency & ICU Preauths (661 HD cases — #1 in operations). Outstanding 99.0% accuracy (only 38 resubmissions on 3,800 cases).',
-    improvement: 'Under-represented in regular claims (37 claims). Heavy concentration in 0.25-pt HD cases depresses total point score despite high clinical complexity.',
-    roadmap: '1. Incorporate regular and HD discharge claims into daily queue (0.5 to 1.0 pt). 2. Scale daily case throughput to ramp overall volume from 3,800 to 5,000+ cases.',
-    avatarBg: '#f3e8ff',
-    avatarColor: '#7e22ce'
-  },
-  {
-    id: 'Vaidehi',
-    name: 'Vaidehi',
-    role: 'OPS',
-    roleLabel: 'Senior Operations Executive',
-    tier: 'Top Efficiency Champion',
-    cases: 3701,
-    points: 3157.0,
-    ratio: 0.85,
-    amount: 47610000,
-    cleanRate: 97.95,
-    resubmitCount: 76,
-    breakdown: { claim: 2747, submit: 727, enhancement: 84, resubmit: 76, preauth: 67 },
-    strength: 'Supreme efficiency! Highest points-per-case ratio (0.85) and highest average ticket size (₹12,860/case, ₹4.76 Cr total) in operations. High audit quality and low resubmissions (76).',
-    improvement: 'Overall volume ceiling (3,701 cases vs 6,000+ for peers). Preauth queue is virtually untouched (67 cases, 1.8%).',
-    roadmap: '1. Scale daily throughput from ~35 to 50+ cases/day. 2. Onboard onto Preauth workflows to achieve 15% cross-coverage while preserving premium accuracy.',
-    avatarBg: '#ccfbf1',
-    avatarColor: '#0f766e'
-  },
-  {
-    id: 'Ch Praveen',
-    name: 'Ch Praveen',
-    role: 'OPS',
-    roleLabel: 'Operations & Query Lead',
-    tier: 'Query Hub / Support Anchor',
-    cases: 3111,
-    points: 2320.6,
-    ratio: 0.75,
-    amount: 1570000,
-    cleanRate: 95.73,
-    resubmitCount: 133,
-    breakdown: { claim: 1514, submit: 949, query: 515, resubmit: 133 },
-    strength: 'The team backbone for query and dispute resolution (#1 with 515 queries resolved), recovering stuck hospital revenue. Strong submission volume (949 submits).',
-    improvement: 'Query resolution absorbs ~3 hours daily of manual typing, preventing engagement with higher-value claim packages. Resubmission rate at 4.3% (133 cases).',
-    roadmap: '1. Implement canned macro response templates for the top 10 recurring queries to cut drafting time by 60%. 2. Reclaim 2 hours daily to process 20+ fresh claims.',
-    avatarBg: '#e0f2fe',
-    avatarColor: '#0369a1'
-  },
-  {
-    id: 'Sai Charan',
-    name: 'Sai Charan',
-    role: 'OPS',
-    roleLabel: 'Junior Operations Executive',
-    tier: 'Emerging / Needs Coaching',
-    cases: 1560,
-    points: 1075.3,
-    ratio: 0.69,
-    amount: 6550000,
-    cleanRate: 93.78,
-    resubmitCount: 97,
-    breakdown: { claim: 694, submit: 527, query: 242, resubmit: 97 },
-    strength: 'Energetic operational support across claim submissions (527) and query follow-ups (242). Enthusiastic queue contributor.',
-    improvement: 'Highest rework rate in the operations team (6.2% error rate; 97 resubmissions on 1,560 cases). Daily volume is currently constrained to 15-20 cases/day.',
-    roadmap: '1. Mandatory 2-week checklist training to drop resubmission rate under 3%. 2. Establish structured weekly milestones to ramp volume from 1,560 to 3,000 cases.',
-    avatarBg: '#fef9c3',
-    avatarColor: '#a16207'
-  },
-  {
-    id: 'Mani',
-    name: 'Mani',
-    role: 'OPS',
-    roleLabel: 'Junior Operations Executive',
-    tier: 'High Potential / Ramp-Up',
-    cases: 417,
-    points: 357.3,
-    ratio: 0.86,
-    amount: 3960000,
-    cleanRate: 99.52,
-    resubmitCount: 2,
-    breakdown: { claim: 341, submit: 74, resubmit: 2 },
-    strength: 'Sensational efficiency ratio (0.86) with near-flawless accuracy (only 2 resubmissions in 417 cases — 99.52% clean). High attention to detail.',
-    improvement: 'Currently restricted case allocation (417 cases total); needs exposure across broader hospital networks and diverse specialties.',
-    roadmap: '1. Increase daily quota from 12-15 to 30-35 cases/day across wider hospital batches. 2. Introduce basic Preauth workflows to develop dual-track skills.',
-    avatarBg: '#f1f5f9',
-    avatarColor: '#334155'
-  },
+const PERSONNEL_PROFILES = {
+  'Laxminarayana': { role: 'OPS', roleLabel: 'Senior Operations Executive', avatarBg: '#dbeafe', avatarColor: '#1d4ed8' },
+  'Sirisha': { role: 'OPS', roleLabel: 'Senior Operations Executive', avatarBg: '#fef3c7', avatarColor: '#b45309' },
+  'Chanikya': { role: 'OPS', roleLabel: 'Senior Operations Executive', avatarBg: '#e0e7ff', avatarColor: '#3730a3' },
+  'Vani': { role: 'OPS', roleLabel: 'Preauth Lead Specialist', avatarBg: '#fce7f3', avatarColor: '#be185d' },
+  'Kavitha': { role: 'OPS', roleLabel: 'Senior Operations Executive', avatarBg: '#dcfce7', avatarColor: '#15803d' },
+  'Neelima': { role: 'OPS', roleLabel: 'Senior Preauth Executive', avatarBg: '#ede9fe', avatarColor: '#6d28d9' },
+  'Phani': { role: 'OPS', roleLabel: 'Operations Executive (Generalist)', avatarBg: '#ffedd5', avatarColor: '#c2410c' },
+  'Sai Kumar': { role: 'OPS', roleLabel: 'Enhancement & HD Specialist', avatarBg: '#fee2e2', avatarColor: '#b91c1c' },
+  'Vaishnavi': { role: 'OPS', roleLabel: 'Critical Care & HD Executive', avatarBg: '#f3e8ff', avatarColor: '#7e22ce' },
+  'Vaidehi': { role: 'OPS', roleLabel: 'Senior Operations Executive', avatarBg: '#ccfbf1', avatarColor: '#0f766e' },
+  'Sai Charan': { role: 'OPS', roleLabel: 'Operations Executive', avatarBg: '#e0f2fe', avatarColor: '#0284c7' },
+  'Ch Praveen': { role: 'OPS', roleLabel: 'Operations Lead', avatarBg: '#e2e8f0', avatarColor: '#334155' },
+  'Mani': { role: 'OPS', roleLabel: 'Junior Operations Executive', avatarBg: '#fef9c3', avatarColor: '#a16207' },
+  'Dr Sunitha': { role: 'DOC', roleLabel: 'Chief Medical Scrutiny Officer', avatarBg: '#e0e7ff', avatarColor: '#3730a3' },
+  'Dr Bindu': { role: 'DOC', roleLabel: 'Senior Medical Scrutiny Officer', avatarBg: '#fef3c7', avatarColor: '#b45309' },
+  'Dr Pranay': { role: 'DOC', roleLabel: 'Senior Medical Scrutiny Officer', avatarBg: '#dbeafe', avatarColor: '#1d4ed8' },
+  'Dr Chinju': { role: 'DOC', roleLabel: 'Specialist Medical Scrutiny Officer', avatarBg: '#fce7f3', avatarColor: '#be185d' },
+  'Dr Angel': { role: 'DOC', roleLabel: 'Medical Scrutiny Officer', avatarBg: '#dcfce7', avatarColor: '#15803d' },
+  'Dr Varun': { role: 'DOC', roleLabel: 'Medical Scrutiny Officer', avatarBg: '#ede9fe', avatarColor: '#6d28d9' }
+};
 
-  // --- CLINICAL SCRUTINY DOCTORS (6 Doctors) ---
-  {
-    id: 'Dr Sunitha',
-    name: 'Dr Sunitha',
-    role: 'DOC',
-    roleLabel: 'Chief Medical Scrutiny Officer',
-    tier: 'Company #1 Overall Leader',
-    cases: 7948,
-    points: 7237.6,
-    ratio: 0.91,
-    amount: 0,
-    cleanRate: 100.0,
-    resubmitCount: 0,
-    breakdown: { claim: 4610, preauth: 3251, hd_ci: 52, hd_pa: 35 },
-    strength: '#1 Overall performer in the organization (7,948 cases, 7,237.6 pts). Clinical master across both Claim scrutiny (4,610) and Preauth adjudication (3,251). Remarkable decision velocity.',
-    improvement: 'Massive workload concentration creates decision fatigue risk during month-end spikes. High volume on routine daycare claims crowds out time for high-stakes denial appeals.',
-    roadmap: '1. Delegate 15-20% routine daycare audits to junior medical officers. 2. Focus clinical leadership on disputed claims, complex multi-specialty reviews, and hospital denial appeals.',
-    avatarBg: '#fef3c7',
-    avatarColor: '#b45309'
-  },
-  {
-    id: 'Dr Bindu',
-    name: 'Dr Bindu',
-    role: 'DOC',
-    roleLabel: 'Senior Medical Scrutiny Officer',
-    tier: 'Flawless Clinical Quality',
-    cases: 6225,
-    points: 5436.1,
-    ratio: 0.87,
-    amount: 0,
-    cleanRate: 99.98,
-    resubmitCount: 1,
-    breakdown: { preauth: 3607, claim: 2525, hd_ci: 92, resubmit: 1 },
-    strength: 'Near-flawless clinical judgment (only 1 resubmit across 6,225 cases). Exceptional balance across Preauth admissions (3,607) and discharge claims (2,525). High diagnostic rigor.',
-    improvement: 'High-dependency surgical portfolio (92 cases) is relatively low given senior clinical depth. Bandwidth exists to take on more complex tertiary packages.',
-    roadmap: '1. Increase High-Dependency and complex surgical scrutiny portfolio by 25%. 2. Lead clinical audits on ICD-10 / PCS surgical coding mismatches.',
-    avatarBg: '#dbeafe',
-    avatarColor: '#1d4ed8'
-  },
-  {
-    id: 'Dr Pranay',
-    name: 'Dr Pranay',
-    role: 'DOC',
-    roleLabel: 'Senior Medical Scrutiny Officer',
-    tier: 'Critical Care & HD Scrutiny',
-    cases: 6208,
-    points: 5234.7,
-    ratio: 0.84,
-    amount: 0,
-    cleanRate: 100.0,
-    resubmitCount: 0,
-    breakdown: { preauth: 3583, claim: 2281, hd_pa: 267, hd_ci: 77 },
-    strength: 'Critical Care and Emergency Preauth specialist (267 HD PA cases scrutinized). Rapid turnaround for ICU admissions, cardiac emergencies, and critical surgical sanctions.',
-    improvement: 'Claim scrutiny volume (2,281) lags Preauth (3,583) by 36%. Lower relative volume of post-discharge final bill audits.',
-    roadmap: '1. Equalize scrutiny allocation by scaling post-discharge claims to 3,000+ cases while retaining rapid-response ICU admission velocity.',
-    avatarBg: '#e0e7ff',
-    avatarColor: '#3730a3'
-  },
-  {
-    id: 'Dr Chinju',
-    name: 'Dr Chinju',
-    role: 'DOC',
-    roleLabel: 'Specialist Medical Scrutiny Officer',
-    tier: 'High-End Complex HD Authority',
-    cases: 4807,
-    points: 3822.4,
-    ratio: 0.79,
-    amount: 0,
-    cleanRate: 100.0,
-    resubmitCount: 0,
-    breakdown: { preauth: 3043, claim: 1128, hd_pa: 417, hd_ci: 219 },
-    strength: '#1 High-Dependency Clinical Authority! Scrutinized 636 total HD cases (417 HD PA + 219 HD CI — highest in company). Master of complex multi-morbidity medical records.',
-    improvement: 'Regular claim scrutiny volume is modest (1,128 cases, 23.5%). The deep audit required for HD cases moderates overall case velocity.',
-    roadmap: '1. Deploy structured evaluation checklists for standard admissions to accelerate routine turnaround. 2. Lead the critical care audit board and mentor peers on surgical packages.',
-    avatarBg: '#fce7f3',
-    avatarColor: '#be185d'
-  },
-  {
-    id: 'Dr Angel',
-    name: 'Dr Angel',
-    role: 'DOC',
-    roleLabel: 'Medical Scrutiny Officer',
-    tier: 'Top Efficiency / Claim Silo',
-    cases: 2804,
-    points: 2645.5,
-    ratio: 0.94,
-    amount: 0,
-    cleanRate: 100.0,
-    resubmitCount: 0,
-    breakdown: { claim: 2493, hd_ci: 305, preauth: 0 },
-    strength: 'Highest point-efficiency ratio (0.94) among all doctors! Clinical audit master of final discharge claims (2,493) and HD Claims (305) with zero recorded errors.',
-    improvement: '100% single-workflow siloing: 0 Preauth scrutinies. Entirely unexposed to emergency and elective admission approvals.',
-    roadmap: '1. Initiate phased rotation into emergency/elective Preauth queues (target 20 Preauths/day). 2. Expand cross-domain versatility to provide weekend preauth coverage.',
-    avatarBg: '#dcfce7',
-    avatarColor: '#15803d'
-  },
-  {
-    id: 'Dr Varun',
-    name: 'Dr Varun',
-    role: 'DOC',
-    roleLabel: 'Medical Scrutiny Officer',
-    tier: 'Preauth Gatekeeper / Silo',
-    cases: 1916,
-    points: 1532.0,
-    ratio: 0.80,
-    amount: 0,
-    cleanRate: 100.0,
-    resubmitCount: 0,
-    breakdown: { preauth: 1916, claim: 0 },
-    strength: '100% dedicated Preauth scrutiny, zero backlog on initial hospital admission approvals, reliable gatekeeper for emergency admissions.',
-    improvement: '100% Preauth siloing (0 Claims scrutinized). Lowest total volume among doctors (1,916 cases); zero high-dependency case exposure.',
-    roadmap: '1. Cross-train in post-discharge claim scrutiny (15-20 claims/day). 2. Scale total volume past 3,500 cases to build comprehensive TPA clinical competence.',
-    avatarBg: '#ede9fe',
-    avatarColor: '#6d28d9'
-  }
-];
+let IMPROVEMENT_DATA = [];
+let impDataLoading = false;
+let impLastSyncTime = null;
 
 // State for Improvement Analysis
 let currentImpRole = 'ALL';
@@ -7141,11 +6305,6 @@ let currentImpView = 'matrix';
 let selectedCompA = 'Laxminarayana';
 let selectedCompB = 'Sirisha';
 
-function initImprovementTab() {
-  populateComparisonSelects();
-  renderImprovementViews();
-}
-
 function formatImpInr(num) {
   if(!num || num === 0) return '—';
   if(num >= 10000000) return '₹' + (num / 10000000).toFixed(2) + ' Cr';
@@ -7153,42 +6312,343 @@ function formatImpInr(num) {
   return '₹' + Math.round(num).toLocaleString('en-IN');
 }
 
+function generateDynamicInsights(p, role, ratio, cleanRate) {
+  const isDoc = (role === 'DOC');
+  const bd = p.breakdown || {};
+  let tier = '';
+  let strength = '';
+  let improvement = '';
+  let roadmap = '';
+
+  const formatInr = (n) => formatImpInr(n);
+
+  if (!isDoc) {
+    if (p.cases > 6500) tier = 'Top Tier / Volume Leader';
+    else if (ratio >= 0.80) tier = 'Top Efficiency Champion';
+    else if (bd.preauth > (p.cases * 0.6)) tier = 'Preauth Specialist';
+    else if (bd.hd > (p.cases * 0.15)) tier = 'High-Dependency Specialist';
+    else if (p.cases > 4000) tier = 'Core Operations Performer';
+    else tier = 'Operations Specialist';
+
+    const topType = (bd.claim > bd.preauth) ? ('Claims (' + bd.claim.toLocaleString() + ' cases)') : ('Preauths (' + bd.preauth.toLocaleString() + ' cases)');
+    strength = 'Processed ' + p.cases.toLocaleString() + ' cases with ' + p.points.toFixed(1) + ' points (' + ratio + ' pts/case). Key pillar in ' + topType + ' managing ' + formatInr(p.amount) + ' portfolio with ' + cleanRate + '% clean rate.';
+
+    if (p.resubmitCount > 150) {
+      improvement = 'Elevated rework burden with ' + p.resubmitCount + ' resubmissions (' + ((p.resubmitCount / p.cases) * 100).toFixed(1) + '% rework rate). Potential documentation gaps during peak billing cycles.';
+    } else if (bd.preauth < (p.cases * 0.05) && bd.claim > 500) {
+      improvement = 'Preauth workflow deficit (only ' + (bd.preauth || 0) + ' cases, ' + ((bd.preauth / p.cases) * 100).toFixed(1) + '% of volume), causing workflow siloing in claims.';
+    } else if (bd.claim === 0 && bd.preauth > 500) {
+      improvement = 'Single-workflow isolation: 0 Claims processed. Inability to absorb discharge claim surges at month-end.';
+    } else {
+      improvement = 'Balanced workflow across queues; opportunity to scale daily throughput and reduce minor query friction.';
+    }
+
+    if (p.resubmitCount > 150) {
+      roadmap = '1. Implement 5-point pre-dispatch audit gate to cut resubmissions below ' + Math.round(p.resubmitCount * 0.5) + '. 2. Standardize document checklists. 3. Target 15-20% queue expansion into secondary workflows.';
+    } else if (bd.preauth < (p.cases * 0.05)) {
+      roadmap = '1. Cross-train on Preauth admission queues to handle 20+ cases/day. 2. Maintain high claim velocity while becoming a dual-threat operations asset.';
+    } else if (bd.claim === 0) {
+      roadmap = '1. Structured 2-phase cross-training in Claim settlement (10 claims/day scaling to 25/day). 2. Maintain preauth mastery while providing discharge backup.';
+    } else {
+      roadmap = '1. Scale daily processing throughput by 10-15%. 2. Conduct weekly audit reviews to push clean rate above 98%.';
+    }
+  } else {
+    if (p.cases > 6000) tier = 'Senior Medical Scrutiny Authority';
+    else if (ratio >= 0.90) tier = 'Top Efficiency / Claim Specialist';
+    else if (bd.hd > 300) tier = 'High-End Complex HD Authority';
+    else tier = 'Medical Scrutiny Officer';
+
+    strength = 'Scrutinized ' + p.cases.toLocaleString() + ' clinical cases yielding ' + p.points.toFixed(1) + ' points (' + ratio + ' pts/case) with zero recorded clerical rejections. High clinical diligence across hospital admissions.';
+
+    if (bd.preauth === 0 && bd.claim > 0) {
+      improvement = '100% single-workflow siloing: 0 Preauth scrutinies. Entirely unexposed to emergency admission approvals.';
+      roadmap = '1. Initiate phased rotation into emergency/elective Preauth queues (target 20 Preauths/day). 2. Expand cross-domain coverage.';
+    } else if (bd.claim === 0 && bd.preauth > 0) {
+      improvement = '100% Preauth siloing (0 Claims scrutinized). Unexposed to post-discharge claim adjudication.';
+      roadmap = '1. Cross-train in post-discharge claim scrutiny (15-20 claims/day). 2. Build comprehensive clinical TPA competencies.';
+    } else {
+      improvement = 'Audit volume is distributed; room to streamline turnaround time on complex high-dependency cases.';
+      roadmap = '1. Deploy standardized evaluation rubrics for routine surgical/medical packages. 2. Lead complex case review sessions.';
+    }
+  }
+
+  return { tier, strength, improvement, roadmap };
+}
+
+function updateImprovementKpiCards() {
+  const allList = IMPROVEMENT_DATA || [];
+  const opsList = allList.filter(p => p.role === 'OPS');
+  const docList = allList.filter(p => p.role === 'DOC');
+
+  const totalCases = allList.reduce((sum, p) => sum + (p.cases || 0), 0);
+  const totalPts = allList.reduce((sum, p) => sum + (p.points || 0), 0);
+  const totalAmt = allList.reduce((sum, p) => sum + (p.amount || 0), 0);
+  const totalResubmit = allList.reduce((sum, p) => sum + (p.resubmitCount || 0), 0);
+  const reworkRate = totalCases > 0 ? ((totalResubmit / totalCases) * 100).toFixed(1) : '0.0';
+
+  const elPers = document.getElementById('kpiImpPersonnel');
+  const elPersSub = document.getElementById('kpiImpPersonnelSub');
+  const elCases = document.getElementById('kpiImpTotalCases');
+  const elCasesSub = document.getElementById('kpiImpTotalCasesSub');
+  const elResub = document.getElementById('kpiImpResubmissions');
+  const elResubSub = document.getElementById('kpiImpResubmissionsSub');
+
+  if(elPers) elPers.textContent = allList.length.toString();
+  if(elPersSub) elPersSub.textContent = opsList.length + ' Operations • ' + docList.length + ' Clinical Scrutiny Doctors';
+  if(elCases) elCases.textContent = totalCases.toLocaleString();
+  if(elCasesSub) elCasesSub.textContent = Math.round(totalPts).toLocaleString() + ' Total Points • ' + formatImpInr(totalAmt) + ' Approved';
+  if(elResub) elResub.textContent = totalResubmit.toLocaleString();
+  if(elResubSub) elResubSub.textContent = reworkRate + '% Overall Rework Rate';
+
+  const btnAll = document.getElementById('btnRoleAll');
+  const btnOps = document.getElementById('btnRoleOps');
+  const btnDoc = document.getElementById('btnRoleDoc');
+  if(btnAll) btnAll.textContent = 'All Personnel (' + allList.length + ')';
+  if(btnOps) btnOps.textContent = 'Operations (' + opsList.length + ')';
+  if(btnDoc) btnDoc.textContent = 'Clinical Doctors (' + docList.length + ')';
+}
+
+async function fetchLiveImprovementData(force = false) {
+  if (impDataLoading) return;
+  impDataLoading = true;
+
+  const badge = document.getElementById('impSyncStatusBadge');
+  if (badge) {
+    badge.innerHTML = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#2563eb;animation:pulse 1s infinite"></span> Syncing Live...';
+    badge.style.color = '#2563eb';
+    badge.style.background = '#eff6ff';
+    badge.style.borderColor = '#bfdbfe';
+  }
+
+  showNotification('Fetching live workforce diagnostics from Google Sheets...', 'info');
+
+  const q = "select C, E, count(B), sum(F), sum(H) where C is not null group by C, E";
+
+  try {
+    const raw = await queryGviz(q, "Cases");
+    const rows = (raw && raw.rows) ? raw.rows : (raw && raw.table && raw.table.rows ? raw.table.rows : []);
+
+    if (!rows || rows.length === 0) {
+      throw new Error("No data returned from Google Sheets");
+    }
+
+    const peopleMap = {};
+    rows.forEach(r => {
+      if (!r || !r.c || !r.c[0] || !r.c[0].v) return;
+      const rawName = String(r.c[0].v).trim();
+      if (!rawName) return;
+
+      if (!peopleMap[rawName]) {
+        peopleMap[rawName] = {
+          name: rawName,
+          cases: 0,
+          points: 0,
+          amount: 0,
+          resubmitCount: 0,
+          breakdown: { claim: 0, submit: 0, resubmit: 0, enhancement: 0, query: 0, preauth: 0, hd: 0, hd_pa: 0, hd_ci: 0 }
+        };
+      }
+
+      const rawType = r.c[1] ? String(r.c[1].v || '').trim().toLowerCase() : '';
+      const count = r.c[2] ? Number(r.c[2].v || 0) : 0;
+      const amt = (r.c[3] && r.c[3].v != null) ? Number(r.c[3].v) : 0;
+      const pts = (r.c[4] && r.c[4].v != null) ? Number(r.c[4].v) : 0;
+
+      peopleMap[rawName].cases += count;
+      peopleMap[rawName].points += pts;
+      peopleMap[rawName].amount += amt;
+
+      if (rawType === 'claim') peopleMap[rawName].breakdown.claim += count;
+      else if (rawType === 'claim submit' || rawType === 'submit') peopleMap[rawName].breakdown.submit += count;
+      else if (rawType.includes('resubmit')) {
+        peopleMap[rawName].breakdown.resubmit += count;
+        peopleMap[rawName].resubmitCount += count;
+      }
+      else if (rawType.includes('query')) peopleMap[rawName].breakdown.query += count;
+      else if (rawType.includes('enhancement') || rawType === 'enha') peopleMap[rawName].breakdown.enhancement += count;
+      else if (rawType === 'preauth') peopleMap[rawName].breakdown.preauth += count;
+      else if (rawType === 'hd pa') {
+        peopleMap[rawName].breakdown.hd_pa += count;
+        peopleMap[rawName].breakdown.hd += count;
+      }
+      else if (rawType === 'hd ci') {
+        peopleMap[rawName].breakdown.hd_ci += count;
+        peopleMap[rawName].breakdown.hd += count;
+      }
+      else if (rawType.includes('hd') || rawType.includes('highend')) {
+        peopleMap[rawName].breakdown.hd += count;
+      }
+    });
+
+    const liveList = [];
+    Object.values(peopleMap).forEach(p => {
+      const isDoc = /^dr[\s.]|dr\s/i.test(p.name);
+      const profile = PERSONNEL_PROFILES[p.name] || {};
+      const role = profile.role || (isDoc ? 'DOC' : 'OPS');
+      const ratio = p.cases > 0 ? Number((p.points / p.cases).toFixed(2)) : 0;
+      const cleanRate = p.cases > 0 ? Number((((p.cases - p.resubmitCount) / p.cases) * 100).toFixed(1)) : 100;
+
+      const roleLabel = profile.roleLabel || (isDoc ? 'Clinical Scrutiny Doctor' : (p.breakdown.preauth > (p.cases * 0.5) ? 'Preauth Specialist' : 'Operations Executive'));
+      const avatarBg = profile.avatarBg || (isDoc ? '#ede9fe' : '#dbeafe');
+      const avatarColor = profile.avatarColor || (isDoc ? '#6d28d9' : '#1d4ed8');
+
+      const { tier, strength, improvement, roadmap } = generateDynamicInsights(p, role, ratio, cleanRate);
+
+      liveList.push({
+        id: p.name,
+        name: p.name,
+        role,
+        roleLabel,
+        tier,
+        cases: p.cases,
+        points: Number(p.points.toFixed(1)),
+        ratio,
+        amount: Math.round(p.amount),
+        cleanRate,
+        resubmitCount: p.resubmitCount,
+        breakdown: p.breakdown,
+        strength,
+        improvement,
+        roadmap,
+        avatarBg,
+        avatarColor
+      });
+    });
+
+    // WORKFLOW ORDERING:
+    // Doctors perform clinical scrutiny; after scrutiny, employees process claims.
+    // Display all Employees sorted higher to lower by points, then all Doctors sorted higher to lower by points.
+    const opsPersonnel = liveList.filter(p => p.role === 'OPS').sort((a, b) => b.points - a.points);
+    const docPersonnel = liveList.filter(p => p.role === 'DOC').sort((a, b) => b.points - a.points);
+    IMPROVEMENT_DATA = [...opsPersonnel, ...docPersonnel];
+
+    impLastSyncTime = new Date();
+
+    updateImprovementKpiCards();
+    populateComparisonSelects();
+    renderImprovementViews();
+
+    if (badge) {
+      const timeStr = impLastSyncTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      badge.innerHTML = '🟢 Live Data (' + timeStr + ')';
+      badge.style.color = '#059669';
+      badge.style.background = '#ecfdf5';
+      badge.style.borderColor = '#a7f3d0';
+    }
+
+    showNotification('Individual Improvement Analysis updated with live Google Sheets data!', 'success');
+  } catch(e) {
+    console.error('Error loading live improvement data:', e);
+    if (badge) {
+      badge.innerHTML = '⚠️ Sync Failed';
+      badge.style.color = '#dc2626';
+      badge.style.background = '#fef2f2';
+      badge.style.borderColor = '#fecaca';
+    }
+    showNotification('Failed to fetch live improvement data: ' + e.message, 'error');
+  } finally {
+    impDataLoading = false;
+  }
+}
+
+function initImprovementTab(forceRefresh = true) {
+  if (forceRefresh || !IMPROVEMENT_DATA || IMPROVEMENT_DATA.length === 0) {
+    fetchLiveImprovementData(forceRefresh);
+  } else {
+    populateComparisonSelects();
+    renderImprovementViews();
+  }
+}
+
+let currentDualCategory = 'OPS'; // 'OPS' or 'DOC'
+
+function setDualCategoryFilter(category) {
+  currentDualCategory = category;
+
+  const btnOps = document.getElementById('btnDualRoleOps');
+  const btnDoc = document.getElementById('btnDualRoleDoc');
+  if(btnOps) {
+    if(category === 'OPS') {
+      btnOps.classList.add('active');
+    } else {
+      btnOps.classList.remove('active');
+    }
+  }
+  if(btnDoc) {
+    if(category === 'DOC') {
+      btnDoc.classList.add('active');
+    } else {
+      btnDoc.classList.remove('active');
+    }
+  }
+
+  const peers = IMPROVEMENT_DATA.filter(p => p.role === category);
+  if(peers.length > 0) {
+    selectedCompA = peers[0].id;
+    selectedCompB = peers[1] ? peers[1].id : peers[0].id;
+  }
+
+  populateComparisonSelects();
+  renderDualComparison();
+}
+
 function populateComparisonSelects() {
   const selA = document.getElementById('compSelectA');
   const selB = document.getElementById('compSelectB');
   if(!selA || !selB) return;
 
+  const opsList = IMPROVEMENT_DATA.filter(p => p.role === 'OPS');
+  const docList = IMPROVEMENT_DATA.filter(p => p.role === 'DOC');
+
+  // Validate selectedCompA within currentDualCategory
+  const currentCategoryList = currentDualCategory === 'OPS' ? opsList : docList;
+  if (!currentCategoryList.some(p => p.id === selectedCompA)) {
+    selectedCompA = currentCategoryList[0] ? currentCategoryList[0].id : '';
+  }
+
+  // Validate selectedCompB strictly within SAME category as selectedCompA, differing if possible
+  const validPeersForB = currentCategoryList;
+  if (!validPeersForB.some(p => p.id === selectedCompB) || selectedCompB === selectedCompA) {
+    const altPeer = validPeersForB.find(p => p.id !== selectedCompA);
+    selectedCompB = altPeer ? altPeer.id : (validPeersForB[0] ? validPeersForB[0].id : '');
+  }
+
+  // Update category buttons UI state
+  const btnOps = document.getElementById('btnDualRoleOps');
+  const btnDoc = document.getElementById('btnDualRoleDoc');
+  if(btnOps) btnOps.classList.toggle('active', currentDualCategory === 'OPS');
+  if(btnDoc) btnDoc.classList.toggle('active', currentDualCategory === 'DOC');
+
+  // Populate Select A with all peers of the current category (sorted higher to lower)
   selA.innerHTML = '';
-  selB.innerHTML = '';
+  const optGroupA = document.createElement('optgroup');
+  optGroupA.label = currentDualCategory === 'OPS'
+    ? 'Operations Employees (' + opsList.length + ') — Ranked Higher to Lower'
+    : 'Clinical Scrutiny Doctors (' + docList.length + ') — Ranked Higher to Lower';
 
-  const optGroupOpsA = document.createElement('optgroup');
-  optGroupOpsA.label = 'Operations Team (15)';
-  const optGroupDocA = document.createElement('optgroup');
-  optGroupDocA.label = 'Clinical Scrutiny Doctors (6)';
-
-  const optGroupOpsB = document.createElement('optgroup');
-  optGroupOpsB.label = 'Operations Team (15)';
-  const optGroupDocB = document.createElement('optgroup');
-  optGroupDocB.label = 'Clinical Scrutiny Doctors (6)';
-
-  IMPROVEMENT_DATA.forEach(p => {
+  currentCategoryList.forEach(p => {
     const optA = document.createElement('option');
     optA.value = p.id;
-    optA.textContent = `${p.name} (${p.cases.toLocaleString()} cases)`;
-    if(p.role === 'OPS') optGroupOpsA.appendChild(optA); else optGroupDocA.appendChild(optA);
+    optA.textContent = p.name + ' (' + p.cases.toLocaleString() + ' cases • ' + p.points.toFixed(1) + ' pts)';
+    optGroupA.appendChild(optA);
+  });
+  selA.appendChild(optGroupA);
+  selA.value = selectedCompA;
 
+  // Populate Select B strictly with peers of the same category
+  selB.innerHTML = '';
+  const optGroupB = document.createElement('optgroup');
+  optGroupB.label = currentDualCategory === 'OPS'
+    ? 'Operations Colleagues (' + opsList.length + ') — Peer-to-Peer'
+    : 'Clinical Doctor Peers (' + docList.length + ') — Peer-to-Peer';
+
+  currentCategoryList.forEach(p => {
     const optB = document.createElement('option');
     optB.value = p.id;
-    optB.textContent = `${p.name} (${p.cases.toLocaleString()} cases)`;
-    if(p.role === 'OPS') optGroupOpsB.appendChild(optB); else optGroupDocB.appendChild(optB);
+    optB.textContent = p.name + (p.id === selectedCompA ? ' (Self)' : ' (' + p.cases.toLocaleString() + ' cases • ' + p.points.toFixed(1) + ' pts)');
+    optGroupB.appendChild(optB);
   });
-
-  selA.appendChild(optGroupOpsA);
-  selA.appendChild(optGroupDocA);
-  selB.appendChild(optGroupOpsB);
-  selB.appendChild(optGroupDocB);
-
-  selA.value = selectedCompA;
+  selB.appendChild(optGroupB);
   selB.value = selectedCompB;
 }
 
@@ -7253,7 +6713,7 @@ function renderImprovementViews() {
   });
 
   const countEl = document.getElementById('impTableCount');
-  if(countEl) countEl.textContent = `Showing ${filtered.length} of ${IMPROVEMENT_DATA.length} Personnel`;
+  if(countEl) countEl.textContent = 'Showing ' + filtered.length + ' of ' + IMPROVEMENT_DATA.length + ' Personnel';
 
   if(currentImpView === 'matrix') {
     renderScorecardTable(filtered);
@@ -7269,17 +6729,18 @@ function renderScorecardTable(list) {
   if(!tbody) return;
 
   if(list.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="13" style="text-align:center;padding:30px;color:var(--muted)">No personnel matching the current filter.</td></tr>`;
+    tbody.innerHTML = '<tr><td colspan="13" style="text-align:center;padding:30px;color:var(--muted)">No personnel matching the current filter.</td></tr>';
     return;
   }
+
+  const opsList = list.filter(p => p.role === 'OPS');
+  const docList = list.filter(p => p.role === 'DOC');
 
   const totalOpsCases = IMPROVEMENT_DATA.filter(p => p.role === 'OPS').reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
   const totalDocCases = IMPROVEMENT_DATA.filter(p => p.role === 'DOC').reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
 
-  let html = '';
-  list.forEach((p, idx) => {
-    const rankMedal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `<span style="font-weight:700;color:var(--muted)">#${idx + 1}</span>`;
-    const isOps = (p.role === 'OPS');
+  function renderRow(p, rankIdx, isOps) {
+    const rankMedal = rankIdx === 0 ? '🥇' : rankIdx === 1 ? '🥈' : rankIdx === 2 ? '🥉' : '<span style="font-weight:700;color:var(--muted)">#' + (rankIdx + 1) + '</span>';
     const totalGroupCases = isOps ? totalOpsCases : totalDocCases;
     const workPct = ((p.cases / totalGroupCases) * 100).toFixed(1);
     const groupLabel = isOps ? 'of Employees' : 'of Doctors';
@@ -7295,60 +6756,76 @@ function renderScorecardTable(list) {
     const subPct = bd.submit ? Math.round((bd.submit / total) * 100) : 0;
     const hdPct = bd.hd || bd.hd_pa || bd.hd_ci ? Math.round(((bd.hd || (bd.hd_pa||0) + (bd.hd_ci||0)) / total) * 100) : 0;
 
-    let breakdownHtml = `<div style="display:flex;flex-wrap:wrap;gap:4px;font-size:10px">`;
-    if(clmPct > 0) breakdownHtml += `<span style="background:#e0f2fe;color:#0369a1;padding:2px 5px;border-radius:4px;font-weight:700">Claim ${clmPct}%</span>`;
-    if(paPct > 0) breakdownHtml += `<span style="background:#fce7f3;color:#be185d;padding:2px 5px;border-radius:4px;font-weight:700">PA ${paPct}%</span>`;
-    if(enhPct > 0) breakdownHtml += `<span style="background:#fef3c7;color:#b45309;padding:2px 5px;border-radius:4px;font-weight:700">Enh ${enhPct}%</span>`;
-    if(subPct > 0) breakdownHtml += `<span style="background:#dcfce7;color:#15803d;padding:2px 5px;border-radius:4px;font-weight:700">Sub ${subPct}%</span>`;
-    if(qPct > 0) breakdownHtml += `<span style="background:#ede9fe;color:#6d28d9;padding:2px 5px;border-radius:4px;font-weight:700">Query ${qPct}%</span>`;
-    if(hdPct > 0) breakdownHtml += `<span style="background:#fee2e2;color:#b91c1c;padding:2px 5px;border-radius:4px;font-weight:700">HD ${hdPct}%</span>`;
-    breakdownHtml += `</div>`;
+    let breakdownHtml = '<div style="display:flex;flex-wrap:wrap;gap:4px;font-size:10px">';
+    if(clmPct > 0) breakdownHtml += '<span style="background:#e0f2fe;color:#0369a1;padding:2px 5px;border-radius:4px;font-weight:700">Claim ' + clmPct + '%</span>';
+    if(paPct > 0) breakdownHtml += '<span style="background:#fce7f3;color:#be185d;padding:2px 5px;border-radius:4px;font-weight:700">PA ' + paPct + '%</span>';
+    if(enhPct > 0) breakdownHtml += '<span style="background:#fef3c7;color:#b45309;padding:2px 5px;border-radius:4px;font-weight:700">Enh ' + enhPct + '%</span>';
+    if(subPct > 0) breakdownHtml += '<span style="background:#dcfce7;color:#15803d;padding:2px 5px;border-radius:4px;font-weight:700">Sub ' + subPct + '%</span>';
+    if(qPct > 0) breakdownHtml += '<span style="background:#ede9fe;color:#6d28d9;padding:2px 5px;border-radius:4px;font-weight:700">Query ' + qPct + '%</span>';
+    if(hdPct > 0) breakdownHtml += '<span style="background:#fee2e2;color:#b91c1c;padding:2px 5px;border-radius:4px;font-weight:700">HD ' + hdPct + '%</span>';
+    breakdownHtml += '</div>';
 
-    html += `
-      <tr>
-        <td style="text-align:center;font-size:14px">${rankMedal}</td>
-        <td>
-          <div style="display:flex;align-items:center;gap:9px">
-            <div style="width:32px;height:32px;border-radius:50%;background:${p.avatarBg};color:${p.avatarColor};display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;flex-shrink:0">
-              ${p.name.substring(0, 2).toUpperCase()}
-            </div>
-            <div>
-              <div style="font-weight:800;color:var(--text);font-size:13px">${p.name}</div>
-              <div style="font-size:10px;color:var(--muted)">${p.tier}</div>
-            </div>
-          </div>
-        </td>
-        <td>
-          <span style="font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;${roleBadgeColor}">
-            ${p.roleLabel}
-          </span>
-        </td>
-        <td style="text-align:right;font-weight:800;font-size:13px">${p.cases.toLocaleString()}</td>
-        <td style="text-align:right;font-weight:800;color:#2563eb;font-size:13px">${p.points.toFixed(1)}</td>
-        <td style="text-align:right;font-weight:700">${p.ratio.toFixed(2)}</td>
-        <td style="text-align:right;font-weight:700;color:var(--text)">${formatImpInr(p.amount)}</td>
-        <td style="min-width:140px">${breakdownHtml}</td>
-        <td style="text-align:center">
-          <span style="font-weight:800;font-size:13px;color:${isOps ? '#0369a1' : '#b45309'}">${workPct}%</span>
-          <div style="font-size:10px;color:var(--muted);font-weight:600">${groupLabel}</div>
-        </td>
-        <td style="font-size:11px;max-width:210px;line-height:1.35;color:#14532d">
-          <strong>${p.strength.split('.')[0]}.</strong>
-        </td>
-        <td style="font-size:11px;max-width:220px;line-height:1.35;color:#7c2d12;background:#fffaf0">
-          ${p.improvement.split('.')[0]}.
-        </td>
-        <td style="font-size:11px;max-width:230px;line-height:1.35;color:#1e3a8a;background:#f8fafc">
-          ${p.roadmap.split('.')[0]}.
-        </td>
-        <td style="text-align:center">
-          <button class="btn secondary" style="padding:4px 8px;font-size:11px;border-radius:4px;cursor:pointer;white-space:nowrap" onclick="selectForComparison('${p.id}')">
-            ⚔️ Compare
-          </button>
-        </td>
-      </tr>
-    `;
-  });
+    return '<tr>' +
+      '<td style="text-align:center;font-size:14px">' + rankMedal + '</td>' +
+      '<td>' +
+        '<div style="display:flex;align-items:center;gap:9px">' +
+          '<div style="width:32px;height:32px;border-radius:50%;background:' + p.avatarBg + ';color:' + p.avatarColor + ';display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;flex-shrink:0">' +
+            p.name.substring(0, 2).toUpperCase() +
+          '</div>' +
+          '<div>' +
+            '<div style="font-weight:800;color:var(--text);font-size:13px">' + p.name + '</div>' +
+            '<div style="font-size:10px;color:var(--muted)">' + p.tier + '</div>' +
+          '</div>' +
+        '</div>' +
+      '</td>' +
+      '<td><span style="font-size:10px;font-weight:800;padding:2px 6px;border-radius:4px;' + roleBadgeColor + '">' + p.roleLabel + '</span></td>' +
+      '<td style="text-align:right;font-weight:800;font-size:13px">' + p.cases.toLocaleString() + '</td>' +
+      '<td style="text-align:right;font-weight:800;color:#2563eb;font-size:13px">' + p.points.toFixed(1) + '</td>' +
+      '<td style="text-align:right;font-weight:700">' + p.ratio.toFixed(2) + '</td>' +
+      '<td style="text-align:right;font-weight:700;color:var(--text)">' + formatImpInr(p.amount) + '</td>' +
+      '<td style="min-width:140px">' + breakdownHtml + '</td>' +
+      '<td style="text-align:center">' +
+        '<span style="font-weight:800;font-size:13px;color:' + (isOps ? '#0369a1' : '#b45309') + '">' + workPct + '%</span>' +
+        '<div style="font-size:10px;color:var(--muted);font-weight:600">' + groupLabel + '</div>' +
+      '</td>' +
+      '<td style="font-size:11px;max-width:210px;line-height:1.35;color:#14532d"><strong>' + p.strength.split('.')[0] + '.</strong></td>' +
+      '<td style="font-size:11px;max-width:220px;line-height:1.35;color:#7c2d12;background:#fffaf0">' + p.improvement.split('.')[0] + '.</td>' +
+      '<td style="font-size:11px;max-width:230px;line-height:1.35;color:#1e3a8a;background:#f8fafc">' + p.roadmap.split('.')[0] + '.</td>' +
+      '<td style="text-align:center">' +
+        '<button class="btn secondary" style="padding:4px 8px;font-size:11px;border-radius:4px;cursor:pointer;white-space:nowrap" onclick="selectForComparison(\'' + p.id + '\')">⚔️ Compare</button>' +
+      '</td>' +
+    '</tr>';
+  }
+
+  let html = '';
+
+  // 1. OPERATIONS EMPLOYEES FIRST (HIGHER TO LOWER)
+  if (opsList.length > 0) {
+    if (currentImpRole === 'ALL') {
+      html += '<tr style="background:#f0f7ff;border-top:2px solid #3b82f6;border-bottom:2px solid #bfdbfe">' +
+        '<td colspan="13" style="padding:10px 14px;font-weight:900;color:#1e40af;font-size:12px;letter-spacing:0.5px">' +
+          '👤 OPERATIONS PERSONNEL (CLAIMS PROCESSING & SUBMISSION) — RANKED HIGHER TO LOWER (' + opsList.length + ' Personnel)' +
+        '</td>' +
+      '</tr>';
+    }
+    opsList.forEach((p, idx) => {
+      html += renderRow(p, idx, true);
+    });
+  }
+
+  // 2. CLINICAL SCRUTINY DOCTORS SECOND (HIGHER TO LOWER)
+  if (docList.length > 0) {
+    if (currentImpRole === 'ALL') {
+      html += '<tr style="background:#fffbeb;border-top:2px solid #eab308;border-bottom:2px solid #fef08a">' +
+        '<td colspan="13" style="padding:10px 14px;font-weight:900;color:#854d0e;font-size:12px;letter-spacing:0.5px">' +
+          '🩺 CLINICAL SCRUTINY DOCTORS (PRE-PROCESSING MEDICAL SCRUTINY) — RANKED HIGHER TO LOWER (' + docList.length + ' Doctors)' +
+        '</td>' +
+      '</tr>';
+    }
+    docList.forEach((p, idx) => {
+      html += renderRow(p, idx, false);
+    });
+  }
 
   tbody.innerHTML = html;
 }
@@ -7358,129 +6835,139 @@ function renderCardsGrid(list) {
   if(!container) return;
 
   if(list.length === 0) {
-    container.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">No personnel found.</div>`;
+    container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted)">No personnel found.</div>';
     return;
   }
+
+  const opsList = list.filter(p => p.role === 'OPS');
+  const docList = list.filter(p => p.role === 'DOC');
 
   const totalOpsCases = IMPROVEMENT_DATA.filter(p => p.role === 'OPS').reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
   const totalDocCases = IMPROVEMENT_DATA.filter(p => p.role === 'DOC').reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
 
-  let html = '';
-  list.forEach((p, idx) => {
-    const isOps = (p.role === 'OPS');
+  function renderCard(p, rankIdx, isOps) {
     const totalGroupCases = isOps ? totalOpsCases : totalDocCases;
     const workPct = ((p.cases / totalGroupCases) * 100).toFixed(1);
     const groupLabel = isOps ? 'Employees' : 'Doctors';
-    const roleBadge = isOps ? `<span style="background:#e0f2fe;color:#0369a1;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px">Operations</span>` : `<span style="background:#fef3c7;color:#b45309;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px">Clinical Scrutiny</span>`;
+    const rankTitle = isOps ? ('#' + (rankIdx + 1) + ' of ' + totalOpsCases.toString().replace(/\d+/, opsList.length) + ' Operations') : ('#' + (rankIdx + 1) + ' of ' + docList.length + ' Doctors');
+    const roleBadge = isOps
+      ? '<span style="background:#e0f2fe;color:#0369a1;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px">Operations • #' + (rankIdx + 1) + '</span>'
+      : '<span style="background:#fef3c7;color:#b45309;font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px">Clinical Scrutiny • #' + (rankIdx + 1) + '</span>';
 
-    html += `
-      <div class="imp-profile-card">
-        <!-- Card Header -->
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div class="imp-avatar" style="background:${p.avatarBg};color:${p.avatarColor}">
-              ${p.name.substring(0, 2).toUpperCase()}
-            </div>
-            <div>
-              <div style="font-size:15px;font-weight:900;color:var(--text)">${p.name}</div>
-              <div style="font-size:11px;color:var(--muted);font-weight:600">${p.roleLabel}</div>
-            </div>
-          </div>
-          <div style="text-align:right">
-            ${roleBadge}
-            <div style="font-size:10px;font-weight:800;color:var(--muted);margin-top:3px">${p.tier}</div>
-          </div>
-        </div>
+    return '<div class="imp-profile-card">' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">' +
+        '<div style="display:flex;align-items:center;gap:10px">' +
+          '<div class="imp-avatar" style="background:' + p.avatarBg + ';color:' + p.avatarColor + '">' +
+            p.name.substring(0, 2).toUpperCase() +
+          '</div>' +
+          '<div>' +
+            '<div style="font-size:15px;font-weight:900;color:var(--text)">' + p.name + '</div>' +
+            '<div style="font-size:11px;color:var(--muted);font-weight:600">' + p.roleLabel + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div style="text-align:right">' +
+          roleBadge +
+          '<div style="font-size:10px;font-weight:800;color:var(--muted);margin-top:3px">' + p.tier + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:6px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px 10px;margin-bottom:12px">' +
+        '<div>' +
+          '<div style="font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase">Cases</div>' +
+          '<div style="font-size:14px;font-weight:900;color:var(--text)">' + p.cases.toLocaleString() + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div style="font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase">Points</div>' +
+          '<div style="font-size:14px;font-weight:900;color:#2563eb">' + p.points.toFixed(1) + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div style="font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase">Pts/Case</div>' +
+          '<div style="font-size:14px;font-weight:900;color:var(--text)">' + p.ratio.toFixed(2) + '</div>' +
+        '</div>' +
+      '</div>' +
+      '<div style="display:flex;align-items:center;justify-content:space-between;font-size:11px;margin-bottom:10px;padding:0 2px">' +
+        '<div><span style="color:var(--muted)">Financial Value: </span><strong style="color:var(--text)">' + formatImpInr(p.amount) + '</strong></div>' +
+        '<div><span style="color:var(--muted)">% of Work: </span><strong style="color:' + (isOps ? '#0369a1' : '#b45309') + '">' + workPct + '% (' + groupLabel + ')</strong></div>' +
+      '</div>' +
+      '<div class="imp-section-box imp-box-strengths">' +
+        '<div style="font-weight:800;font-size:11px;margin-bottom:3px;display:flex;align-items:center;gap:4px"><span>🟢</span> PRIMARY STRENGTHS</div>' +
+        '<div>' + p.strength + '</div>' +
+      '</div>' +
+      '<div class="imp-section-box imp-box-improvements">' +
+        '<div style="font-weight:800;font-size:11px;margin-bottom:3px;display:flex;align-items:center;gap:4px"><span>🔴</span> WHERE TO IMPROVE (BOTTLENECK)</div>' +
+        '<div>' + p.improvement + '</div>' +
+      '</div>' +
+      '<div class="imp-section-box imp-box-roadmap">' +
+        '<div style="font-weight:800;font-size:11px;margin-bottom:3px;display:flex;align-items:center;gap:4px"><span>🎯</span> TARGET 30-60-90 DAY ROADMAP</div>' +
+        '<div>' + p.roadmap + '</div>' +
+      '</div>' +
+      '<div style="display:flex;justify-content:flex-end;margin-top:12px">' +
+        '<button class="btn secondary" style="padding:5px 12px;font-size:11px;border-radius:6px;font-weight:700;cursor:pointer" onclick="selectForComparison(\'' + p.id + '\')">' +
+          '⚔️ Compare with ' + (isOps ? 'Employee Colleague' : 'Doctor Peer') +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  }
 
-        <!-- Metric Ribbon -->
-        <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:6px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:8px 10px;margin-bottom:12px">
-          <div>
-            <div style="font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase">Cases</div>
-            <div style="font-size:14px;font-weight:900;color:var(--text)">${p.cases.toLocaleString()}</div>
-          </div>
-          <div>
-            <div style="font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase">Points</div>
-            <div style="font-size:14px;font-weight:900;color:#2563eb">${p.points.toFixed(1)}</div>
-          </div>
-          <div>
-            <div style="font-size:9px;font-weight:800;color:var(--muted);text-transform:uppercase">Pts/Case</div>
-            <div style="font-size:14px;font-weight:900;color:var(--text)">${p.ratio.toFixed(2)}</div>
-          </div>
-        </div>
+  let html = '';
 
-        <div style="display:flex;align-items:center;justify-content:space-between;font-size:11px;margin-bottom:10px;padding:0 2px">
-          <div>
-            <span style="color:var(--muted)">Financial Value: </span>
-            <strong style="color:var(--text)">${formatImpInr(p.amount)}</strong>
-          </div>
-          <div>
-            <span style="color:var(--muted)">% of Work: </span>
-            <strong style="color:${isOps ? '#0369a1' : '#b45309'}">${workPct}% (${groupLabel})</strong>
-          </div>
-        </div>
+  // 1. Operations Cards (Higher to Lower)
+  if (opsList.length > 0) {
+    if (currentImpRole === 'ALL') {
+      html += '<div style="grid-column:1/-1;margin-top:6px;margin-bottom:8px;padding:10px 16px;background:#f0f7ff;border:1px solid #bfdbfe;border-radius:8px;display:flex;align-items:center;justify-content:space-between">' +
+        '<div style="font-weight:900;color:#1e40af;font-size:13px;display:flex;align-items:center;gap:6px">' +
+          '<span>👤</span> OPERATIONS PERSONNEL — CLAIMS PROCESSING TEAM (HIGHER TO LOWER)' +
+        '</div>' +
+        '<span style="font-size:12px;font-weight:800;color:#2563eb">' + opsList.length + ' Personnel</span>' +
+      '</div>';
+    }
+    opsList.forEach((p, idx) => {
+      html += renderCard(p, idx, true);
+    });
+  }
 
-        <!-- Box 1: Strengths -->
-        <div class="imp-section-box imp-box-strengths">
-          <div style="font-weight:800;font-size:11px;margin-bottom:3px;display:flex;align-items:center;gap:4px">
-            <span>🟢</span> PRIMARY STRENGTHS
-          </div>
-          <div>${p.strength}</div>
-        </div>
-
-        <!-- Box 2: Where to Improve -->
-        <div class="imp-section-box imp-box-improvements">
-          <div style="font-weight:800;font-size:11px;margin-bottom:3px;display:flex;align-items:center;gap:4px">
-            <span>🔴</span> WHERE TO IMPROVE (BOTTLENECK)
-          </div>
-          <div>${p.improvement}</div>
-        </div>
-
-        <!-- Box 3: Roadmap -->
-        <div class="imp-section-box imp-box-roadmap">
-          <div style="font-weight:800;font-size:11px;margin-bottom:3px;display:flex;align-items:center;gap:4px">
-            <span>🎯</span> TARGET 30-60-90 DAY ROADMAP
-          </div>
-          <div>${p.roadmap}</div>
-        </div>
-
-        <!-- Card Footer -->
-        <div style="display:flex;justify-content:flex-end;margin-top:12px">
-          <button class="btn secondary" style="padding:5px 12px;font-size:11px;border-radius:6px;font-weight:700;cursor:pointer" onclick="selectForComparison('${p.id}')">
-            ⚔️ Compare with Colleague
-          </button>
-        </div>
-      </div>
-    `;
-  });
+  // 2. Doctor Cards (Higher to Lower)
+  if (docList.length > 0) {
+    if (currentImpRole === 'ALL') {
+      html += '<div style="grid-column:1/-1;margin-top:20px;margin-bottom:8px;padding:10px 16px;background:#fffbeb;border:1px solid #fef08a;border-radius:8px;display:flex;align-items:center;justify-content:space-between">' +
+        '<div style="font-weight:900;color:#854d0e;font-size:13px;display:flex;align-items:center;gap:6px">' +
+          '<span>🩺</span> CLINICAL SCRUTINY DOCTORS — PRE-PROCESSING MEDICAL SCRUTINY (HIGHER TO LOWER)' +
+        '</div>' +
+        '<span style="font-size:12px;font-weight:800;color:#b45309">' + docList.length + ' Doctors</span>' +
+      '</div>';
+    }
+    docList.forEach((p, idx) => {
+      html += renderCard(p, idx, false);
+    });
+  }
 
   container.innerHTML = html;
 }
 
 function selectForComparison(personId) {
-  selectedCompA = personId;
   const target = IMPROVEMENT_DATA.find(p => p.id === personId);
-  if(target) {
-    // Pick an intuitive counterpart
-    if(target.role === 'OPS') {
-      selectedCompB = personId === 'Laxminarayana' ? 'Sirisha' : (personId === 'Vani' ? 'Kavitha' : 'Laxminarayana');
-    } else {
-      selectedCompB = personId === 'Dr Sunitha' ? 'Dr Bindu' : 'Dr Sunitha';
-    }
-  }
+  if(!target) return;
 
-  const selA = document.getElementById('compSelectA');
-  const selB = document.getElementById('compSelectB');
-  if(selA) selA.value = selectedCompA;
-  if(selB) selB.value = selectedCompB;
+  currentDualCategory = target.role;
+  selectedCompA = personId;
 
+  const peers = IMPROVEMENT_DATA.filter(p => p.role === target.role && p.id !== personId);
+  selectedCompB = peers[0] ? peers[0].id : personId;
+
+  populateComparisonSelects();
   switchImpView('dual');
 }
 
 function onDualCompareChange() {
   const selA = document.getElementById('compSelectA');
   const selB = document.getElementById('compSelectB');
-  if(selA) selectedCompA = selA.value;
-  if(selB) selectedCompB = selB.value;
+  if(!selA) return;
+
+  const newA = selA.value;
+  selectedCompA = newA;
+
+  if (selB) {
+    selectedCompB = selB.value;
+  }
 
   renderDualComparison();
 }
@@ -7489,10 +6976,19 @@ function renderDualComparison() {
   const container = document.getElementById('compDualContainer');
   if(!container) return;
 
-  const pA = IMPROVEMENT_DATA.find(p => p.id === selectedCompA) || IMPROVEMENT_DATA[0];
-  const pB = IMPROVEMENT_DATA.find(p => p.id === selectedCompB) || IMPROVEMENT_DATA[1];
+  const categoryList = IMPROVEMENT_DATA.filter(p => p.role === currentDualCategory);
+  if (categoryList.length === 0) {
+    container.innerHTML = '<div style="text-align:center;padding:30px;color:var(--muted)">No performers in this discipline.</div>';
+    return;
+  }
 
-  // Helper for winner tag
+  let pA = categoryList.find(p => p.id === selectedCompA) || categoryList[0];
+  let pB = categoryList.find(p => p.id === selectedCompB);
+  if (!pB || pB.id === pA.id) {
+    pB = categoryList.find(p => p.id !== pA.id) || pA;
+    selectedCompB = pB.id;
+  }
+
   function getWinner(valA, valB, higherIsBetter = true) {
     if(valA === valB) return { a: false, b: false };
     if(higherIsBetter) {
@@ -7502,23 +6998,20 @@ function renderDualComparison() {
     }
   }
 
-  const totalOpsCases = IMPROVEMENT_DATA.filter(p => p.role === 'OPS').reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
-  const totalDocCases = IMPROVEMENT_DATA.filter(p => p.role === 'DOC').reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
-  const workPctA = ((pA.cases / (pA.role === 'OPS' ? totalOpsCases : totalDocCases)) * 100).toFixed(1);
-  const workPctB = ((pB.cases / (pB.role === 'OPS' ? totalOpsCases : totalDocCases)) * 100).toFixed(1);
+  const isOps = (pA.role === 'OPS');
+  const totalGroupCases = IMPROVEMENT_DATA.filter(p => p.role === pA.role).reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
+  const workPctA = ((pA.cases / totalGroupCases) * 100).toFixed(1);
+  const workPctB = ((pB.cases / totalGroupCases) * 100).toFixed(1);
 
   const winVol = getWinner(pA.cases, pB.cases, true);
   const winPts = getWinner(pA.points, pB.points, true);
   const winEff = getWinner(pA.ratio, pB.ratio, true);
   const winVal = getWinner(pA.amount, pB.amount, true);
   const winWorkShare = getWinner(Number(workPctA), Number(workPctB), true);
-  const winClean = getWinner(pA.cleanRate, pB.cleanRate, true);
   const winRework = getWinner(pA.resubmitCount, pB.resubmitCount, false);
 
-  // Calculate relative meters
   const maxCases = Math.max(pA.cases, pB.cases, 1);
   const maxPts = Math.max(pA.points, pB.points, 1);
-  const maxVal = Math.max(pA.amount, pB.amount, 1);
 
   const pctVolA = Math.round((pA.cases / maxCases) * 100);
   const pctVolB = Math.round((pB.cases / maxCases) * 100);
@@ -7526,280 +7019,281 @@ function renderDualComparison() {
   const pctPtsA = Math.round((pA.points / maxPts) * 100);
   const pctPtsB = Math.round((pB.points / maxPts) * 100);
 
-  // Synergy logic
   let synergyText = '';
-  if(pA.role === pB.role) {
+  if (isOps) {
     if((pA.breakdown.claim > 0 && pB.breakdown.claim === 0) || (pA.breakdown.claim === 0 && pB.breakdown.claim > 0)) {
-      synergyText = `<strong>Ideal Cross-Skilling Pairing:</strong> ${pA.name} and ${pB.name} occupy complementary workflow extremes. Pairing them in a structured 2-week job rotation will allow mutual knowledge transfer between Claim filing and Preauth authorization protocols with zero downtime.`;
+      synergyText = '<strong>Operations Cross-Skilling Pairing:</strong> ' + pA.name + ' and ' + pB.name + ' occupy complementary workflow specializations. Structured peer cross-training will bridge preauth authorizations and discharge claim settlement without any backlog.';
     } else if(pA.cleanRate >= 99.0 && pB.cleanRate < 97.0) {
-      synergyText = `<strong>Quality Mentorship Opportunity:</strong> ${pA.name} demonstrates a superior clean submission discipline (${pA.cleanRate.toFixed(1)}%), while ${pB.name} generates immense volume but carries ${pB.resubmitCount} resubmissions. Implementing ${pA.name}'s pre-dispatch verification checklist can prevent dozens of rejections.`;
+      synergyText = '<strong>Submission Quality Mentorship:</strong> ' + pA.name + ' achieves exceptional clean processing (' + pA.cleanRate.toFixed(1) + '%), while ' + pB.name + ' delivers high volume with ' + pB.resubmitCount + ' resubmissions. Applying ' + pA.name + '\'s verification checklist will reduce query delays.';
     } else if(pB.cleanRate >= 99.0 && pA.cleanRate < 97.0) {
-      synergyText = `<strong>Quality Mentorship Opportunity:</strong> ${pB.name} demonstrates superior clean submission discipline (${pB.cleanRate.toFixed(1)}%), while ${pA.name} generates massive volume but suffers from ${pA.resubmitCount} resubmissions. Implementing ${pB.name}'s verification discipline will reclaim significant rework hours.`;
+      synergyText = '<strong>Submission Quality Mentorship:</strong> ' + pB.name + ' achieves exceptional clean processing (' + pB.cleanRate.toFixed(1) + '%), while ' + pA.name + ' delivers high volume with ' + pA.resubmitCount + ' resubmissions. Applying ' + pB.name + '\'s verification checklist will reduce query delays.';
     } else {
-      synergyText = `<strong>Peer Benchmarking:</strong> Both executives operate in similar functional domains. ${winVol.a ? pA.name : pB.name} leads in gross volume output (+${Math.abs(pA.cases - pB.cases).toLocaleString()} cases), while ${winEff.a ? pA.name : pB.name} achieves a higher point yield per case (${Math.max(pA.ratio, pB.ratio).toFixed(2)} pts/case). Balancing queue complexity will optimize collective output.`;
+      synergyText = '<strong>Operations Peer Benchmarking:</strong> Both executives operate in claim processing. ' + (winVol.a ? pA.name : pB.name) + ' leads in processing volume (+' + Math.abs(pA.cases - pB.cases).toLocaleString() + ' cases), while ' + (winEff.a ? pA.name : pB.name) + ' generates a higher point yield per case (' + Math.max(pA.ratio, pB.ratio).toFixed(2) + ' pts/case).';
     }
   } else {
-    synergyText = `<strong>Operations & Clinical Scrutiny Bridge:</strong> Comparing ${pA.name} (${pA.roleLabel}) against ${pB.name} (${pB.roleLabel}) illuminates the pipeline handoff between operations data entry and doctor medical audit. Tightening pre-scrutiny documentation ensures doctors clear files without sending clinical clarification queries.`;
+    synergyText = '<strong>Clinical Scrutiny Peer Benchmarking:</strong> Both officers perform medical scrutiny prior to employee claim processing. ' + (winVol.a ? pA.name : pB.name) + ' leads in scrutiny volume (+' + Math.abs(pA.cases - pB.cases).toLocaleString() + ' cases), while ' + (winEff.a ? pA.name : pB.name) + ' scrutinizes higher complexity cases with ' + Math.max(pA.ratio, pB.ratio).toFixed(2) + ' pts/case. Mutual clinical alignment optimizes initial approvals.';
   }
 
-  html = `
-    <div class="comp-dual-grid">
-      <!-- Performer A Card -->
-      <div class="comp-card" style="border-top:4px solid #2563eb">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div class="imp-avatar" style="background:${pA.avatarBg};color:${pA.avatarColor};width:48px;height:48px;font-size:18px">
-              ${pA.name.substring(0, 2).toUpperCase()}
-            </div>
-            <div>
-              <div style="font-size:17px;font-weight:900;color:var(--text)">${pA.name}</div>
-              <div style="font-size:12px;color:var(--muted)">${pA.roleLabel}</div>
-            </div>
-          </div>
-          <span style="background:#e0f2fe;color:#0369a1;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px">${pA.tier}</span>
-        </div>
+  const disciplineBanner = isOps
+    ? '<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between"><div style="font-size:12px;font-weight:800;color:#1e40af">👥 Comparing Operations Personnel (Claim Processing & Submission)</div><div style="font-size:11px;color:#3b82f6;font-weight:700">Strictly Peer-to-Peer Evaluation</div></div>'
+    : '<div style="background:#fffbeb;border:1px solid #fef08a;border-radius:8px;padding:8px 14px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between"><div style="font-size:12px;font-weight:800;color:#854d0e">🩺 Comparing Clinical Scrutiny Doctors (Pre-Processing Medical Audit)</div><div style="font-size:11px;color:#d97706;font-weight:700">Strictly Peer-to-Peer Evaluation</div></div>';
 
-        <!-- Comparative Meters -->
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Total Cases Handled</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:15px;color:var(--text)">${pA.cases.toLocaleString()}</strong>
-            ${winVol.a ? '<span class="comp-winner">★ Leader</span>' : ''}
-          </div>
-        </div>
-        <div style="background:#e2e8f0;border-radius:4px;height:6px;margin:4px 0 10px;overflow:hidden">
-          <div style="background:#2563eb;height:100%;width:${pctVolA}%"></div>
-        </div>
+  const html = disciplineBanner +
+    '<div class="comp-dual-grid">' +
+      // Performer A Card
+      '<div class="comp-card" style="border-top:4px solid #2563eb">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">' +
+          '<div style="display:flex;align-items:center;gap:10px">' +
+            '<div class="imp-avatar" style="background:' + pA.avatarBg + ';color:' + pA.avatarColor + ';width:48px;height:48px;font-size:18px">' +
+              pA.name.substring(0, 2).toUpperCase() +
+            '</div>' +
+            '<div>' +
+              '<div style="font-size:17px;font-weight:900;color:var(--text)">' + pA.name + '</div>' +
+              '<div style="font-size:12px;color:var(--muted)">' + pA.roleLabel + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<span style="background:#e0f2fe;color:#0369a1;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px">' + pA.tier + '</span>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Total Points Generated</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:15px;color:#2563eb">${pA.points.toFixed(1)}</strong>
-            ${winPts.a ? '<span class="comp-winner">★ Leader</span>' : ''}
-          </div>
-        </div>
-        <div style="background:#e2e8f0;border-radius:4px;height:6px;margin:4px 0 10px;overflow:hidden">
-          <div style="background:#3b82f6;height:100%;width:${pctPtsA}%"></div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Total Cases Handled</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:15px;color:var(--text)">' + pA.cases.toLocaleString() + '</strong>' +
+            (winVol.a ? '<span class="comp-winner">★ Leader</span>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div style="background:#e2e8f0;border-radius:4px;height:6px;margin:4px 0 10px;overflow:hidden">' +
+          '<div style="background:#2563eb;height:100%;width:' + pctVolA + '%"></div>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Point Efficiency (Pts/Case)</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:14px">${pA.ratio.toFixed(2)}</strong>
-            ${winEff.a ? '<span class="comp-winner">★ Higher Yield</span>' : ''}
-          </div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Total Points Generated</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:15px;color:#2563eb">' + pA.points.toFixed(1) + '</strong>' +
+            (winPts.a ? '<span class="comp-winner">★ Leader</span>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div style="background:#e2e8f0;border-radius:4px;height:6px;margin:4px 0 10px;overflow:hidden">' +
+          '<div style="background:#3b82f6;height:100%;width:' + pctPtsA + '%"></div>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Approved Portfolio Value</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:14px">${formatImpInr(pA.amount)}</strong>
-            ${winVal.a ? '<span class="comp-winner">★ Higher Value</span>' : ''}
-          </div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Point Efficiency (Pts/Case)</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:14px">' + pA.ratio.toFixed(2) + '</strong>' +
+            (winEff.a ? '<span class="comp-winner">★ Higher Yield</span>' : '') +
+          '</div>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">% of Workload Share</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:14px;color:${pA.role === 'OPS' ? '#0369a1' : '#b45309'}">${workPctA}% (${pA.role === 'OPS' ? 'Ops' : 'Docs'})</strong>
-            ${winWorkShare.a ? '<span class="comp-winner">★ Higher Share</span>' : ''}
-          </div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Approved Portfolio Value</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:14px">' + formatImpInr(pA.amount) + '</strong>' +
+            (winVal.a ? '<span class="comp-winner">★ Higher Value</span>' : '') +
+          '</div>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Total Resubmissions (Rework)</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:14px;color:${pA.resubmitCount > 100 ? '#b91c1c' : 'inherit'}">${pA.resubmitCount} cases</strong>
-            ${winRework.a ? '<span class="comp-winner">★ Less Rework</span>' : ''}
-          </div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">% of Workload Share</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:14px;color:' + (isOps ? '#0369a1' : '#b45309') + '">' + workPctA + '% (' + (isOps ? 'Employees' : 'Doctors') + ')</strong>' +
+            (winWorkShare.a ? '<span class="comp-winner">★ Higher Share</span>' : '') +
+          '</div>' +
+        '</div>' +
 
-        <!-- Strengths / Bottlenecks -->
-        <div style="margin-top:14px;padding:10px;background:#f0fdf4;border-radius:8px;font-size:11px;color:#14532d;line-height:1.4">
-          <strong>Key Strength:</strong> ${pA.strength}
-        </div>
-        <div style="margin-top:8px;padding:10px;background:#fff7ed;border-radius:8px;font-size:11px;color:#9a3412;line-height:1.4">
-          <strong>Key Bottleneck:</strong> ${pA.improvement}
-        </div>
-      </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Total Resubmissions (Rework)</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:14px;color:' + (pA.resubmitCount > 100 ? '#b91c1c' : 'inherit') + '">' + pA.resubmitCount + ' cases</strong>' +
+            (winRework.a ? '<span class="comp-winner">★ Less Rework</span>' : '') +
+          '</div>' +
+        '</div>' +
 
-      <!-- Performer B Card -->
-      <div class="comp-card" style="border-top:4px solid #059669">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <div style="display:flex;align-items:center;gap:10px">
-            <div class="imp-avatar" style="background:${pB.avatarBg};color:${pB.avatarColor};width:48px;height:48px;font-size:18px">
-              ${pB.name.substring(0, 2).toUpperCase()}
-            </div>
-            <div>
-              <div style="font-size:17px;font-weight:900;color:var(--text)">${pB.name}</div>
-              <div style="font-size:12px;color:var(--muted)">${pB.roleLabel}</div>
-            </div>
-          </div>
-          <span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px">${pB.tier}</span>
-        </div>
+        '<div style="margin-top:14px;padding:10px;background:#f0fdf4;border-radius:8px;font-size:11px;color:#14532d;line-height:1.4">' +
+          '<strong>Key Strength:</strong> ' + pA.strength +
+        '</div>' +
+        '<div style="margin-top:8px;padding:10px;background:#fff7ed;border-radius:8px;font-size:11px;color:#9a3412;line-height:1.4">' +
+          '<strong>Key Bottleneck:</strong> ' + pA.improvement +
+        '</div>' +
+      '</div>' +
 
-        <!-- Comparative Meters -->
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Total Cases Handled</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:15px;color:var(--text)">${pB.cases.toLocaleString()}</strong>
-            ${winVol.b ? '<span class="comp-winner">★ Leader</span>' : ''}
-          </div>
-        </div>
-        <div style="background:#e2e8f0;border-radius:4px;height:6px;margin:4px 0 10px;overflow:hidden">
-          <div style="background:#059669;height:100%;width:${pctVolB}%"></div>
-        </div>
+      // Performer B Card
+      '<div class="comp-card" style="border-top:4px solid #059669">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">' +
+          '<div style="display:flex;align-items:center;gap:10px">' +
+            '<div class="imp-avatar" style="background:' + pB.avatarBg + ';color:' + pB.avatarColor + ';width:48px;height:48px;font-size:18px">' +
+              pB.name.substring(0, 2).toUpperCase() +
+            '</div>' +
+            '<div>' +
+              '<div style="font-size:17px;font-weight:900;color:var(--text)">' + pB.name + '</div>' +
+              '<div style="font-size:12px;color:var(--muted)">' + pB.roleLabel + '</div>' +
+            '</div>' +
+          '</div>' +
+          '<span style="background:#dcfce7;color:#15803d;font-size:10px;font-weight:800;padding:3px 8px;border-radius:4px">' + pB.tier + '</span>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Total Points Generated</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:15px;color:#059669">${pB.points.toFixed(1)}</strong>
-            ${winPts.b ? '<span class="comp-winner">★ Leader</span>' : ''}
-          </div>
-        </div>
-        <div style="background:#e2e8f0;border-radius:4px;height:6px;margin:4px 0 10px;overflow:hidden">
-          <div style="background:#10b981;height:100%;width:${pctPtsB}%"></div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Total Cases Handled</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:15px;color:var(--text)">' + pB.cases.toLocaleString() + '</strong>' +
+            (winVol.b ? '<span class="comp-winner">★ Leader</span>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div style="background:#e2e8f0;border-radius:4px;height:6px;margin:4px 0 10px;overflow:hidden">' +
+          '<div style="background:#059669;height:100%;width:' + pctVolB + '%"></div>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Point Efficiency (Pts/Case)</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:14px">${pB.ratio.toFixed(2)}</strong>
-            ${winEff.b ? '<span class="comp-winner">★ Higher Yield</span>' : ''}
-          </div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Total Points Generated</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:15px;color:#059669">' + pB.points.toFixed(1) + '</strong>' +
+            (winPts.b ? '<span class="comp-winner">★ Leader</span>' : '') +
+          '</div>' +
+        '</div>' +
+        '<div style="background:#e2e8f0;border-radius:4px;height:6px;margin:4px 0 10px;overflow:hidden">' +
+          '<div style="background:#10b981;height:100%;width:' + pctPtsB + '%"></div>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Approved Portfolio Value</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:14px">${formatImpInr(pB.amount)}</strong>
-            ${winVal.b ? '<span class="comp-winner">★ Higher Value</span>' : ''}
-          </div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Point Efficiency (Pts/Case)</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:14px">' + pB.ratio.toFixed(2) + '</strong>' +
+            (winEff.b ? '<span class="comp-winner">★ Higher Yield</span>' : '') +
+          '</div>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">% of Workload Share</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:14px;color:${pB.role === 'OPS' ? '#0369a1' : '#b45309'}">${workPctB}% (${pB.role === 'OPS' ? 'Ops' : 'Docs'})</strong>
-            ${winWorkShare.b ? '<span class="comp-winner">★ Higher Share</span>' : ''}
-          </div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Approved Portfolio Value</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:14px">' + formatImpInr(pB.amount) + '</strong>' +
+            (winVal.b ? '<span class="comp-winner">★ Higher Value</span>' : '') +
+          '</div>' +
+        '</div>' +
 
-        <div class="comp-metric-row">
-          <span style="color:var(--muted)">Total Resubmissions (Rework)</span>
-          <div style="display:flex;align-items:center;gap:6px">
-            <strong style="font-size:14px;color:${pB.resubmitCount > 100 ? '#b91c1c' : 'inherit'}">${pB.resubmitCount} cases</strong>
-            ${winRework.b ? '<span class="comp-winner">★ Less Rework</span>' : ''}
-          </div>
-        </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">% of Workload Share</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:14px;color:' + (isOps ? '#0369a1' : '#b45309') + '">' + workPctB + '% (' + (isOps ? 'Employees' : 'Doctors') + ')</strong>' +
+            (winWorkShare.b ? '<span class="comp-winner">★ Higher Share</span>' : '') +
+          '</div>' +
+        '</div>' +
 
-        <!-- Strengths / Bottlenecks -->
-        <div style="margin-top:14px;padding:10px;background:#f0fdf4;border-radius:8px;font-size:11px;color:#14532d;line-height:1.4">
-          <strong>Key Strength:</strong> ${pB.strength}
-        </div>
-        <div style="margin-top:8px;padding:10px;background:#fff7ed;border-radius:8px;font-size:11px;color:#9a3412;line-height:1.4">
-          <strong>Key Bottleneck:</strong> ${pB.improvement}
-        </div>
-      </div>
-    </div>
+        '<div class="comp-metric-row">' +
+          '<span style="color:var(--muted)">Total Resubmissions (Rework)</span>' +
+          '<div style="display:flex;align-items:center;gap:6px">' +
+            '<strong style="font-size:14px;color:' + (pB.resubmitCount > 100 ? '#b91c1c' : 'inherit') + '">' + pB.resubmitCount + ' cases</strong>' +
+            (winRework.b ? '<span class="comp-winner">★ Less Rework</span>' : '') +
+          '</div>' +
+        '</div>' +
 
-    <!-- Diagnostic Synergy Box -->
-    <div style="margin-top:18px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:16px">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
-        <span style="font-size:18px">💡</span>
-        <h4 style="margin:0;font-size:13px;font-weight:800;color:#1e3a8a">Comparative Diagnostic & Operational Synergy</h4>
-      </div>
-      <div style="font-size:12px;line-height:1.55;color:#1e3a8a">
-        ${synergyText}
-      </div>
-    </div>
-  `;
+        '<div style="margin-top:14px;padding:10px;background:#f0fdf4;border-radius:8px;font-size:11px;color:#14532d;line-height:1.4">' +
+          '<strong>Key Strength:</strong> ' + pB.strength +
+        '</div>' +
+        '<div style="margin-top:8px;padding:10px;background:#fff7ed;border-radius:8px;font-size:11px;color:#9a3412;line-height:1.4">' +
+          '<strong>Key Bottleneck:</strong> ' + pB.improvement +
+        '</div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div style="margin-top:18px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:16px">' +
+      '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">' +
+        '<span style="font-size:18px">💡</span>' +
+        '<h4 style="margin:0;font-size:13px;font-weight:800;color:#1e3a8a">Discipline Comparative Diagnostic & Peer Synergy</h4>' +
+      '</div>' +
+      '<div style="font-size:12px;line-height:1.55;color:#1e3a8a">' +
+        synergyText +
+      '</div>' +
+    '</div>';
 
   container.innerHTML = html;
 }
 
 function exportImprovementAnalysis(format) {
-  const filename = `Vasus_Workforce_Improvement_Analysis_${new Date().toISOString().slice(0, 10)}`;
+  const filename = 'Vasus_Workforce_Improvement_Analysis_' + new Date().toISOString().slice(0, 10);
   const totalOpsCases = IMPROVEMENT_DATA.filter(p => p.role === 'OPS').reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
   const totalDocCases = IMPROVEMENT_DATA.filter(p => p.role === 'DOC').reduce((sum, p) => sum + (p.cases || 0), 0) || 1;
 
+  let opsRank = 0;
+  let docRank = 0;
+
   if(format === 'csv') {
     let csv = '\uFEFF';
-    csv += 'Rank,Individual,Role,Track,Total Cases,Total Points,Points/Case,Value (INR),% of Work,Work Group,Resubmissions,Claims,Preauths,Enhancements,Queries,Submits,Primary Strength,Where to Improve (Bottleneck),Target Roadmap\r\n';
+    csv += 'Discipline,Rank In Group,Individual,Role Track,Seniority/Tier,Total Cases,Total Points,Points/Case,Value (INR),% of Workgroup Share,Resubmissions,Claims,Preauths,Enhancements,Queries,Submits,Primary Strength,Where to Improve (Bottleneck),Target Roadmap\r\n';
 
-    IMPROVEMENT_DATA.forEach((p, idx) => {
+    IMPROVEMENT_DATA.forEach(p => {
       const isOps = (p.role === 'OPS');
+      const rankInGroup = isOps ? ++opsRank : ++docRank;
+      const groupLabel = isOps ? 'Operations' : 'Clinical Doctors';
       const totalGroupCases = isOps ? totalOpsCases : totalDocCases;
       const workPct = ((p.cases / totalGroupCases) * 100).toFixed(1) + '%';
-      const groupLabel = isOps ? 'Employees' : 'Doctors';
       const bd = p.breakdown || {};
       const row = [
-        idx + 1,
-        `"${p.name}"`,
-        `"${p.roleLabel}"`,
-        `"${p.tier}"`,
+        '"' + groupLabel + '"',
+        '#' + rankInGroup,
+        '"' + p.name + '"',
+        '"' + p.roleLabel + '"',
+        '"' + p.tier + '"',
         p.cases,
         p.points.toFixed(1),
         p.ratio.toFixed(2),
         p.amount || 0,
-        `"${workPct}"`,
-        `"${groupLabel}"`,
+        '"' + workPct + '"',
         p.resubmitCount,
         bd.claim || 0,
         bd.preauth || 0,
         bd.enhancement || 0,
         bd.query || 0,
         bd.submit || 0,
-        `"${p.strength.replace(/"/g, '""')}"`,
-        `"${p.improvement.replace(/"/g, '""')}"`,
-        `"${p.roadmap.replace(/"/g, '""')}"`
+        '"' + (p.strength || '').replace(/"/g, '""') + '"',
+        '"' + (p.improvement || '').replace(/"/g, '""') + '"',
+        '"' + (p.roadmap || '').replace(/"/g, '""') + '"'
       ];
       csv += row.join(',') + '\r\n';
     });
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    triggerDownload(blob, `${filename}.csv`);
+    triggerDownload(blob, filename + '.csv');
   } else {
-    let html = `<html><head><meta charset="utf-8"></head><body><table border="1">`;
-    html += `<tr style="background:#1e3a8a;color:#ffffff">
-      <th>Rank</th><th>Individual</th><th>Role</th><th>Track</th><th>Total Cases</th><th>Total Points</th><th>Points/Case</th><th>Value (INR)</th><th>% of Work</th><th>Work Group</th><th>Resubmissions</th><th>Claims</th><th>Preauths</th><th>Enhancements</th><th>Queries</th><th>Submits</th><th>Primary Strength</th><th>Where to Improve (Bottleneck)</th><th>Target Roadmap</th>
-    </tr>`;
+    let html = '<html><head><meta charset="utf-8"></head><body><table border="1">';
+    html += '<tr style="background:#1e3a8a;color:#ffffff">' +
+      '<th>Discipline</th><th>Rank In Group</th><th>Individual</th><th>Role Track</th><th>Seniority/Tier</th><th>Total Cases</th><th>Total Points</th><th>Points/Case</th><th>Value (INR)</th><th>% of Workgroup Share</th><th>Resubmissions</th><th>Claims</th><th>Preauths</th><th>Enhancements</th><th>Queries</th><th>Submits</th><th>Primary Strength</th><th>Where to Improve (Bottleneck)</th><th>Target Roadmap</th>' +
+    '</tr>';
 
-    IMPROVEMENT_DATA.forEach((p, idx) => {
+    IMPROVEMENT_DATA.forEach(p => {
       const isOps = (p.role === 'OPS');
+      const rankInGroup = isOps ? ++opsRank : ++docRank;
+      const groupLabel = isOps ? 'Operations' : 'Clinical Doctors';
       const totalGroupCases = isOps ? totalOpsCases : totalDocCases;
       const workPct = ((p.cases / totalGroupCases) * 100).toFixed(1) + '%';
-      const groupLabel = isOps ? 'Employees' : 'Doctors';
       const bd = p.breakdown || {};
-      html += `<tr>
-        <td>${idx + 1}</td>
-        <td><b>${p.name}</b></td>
-        <td>${p.roleLabel}</td>
-        <td>${p.tier}</td>
-        <td>${p.cases}</td>
-        <td>${p.points.toFixed(1)}</td>
-        <td>${p.ratio.toFixed(2)}</td>
-        <td>${p.amount || 0}</td>
-        <td>${workPct}</td>
-        <td>${groupLabel}</td>
-        <td>${p.resubmitCount}</td>
-        <td>${bd.claim || 0}</td>
-        <td>${bd.preauth || 0}</td>
-        <td>${bd.enhancement || 0}</td>
-        <td>${bd.query || 0}</td>
-        <td>${bd.submit || 0}</td>
-        <td>${p.strength}</td>
-        <td>${p.improvement}</td>
-        <td>${p.roadmap}</td>
-      </tr>`;
+      html += '<tr>' +
+        '<td>' + groupLabel + '</td>' +
+        '<td>#' + rankInGroup + '</td>' +
+        '<td><b>' + p.name + '</b></td>' +
+        '<td>' + p.roleLabel + '</td>' +
+        '<td>' + p.tier + '</td>' +
+        '<td>' + p.cases + '</td>' +
+        '<td>' + p.points.toFixed(1) + '</td>' +
+        '<td>' + p.ratio.toFixed(2) + '</td>' +
+        '<td>' + (p.amount || 0) + '</td>' +
+        '<td>' + workPct + '</td>' +
+        '<td>' + p.resubmitCount + '</td>' +
+        '<td>' + (bd.claim || 0) + '</td>' +
+        '<td>' + (bd.preauth || 0) + '</td>' +
+        '<td>' + (bd.enhancement || 0) + '</td>' +
+        '<td>' + (bd.query || 0) + '</td>' +
+        '<td>' + (bd.submit || 0) + '</td>' +
+        '<td>' + p.strength + '</td>' +
+        '<td>' + p.improvement + '</td>' +
+        '<td>' + p.roadmap + '</td>' +
+      '</tr>';
     });
 
-    html += `</table></body></html>`;
+    html += '</table></body></html>';
     const blob = new Blob([html], { type: 'application/vnd.ms-excel;charset=utf-8;' });
-    triggerDownload(blob, `${filename}.xls`);
+    triggerDownload(blob, filename + '.xls');
   }
 }
-
 </script>
 </body>
 </html>
