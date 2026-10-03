@@ -32,6 +32,8 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Hel
 /* Tabs */
 .tabs{display:flex;gap:8px;margin-bottom:18px;border-bottom:2px solid #e1e7f0;padding-bottom:10px}
 .tab{background:#fff;color:#475569;border:1px solid #d5ddea;border-radius:8px;padding:9px 18px;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .18s}
+.tab a, a.tab{text-decoration:none;color:#475569}
+.tab a:hover, a.tab:hover{color:var(--blue);background:#f1f5f9}
 .tab:hover{background:#f1f5f9;color:var(--blue)}
 .tab.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 3px 8px rgba(23,63,120,0.25)}
 
@@ -1246,6 +1248,11 @@ table.doc-leader-table th {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       Individual Improvement Analysis
     </button>
+    <a href="https://master_report.surge.sh/" target="_blank" rel="noopener noreferrer" class="tab" style="text-decoration:none" title="Open Master Report (https://master_report.surge.sh/)">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Report
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="opacity:0.6;margin-left:1px"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+    </a>
   </div>
 
   <!-- ==================== DASHBOARD TAB ==================== -->
