@@ -5806,15 +5806,25 @@ function cleanImplantDescription(raw, procName = '') {
 }
 
 function formatAnesthesiaTag(anesValue, packageData) {
-  const val = (anesValue || (packageData && packageData.anes) || '').trim();
-  if (!val || val === 'NA' || val === '-' || val === 'No') return '';
-  if (/general|\bGA\b/i.test(val)) {
-    return 'Under (GA)';
+  const chosen = (anesValue || '').trim();
+  if (chosen) {
+    if (/general|\bGA\b/i.test(chosen)) return 'Under (GA)';
+    if (/local|\bLA\b/i.test(chosen)) return 'Under (LA)';
+    if (/spinal|\bSA\b/i.test(chosen)) return 'Under (SA)';
+    return `Under (${chosen})`;
   }
-  if (/local|\bLA\b/i.test(val)) {
-    return 'Under (LA)';
-  }
+  const pkgAnes = (packageData && packageData.anes ? packageData.anes : '').trim();
+  if (!pkgAnes || pkgAnes === 'NA' || pkgAnes === '-' || pkgAnes === 'No') return '';
+  if (/general|\bGA\b/i.test(pkgAnes)) return 'Under (GA)';
+  if (/local|\bLA\b/i.test(pkgAnes)) return 'Under (LA)';
   return '';
+}
+
+function cleanLateralityDescription(raw) {
+  if (!raw || raw === 'Yes' || raw === 'No' || raw === 'NA' || raw === '-') return '';
+  let str = String(raw).trim();
+  str = str.replace(/^\d+[\.\)]\s*/, '').trim();
+  return str;
 }
 
 function formatProcedureNameForMultiCopy(p) {
@@ -5857,6 +5867,21 @@ function formatMultiPackageCopyItem(p, selections = {}) {
     const isWard = ['RW', 'HDU', 'ICU', 'ICU-VENT'].includes(selections.stratification) || isWardStratPackage(p);
     const cleanWard = selections.stratification.replace(/^\d+[\.\)]\s*/, '').trim();
     item += isWard ? ` (Ward - ${cleanWard})` : ` (Strat - ${cleanWard})`;
+  }
+
+  // Laterality details
+  let latText = '';
+  if (selections.laterality) {
+    latText = cleanLateralityDescription(selections.laterality);
+  } else if (p.lat && p.lat !== 'NA' && p.lat !== '-' && p.lat !== 'No') {
+    const lines = p.lat.split('\n').map(l => l.replace(/^\d+[\.\)]\s*/, '').trim()).filter(Boolean);
+    if (lines.length === 1) {
+      latText = lines[0];
+    }
+  }
+
+  if (latText) {
+    item += ` (Lat - ${latText})`;
   }
 
   // Anesthesia details
@@ -5902,7 +5927,10 @@ function formatPackageCopyLine(p, selections = {}) {
     const isWard = ['RW', 'HDU', 'ICU', 'ICU-VENT'].includes(selections.stratification) || isWardStratPackage(p);
     line += isWard ? ` - Ward: ${selections.stratification}` : ` - Stratification: ${selections.stratification}`;
   }
-  if (selections.laterality) line += ` - Laterality: ${selections.laterality}`;
+  if (selections.laterality) {
+    const cleanLat = cleanLateralityDescription(selections.laterality);
+    line += ` - Laterality: ${cleanLat}`;
+  }
   if (selections.anesthesia) line += ` - Anesthesia: ${selections.anesthesia}`;
 
   return line;
