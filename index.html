@@ -5754,9 +5754,60 @@ function initPackageMasterTab() {
   renderPackageMasterTable();
 }
 
-// Most Used Procedures & Procedure Usage Dataset State
+// Most Used Procedures & Doctor Copy Click Tracker
 let pkgMostUsedActive = false;
 let pkgMostUsedLimit = 50;
+
+// User-specified initial seed codes: MG072D, MC011A, SU033A, SU034A, MG056A, SG050A, SE020A, SE020B
+const DEFAULT_PACKAGE_COPY_SEEDS = {
+  'MG072D': 25,
+  'MC011A': 20,
+  'SU033A': 18,
+  'SU034A': 15,
+  'MG056A': 12,
+  'SG050A': 10,
+  'SE020A': 8,
+  'SE020B': 6
+};
+
+function getPackageCopyClicksMap() {
+  try {
+    const raw = localStorage.getItem('vasus_package_copy_clicks');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === 'object' && Object.keys(parsed).length > 0) {
+        return parsed;
+      }
+    }
+  } catch (e) {}
+  // Initialize default seeds
+  try {
+    localStorage.setItem('vasus_package_copy_clicks', JSON.stringify(DEFAULT_PACKAGE_COPY_SEEDS));
+  } catch (e) {}
+  return Object.assign({}, DEFAULT_PACKAGE_COPY_SEEDS);
+}
+
+function recordPackageCopyClick(code, scheme) {
+  if (!code) return;
+  try {
+    const map = getPackageCopyClicksMap();
+    const cleanCode = String(code).trim();
+    map[cleanCode] = (Number(map[cleanCode]) || 0) + 1;
+    localStorage.setItem('vasus_package_copy_clicks', JSON.stringify(map));
+  } catch (e) {
+    console.error('Failed to record copy click:', e);
+  }
+}
+
+function resetPackageCopyClicks() {
+  if (confirm('Reset copy counts back to the default top packages (MG072D, MC011A, SU033A, SU034A, MG056A, SG050A, SE020A, SE020B)?')) {
+    try {
+      localStorage.setItem('vasus_package_copy_clicks', JSON.stringify(DEFAULT_PACKAGE_COPY_SEEDS));
+    } catch(e) {}
+    showNotification('Copy history reset to default top packages.', 'info');
+    renderPackageMasterTable();
+  }
+}
 
 function getPackageUsageMap() {
   if (window.PACKAGE_USAGE_DATA && typeof window.PACKAGE_USAGE_DATA === 'object') {
@@ -5783,7 +5834,8 @@ function getPackageUsageMap() {
     }
   } catch(e) {}
 
-  return null;
+  // Defaults to Copy Clicks Tracker
+  return getPackageCopyClicksMap();
 }
 
 function togglePkgMostUsedFilter() {
@@ -6458,11 +6510,12 @@ function toggleSelectAllVisiblePackages(isChecked) {
 
 function triggerSinglePkgCopy(code, scheme) {
   const all = getRawPackageList();
-  const pkg = all.find(p => p.c === code && p.s === scheme);
+  const pkg = all.find(p => p.c === code && (!scheme || p.s === scheme)) || all.find(p => p.c === code);
   if (!pkg) return;
 
   const reqFields = getRequiredFieldsForPackage(pkg);
   if (reqFields.length === 0) {
+    recordPackageCopyClick(pkg.c, pkg.s);
     const line = formatPackageCopyLine(pkg);
     copyTextToClipboard(line);
     showNotification(`Copied: ${line}`, 'success');
@@ -6500,6 +6553,7 @@ function triggerCopySelectedPackages() {
 
   if (pkgsNeedingInput.length === 0) {
     // No packages require input, copy all immediately
+    selectedPkgs.forEach(p => recordPackageCopyClick(p.c, p.s));
     const multiString = buildMultiPackageCopyString(selectedPkgs);
     copyTextToClipboard(multiString);
     showNotification(`Copied ${selectedPkgs.length} packages to clipboard!`, 'success');
@@ -6577,12 +6631,14 @@ function executePkgCopyWithOptions() {
 
   if (activeCopyMode === 'single' && activeSinglePkg) {
     const p = activeSinglePkg;
+    recordPackageCopyClick(p.c, p.s);
     const safeKey = `${p.s}___${p.c}`;
     const sel = selectionsMap[safeKey] || {};
     const line = formatPackageCopyLine(p, sel);
     copyTextToClipboard(line);
     showNotification(`Copied: ${line}`, 'success');
   } else if (activeCopyMode === 'multi' && activeMultiPkgs.length > 0) {
+    activeMultiPkgs.forEach(p => recordPackageCopyClick(p.c, p.s));
     const multiString = buildMultiPackageCopyString(activeMultiPkgs, selectionsMap);
     copyTextToClipboard(multiString);
     showNotification(`Copied ${activeMultiPkgs.length} packages to clipboard!`, 'success');
@@ -6660,39 +6716,36 @@ function renderPackageMasterTable() {
       if (noticeContainer) {
         noticeContainer.style.display = 'block';
         noticeContainer.innerHTML = `
-          <div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:14px 18px;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;box-shadow:0 1px 2px rgba(0,0,0,0.05)">
-            <div style="display:flex;align-items:flex-start;gap:12px">
-              <div style="font-size:22px;line-height:1">⚠️</div>
+          <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#1e40af">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:20px">📋</span>
               <div>
-                <div style="font-weight:700;color:#92400e;font-size:13px;margin-bottom:3px">
-                  Claim / Pre-Auth Usage Data Not Connected
-                </div>
-                <div style="font-size:12px;color:#78350f;line-height:1.5">
-                  Package usage data is currently unavailable. To calculate and display the most-used packages with accurate percentages based on actual claims and pre-authorizations, please connect your procedure usage dataset.
-                </div>
+                <div style="font-weight:700;color:#1e40af;font-size:13px;margin-bottom:2px">No Package Copy Activity Recorded Yet</div>
+                <div style="color:#3b82f6;font-size:12px">Copy procedures using the <b>Code</b> button to automatically build your Most Used list.</div>
               </div>
             </div>
-            <button onclick="openConnectUsageModal()" style="background:#f59e0b;color:#fff;border:none;border-radius:6px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;display:inline-flex;align-items:center;gap:6px">
-              🔗 Connect Usage Data
-            </button>
+            <div style="display:flex;gap:8px">
+              <button onclick="resetPackageCopyClicks()" class="secondary" style="padding:5px 12px;font-size:11px;font-weight:700;border-radius:5px;cursor:pointer">Load Default Top Packages</button>
+              <button onclick="togglePkgMostUsedFilter()" style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;padding:5px 12px;font-size:11px;font-weight:700;border-radius:5px;cursor:pointer">Exit Filter</button>
+            </div>
           </div>
         `;
       }
       tbody.innerHTML = `
         <tr>
           <td colspan="12" style="text-align:center;padding:45px 20px;color:var(--text-muted)">
-            <div style="font-size:36px;margin-bottom:12px">📊</div>
-            <div style="font-size:15px;font-weight:700;color:var(--text-main);margin-bottom:6px">Claim & Pre-Auth Usage Data Required</div>
+            <div style="font-size:36px;margin-bottom:12px">📋</div>
+            <div style="font-size:15px;font-weight:700;color:var(--text-main);margin-bottom:6px">No Package Copy Activity Recorded Yet</div>
             <div style="font-size:12px;max-width:520px;margin:0 auto 16px;line-height:1.5;color:var(--muted)">
-              Accurate procedure percentage calculation requires actual claim and pre-authorization volume data. Please connect your claim/pre-auth dataset to view the most-used procedures.
+              As doctors and team members copy packages using the <b>Code</b> button or code badge, they will automatically appear here ranked by most copied for instant 1-click access!
             </div>
-            <button onclick="openConnectUsageModal()" class="secondary" style="padding:7px 16px;font-size:12px;font-weight:700;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:6px">
-              🔗 Connect Procedure Dataset
+            <button onclick="resetPackageCopyClicks()" class="secondary" style="padding:7px 16px;font-size:12px;font-weight:700;border-radius:6px;cursor:pointer">
+              ⭐ Load Default Top Packages
             </button>
           </td>
         </tr>
       `;
-      if(countText) countText.textContent = `Showing 0 packages (usage data not connected)`;
+      if(countText) countText.textContent = `Showing 0 packages (no copy activity recorded)`;
       if(pageText) pageText.textContent = `Page 1 of 1`;
       if(prevBtn) prevBtn.disabled = true;
       if(nextBtn) nextBtn.disabled = true;
@@ -6705,10 +6758,10 @@ function renderPackageMasterTable() {
           <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:#166534">
             <div style="display:flex;align-items:center;gap:8px">
               <span style="font-size:16px">🔥</span>
-              <span><b>Most Used Filter Active:</b> Showing top ${pkgMostUsedLimit} procedures calculated from <b>${totalClaimsVolume.toLocaleString()}</b> actual claims/pre-auths.</span>
+              <span><b>Most Used Filter Active:</b> Showing top ${pkgMostUsedLimit} procedures calculated from <b>${totalClaimsVolume.toLocaleString()}</b> copy clicks recorded.</span>
             </div>
             <div style="display:flex;gap:8px">
-              <button onclick="openConnectUsageModal()" class="secondary" style="padding:4px 10px;font-size:11px;font-weight:700;border-radius:5px;cursor:pointer">Manage Dataset</button>
+              <button onclick="resetPackageCopyClicks()" class="secondary" style="padding:4px 10px;font-size:11px;font-weight:700;border-radius:5px;cursor:pointer;color:#dc2626;border-color:#fca5a5" title="Reset copy counts back to default top packages">Reset to Defaults</button>
               <button onclick="togglePkgMostUsedFilter()" style="background:#fee2e2;color:#dc2626;border:1px solid #fecaca;padding:4px 10px;font-size:11px;font-weight:700;border-radius:5px;cursor:pointer">Exit Filter</button>
             </div>
           </div>
@@ -6740,7 +6793,7 @@ function renderPackageMasterTable() {
     }
 
     if (usageMap && totalClaimsVolume > 0) {
-      const cnt = Number(usageMap[p.c] || 0);
+      const cnt = Number(usageMap[p.c] || usageMap[`${p.s}:::${p.c}`] || 0);
       p.usageCount = cnt;
       p.usagePercentNum = (cnt / totalClaimsVolume) * 100;
       p.usagePercent = p.usagePercentNum.toFixed(1);
@@ -6775,7 +6828,7 @@ function renderPackageMasterTable() {
   // Apply Most Used ranking & limit
   if (pkgMostUsedActive && usageMap && totalClaimsVolume > 0) {
     filtered = filtered.filter(p => p.usageCount > 0);
-    filtered.sort((a, b) => b.usagePercentNum - a.usagePercentNum);
+    filtered.sort((a, b) => b.usageCount - a.usageCount || b.usagePercentNum - a.usagePercentNum);
     filtered = filtered.slice(0, pkgMostUsedLimit);
   }
 
@@ -6888,7 +6941,7 @@ function renderPackageMasterTable() {
         <td style="text-align:center">
           <input type="checkbox" class="pkg-row-checkbox" ${isSelected ? 'checked' : ''} onchange="onPkgRowCheckboxChange('${safeCode}', '${safeScheme}', this.checked)" style="width:15px;height:15px;cursor:pointer;accent-color:#2563eb">
         </td>
-        <td><span class="pkg-code-badge" onclick="navigator.clipboard.writeText('${safeCode}');showNotification('Copied ${safeCode} to clipboard!','success')" title="Click to copy code">${p.c}</span></td>
+        <td><span class="pkg-code-badge" onclick="recordPackageCopyClick('${safeCode}', '${safeScheme}');navigator.clipboard.writeText('${safeCode}');showNotification('Copied ${safeCode} to clipboard!','success')" title="Click to copy code">${p.c}</span></td>
         ${usageTd}
         <td style="font-weight:600">${p.sp || '-'}</td>
         <td>
