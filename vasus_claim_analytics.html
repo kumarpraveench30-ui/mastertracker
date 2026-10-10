@@ -1350,6 +1350,760 @@ table.doc-leader-table th {
   color: #94a3b8;
 }
 
+
+
+/* ==========================================================
+ * VASUS CASE AUDIT ASSISTANT - ENHANCED CHATBOT CSS
+ * ========================================================== */
+.case-audit-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #133566, #2563eb);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px 12px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(19, 53, 102, 0.35), 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.case-audit-fab:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(19, 53, 102, 0.45), 0 4px 10px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #0e274d, #1d4ed8);
+}
+.case-audit-fab:active {
+  transform: translateY(0) scale(0.98);
+}
+.fab-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+}
+.fab-online-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 9px;
+  height: 9px;
+  background: #22c55e;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #22c55e;
+}
+.fab-label {
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.case-audit-window {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  width: 530px;
+  max-width: calc(100vw - 32px);
+  height: min(780px, calc(100vh - 95px));
+  z-index: 10000;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 24px 60px -10px rgba(15, 23, 42, 0.35), 0 0 0 1px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: slideUpAudit 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes slideUpAudit {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.audit-window-header {
+  background: linear-gradient(135deg, #0f2b57, #1d4ed8);
+  color: #ffffff;
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+.audit-header-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.audit-header-avatar {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+.audit-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: #ffffff;
+}
+.audit-status {
+  font-size: 11px;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+  font-weight: 500;
+}
+.audit-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  box-shadow: 0 0 6px #4ade80;
+  display: inline-block;
+}
+.audit-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.audit-btn-icon {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.15s !important;
+}
+.audit-btn-icon:hover {
+  background: rgba(255, 255, 255, 0.28) !important;
+  transform: translateY(-1px);
+}
+.audit-btn-icon svg {
+  width: 17px !important;
+  height: 17px !important;
+  stroke: #ffffff !important;
+  display: block !important;
+}
+.audit-close-btn:hover {
+  background: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+
+.audit-search-section {
+  background: #f8fafc;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+.audit-search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+}
+.audit-search-icon {
+  position: absolute;
+  left: 11px;
+  color: #94a3b8;
+  pointer-events: none;
+}
+.audit-input {
+  flex: 1;
+  padding: 9px 12px 9px 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+  background: #ffffff;
+  color: #0f172a;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.audit-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+.audit-search-submit {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 15px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.audit-search-submit:hover {
+  background: #1d4ed8;
+}
+.audit-search-clear {
+  background: #ffffff;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.audit-search-clear:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+.audit-matches-dropdown {
+  margin-top: 10px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 9px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.audit-matches-title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.audit-matches-select {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f172a;
+  background: #f8fafc;
+  outline: none;
+  cursor: pointer;
+}
+.audit-matches-select:focus {
+  border-color: #2563eb;
+}
+
+/* Scrollable Body - Block Flow Ensures Natural Scrolling */
+.audit-report-body {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  padding: 16px 16px 36px 16px !important;
+  background: #f1f5f9 !important;
+  display: block !important;
+}
+.audit-report-body::-webkit-scrollbar {
+  width: 10px !important;
+}
+.audit-report-body::-webkit-scrollbar-track {
+  background: #e2e8f0 !important;
+  border-radius: 8px !important;
+}
+.audit-report-body::-webkit-scrollbar-thumb {
+  background: #94a3b8 !important;
+  border-radius: 8px !important;
+  border: 2px solid #e2e8f0 !important;
+}
+.audit-report-body::-webkit-scrollbar-thumb:hover {
+  background: #64748b !important;
+}
+
+.audit-empty-state {
+  text-align: center;
+  padding: 36px 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+  margin: 10px 0;
+}
+.audit-empty-icon {
+  width: 52px;
+  height: 52px;
+  background: #eff6ff;
+  color: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+.audit-empty-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 6px;
+}
+.audit-empty-desc {
+  font-size: 12.5px;
+  color: #64748b;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+.audit-quick-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.audit-quick-pill {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 20px;
+  padding: 6px 13px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.audit-quick-pill:hover {
+  background: #dbeafe;
+  transform: translateY(-1px);
+}
+
+.audit-loading-state {
+  text-align: center;
+  padding: 50px 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin: 10px 0;
+}
+.audit-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid #e2e8f0;
+  border-top-color: #2563eb;
+  border-radius: 50%;
+  animation: auditSpin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+@keyframes auditSpin {
+  100% { transform: rotate(360deg); }
+}
+
+.audit-alert-box {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ef4444;
+  border-radius: 8px;
+  padding: 14px;
+  color: #991b1b;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+/* Meta Card */
+.audit-meta-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 14px;
+}
+.audit-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.audit-case-number {
+  font-size: 17px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: 0.3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.audit-copy-badge-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  padding: 3px 8px;
+  font-size: 11.5px;
+  color: #334155;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 700;
+}
+.audit-copy-badge-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+.audit-hosp-badge {
+  background: #eff6ff;
+  color: #1e40af;
+  border: 1px solid #bfdbfe;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+.audit-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+  background: #f8fafc;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 11.5px;
+}
+.audit-meta-item strong {
+  color: #64748b;
+  display: block;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  letter-spacing: 0.3px;
+}
+.audit-meta-item span {
+  color: #0f172a;
+  font-weight: 800;
+}
+
+/* Section Cards - Full Prominence */
+.audit-sec-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  margin-bottom: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.15s;
+}
+.audit-sec-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+.audit-sec-header {
+  padding: 12px 16px;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.15s;
+}
+.audit-sec-header:hover {
+  background: #f8fafc;
+}
+.audit-sec-card.open .audit-sec-header {
+  border-bottom-color: #e2e8f0;
+  background: #f8fafc;
+}
+.audit-sec-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.audit-sec-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.audit-sec-badge.badge-a { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+.audit-sec-badge.badge-b { background: #e0e7ff; color: #4338ca; border: 1px solid #c7d2fe; }
+.audit-sec-badge.badge-c { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.audit-sec-badge.badge-d { background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+.audit-sec-badge.badge-e { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.audit-sec-badge.badge-f { background: #e2e8f0; color: #334155; border: 1px solid #cbd5e1; }
+.audit-sec-badge.badge-g { background: #ccfbf1; color: #0f766e; border: 1px solid #99f6e4; }
+
+.audit-sec-title {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: #0f172a;
+}
+.audit-sec-toggle {
+  color: #64748b;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.audit-sec-card.open .audit-sec-toggle {
+  transform: rotate(180deg);
+}
+.audit-sec-body {
+  padding: 14px 16px;
+  font-size: 12.5px;
+  color: #1e293b;
+  display: block;
+}
+.audit-sec-card:not(.open) .audit-sec-body {
+  display: none;
+}
+
+/* Detail Rows & Styling */
+.audit-row {
+  display: flex;
+  margin-bottom: 8px;
+  gap: 12px;
+  align-items: baseline;
+}
+.audit-row:last-child {
+  margin-bottom: 0;
+}
+.audit-row-label {
+  width: 150px;
+  flex-shrink: 0;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 12px;
+}
+.audit-row-val {
+  flex: 1;
+  font-weight: 700;
+  color: #0f172a;
+  word-break: break-word;
+  font-size: 12.5px;
+}
+.audit-not-recorded {
+  color: #94a3b8;
+  font-style: italic;
+  font-weight: 500;
+}
+.audit-not-recorded-notice {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: #64748b;
+  font-size: 12px;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.audit-notice-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+.audit-code-pill {
+  display: inline-block;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 5px;
+  padding: 2px 7px;
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 12px;
+  color: #1d4ed8;
+  margin-right: 5px;
+  margin-bottom: 4px;
+}
+.audit-sub-block {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  padding: 11px 13px;
+  margin-bottom: 10px;
+}
+.audit-sub-block:last-child {
+  margin-bottom: 0;
+}
+.audit-sub-header {
+  font-size: 12px;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 5px;
+}
+
+/* Timeline in Section G */
+.audit-timeline {
+  position: relative;
+  padding-left: 20px;
+}
+.audit-timeline::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 6px;
+  width: 2px;
+  background: #cbd5e1;
+}
+.audit-timeline-item {
+  position: relative;
+  margin-bottom: 14px;
+}
+.audit-timeline-item:last-child {
+  margin-bottom: 0;
+}
+.audit-timeline-dot {
+  position: absolute;
+  left: -20px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid #2563eb;
+  box-shadow: 0 0 0 2px #ffffff;
+}
+.audit-timeline-item.doctor .audit-timeline-dot { border-color: #9333ea; }
+.audit-timeline-item.claim .audit-timeline-dot { border-color: #16a34a; }
+.audit-timeline-item.query .audit-timeline-dot { border-color: #ea580c; }
+.audit-timeline-content {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  padding: 10px 13px;
+  font-size: 12px;
+}
+.audit-timeline-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.audit-timeline-date {
+  font-weight: 800;
+  color: #334155;
+  font-size: 11.5px;
+}
+.audit-timeline-badge {
+  display: inline-block;
+  padding: 2px 7px;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: #e2e8f0;
+  color: #334155;
+}
+.audit-timeline-badge.preauth { background: #dbeafe; color: #1e40af; }
+.audit-timeline-badge.enhancement { background: #fef3c7; color: #b45309; }
+.audit-timeline-badge.claim { background: #d1fae5; color: #065f46; }
+.audit-timeline-badge.query { background: #ffedd5; color: #c2410c; }
+.audit-timeline-badge.resubmit { background: #fee2e2; color: #b91c1c; }
+
+.audit-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0f172a;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 700;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  animation: toastFade 0.2s ease-out;
+}
+@keyframes toastFade {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@media (max-width: 640px) {
+  .case-audit-window {
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    max-width: 100vw;
+    border-radius: 0;
+    border: none;
+  }
+  .case-audit-fab {
+    bottom: 16px;
+    right: 16px;
+    padding: 10px 16px 10px 12px;
+    font-size: 13px;
+  }
+}
+
+@media print {
+  body > * {
+    display: none !important;
+  }
+  #caseAuditPrintContainer {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 20px !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+  }
+  #caseAuditPrintContainer table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 14px;
+  }
+  #caseAuditPrintContainer th, #caseAuditPrintContainer td {
+    border: 1px solid #333333;
+    padding: 6px 8px;
+    font-size: 11px;
+    text-align: left;
+  }
+  #caseAuditPrintContainer th {
+    background: #f0f0f0 !important;
+    font-weight: bold;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2658,7 +3412,7 @@ table.doc-leader-table th {
             <p style="margin:0 0 8px"><strong>The Diagnosis:</strong> Over 1,480 cases were resubmitted due to initial portal rejections. The top 3 volume executives alone generated 781 resubmissions: <strong>Laxminarayana</strong> (307), <strong>Sirisha</strong> (262), and <strong>Chanikya</strong> (212). Sai Charan has a 6.2% rework rate.</p>
             <p style="margin:0 0 8px"><strong>Operational Impact:</strong> Every resubmitted case takes 2.2x the time of a first-pass submission (re-reading rejection query, obtaining missing records, re-uploading), creating artificial delay and dragging customer satisfaction.</p>
             <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;padding:8px 10px;font-size:11px;color:#9a3412">
-              <strong>Action Playbook:</strong> Establish a 5-point Pre-Dispatch Gate (Verification of Patient ID, Signature, Itemized Bill matching Package Master code, Discharge Summary ICD-10, Mandatory Lab Reports). Aim to reduce resubmissions by 50% within 45 days.
+              <strong>Action Playbook:</strong> Establish a 5-point Pre-Dispatch Gate (Verification of Patient ID, Signature, Itemized Bill matching Package Master code, Discharge Summary Diagnosis, Mandatory Lab Reports). Aim to reduce resubmissions by 50% within 45 days.
             </div>
           </div>
         </div>
@@ -8653,6 +9407,930 @@ function exportImprovementAnalysis(format) {
     triggerDownload(blob, filename + '.xls');
   }
 }
+
+
+/**
+ * ==========================================================
+ * VASUS CASE AUDIT ASSISTANT - ENHANCED CONTROLLER
+ * ==========================================================
+ */
+const AUDIT_DOCTOR_LIST = ['Dr Sunitha', 'Dr Bindu', 'Dr Pranay', 'Dr Chinju', 'Dr Angel', 'Dr Varun'];
+let currentLoadedAuditData = null;
+let auditIsSearching = false;
+
+function toggleAuditChatbot(forceState) {
+  const win = document.getElementById('caseAuditChatWindow');
+  const btn = document.getElementById('caseAuditChatTrigger');
+  if(!win) return;
+  const isCurrentlyOpen = win.style.display !== 'none';
+  const shouldOpen = (forceState !== undefined) ? !!forceState : !isCurrentlyOpen;
+
+  if(shouldOpen) {
+    win.style.display = 'flex';
+    if(btn) btn.style.display = 'none';
+    const input = document.getElementById('auditCaseInput');
+    if(input) setTimeout(() => input.focus(), 100);
+  } else {
+    win.style.display = 'none';
+    if(btn) btn.style.display = 'flex';
+  }
+}
+
+function clearCaseAuditSearch() {
+  const input = document.getElementById('auditCaseInput');
+  if(input) { input.value = ''; input.focus(); }
+  const matchContainer = document.getElementById('auditMatchDropdownContainer');
+  if(matchContainer) matchContainer.style.display = 'none';
+  currentLoadedAuditData = null;
+  resetAuditReportToEmpty();
+}
+
+function resetAuditReportToEmpty() {
+  const content = document.getElementById('auditReportContent');
+  if(!content) return;
+  content.innerHTML = '<div class="audit-empty-state">' +
+    '<div class="audit-empty-icon">' +
+      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>' +
+    '</div>' +
+    '<h4 class="audit-empty-title">Vasus Case Audit Assistant</h4>' +
+    '<p class="audit-empty-desc">Enter any full or partial <strong>Case Number</strong> above to retrieve the live, date-wise case audit history, doctor package codes, employee operational activities, enhancements, and financial status.</p>' +
+    '<div class="audit-quick-pills">' +
+      '<button class="audit-quick-pill" onclick="quickSearchAuditCase(\'2026100510093735\')">Case 2026100510093735</button>' +
+      '<button class="audit-quick-pill" onclick="quickSearchAuditCase(\'2026080110049393\')">Case 2026080110049393</button>' +
+      '<button class="audit-quick-pill" onclick="quickSearchAuditCase(\'2026080410005059\')">Case 2026080410005059</button>' +
+    '</div>' +
+  '</div>';
+}
+
+function quickSearchAuditCase(caseNum) {
+  const input = document.getElementById('auditCaseInput');
+  if(input) input.value = caseNum;
+  executeCaseAuditSearch();
+}
+
+function toggleAuditSection(cardId) {
+  const card = document.getElementById(cardId);
+  if(card) card.classList.toggle('open');
+}
+
+function showAuditToast(msg) {
+  const existing = document.querySelector('.audit-toast');
+  if(existing && existing.parentNode) existing.parentNode.removeChild(existing);
+  const toast = document.createElement('div');
+  toast.className = 'audit-toast';
+  toast.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span>' + msg + '</span>';
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    if(toast.parentNode) toast.parentNode.removeChild(toast);
+  }, 2400);
+}
+
+function copyTextToClipboard(text, successMsg) {
+  navigator.clipboard.writeText(text).then(() => {
+    showAuditToast(successMsg || 'Copied to clipboard!');
+  }).catch(() => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showAuditToast(successMsg || 'Copied to clipboard!');
+  });
+}
+
+function parseAuditDateCell(c) {
+  if(!c) return { str: 'Not recorded', date: null };
+  const val = c.v;
+  const f = c.f || '';
+  if(typeof val === 'string' && val.startsWith('Date(')) {
+    const m = val.match(/Date\((\d+),(\d+),(\d+)(?:,(\d+),(\d+),(\d+))?\)/);
+    if(m) {
+      const d = new Date(parseInt(m[1]), parseInt(m[2]), parseInt(m[3]), parseInt(m[4]||0), parseInt(m[5]||0), parseInt(m[6]||0));
+      const pad = n => String(n).padStart(2, '0');
+      const formatted = pad(d.getDate()) + '/' + pad(d.getMonth()+1) + '/' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+      return { str: f || formatted, date: d };
+    }
+  }
+  return { str: f || String(val || 'Not recorded'), date: null };
+}
+
+function parseAuditDoctorCodes(rawF, rawG) {
+  const str = (rawF || '') + ' ' + (rawG || '');
+  const codeRegex = /\b([A-Z]{2}\d{3}[A-Z\d]?|MS\d{4})\b/g;
+  const codes = [];
+  let m;
+  while ((m = codeRegex.exec(str)) !== null) {
+    if(!codes.includes(m[1])) codes.push(m[1]);
+  }
+  let clinical = String(rawF || '').replace(/\b([A-Z]{2}\d{3}[A-Z\d]?|MS\d{4})\b/g, '').replace(/[*_~]+/g, ' ').replace(/\s+/g, ' ').trim();
+  let remarks = String(rawG || '').trim();
+  if(remarks === 'null') remarks = '';
+  return { codes, clinical, remarks };
+}
+
+function lookupAuditPackageMaster(code) {
+  if(!window.PACKAGE_MASTER_DATA) return null;
+  const list = window.PACKAGE_MASTER_DATA.packages || (Array.isArray(window.PACKAGE_MASTER_DATA) ? window.PACKAGE_MASTER_DATA : []);
+  const found = list.find(x => x.c && x.c.toUpperCase() === code.toUpperCase());
+  return found || null;
+}
+
+async function executeCaseAuditSearch() {
+  const input = document.getElementById('auditCaseInput');
+  const content = document.getElementById('auditReportContent');
+  const matchContainer = document.getElementById('auditMatchDropdownContainer');
+  if(!input || !content) return;
+
+  const rawTerm = input.value.trim();
+  if(!rawTerm) {
+    content.innerHTML = '<div class="audit-alert-box">Please enter a full or partial Case Number to search.</div>';
+    return;
+  }
+  const cleanTerm = rawTerm.replace(/['"\\]/g, '');
+
+  if(matchContainer) matchContainer.style.display = 'none';
+  content.innerHTML = '<div class="audit-loading-state">' +
+    '<div class="audit-spinner"></div>' +
+    '<div style="font-weight:800;color:#0f172a;font-size:14px;margin-bottom:4px;">Searching Database...</div>' +
+    '<div style="font-size:12px;color:#64748b;">Scanning Case log and Doctor Scrutiny tabs for "' + cleanTerm + '"</div>' +
+  '</div>';
+
+  try {
+    auditIsSearching = true;
+    const queryStr = "select B, D, count(A) where B contains '" + cleanTerm + "' group by B, D order by count(A) desc limit 25 label count(A) ''";
+    const res = await queryGviz(queryStr, 'Cases');
+    const rows = res.rows || [];
+
+    if(!rows || rows.length === 0) {
+      content.innerHTML = '<div class="audit-alert-box">' +
+        '<strong>No matching records found.</strong><br>' +
+        'No case records match <strong>"' + cleanTerm + '"</strong> in the Google Sheets database.<br>' +
+        'Please check the Case Number spelling or try searching with a partial number.' +
+      '</div>';
+      auditIsSearching = false;
+      return;
+    }
+
+    const caseMap = new Map();
+    rows.forEach(r => {
+      if(!r || !r.c) return;
+      const caseNum = r.c[0] ? String(r.c[0].f || r.c[0].v || '').trim() : '';
+      const hosp = r.c[1] ? String(r.c[1].f || r.c[1].v || '').trim() : '';
+      const cnt = r.c[2] ? Number(r.c[2].v) || 0 : 0;
+      if(!caseNum) return;
+      if(!caseMap.has(caseNum)) {
+        caseMap.set(caseNum, { caseNum, hospitals: hosp ? [hosp] : [], count: cnt });
+      } else {
+        const item = caseMap.get(caseNum);
+        if(hosp && !item.hospitals.includes(hosp)) item.hospitals.push(hosp);
+        item.count += cnt;
+      }
+    });
+
+    const matches = Array.from(caseMap.values());
+
+    if(matches.length === 1) {
+      if(matchContainer) matchContainer.style.display = 'none';
+      await loadAndDisplayCaseAudit(matches[0].caseNum);
+    } else {
+      if(matchContainer) {
+        matchContainer.style.display = 'block';
+        const label = document.getElementById('auditMatchesCountLabel');
+        if(label) label.textContent = 'Found ' + matches.length + ' matching cases. Select one to audit:';
+        const select = document.getElementById('auditMatchesSelect');
+        if(select) {
+          select.innerHTML = '<option value="">-- Choose a matching case to inspect --</option>' +
+            matches.map(m => '<option value="' + m.caseNum + '">Case ' + m.caseNum + ' - ' + (m.hospitals.join(' / ') || 'Hospital N/A') + ' (' + m.count + ' activities)</option>').join('');
+        }
+      }
+      const exactMatch = matches.find(m => m.caseNum === cleanTerm);
+      if(exactMatch) {
+        const select = document.getElementById('auditMatchesSelect');
+        if(select) select.value = exactMatch.caseNum;
+        await loadAndDisplayCaseAudit(exactMatch.caseNum);
+      } else {
+        content.innerHTML = '<div style="background:#ffffff;border-radius:12px;padding:18px;border:1px solid #cbd5e1;text-align:center;">' +
+          '<div style="font-weight:800;color:#0f172a;font-size:15px;margin-bottom:6px;">Multiple Matching Cases Found (' + matches.length + ')</div>' +
+          '<p style="font-size:12.5px;color:#64748b;margin:0 0 14px;">Please select the exact Case Number you wish to audit from the dropdown above, or click one below:</p>' +
+          '<div style="display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto;">' +
+            matches.map(m => '<div onclick="onSelectMatchCase(\'' + m.caseNum + '\')" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;text-align:left;transition:all 0.15s;" onmouseover="this.style.background=\'#eff6ff\';this.style.borderColor=\'#93c5fd\'" onmouseout="this.style.background=\'#f8fafc\';this.style.borderColor=\'#e2e8f0\'">' +
+              '<div>' +
+                '<strong style="color:#0f172a;font-size:13.5px;">Case #' + m.caseNum + '</strong>' +
+                '<div style="font-size:11.5px;color:#64748b;margin-top:2px;">' + (m.hospitals.join(' / ') || 'Hospital N/A') + '</div>' +
+              '</div>' +
+              '<span style="font-size:11px;background:#e2e8f0;color:#334155;padding:3px 9px;border-radius:12px;font-weight:800;">' + m.count + ' logs</span>' +
+            '</div>').join('') +
+          '</div>' +
+        '</div>';
+      }
+    }
+  } catch(err) {
+    console.error('Case audit search error:', err);
+    content.innerHTML = '<div class="audit-alert-box"><strong>Error connecting to Google Sheets.</strong><br>' + (err.message || 'Unable to retrieve search results.') + '</div>';
+  } finally {
+    auditIsSearching = false;
+  }
+}
+
+async function onSelectMatchCase(caseNum) {
+  if(!caseNum) return;
+  const select = document.getElementById('auditMatchesSelect');
+  if(select) select.value = caseNum;
+  const input = document.getElementById('auditCaseInput');
+  if(input) input.value = caseNum;
+  await loadAndDisplayCaseAudit(caseNum);
+}
+
+async function loadAndDisplayCaseAudit(caseNum) {
+  const content = document.getElementById('auditReportContent');
+  if(!content) return;
+
+  content.innerHTML = '<div class="audit-loading-state">' +
+    '<div class="audit-spinner"></div>' +
+    '<div style="font-weight:800;color:#0f172a;font-size:14px;margin-bottom:4px;">Compiling Audit Trail...</div>' +
+    '<div style="font-size:12px;color:#64748b;">Fetching operational entries and doctor scrutiny logs for Case #' + caseNum + '...</div>' +
+  '</div>';
+
+  try {
+    const cleanCaseNum = String(caseNum).trim().replace(/['"\\]/g, '');
+    const caseRes = await queryGviz("select * where B = '" + cleanCaseNum + "' order by A asc", 'Cases');
+    const caseRows = caseRes.rows || [];
+
+    if(!caseRows || caseRows.length === 0) {
+      content.innerHTML = '<div class="audit-alert-box">No recorded activity found for Case #' + cleanCaseNum + '.</div>';
+      return;
+    }
+
+    const docNamesToQuery = new Set();
+    caseRows.forEach(r => {
+      if(!r || !r.c) return;
+      const uploader = r.c[2] ? String(r.c[2].v || '').trim() : '';
+      if(uploader.startsWith('Dr ') || AUDIT_DOCTOR_LIST.includes(uploader)) {
+        docNamesToQuery.add(uploader);
+      }
+    });
+    if(docNamesToQuery.size === 0) {
+      AUDIT_DOCTOR_LIST.forEach(d => docNamesToQuery.add(d));
+    }
+
+    const doctorRecords = [];
+    const docPromises = Array.from(docNamesToQuery).map(async d => {
+      try {
+        const dRes = await queryGviz("select * where B = '" + cleanCaseNum + "' order by A asc", d);
+        if(dRes && dRes.rows && dRes.rows.length > 0) {
+          dRes.rows.forEach(r => doctorRecords.push({ docName: d, row: r }));
+        }
+      } catch(e) {
+        // Tab query skipped
+      }
+    });
+    await Promise.all(docPromises);
+
+    const allEvents = [];
+    let hospitalName = '';
+
+    caseRows.forEach(r => {
+      if(!r || !r.c) return;
+      const c = r.c;
+      const dateInfo = parseAuditDateCell(c[0]);
+      const uploader = c[2] ? String(c[2].v || '').trim() : 'Not recorded';
+      const hosp = c[3] ? String(c[3].v || '').trim() : '';
+      if(hosp && !hospitalName) hospitalName = hosp;
+      const activity = c[4] ? String(c[4].v || '').trim() : 'Not recorded';
+      const amt = c[5] && c[5].v !== null && !isNaN(c[5].v) ? Number(c[5].v) : null;
+      const discharge = c[6] ? String(c[6].f || c[6].v || '').trim() : '';
+
+      allEvents.push({
+        dateStr: dateInfo.str,
+        dateObj: dateInfo.date,
+        uploader,
+        isDoctor: uploader.startsWith('Dr ') || AUDIT_DOCTOR_LIST.includes(uploader),
+        hospital: hosp,
+        activity,
+        amt,
+        discharge,
+        sourceTab: 'Cases',
+        rawF: c[5] ? (c[5].f || c[5].v) : '',
+        rawG: c[6] ? (c[6].f || c[6].v) : '',
+        packageCodes: [],
+        clinicalNotes: '',
+        doctorRemarks: ''
+      });
+    });
+
+    doctorRecords.forEach(dr => {
+      const c = dr.row.c;
+      const dateInfo = parseAuditDateCell(c[0]);
+      const uploader = dr.docName;
+      const hosp = c[3] ? String(c[3].v || '').trim() : '';
+      if(hosp && !hospitalName) hospitalName = hosp;
+      const activity = c[4] ? String(c[4].v || '').trim() : 'Medical Scrutiny';
+      const rawF = c[5] ? (c[5].f || c[5].v || '') : '';
+      const rawG = c[6] ? (c[6].f || c[6].v || '') : '';
+      const parsed = parseAuditDoctorCodes(rawF, rawG);
+
+      const match = allEvents.find(e => e.uploader === uploader && e.dateStr === dateInfo.str);
+      if(match) {
+        match.packageCodes = parsed.codes;
+        match.clinicalNotes = parsed.clinical;
+        match.doctorRemarks = parsed.remarks;
+        match.rawF = rawF;
+        match.rawG = rawG;
+      } else {
+        allEvents.push({
+          dateStr: dateInfo.str,
+          dateObj: dateInfo.date,
+          uploader,
+          isDoctor: true,
+          hospital: hosp,
+          activity,
+          packageCodes: parsed.codes,
+          clinicalNotes: parsed.clinical,
+          doctorRemarks: parsed.remarks,
+          rawF,
+          rawG,
+          amt: null,
+          discharge: '',
+          sourceTab: dr.docName
+        });
+      }
+    });
+
+    allEvents.sort((a, b) => {
+      if(a.dateObj && b.dateObj) return a.dateObj.getTime() - b.dateObj.getTime();
+      return a.dateStr.localeCompare(b.dateStr);
+    });
+
+    const auditData = {
+      caseNum: cleanCaseNum,
+      hospitalName: hospitalName || 'Not recorded',
+      allEvents
+    };
+    currentLoadedAuditData = auditData;
+    renderAuditReport(auditData);
+
+  } catch(err) {
+    console.error('Error compiling audit report:', err);
+    content.innerHTML = '<div class="audit-alert-box"><strong>Error generating audit report.</strong><br>' + (err.message || 'An error occurred while compiling records.') + '</div>';
+  }
+}
+
+function renderAuditReport(data) {
+  const content = document.getElementById('auditReportContent');
+  if(!content) return;
+
+  const caseNum = data.caseNum;
+  const hospitalName = data.hospitalName;
+  const allEvents = data.allEvents;
+
+  const fmtAmt = amt => (amt !== null && amt !== undefined && !isNaN(amt)) ? '₹' + Number(amt).toLocaleString('en-IN') : '<span class="audit-not-recorded">Not recorded</span>';
+
+  // SECTION A: DR PA CODE
+  const drPa = allEvents.filter(e => e.isDoctor && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa')));
+  let secA_Html = '';
+  if(drPa.length === 0) {
+    secA_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
+  } else {
+    secA_Html = drPa.map(e => {
+      const codeBadges = e.packageCodes && e.packageCodes.length > 0
+        ? e.packageCodes.map(c => {
+            const pm = lookupAuditPackageMaster(c);
+            const desc = pm ? ' <span style="font-weight:normal;color:#475569;">(' + (pm.p || pm.pr) + ')</span>' : '';
+            return '<span class="audit-code-pill">' + c + '</span>' + desc;
+          }).join('<br>')
+        : (e.rawF ? '<span class="audit-code-pill">' + e.rawF + '</span>' : '<span class="audit-not-recorded">Not recorded in detail</span>');
+
+      return '<div class="audit-sub-block">' +
+        '<div class="audit-row"><span class="audit-row-label">Doctor Name:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">PA Package Code(s):</span><span class="audit-row-val">' + codeBadges + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">PA Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Related Remarks:</span><span class="audit-row-val">' + (e.doctorRemarks || e.clinicalNotes || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // SECTION B: Employee PA Initiate Date – Amt
+  const empPa = allEvents.filter(e => !e.isDoctor && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa')));
+  let secB_Html = '';
+  if(empPa.length === 0) {
+    secB_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
+  } else {
+    secB_Html = empPa.map(e => '<div class="audit-sub-block">' +
+      '<div class="audit-row"><span class="audit-row-label">Employee Name:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">PA Initiate Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">PA Amount:</span><span class="audit-row-val" style="color:#16a34a;">' + fmtAmt(e.amt) + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">Status & Remarks:</span><span class="audit-row-val">' + e.activity + (e.discharge ? ' - ' + e.discharge : '') + '</span></div>' +
+    '</div>').join('');
+  }
+
+  // SECTION C: Employee EHM Date
+  const ehm = allEvents.filter(e => e.activity.toLowerCase().includes('enhance') || e.activity.toLowerCase().includes('ehm'));
+  let secC_Html = '';
+  if(ehm.length === 0) {
+    secC_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
+  } else {
+    secC_Html = ehm.map((e, idx) => '<div class="audit-sub-block">' +
+      '<div class="audit-sub-header">' +
+        '<span>Enhancement #' + (idx + 1) + '</span>' +
+        '<span style="font-size:11.5px;color:#64748b;font-weight:700;">' + e.dateStr + '</span>' +
+      '</div>' +
+      '<div class="audit-row"><span class="audit-row-label">Employee Name:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">EHM Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">Enhancement Amount:</span><span class="audit-row-val" style="color:#d97706;">' + fmtAmt(e.amt) + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">Status & Remarks:</span><span class="audit-row-val">' + e.activity + (e.discharge ? ' - ' + e.discharge : '') + '</span></div>' +
+    '</div>').join('');
+  }
+
+  // SECTION D: Dr CI QC Code
+  const drCi = allEvents.filter(e => e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('ci')));
+  const qc = allEvents.filter(e => e.activity.toLowerCase().includes('qc'));
+  let secD_Html = '';
+  if(drCi.length === 0 && qc.length === 0) {
+    secD_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
+  } else {
+    let ciBlocks = '';
+    if(drCi.length > 0) {
+      ciBlocks = drCi.map(e => {
+        const codeBadges = e.packageCodes && e.packageCodes.length > 0
+          ? e.packageCodes.map(c => {
+              const pm = lookupAuditPackageMaster(c);
+              const desc = pm ? ' <span style="font-weight:normal;color:#475569;">(' + (pm.p || pm.pr) + ')</span>' : '';
+              return '<span class="audit-code-pill">' + c + '</span>' + desc;
+            }).join('<br>')
+          : (e.rawF ? '<span class="audit-code-pill">' + e.rawF + '</span>' : '<span class="audit-not-recorded">Not recorded</span>');
+
+        return '<div class="audit-sub-block">' +
+          '<div class="audit-sub-header">Clinical Scrutiny (CI) Doctor</div>' +
+          '<div class="audit-row"><span class="audit-row-label">Doctor Name:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
+          '<div class="audit-row"><span class="audit-row-label">CI Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+          '<div class="audit-row"><span class="audit-row-label">Package Code(s):</span><span class="audit-row-val">' + codeBadges + '</span></div>' +
+          '<div class="audit-row"><span class="audit-row-label">Clinical Remarks:</span><span class="audit-row-val">' + (e.doctorRemarks || e.clinicalNotes || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+        '</div>';
+      }).join('');
+    } else {
+      ciBlocks = '<div class="audit-sub-block"><div class="audit-row"><span class="audit-row-label">Clinical Scrutiny (CI):</span> <span class="audit-row-val audit-not-recorded">Not recorded</span></div></div>';
+    }
+
+    let qcBlocks = '';
+    if(qc.length > 0) {
+      qcBlocks = qc.map(e => '<div class="audit-sub-block">' +
+        '<div class="audit-sub-header">Quality Check (QC) Audit</div>' +
+        '<div class="audit-row"><span class="audit-row-label">QC Employee:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">QC Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">QC Status & Remarks:</span><span class="audit-row-val">' + e.activity + (e.discharge ? ' - ' + e.discharge : '') + '</span></div>' +
+      '</div>').join('');
+    } else {
+      qcBlocks = '<div class="audit-sub-block"><div class="audit-row"><span class="audit-row-label">QC Audit:</span> <span class="audit-row-val audit-not-recorded">Not recorded in source log</span></div></div>';
+    }
+    secD_Html = ciBlocks + qcBlocks;
+  }
+
+  // SECTION E: Employees Claim Date – Amt
+  const empClaim = allEvents.filter(e => !e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('submit') || e.activity.toLowerCase().includes('resubmit')));
+  let secE_Html = '';
+  if(empClaim.length === 0) {
+    secE_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
+  } else {
+    secE_Html = empClaim.map((e, idx) => '<div class="audit-sub-block">' +
+      '<div class="audit-sub-header">' +
+        '<span>Claim Activity #' + (idx + 1) + ' (' + e.activity + ')</span>' +
+        '<span style="font-size:11.5px;color:#64748b;font-weight:700;">' + e.dateStr + '</span>' +
+      '</div>' +
+      '<div class="audit-row"><span class="audit-row-label">Processed By:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">CI Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">Claim Amount:</span><span class="audit-row-val" style="color:#0284c7;">' + fmtAmt(e.amt) + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">Submission Date:</span><span class="audit-row-val">' + (e.discharge ? e.discharge : e.dateStr) + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">Claim Status:</span><span class="audit-row-val">' + e.activity + '</span></div>' +
+      '<div class="audit-row"><span class="audit-row-label">Remarks:</span><span class="audit-row-val">' + (e.discharge || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+    '</div>').join('');
+  }
+
+  // SECTION F: Discharge Amount & Final Case Status
+  let dischargeDate = '';
+  let claimAmount = null;
+  allEvents.forEach(e => {
+    if(e.discharge && !dischargeDate && (e.discharge.includes('/') || e.discharge.includes('-'))) {
+      dischargeDate = e.discharge;
+    }
+    if(!e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('submit')) && e.amt !== null && claimAmount === null) {
+      claimAmount = e.amt;
+    }
+  });
+  if(claimAmount === null) {
+    const anyAmt = allEvents.find(e => e.amt !== null);
+    if(anyAmt) claimAmount = anyAmt.amt;
+  }
+  const latestEvent = allEvents[allEvents.length - 1];
+  const queryActivities = allEvents.filter(e => e.activity.toLowerCase().includes('query') || e.activity.toLowerCase().includes('resubmit'));
+  const queryDetails = queryActivities.length > 0
+    ? queryActivities.map(q => q.activity + ' by ' + q.uploader + ' on ' + q.dateStr).join('; ')
+    : '<span class="audit-not-recorded">None recorded</span>';
+
+  const secF_Html = '<div class="audit-sub-block">' +
+    '<div class="audit-row"><span class="audit-row-label">Date of Admission:</span><span class="audit-row-val audit-not-recorded">Not recorded in operational log</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Date of Discharge:</span><span class="audit-row-val">' + (dischargeDate || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Discharge Amount:</span><span class="audit-row-val audit-not-recorded">Not recorded separately</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Claim Amount (Claimed):</span><span class="audit-row-val" style="color:#0284c7;font-weight:800;">' + fmtAmt(claimAmount) + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Approved Amount:</span><span class="audit-row-val audit-not-recorded">Not recorded</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Paid / Settled Amount:</span><span class="audit-row-val audit-not-recorded">Not recorded</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Current Case Status:</span><span class="audit-row-val" style="color:#1e40af;font-weight:800;">' + (latestEvent ? latestEvent.activity : 'Not recorded') + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Settlement Status:</span><span class="audit-row-val audit-not-recorded">Pending Settlement / Not recorded in source log</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Rejection / Query Remarks:</span><span class="audit-row-val">' + queryDetails + '</span></div>' +
+  '</div>';
+
+  // SECTION G: Complete Date-wise Audit Trail
+  const secG_Html = '<div class="audit-timeline">' +
+    allEvents.map((e, idx) => {
+      let badgeCls = '';
+      const actLower = e.activity.toLowerCase();
+      if(actLower.includes('preauth') || actLower.includes('pa')) badgeCls = 'preauth';
+      else if(actLower.includes('enhance') || actLower.includes('ehm')) badgeCls = 'enhancement';
+      else if(actLower.includes('query')) badgeCls = 'query';
+      else if(actLower.includes('resubmit')) badgeCls = 'resubmit';
+      else if(actLower.includes('claim') || actLower.includes('submit')) badgeCls = 'claim';
+
+      const codePart = e.packageCodes && e.packageCodes.length > 0
+        ? e.packageCodes.map(c => '<span class="audit-code-pill">' + c + '</span>').join(' ')
+        : '';
+
+      const remarks = e.doctorRemarks || e.clinicalNotes || e.discharge || '';
+
+      return '<div class="audit-timeline-item ' + (e.isDoctor ? 'doctor' : badgeCls) + '">' +
+        '<div class="audit-timeline-dot"></div>' +
+        '<div class="audit-timeline-content">' +
+          '<div class="audit-timeline-top">' +
+            '<span class="audit-timeline-date">#' + (idx + 1) + ' • ' + e.dateStr + '</span>' +
+            '<span class="audit-timeline-badge ' + badgeCls + '">' + e.activity + '</span>' +
+          '</div>' +
+          '<div style="font-weight:800;color:#0f172a;margin-bottom:2px;">' +
+            e.uploader + ' ' + (e.isDoctor ? '<span style="font-size:10.5px;color:#9333ea;font-weight:700;">(Clinical Doctor)</span>' : '<span style="font-size:10.5px;color:#0284c7;font-weight:700;">(Operations)</span>') +
+          '</div>' +
+          (codePart ? '<div style="margin-top:5px;">' + codePart + '</div>' : '') +
+          (e.amt !== null ? '<div style="font-weight:800;color:#16a34a;margin-top:3px;">Amount: ' + fmtAmt(e.amt) + '</div>' : '') +
+          (remarks ? '<div style="color:#64748b;font-size:11.5px;margin-top:4px;line-height:1.4;">' + remarks + '</div>' : '') +
+        '</div>' +
+      '</div>';
+    }).join('') +
+  '</div>';
+
+  // Assemble full UI - All sections OPEN by default and clearly delineated
+  content.innerHTML = '<!-- Top Meta Card -->' +
+    '<div class="audit-meta-card">' +
+      '<div class="audit-meta-top">' +
+        '<div class="audit-case-number">' +
+          '<span>Case #' + caseNum + '</span>' +
+          '<button class="audit-copy-badge-btn" onclick="copyTextToClipboard(\'' + caseNum + '\', \'Case Number copied!\')" title="Copy Case Number">' +
+            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>' +
+            'Copy' +
+          '</button>' +
+        '</div>' +
+        '<span class="audit-hosp-badge">' + hospitalName + '</span>' +
+      '</div>' +
+      '<div class="audit-meta-grid">' +
+        '<div class="audit-meta-item"><strong>Activities</strong><span>' + allEvents.length + ' Recorded</span></div>' +
+        '<div class="audit-meta-item"><strong>First Recorded</strong><span>' + (allEvents[0] ? allEvents[0].dateStr : '—') + '</span></div>' +
+        '<div class="audit-meta-item"><strong>Last Updated</strong><span>' + (allEvents[allEvents.length-1] ? allEvents[allEvents.length-1].dateStr : '—') + '</span></div>' +
+      '</div>' +
+    '</div>' +
+
+    '<!-- Section A: DR PA CODE -->' +
+    '<div class="audit-sec-card open" id="secCard_A">' +
+      '<div class="audit-sec-header" onclick="toggleAuditSection(\'secCard_A\')">' +
+        '<div class="audit-sec-title-wrap">' +
+          '<span class="audit-sec-badge badge-a">A</span>' +
+          '<h4 class="audit-sec-title">A. DR PA CODE</h4>' +
+        '</div>' +
+        '<svg class="audit-sec-toggle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+      '</div>' +
+      '<div class="audit-sec-body">' + secA_Html + '</div>' +
+    '</div>' +
+
+    '<!-- Section B: Employee PA Initiate Date – Amt -->' +
+    '<div class="audit-sec-card open" id="secCard_B">' +
+      '<div class="audit-sec-header" onclick="toggleAuditSection(\'secCard_B\')">' +
+        '<div class="audit-sec-title-wrap">' +
+          '<span class="audit-sec-badge badge-b">B</span>' +
+          '<h4 class="audit-sec-title">B. Employee PA Initiate Date – Amt</h4>' +
+        '</div>' +
+        '<svg class="audit-sec-toggle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+      '</div>' +
+      '<div class="audit-sec-body">' + secB_Html + '</div>' +
+    '</div>' +
+
+    '<!-- Section C: Employee EHM Date -->' +
+    '<div class="audit-sec-card open" id="secCard_C">' +
+      '<div class="audit-sec-header" onclick="toggleAuditSection(\'secCard_C\')">' +
+        '<div class="audit-sec-title-wrap">' +
+          '<span class="audit-sec-badge badge-c">C</span>' +
+          '<h4 class="audit-sec-title">C. Employee EHM Date</h4>' +
+        '</div>' +
+        '<svg class="audit-sec-toggle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+      '</div>' +
+      '<div class="audit-sec-body">' + secC_Html + '</div>' +
+    '</div>' +
+
+    '<!-- Section D: Dr CI QC Code -->' +
+    '<div class="audit-sec-card open" id="secCard_D">' +
+      '<div class="audit-sec-header" onclick="toggleAuditSection(\'secCard_D\')">' +
+        '<div class="audit-sec-title-wrap">' +
+          '<span class="audit-sec-badge badge-d">D</span>' +
+          '<h4 class="audit-sec-title">D. Dr CI QC Code</h4>' +
+        '</div>' +
+        '<svg class="audit-sec-toggle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+      '</div>' +
+      '<div class="audit-sec-body">' + secD_Html + '</div>' +
+    '</div>' +
+
+    '<!-- Section E: Employees Claim Date – Amt -->' +
+    '<div class="audit-sec-card open" id="secCard_E">' +
+      '<div class="audit-sec-header" onclick="toggleAuditSection(\'secCard_E\')">' +
+        '<div class="audit-sec-title-wrap">' +
+          '<span class="audit-sec-badge badge-e">E</span>' +
+          '<h4 class="audit-sec-title">E. Employees Claim Date – Amt</h4>' +
+        '</div>' +
+        '<svg class="audit-sec-toggle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+      '</div>' +
+      '<div class="audit-sec-body">' + secE_Html + '</div>' +
+    '</div>' +
+
+    '<!-- Section F: Discharge Amount & Final Case Status -->' +
+    '<div class="audit-sec-card open" id="secCard_F">' +
+      '<div class="audit-sec-header" onclick="toggleAuditSection(\'secCard_F\')">' +
+        '<div class="audit-sec-title-wrap">' +
+          '<span class="audit-sec-badge badge-f">F</span>' +
+          '<h4 class="audit-sec-title">F. Discharge Amount & Final Case Status</h4>' +
+        '</div>' +
+        '<svg class="audit-sec-toggle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+      '</div>' +
+      '<div class="audit-sec-body">' + secF_Html + '</div>' +
+    '</div>' +
+
+    '<!-- Section G: Complete Date-wise Audit Trail -->' +
+    '<div class="audit-sec-card open" id="secCard_G">' +
+      '<div class="audit-sec-header" onclick="toggleAuditSection(\'secCard_G\')">' +
+        '<div class="audit-sec-title-wrap">' +
+          '<span class="audit-sec-badge badge-g">G</span>' +
+          '<h4 class="audit-sec-title">G. Complete Date-wise Audit Trail</h4>' +
+        '</div>' +
+        '<svg class="audit-sec-toggle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+      '</div>' +
+      '<div class="audit-sec-body">' + secG_Html + '</div>' +
+    '</div>';
+
+  content.scrollTop = 0;
+}
+
+function copyCaseAuditReport() {
+  if(!currentLoadedAuditData) {
+    showAuditToast('Please search and load a case first.');
+    return;
+  }
+  const caseNum = currentLoadedAuditData.caseNum;
+  const hospitalName = currentLoadedAuditData.hospitalName;
+  const allEvents = currentLoadedAuditData.allEvents;
+  let lines = [];
+  lines.push('=======================================================');
+  lines.push('VASUS CASE AUDIT ASSISTANT - CASE AUDIT REPORT');
+  lines.push('=======================================================');
+  lines.push('Case Number: ' + caseNum);
+  lines.push('Hospital Name: ' + hospitalName);
+  lines.push('Total Recorded Activities: ' + allEvents.length);
+  lines.push('Audit Compiled: ' + new Date().toLocaleString('en-IN'));
+  lines.push('-------------------------------------------------------\n');
+
+  // A. DR PA CODE
+  lines.push('[A. DR PA CODE]');
+  const drPa = allEvents.filter(e => e.isDoctor && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa')));
+  if(drPa.length === 0) {
+    lines.push('Status: Not recorded\n');
+  } else {
+    drPa.forEach(e => {
+      lines.push('- Doctor: ' + e.uploader);
+      lines.push('  Date & Time: ' + e.dateStr);
+      lines.push('  Package Code(s): ' + (e.packageCodes.length ? e.packageCodes.join(', ') : (e.rawF || 'Not recorded in detail')));
+      lines.push('  Remarks: ' + (e.doctorRemarks || e.clinicalNotes || 'Not recorded'));
+    });
+    lines.push('');
+  }
+
+  // B. Employee PA Initiate Date – Amt
+  lines.push('[B. EMPLOYEE PA INITIATE DATE – AMT]');
+  const empPa = allEvents.filter(e => !e.isDoctor && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa')));
+  if(empPa.length === 0) {
+    lines.push('Status: Not recorded\n');
+  } else {
+    empPa.forEach(e => {
+      lines.push('- Initiated By: ' + e.uploader);
+      lines.push('  Date & Time: ' + e.dateStr);
+      lines.push('  PA Amount: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : 'Not recorded'));
+      lines.push('  Status / Remarks: ' + e.activity + (e.discharge ? ' (' + e.discharge + ')' : ''));
+    });
+    lines.push('');
+  }
+
+  // C. Employee EHM Date
+  lines.push('[C. EMPLOYEE EHM DATE]');
+  const ehm = allEvents.filter(e => e.activity.toLowerCase().includes('enhance') || e.activity.toLowerCase().includes('ehm'));
+  if(ehm.length === 0) {
+    lines.push('Status: Not recorded\n');
+  } else {
+    ehm.forEach((e, i) => {
+      lines.push('- Enhancement #' + (i + 1) + ':');
+      lines.push('  Employee: ' + e.uploader);
+      lines.push('  Date & Time: ' + e.dateStr);
+      lines.push('  Enhancement Amount: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : 'Not recorded'));
+      lines.push('  Status / Remarks: ' + e.activity + (e.discharge ? ' (' + e.discharge + ')' : ''));
+    });
+    lines.push('');
+  }
+
+  // D. Dr CI QC Code
+  lines.push('[D. DR CI QC CODE]');
+  const drCi = allEvents.filter(e => e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('ci')));
+  const qc = allEvents.filter(e => e.activity.toLowerCase().includes('qc'));
+  if(drCi.length === 0 && qc.length === 0) {
+    lines.push('Status: Not recorded\n');
+  } else {
+    if(drCi.length > 0) {
+      drCi.forEach(e => {
+        lines.push('- Clinical Scrutiny (CI) Doctor: ' + e.uploader);
+        lines.push('  CI Date & Time: ' + e.dateStr);
+        lines.push('  Package Code(s): ' + (e.packageCodes.length ? e.packageCodes.join(', ') : (e.rawF || 'Not recorded')));
+        lines.push('  Clinical Remarks: ' + (e.doctorRemarks || e.clinicalNotes || 'Not recorded'));
+      });
+    } else {
+      lines.push('- Clinical Scrutiny (CI): Not recorded');
+    }
+    if(qc.length > 0) {
+      qc.forEach(e => {
+        lines.push('- QC Employee: ' + e.uploader);
+        lines.push('  QC Date & Time: ' + e.dateStr);
+        lines.push('  QC Status & Remarks: ' + e.activity + (e.discharge ? ' (' + e.discharge + ')' : ''));
+      });
+    } else {
+      lines.push('- QC Audit: Not recorded in source log');
+    }
+    lines.push('');
+  }
+
+  // E. Employees Claim Date – Amt
+  lines.push('[E. EMPLOYEES CLAIM DATE – AMT]');
+  const empClaim = allEvents.filter(e => !e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('submit') || e.activity.toLowerCase().includes('resubmit')));
+  if(empClaim.length === 0) {
+    lines.push('Status: Not recorded\n');
+  } else {
+    empClaim.forEach(e => {
+      lines.push('- Processed By: ' + e.uploader);
+      lines.push('  CI Date & Time: ' + e.dateStr);
+      lines.push('  Claim Amount: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : 'Not recorded'));
+      lines.push('  Claim Submission Date: ' + (e.discharge ? e.discharge : e.dateStr));
+      lines.push('  Claim Status: ' + e.activity);
+      lines.push('  Remarks: ' + (e.discharge || 'Not recorded'));
+    });
+    lines.push('');
+  }
+
+  // F. Discharge Amount & Final Case Status
+  lines.push('[F. DISCHARGE AMOUNT & FINAL CASE STATUS]');
+  let dischargeDate = '';
+  let claimAmt = null;
+  allEvents.forEach(e => {
+    if(e.discharge && !dischargeDate && (e.discharge.includes('/') || e.discharge.includes('-'))) dischargeDate = e.discharge;
+    if(!e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('submit')) && e.amt !== null && claimAmt === null) claimAmt = e.amt;
+  });
+  if(claimAmt === null) {
+    const anyA = allEvents.find(e => e.amt !== null);
+    if(anyA) claimAmt = anyA.amt;
+  }
+  const latest = allEvents[allEvents.length - 1];
+  lines.push('- Date of Admission: Not recorded in operational log');
+  lines.push('- Date of Discharge: ' + (dischargeDate || 'Not recorded'));
+  lines.push('- Discharge Amount: Not recorded separately');
+  lines.push('- Claim Amount: ' + (claimAmt !== null ? '₹' + Number(claimAmt).toLocaleString('en-IN') : 'Not recorded'));
+  lines.push('- Approved Amount: Not recorded');
+  lines.push('- Paid / Settled Amount: Not recorded');
+  lines.push('- Current Case Status: ' + (latest ? latest.activity : 'Not recorded'));
+  lines.push('- Payment / Settlement Status: Pending Settlement / Not recorded in source log');
+  lines.push('- Rejection / Query Details: ' + (allEvents.filter(e => e.activity.toLowerCase().includes('query') || e.activity.toLowerCase().includes('resubmit')).map(e => e.activity + ' by ' + e.uploader + ' on ' + e.dateStr).join('; ') || 'None recorded') + '\n');
+
+  // G. Complete Date-wise Audit Trail
+  lines.push('[G. COMPLETE DATE-WISE AUDIT TRAIL]');
+  allEvents.forEach((e, idx) => {
+    lines.push((idx + 1) + '. [' + e.dateStr + '] ' + e.activity + ' | Performer: ' + e.uploader + ' | Code(s): ' + (e.packageCodes.length ? e.packageCodes.join(', ') : '-') + ' | Amt: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : '-') + ' | Remarks: ' + (e.doctorRemarks || e.clinicalNotes || e.discharge || '-'));
+  });
+  lines.push('\n================== END OF AUDIT REPORT ==================');
+
+  copyTextToClipboard(lines.join('\n'), 'Complete Audit Report copied to clipboard!');
+}
+
+function printCaseAuditReport() {
+  if(!currentLoadedAuditData) {
+    showAuditToast('Please search and load a case before printing.');
+    return;
+  }
+  const caseNum = currentLoadedAuditData.caseNum;
+  const hospitalName = currentLoadedAuditData.hospitalName;
+  const allEvents = currentLoadedAuditData.allEvents;
+  const printContainer = document.getElementById('caseAuditPrintContainer');
+  if(!printContainer) return;
+
+  const content = document.getElementById('auditReportContent');
+  if(!content) return;
+
+  printContainer.innerHTML = '<div style="border-bottom:2px solid #000;padding-bottom:12px;margin-bottom:16px;">' +
+    '<h2 style="margin:0 0 4px 0;font-size:18px;">VASUS CLAIM ANALYTICS - CASE AUDIT REPORT</h2>' +
+    '<div style="font-size:12px;color:#333;">Case Number: <strong>' + caseNum + '</strong> | Hospital: <strong>' + hospitalName + '</strong> | Total Activities: <strong>' + allEvents.length + '</strong></div>' +
+    '<div style="font-size:11px;color:#666;">Generated on: ' + new Date().toLocaleString('en-IN') + '</div>' +
+  '</div>' + content.innerHTML;
+
+  window.print();
+}
+
 </script>
+
+
+<!-- ==========================================================
+ * VASUS CASE AUDIT ASSISTANT - ENHANCED FLOATING CHATBOT UI
+ * ========================================================== -->
+<button id="caseAuditChatTrigger" class="case-audit-fab" onclick="toggleAuditChatbot()" title="Vasus Case Audit Assistant" aria-label="Open Vasus Case Audit Assistant">
+  <div class="fab-icon-wrap">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+      <circle cx="9" cy="10" r="1" fill="currentColor"></circle>
+      <circle cx="15" cy="10" r="1" fill="currentColor"></circle>
+      <path d="M9.5 14a3.5 3.5 0 0 0 5 0"></path>
+    </svg>
+    <span class="fab-online-dot"></span>
+  </div>
+  <span class="fab-label">Case Audit</span>
+</button>
+
+<div id="caseAuditChatWindow" class="case-audit-window" style="display:none;">
+  <!-- Header -->
+  <div class="audit-window-header">
+    <div class="audit-header-title-wrap">
+      <div class="audit-header-avatar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          <path d="M8 9h8"></path><path d="M8 13h5"></path>
+        </svg>
+      </div>
+      <div>
+        <h3 class="audit-title">Vasus Case Audit Assistant</h3>
+        <div class="audit-status"><span class="audit-status-dot"></span> Live Google Sheets Connected</div>
+      </div>
+    </div>
+    <div class="audit-header-actions">
+      <button class="audit-btn-icon" id="auditBtnCopy" onclick="copyCaseAuditReport()" title="Copy Full Report" aria-label="Copy Report">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+      </button>
+      <button class="audit-btn-icon" id="auditBtnPrint" onclick="printCaseAuditReport()" title="Print / Save as PDF" aria-label="Print Report">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      </button>
+      <button class="audit-btn-icon audit-close-btn" onclick="toggleAuditChatbot(false)" title="Close Chatbot" aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Search Section -->
+  <div class="audit-search-section">
+    <div class="audit-search-input-wrap">
+      <svg class="audit-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <input type="text" id="auditCaseInput" class="audit-input" placeholder="Search full or partial Case Number..." onkeydown="if(event.key==='Enter') executeCaseAuditSearch()" />
+      <button id="auditBtnSearch" class="audit-search-submit" onclick="executeCaseAuditSearch()">Search</button>
+      <button id="auditBtnClear" class="audit-search-clear" onclick="clearCaseAuditSearch()" title="Clear">Clear</button>
+    </div>
+    <!-- Multi-match Dropdown -->
+    <div id="auditMatchDropdownContainer" class="audit-matches-dropdown" style="display:none;">
+      <div class="audit-matches-title" id="auditMatchesCountLabel">Multiple cases matched:</div>
+      <select id="auditMatchesSelect" class="audit-matches-select" onchange="onSelectMatchCase(this.value)">
+        <option value="">-- Choose a matching case to inspect --</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Report Body -->
+  <div id="auditReportContent" class="audit-report-body">
+    <!-- Default initial state -->
+    <div class="audit-empty-state">
+      <div class="audit-empty-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      </div>
+      <h4 class="audit-empty-title">Vasus Case Audit Assistant</h4>
+      <p class="audit-empty-desc">Enter any full or partial <strong>Case Number</strong> above to retrieve the live, date-wise case audit history, doctor package codes, employee operational activities, enhancements, and financial status.</p>
+      <div class="audit-quick-pills">
+        <button class="audit-quick-pill" onclick="quickSearchAuditCase('2026100510093735')">Case 2026100510093735</button>
+        <button class="audit-quick-pill" onclick="quickSearchAuditCase('2026080110049393')">Case 2026080110049393</button>
+        <button class="audit-quick-pill" onclick="quickSearchAuditCase('2026080410005059')">Case 2026080410005059</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Print Container for Clean A4 / PDF Export -->
+<div id="caseAuditPrintContainer" class="case-audit-print-only" style="display:none;"></div>
+
 </body>
 </html>
