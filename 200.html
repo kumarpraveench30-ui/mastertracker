@@ -10071,7 +10071,9 @@ function renderCaseAuditReport(caseNum, hospitalName, allEvents, doctorRecords, 
       statusColor = '#b45309';
     }
 
-    if(masterRec.claimLacs) claimAmt = Math.round(masterRec.claimLacs * 100000);
+    if(claimAmt === null && masterRec.claimLacs) {
+      claimAmt = Math.round(masterRec.claimLacs * 100000);
+    }
     if(masterRec.appLacs !== undefined && masterRec.appLacs !== null) {
       appAmtDisplay = fmtAmt(Math.round(masterRec.appLacs * 100000));
     }
