@@ -5851,21 +5851,23 @@ function cleanImplantDescription(raw, procName = '') {
   if (!raw || raw === 'Yes' || raw === 'No' || raw === 'NA' || raw === '-') return '';
   let str = String(raw).trim();
   // Strip numbering like "1. ", "2) "
-  str = str.replace(/^\d+[\.\)]\s*/, '');
+  str = str.replace(/^\d+[\.\)]\s*/, '').trim();
   // Strip rates/amounts like "- Rs. 9800", "Rs. 9800", "₹50,000.00", "Rs 5000", etc.
-  str = str.replace(/[-–—]?\s*(?:Rs\.?|INR|₹)\s*[\d,]+(?:\.\d+)?/gi, '');
-  str = str.replace(/\b(?:Rs\.?|INR|₹)\s*[\d,]+(?:\.\d+)?/gi, '');
-  // Strip trailing/leading parentheses or clean (K - Wire / Screw) -> Wire / Screw
-  str = str.replace(/^\((.*)\)$/, '$1');
-  if (str.startsWith('K - ') || str.startsWith('K-')) {
-    str = str.replace(/^K\s*-\s*/, '');
-  }
-  // Strip trailing paren
-  str = str.replace(/\)+$/, '');
+  str = str.replace(/[-–—]?\s*(?:Rs\.?|INR|₹)\s*[\d,]+(?:\.\d+)?/gi, '').trim();
+  str = str.replace(/\b(?:Rs\.?|INR|₹)\s*[\d,]+(?:\.\d+)?/gi, '').trim();
   // If string contains quotes, remove them and text inside quotes (e.g. "IVC Filter Placement")
   str = str.replace(/"[^"]*"/g, '').trim();
   // Remove trailing dashes or colons
   str = str.replace(/[-–—:]+$/, '').trim();
+  // Strip leading and trailing parens so we never get double brackets
+  str = str.replace(/^\(+/, '').replace(/\)+$/, '').trim();
+  if (str.startsWith('K - ') || str.startsWith('K-')) {
+    str = str.replace(/^K\s*-\s*/, '').trim();
+  }
+  // Strip trailing parens again in case of K - Wire / Screw)
+  str = str.replace(/\)+$/, '').trim();
+  // Check if it's "No Implant"
+  if (/^no\s+implant/i.test(str)) return '';
   return str;
 }
 
@@ -5988,7 +5990,24 @@ function formatPackageCopyLine(p, selections = {}) {
   }
   let line = `${code} - ${name}`;
 
-  if (selections.implant) line += ` - Implant: ${selections.implant}`;
+  // Implant details in Brackets()
+  let impText = '';
+  if (selections.implant) {
+    impText = cleanImplantDescription(selections.implant, name);
+  } else if (p.imp_name) {
+    const lines = p.imp_name.split('\n').map(l => l.trim()).filter(Boolean);
+    if (lines.length > 1 && lines[1].includes('Wire / Screw')) {
+      impText = cleanImplantDescription(lines[1], name);
+    } else {
+      impText = cleanImplantDescription(lines[0], name);
+    }
+  } else if (p.imp && p.imp !== 'Yes' && p.imp !== 'No' && p.imp !== 'NA' && p.imp !== '-') {
+    impText = cleanImplantDescription(p.imp, name);
+  }
+
+  if (impText) {
+    line += ` (Imp - ${impText})`;
+  }
   if (selections.stratification) {
     const isWard = ['RW', 'HDU', 'ICU', 'ICU-VENT'].includes(selections.stratification) || isWardStratPackage(p);
     line += isWard ? ` - Ward: ${selections.stratification}` : ` - Stratification: ${selections.stratification}`;
