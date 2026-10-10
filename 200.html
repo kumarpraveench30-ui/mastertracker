@@ -2755,11 +2755,11 @@ table.doc-leader-table th {
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
         <div>
           <label style="display:block;font-size:12px;font-weight:600;margin-bottom:4px">Laterality</label>
-          <input type="text" id="pkgFormLat" placeholder="e.g. Unilateral / Bilateral (or leave empty)" style="width:100%;padding:8px 10px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:12px;box-sizing:border-box">
+          <textarea id="pkgFormLat" rows="2" placeholder="e.g. 1. Unilateral&#10;2. Bilateral" style="width:100%;padding:8px 10px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:12px;box-sizing:border-box"></textarea>
         </div>
         <div>
           <label style="display:block;font-size:12px;font-weight:600;margin-bottom:4px">Anesthesia</label>
-          <input type="text" id="pkgFormAnes" placeholder="e.g. Local / General Anesthesia (or leave empty)" style="width:100%;padding:8px 10px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:12px;box-sizing:border-box">
+          <textarea id="pkgFormAnes" rows="2" placeholder="e.g. 1. Local Anesthesia&#10;2. General Anesthesia" style="width:100%;padding:8px 10px;border:1px solid var(--border,#cbd5e1);border-radius:6px;font-size:12px;box-sizing:border-box"></textarea>
         </div>
       </div>
 
@@ -5768,19 +5768,83 @@ function getRequiredFieldsForPackage(p) {
 
   // 3. LATERALITY
   if (p.lat && p.lat !== 'NA' && p.lat !== '-' && p.lat !== 'No') {
-    const lines = p.lat.split('\n').map(l => l.replace(/^\d+[\.\)]\s*/, '').trim()).filter(Boolean);
-    const options = lines.length > 0 ? lines : ['Unilateral', 'Bilateral'];
-    fields.push({ type: 'laterality', label: 'Laterality', options });
+    const options = getPackageLateralityOptions(p.lat);
+    if (options.length > 0) {
+      fields.push({ type: 'laterality', label: 'Laterality', options });
+    }
   }
 
   // 4. ANESTHESIA
   if (p.anes && p.anes !== 'NA' && p.anes !== '-' && p.anes !== 'No') {
-    const lines = p.anes.split('\n').map(l => l.replace(/^\d+[\.\)]\s*/, '').trim()).filter(Boolean);
-    const options = lines.length > 0 ? lines : ['Local Anesthesia', 'General Anesthesia'];
-    fields.push({ type: 'anesthesia', label: 'Anesthesia', options });
+    const options = getPackageAnesthesiaOptions(p.anes);
+    if (options.length > 0) {
+      fields.push({ type: 'anesthesia', label: 'Anesthesia', options });
+    }
   }
 
   return fields;
+}
+
+function getPackageLateralityOptions(lat) {
+  if (!lat || lat === 'NA' || lat === '-' || lat === 'No' || lat === 'Yes') return [];
+  const latStr = String(lat).trim();
+  const hasUni = /\bunilateral\b/i.test(latStr);
+  const hasBi = /\bbilateral\b/i.test(latStr);
+  if (hasUni && hasBi) {
+    return ['Unilateral', 'Bilateral'];
+  }
+  const tokens = latStr.split(/[\r\n]+|\/(?![^()]*\))|(?<=[a-zA-Z])(?=[1-9][\.\)])|\s*[,;|]\s*|\s+(?=[1-9][\.\)])/);
+  const opts = [];
+  for (const t of tokens) {
+    const clean = t.replace(/^\d+[\.\)]\s*/, '').trim();
+    if (clean && !opts.includes(clean) && !['NA', '-', 'No', 'Yes'].includes(clean)) {
+      opts.push(clean);
+    }
+  }
+  return opts.length > 0 ? opts : ['Unilateral', 'Bilateral'];
+}
+
+function getPackageAnesthesiaOptions(anes) {
+  if (!anes || anes === 'NA' || anes === '-' || anes === 'No' || anes === 'Yes') return [];
+  const anesStr = String(anes).trim();
+  const hasLocal = /\blocal\b/i.test(anesStr);
+  const hasGen = /\bgeneral\b/i.test(anesStr);
+  if (hasLocal && hasGen) {
+    return ['Local Anesthesia', 'General Anesthesia'];
+  }
+  const tokens = anesStr.split(/[\r\n]+|\/(?![^()]*\))|(?<=[a-zA-Z])(?=[1-9][\.\)])|\s*[,;|]\s*|\s+(?=[1-9][\.\)])/);
+  const opts = [];
+  for (const t of tokens) {
+    const clean = t.replace(/^\d+[\.\)]\s*/, '').trim();
+    if (clean && !opts.includes(clean) && !['NA', '-', 'No', 'Yes'].includes(clean)) {
+      opts.push(clean);
+    }
+  }
+  return opts.length > 0 ? opts : ['Local Anesthesia', 'General Anesthesia'];
+}
+
+function formatTableLateralityCell(lat) {
+  if (!lat || lat === 'NA' || lat === '-' || lat === 'No' || lat === 'Yes') return '-';
+  const opts = getPackageLateralityOptions(lat);
+  if (opts.length > 1) {
+    return opts.map((o, i) => `${i + 1}. ${o}`).join('<br>');
+  }
+  if (opts.length === 1) {
+    return opts[0];
+  }
+  return String(lat).replace(/\n/g, '<br>');
+}
+
+function formatTableAnesthesiaCell(anes) {
+  if (!anes || anes === 'NA' || anes === '-' || anes === 'No' || anes === 'Yes') return '-';
+  const opts = getPackageAnesthesiaOptions(anes);
+  if (opts.length > 1) {
+    return opts.map((o, i) => `${i + 1}. ${o}`).join('<br>');
+  }
+  if (opts.length === 1) {
+    return opts[0];
+  }
+  return String(anes).replace(/\n/g, '<br>');
 }
 
 function cleanImplantDescription(raw, procName = '') {
@@ -5824,6 +5888,8 @@ function cleanLateralityDescription(raw) {
   if (!raw || raw === 'Yes' || raw === 'No' || raw === 'NA' || raw === '-') return '';
   let str = String(raw).trim();
   str = str.replace(/^\d+[\.\)]\s*/, '').trim();
+  if (/^unilateral/i.test(str)) return 'Unilateral';
+  if (/^bilateral/i.test(str)) return 'Bilateral';
   return str;
 }
 
@@ -5874,9 +5940,9 @@ function formatMultiPackageCopyItem(p, selections = {}) {
   if (selections.laterality) {
     latText = cleanLateralityDescription(selections.laterality);
   } else if (p.lat && p.lat !== 'NA' && p.lat !== '-' && p.lat !== 'No') {
-    const lines = p.lat.split('\n').map(l => l.replace(/^\d+[\.\)]\s*/, '').trim()).filter(Boolean);
-    if (lines.length === 1) {
-      latText = lines[0];
+    const options = getPackageLateralityOptions(p.lat);
+    if (options.length === 1) {
+      latText = cleanLateralityDescription(options[0]);
     }
   }
 
@@ -6278,8 +6344,8 @@ function renderPackageMasterTable() {
     }
 
     // Laterality & Anesthesia
-    const latHtml = (p.lat && p.lat !== 'NA') ? p.lat.replace(/\n/g, '<br>') : '-';
-    const anesHtml = (p.anes && p.anes !== 'NA') ? p.anes.replace(/\n/g, '<br>') : '-';
+    const latHtml = formatTableLateralityCell(p.lat);
+    const anesHtml = formatTableAnesthesiaCell(p.anes);
 
     // Docs / Details button
     const docBtn = `<button class="secondary-btn" style="padding:6px 10px;font-size:11px;font-weight:700;border-radius:6px;background:#f1f5f9;border:1px solid #cbd5e1;color:#1e293b;cursor:pointer" onclick="openPkgDocModal('${safeCode}', '${safeScheme}')">View Details</button>`;
@@ -6350,8 +6416,10 @@ function openPkgDocModal(code, scheme) {
     if(preEl) preEl.innerHTML = pkg.d_pre ? pkg.d_pre.replace(/\n/g, '<br>') : 'Standard clinical notes and identity documentation.';
     if(clmEl) clmEl.innerHTML = getPkgClaimRemarks(pkg).replace(/\n/g, '<br>');
     let extraDetails = '';
-    if(pkg.lat) extraDetails += ` • Laterality: <b>${pkg.lat.replace(/\n/g, ', ')}</b>`;
-    if(pkg.anes) extraDetails += ` • Anesthesia: <b>${pkg.anes.replace(/\n/g, ', ')}</b>`;
+    const modalLatOpts = getPackageLateralityOptions(pkg.lat);
+    if(modalLatOpts.length > 0) extraDetails += ` • Laterality: <b>${modalLatOpts.join(', ')}</b>`;
+    const modalAnesOpts = getPackageAnesthesiaOptions(pkg.anes);
+    if(modalAnesOpts.length > 0) extraDetails += ` • Anesthesia: <b>${modalAnesOpts.join(', ')}</b>`;
     if(isWardStratPackage(pkg)) extraDetails += ` • Ward Stratification: <b>1. RW, 2. HDU, 3. ICU, 4. ICU-VENT</b>`;
 
     let implantBox = '';
@@ -6547,6 +6615,7 @@ function saveStoredPkgOverrides(overrides) {
 function applyStoredPackageOverrides() {
   if (!window.PACKAGE_MASTER_DATA) return;
   const overrides = getStoredPkgOverrides();
+  let overridesModified = false;
   
   // 1. Edits
   if (overrides.edited) {
@@ -6558,7 +6627,30 @@ function applyStoredPackageOverrides() {
       if (targetList) {
         const idx = targetList.findIndex(p => p.c === code);
         if (idx !== -1) {
-          targetList[idx] = { ...targetList[idx], ...overrides.edited[key] };
+          const editedPkg = { ...overrides.edited[key] };
+          if (editedPkg.lat) {
+            const latOpts = getPackageLateralityOptions(editedPkg.lat);
+            if (latOpts.length > 1) {
+              const healed = latOpts.map((o, i) => `${i + 1}. ${o}`).join('\n');
+              if (editedPkg.lat !== healed) {
+                editedPkg.lat = healed;
+                overrides.edited[key].lat = healed;
+                overridesModified = true;
+              }
+            }
+          }
+          if (editedPkg.anes) {
+            const anesOpts = getPackageAnesthesiaOptions(editedPkg.anes);
+            if (anesOpts.length > 1) {
+              const healed = anesOpts.map((o, i) => `${i + 1}. ${o}`).join('\n');
+              if (editedPkg.anes !== healed) {
+                editedPkg.anes = healed;
+                overrides.edited[key].anes = healed;
+                overridesModified = true;
+              }
+            }
+          }
+          targetList[idx] = { ...targetList[idx], ...editedPkg };
         }
       }
     }
@@ -6580,6 +6672,26 @@ function applyStoredPackageOverrides() {
   // 3. Additions
   if (overrides.added && Array.isArray(overrides.added)) {
     for (const pkg of overrides.added) {
+      if (pkg.lat) {
+        const latOpts = getPackageLateralityOptions(pkg.lat);
+        if (latOpts.length > 1) {
+          const healed = latOpts.map((o, i) => `${i + 1}. ${o}`).join('\n');
+          if (pkg.lat !== healed) {
+            pkg.lat = healed;
+            overridesModified = true;
+          }
+        }
+      }
+      if (pkg.anes) {
+        const anesOpts = getPackageAnesthesiaOptions(pkg.anes);
+        if (anesOpts.length > 1) {
+          const healed = anesOpts.map((o, i) => `${i + 1}. ${o}`).join('\n');
+          if (pkg.anes !== healed) {
+            pkg.anes = healed;
+            overridesModified = true;
+          }
+        }
+      }
       const listKey = (pkg.s === "MEDISEP") ? "medisep" : "kasp";
       if (window.PACKAGE_MASTER_DATA[listKey]) {
         if (!window.PACKAGE_MASTER_DATA[listKey].some(p => p.c === pkg.c)) {
@@ -6587,6 +6699,10 @@ function applyStoredPackageOverrides() {
         }
       }
     }
+  }
+
+  if (overridesModified) {
+    saveStoredPkgOverrides(overrides);
   }
 }
 
@@ -6686,8 +6802,10 @@ function openEditPkgModal(code, scheme) {
     document.getElementById("pkgFormImp").value = pkg.imp || "No";
     document.getElementById("pkgFormImpName").value = pkg.imp_name || "";
     document.getElementById("pkgFormImpAmt").value = pkg.imp_amt || "";
-    document.getElementById("pkgFormLat").value = pkg.lat || "";
-    document.getElementById("pkgFormAnes").value = pkg.anes || "";
+    const editLatOpts = getPackageLateralityOptions(pkg.lat);
+    document.getElementById("pkgFormLat").value = (editLatOpts.length > 1) ? editLatOpts.map((o, i) => `${i + 1}. ${o}`).join('\n') : (pkg.lat || "");
+    const editAnesOpts = getPackageAnesthesiaOptions(pkg.anes);
+    document.getElementById("pkgFormAnes").value = (editAnesOpts.length > 1) ? editAnesOpts.map((o, i) => `${i + 1}. ${o}`).join('\n') : (pkg.anes || "");
     document.getElementById("pkgFormPreDocs").value = pkg.d_pre || "";
     document.getElementById("pkgFormClmDocs").value = getPkgClaimRemarks(pkg);
   } else {
@@ -6751,8 +6869,12 @@ function savePkgForm() {
       newPkg.imp = document.getElementById("pkgFormImp").value;
       const impName = document.getElementById("pkgFormImpName").value.trim();
       const impAmt = document.getElementById("pkgFormImpAmt").value.trim();
-      const lat = document.getElementById("pkgFormLat").value.trim();
-      const anes = document.getElementById("pkgFormAnes").value.trim();
+      const rawLat = document.getElementById("pkgFormLat").value.trim();
+      const rawAnes = document.getElementById("pkgFormAnes").value.trim();
+      const saveLatOpts = getPackageLateralityOptions(rawLat);
+      const lat = (saveLatOpts.length > 1) ? saveLatOpts.map((o, i) => `${i + 1}. ${o}`).join('\n') : rawLat;
+      const saveAnesOpts = getPackageAnesthesiaOptions(rawAnes);
+      const anes = (saveAnesOpts.length > 1) ? saveAnesOpts.map((o, i) => `${i + 1}. ${o}`).join('\n') : rawAnes;
       if (impName) newPkg.imp_name = impName;
       if (impAmt) newPkg.imp_amt = impAmt;
       if (lat) newPkg.lat = lat;
@@ -6802,8 +6924,12 @@ function savePkgForm() {
       updated.imp = document.getElementById("pkgFormImp").value;
       const impName = document.getElementById("pkgFormImpName").value.trim();
       const impAmt = document.getElementById("pkgFormImpAmt").value.trim();
-      const lat = document.getElementById("pkgFormLat").value.trim();
-      const anes = document.getElementById("pkgFormAnes").value.trim();
+      const rawLat = document.getElementById("pkgFormLat").value.trim();
+      const rawAnes = document.getElementById("pkgFormAnes").value.trim();
+      const saveLatOpts = getPackageLateralityOptions(rawLat);
+      const lat = (saveLatOpts.length > 1) ? saveLatOpts.map((o, i) => `${i + 1}. ${o}`).join('\n') : rawLat;
+      const saveAnesOpts = getPackageAnesthesiaOptions(rawAnes);
+      const anes = (saveAnesOpts.length > 1) ? saveAnesOpts.map((o, i) => `${i + 1}. ${o}`).join('\n') : rawAnes;
       if (impName) updated.imp_name = impName; else delete updated.imp_name;
       if (impAmt) updated.imp_amt = impAmt; else delete updated.imp_amt;
       if (lat) updated.lat = lat; else delete updated.lat;
