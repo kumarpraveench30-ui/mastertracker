@@ -1620,7 +1620,7 @@ table.doc-leader-table th {
   height: 100% !important;
   overflow-y: scroll !important;
   overflow-x: hidden !important;
-  padding: 16px 16px 36px 16px !important;
+  padding: 16px !important;
   background: #f1f5f9 !important;
   display: block !important;
 }
@@ -2102,6 +2102,45 @@ table.doc-leader-table th {
     background: #f0f0f0 !important;
     font-weight: bold;
   }
+}
+
+
+.audit-patient-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #f0fdf4;
+  color: #166534;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+.audit-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+.audit-status-badge.paid { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.audit-status-badge.approved { background: #dbeafe; color: #1d4ed8; border: 1px solid #93c5fd; }
+.audit-status-badge.underprocess { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+.audit-status-badge.rejected { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+.audit-source-tag {
+  font-size: 10px;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 1.5px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+  margin-left: 6px;
+  border: 1px solid #bae6fd;
 }
 
 </style>
@@ -3804,6 +3843,7 @@ table.doc-leader-table th {
 <!-- SheetJS & Package Master Data -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 <script src="package_master_data.js"></script>
+<script src="master_real_data.js" defer></script>
 
 <script>
 /**
@@ -9411,12 +9451,81 @@ function exportImprovementAnalysis(format) {
 
 /**
  * ==========================================================
- * VASUS CASE AUDIT ASSISTANT - ENHANCED CONTROLLER
+ * VASUS CASE AUDIT ASSISTANT - CONNECTED CONTROLLER & ENGINE
+ * Integrating Google Sheets Activity Logs + Claim Audit Report (master_report.surge.sh)
  * ==========================================================
  */
 const AUDIT_DOCTOR_LIST = ['Dr Sunitha', 'Dr Bindu', 'Dr Pranay', 'Dr Chinju', 'Dr Angel', 'Dr Varun'];
 let currentLoadedAuditData = null;
 let auditIsSearching = false;
+let MASTER_CASE_MAP = null;
+
+// Initialize index for Claim Audit Report database
+function initMasterCaseMap() {
+  if (MASTER_CASE_MAP || !window.MASTER_REAL_DATABASE || !Array.isArray(window.MASTER_REAL_DATABASE)) return;
+  MASTER_CASE_MAP = new Map();
+  for (let i = 0; i < window.MASTER_REAL_DATABASE.length; i++) {
+    const item = window.MASTER_REAL_DATABASE[i];
+    if (item && item.caseNo) {
+      const norm = String(item.caseNo).trim().replace(/\.0$/, '').toLowerCase();
+      MASTER_CASE_MAP.set(norm, item);
+    }
+  }
+}
+
+// Ensure database is available locally or from Surge
+function ensureMasterDataLoaded() {
+  if (window.MASTER_REAL_DATABASE && Array.isArray(window.MASTER_REAL_DATABASE)) {
+    initMasterCaseMap();
+    return Promise.resolve(window.MASTER_REAL_DATABASE);
+  }
+  return new Promise((resolve) => {
+    if (document.querySelector('script[src*="master_real_data.js"]')) {
+      let elapsed = 0;
+      const interval = setInterval(() => {
+        elapsed += 100;
+        if (window.MASTER_REAL_DATABASE || elapsed >= 2500) {
+          clearInterval(interval);
+          initMasterCaseMap();
+          resolve(window.MASTER_REAL_DATABASE || []);
+        }
+      }, 100);
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'master_real_data.js';
+    script.onerror = () => {
+      const fallback = document.createElement('script');
+      fallback.src = 'https://master_report.surge.sh/master_real_data.js';
+      fallback.onload = () => {
+        initMasterCaseMap();
+        resolve(window.MASTER_REAL_DATABASE || []);
+      };
+      fallback.onerror = () => resolve([]);
+      document.head.appendChild(fallback);
+    };
+    script.onload = () => {
+      initMasterCaseMap();
+      resolve(window.MASTER_REAL_DATABASE || []);
+    };
+    document.head.appendChild(script);
+  });
+}
+
+// Direct O(1) lookup
+function getMasterCaseRecord(caseNum) {
+  initMasterCaseMap();
+  if (!MASTER_CASE_MAP) return null;
+  const clean = String(caseNum).trim().replace(/\.0$/, '').toLowerCase();
+  return MASTER_CASE_MAP.get(clean) || null;
+}
+
+// Preload database on idle
+if (typeof window !== 'undefined') {
+  setTimeout(() => {
+    ensureMasterDataLoaded().catch(() => {});
+  }, 1000);
+}
 
 function toggleAuditChatbot(forceState) {
   const win = document.getElementById('caseAuditChatWindow');
@@ -9430,6 +9539,7 @@ function toggleAuditChatbot(forceState) {
     if(btn) btn.style.display = 'none';
     const input = document.getElementById('auditCaseInput');
     if(input) setTimeout(() => input.focus(), 100);
+    ensureMasterDataLoaded().catch(() => {});
   } else {
     win.style.display = 'none';
     if(btn) btn.style.display = 'flex';
@@ -9450,92 +9560,69 @@ function resetAuditReportToEmpty() {
   if(!content) return;
   content.innerHTML = '<div class="audit-empty-state">' +
     '<div class="audit-empty-icon">' +
-      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>' +
+      '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>' +
     '</div>' +
-    '<h4 class="audit-empty-title">Vasus Case Audit Assistant</h4>' +
-    '<p class="audit-empty-desc">Enter any full or partial <strong>Case Number</strong> above to retrieve the live, date-wise case audit history, doctor package codes, employee operational activities, enhancements, and financial status.</p>' +
+    '<h3 class="audit-empty-title">Search Any Case Number</h3>' +
+    '<p class="audit-empty-desc">Enter a full or partial Case Number above to generate a comprehensive date-wise audit report and live Claim Audit status.</p>' +
     '<div class="audit-quick-pills">' +
-      '<button class="audit-quick-pill" onclick="quickSearchAuditCase(\'2026100510093735\')">Case 2026100510093735</button>' +
-      '<button class="audit-quick-pill" onclick="quickSearchAuditCase(\'2026080110049393\')">Case 2026080110049393</button>' +
-      '<button class="audit-quick-pill" onclick="quickSearchAuditCase(\'2026080410005059\')">Case 2026080410005059</button>' +
+      '<button class="audit-quick-pill" onclick="searchExampleCase(\'2026092510009437\')">Pushpagiri: 2026092510009437</button>' +
+      '<button class="audit-quick-pill" onclick="searchExampleCase(\'2026032410044505\')">CMH Paid: 2026032410044505</button>' +
+      '<button class="audit-quick-pill" onclick="searchExampleCase(\'2026080110049393\')">Pushpagiri: 2026080110049393</button>' +
     '</div>' +
   '</div>';
 }
 
-function quickSearchAuditCase(caseNum) {
+function searchExampleCase(caseNum) {
   const input = document.getElementById('auditCaseInput');
-  if(input) input.value = caseNum;
-  executeCaseAuditSearch();
+  if(input) {
+    input.value = caseNum;
+    executeCaseAuditSearch();
+  }
 }
 
-function toggleAuditSection(cardId) {
-  const card = document.getElementById(cardId);
-  if(card) card.classList.toggle('open');
-}
-
-function showAuditToast(msg) {
-  const existing = document.querySelector('.audit-toast');
-  if(existing && existing.parentNode) existing.parentNode.removeChild(existing);
-  const toast = document.createElement('div');
-  toast.className = 'audit-toast';
-  toast.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg><span>' + msg + '</span>';
-  document.body.appendChild(toast);
-  setTimeout(() => {
-    if(toast.parentNode) toast.parentNode.removeChild(toast);
-  }, 2400);
-}
-
-function copyTextToClipboard(text, successMsg) {
-  navigator.clipboard.writeText(text).then(() => {
-    showAuditToast(successMsg || 'Copied to clipboard!');
-  }).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-    showAuditToast(successMsg || 'Copied to clipboard!');
-  });
-}
-
-function parseAuditDateCell(c) {
-  if(!c) return { str: 'Not recorded', date: null };
-  const val = c.v;
-  const f = c.f || '';
+function parseAuditDateCell(cell) {
+  if(!cell) return { str: 'Not recorded', date: null };
+  const val = cell.v;
+  const f = cell.f || '';
   if(typeof val === 'string' && val.startsWith('Date(')) {
-    const m = val.match(/Date\((\d+),(\d+),(\d+)(?:,(\d+),(\d+),(\d+))?\)/);
-    if(m) {
-      const d = new Date(parseInt(m[1]), parseInt(m[2]), parseInt(m[3]), parseInt(m[4]||0), parseInt(m[5]||0), parseInt(m[6]||0));
-      const pad = n => String(n).padStart(2, '0');
-      const formatted = pad(d.getDate()) + '/' + pad(d.getMonth()+1) + '/' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
-      return { str: f || formatted, date: d };
-    }
+    const parts = val.replace('Date(', '').replace(')', '').split(',').map(n => parseInt(n.trim(), 10));
+    const d = new Date(parts[0], parts[1] || 0, parts[2] || 1, parts[3] || 0, parts[4] || 0, parts[5] || 0);
+    return { str: f || d.toLocaleDateString('en-GB') + ' ' + d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }), date: d };
   }
-  return { str: f || String(val || 'Not recorded'), date: null };
-}
-
-function parseAuditDoctorCodes(rawF, rawG) {
-  const str = (rawF || '') + ' ' + (rawG || '');
-  const codeRegex = /\b([A-Z]{2}\d{3}[A-Z\d]?|MS\d{4})\b/g;
-  const codes = [];
-  let m;
-  while ((m = codeRegex.exec(str)) !== null) {
-    if(!codes.includes(m[1])) codes.push(m[1]);
+  if(f) {
+    return { str: f, date: tryParseCustomDate(f) };
   }
-  let clinical = String(rawF || '').replace(/\b([A-Z]{2}\d{3}[A-Z\d]?|MS\d{4})\b/g, '').replace(/[*_~]+/g, ' ').replace(/\s+/g, ' ').trim();
-  let remarks = String(rawG || '').trim();
-  if(remarks === 'null') remarks = '';
-  return { codes, clinical, remarks };
+  if(val) {
+    const s = String(val);
+    return { str: s, date: tryParseCustomDate(s) };
+  }
+  return { str: 'Not recorded', date: null };
 }
 
-function lookupAuditPackageMaster(code) {
-  if(!window.PACKAGE_MASTER_DATA) return null;
-  const list = window.PACKAGE_MASTER_DATA.packages || (Array.isArray(window.PACKAGE_MASTER_DATA) ? window.PACKAGE_MASTER_DATA : []);
-  const found = list.find(x => x.c && x.c.toUpperCase() === code.toUpperCase());
-  return found || null;
+function tryParseCustomDate(str) {
+  if(!str) return null;
+  const s = String(str).trim();
+  const m = s.match(/^(\d{1,2})[/\-\.](\d{1,2})[/\-\.](\d{2,4})(?:\s+(\d{1,2}):(\d{1,2})(?::(\d{1,2}))?)?/);
+  if(m) {
+    const day = parseInt(m[1], 10);
+    const month = parseInt(m[2], 10) - 1;
+    let year = parseInt(m[3], 10);
+    if(year < 100) year += 2000;
+    const hour = m[4] ? parseInt(m[4], 10) : 0;
+    const min = m[5] ? parseInt(m[5], 10) : 0;
+    const sec = m[6] ? parseInt(m[6], 10) : 0;
+    return new Date(year, month, day, hour, min, sec);
+  }
+  const iso = new Date(s);
+  return isNaN(iso.getTime()) ? null : iso;
 }
 
+function toggleAuditSection(secId) {
+  const el = document.getElementById(secId);
+  if(el) el.classList.toggle('open');
+}
+
+// Dual search across Google Sheets and Claim Audit Database
 async function executeCaseAuditSearch() {
   const input = document.getElementById('auditCaseInput');
   const content = document.getElementById('auditReportContent');
@@ -9553,26 +9640,22 @@ async function executeCaseAuditSearch() {
   content.innerHTML = '<div class="audit-loading-state">' +
     '<div class="audit-spinner"></div>' +
     '<div style="font-weight:800;color:#0f172a;font-size:14px;margin-bottom:4px;">Searching Database...</div>' +
-    '<div style="font-size:12px;color:#64748b;">Scanning Case log and Doctor Scrutiny tabs for "' + cleanTerm + '"</div>' +
+    '<div style="font-size:12px;color:#64748b;">Scanning Operational Logs and Claim Audit Report for "' + cleanTerm + '"</div>' +
   '</div>';
 
   try {
     auditIsSearching = true;
-    const queryStr = "select B, D, count(A) where B contains '" + cleanTerm + "' group by B, D order by count(A) desc limit 25 label count(A) ''";
-    const res = await queryGviz(queryStr, 'Cases');
-    const rows = res.rows || [];
 
-    if(!rows || rows.length === 0) {
-      content.innerHTML = '<div class="audit-alert-box">' +
-        '<strong>No matching records found.</strong><br>' +
-        'No case records match <strong>"' + cleanTerm + '"</strong> in the Google Sheets database.<br>' +
-        'Please check the Case Number spelling or try searching with a partial number.' +
-      '</div>';
-      auditIsSearching = false;
-      return;
-    }
+    // Run parallel: Google Sheets query & Master database scan
+    const gsheetsPromise = queryGviz("select B, D, count(A) where B contains '" + cleanTerm + "' group by B, D order by count(A) desc limit 25 label count(A) ''", 'Cases').catch(() => ({ rows: [] }));
+    const masterPromise = ensureMasterDataLoaded().catch(() => []);
+
+    const [res, masterData] = await Promise.all([gsheetsPromise, masterPromise]);
+    const rows = (res && res.rows) ? res.rows : [];
 
     const caseMap = new Map();
+
+    // 1. Ingest Google Sheets matches
     rows.forEach(r => {
       if(!r || !r.c) return;
       const caseNum = r.c[0] ? String(r.c[0].f || r.c[0].v || '').trim() : '';
@@ -9580,7 +9663,7 @@ async function executeCaseAuditSearch() {
       const cnt = r.c[2] ? Number(r.c[2].v) || 0 : 0;
       if(!caseNum) return;
       if(!caseMap.has(caseNum)) {
-        caseMap.set(caseNum, { caseNum, hospitals: hosp ? [hosp] : [], count: cnt });
+        caseMap.set(caseNum, { caseNum, hospitals: hosp ? [hosp] : [], count: cnt, inSheet: true, inMaster: false });
       } else {
         const item = caseMap.get(caseNum);
         if(hosp && !item.hospitals.includes(hosp)) item.hospitals.push(hosp);
@@ -9588,7 +9671,50 @@ async function executeCaseAuditSearch() {
       }
     });
 
+    // 2. Ingest Master Real Database matches
+    if(masterData && Array.isArray(masterData)) {
+      const normTerm = cleanTerm.toLowerCase();
+      let masterMatchCount = 0;
+      for(let i = 0; i < masterData.length && masterMatchCount < 30; i++) {
+        const mItem = masterData[i];
+        if(!mItem || !mItem.caseNo) continue;
+        const normCase = String(mItem.caseNo).trim().replace(/\.0$/, '');
+        if(normCase.toLowerCase().includes(normTerm)) {
+          masterMatchCount++;
+          if(!caseMap.has(normCase)) {
+            caseMap.set(normCase, {
+              caseNum: normCase,
+              hospitals: mItem.hospital ? [mItem.hospital] : [],
+              count: 1,
+              inSheet: false,
+              inMaster: true,
+              patientName: mItem.patientName,
+              status: mItem.rawStatus || mItem.category
+            });
+          } else {
+            const item = caseMap.get(normCase);
+            item.inMaster = true;
+            item.patientName = mItem.patientName;
+            item.status = mItem.rawStatus || mItem.category;
+            if(mItem.hospital && !item.hospitals.includes(mItem.hospital)) {
+              item.hospitals.push(mItem.hospital);
+            }
+          }
+        }
+      }
+    }
+
     const matches = Array.from(caseMap.values());
+
+    if(matches.length === 0) {
+      content.innerHTML = '<div class="audit-alert-box">' +
+        '<strong>No matching records found.</strong><br>' +
+        'No case records match <strong>"' + cleanTerm + '"</strong> in Google Sheets or the Claim Audit Report.<br>' +
+        'Please check the Case Number spelling or try searching with a partial number.' +
+      '</div>';
+      auditIsSearching = false;
+      return;
+    }
 
     if(matches.length === 1) {
       if(matchContainer) matchContainer.style.display = 'none';
@@ -9596,52 +9722,40 @@ async function executeCaseAuditSearch() {
     } else {
       if(matchContainer) {
         matchContainer.style.display = 'block';
-        const label = document.getElementById('auditMatchesCountLabel');
-        if(label) label.textContent = 'Found ' + matches.length + ' matching cases. Select one to audit:';
         const select = document.getElementById('auditMatchesSelect');
         if(select) {
-          select.innerHTML = '<option value="">-- Choose a matching case to inspect --</option>' +
-            matches.map(m => '<option value="' + m.caseNum + '">Case ' + m.caseNum + ' - ' + (m.hospitals.join(' / ') || 'Hospital N/A') + ' (' + m.count + ' activities)</option>').join('');
+          select.innerHTML = '<option value="">-- Choose matching case (' + matches.length + ' found) --</option>' +
+            matches.map(m => {
+              const hospStr = m.hospitals.length ? ' [' + m.hospitals.join(', ') + ']' : '';
+              const patientStr = m.patientName ? ' (' + m.patientName + ')' : '';
+              const statusStr = m.status ? ' - ' + m.status : '';
+              const badgeStr = m.inMaster ? ' [Audit Report]' : '';
+              return '<option value="' + m.caseNum + '">Case #' + m.caseNum + patientStr + hospStr + statusStr + badgeStr + '</option>';
+            }).join('');
+          select.onchange = function() {
+            if(this.value) {
+              loadAndDisplayCaseAudit(this.value);
+            }
+          };
         }
       }
-      const exactMatch = matches.find(m => m.caseNum === cleanTerm);
-      if(exactMatch) {
-        const select = document.getElementById('auditMatchesSelect');
-        if(select) select.value = exactMatch.caseNum;
-        await loadAndDisplayCaseAudit(exactMatch.caseNum);
-      } else {
-        content.innerHTML = '<div style="background:#ffffff;border-radius:12px;padding:18px;border:1px solid #cbd5e1;text-align:center;">' +
-          '<div style="font-weight:800;color:#0f172a;font-size:15px;margin-bottom:6px;">Multiple Matching Cases Found (' + matches.length + ')</div>' +
-          '<p style="font-size:12.5px;color:#64748b;margin:0 0 14px;">Please select the exact Case Number you wish to audit from the dropdown above, or click one below:</p>' +
-          '<div style="display:flex;flex-direction:column;gap:8px;max-height:340px;overflow-y:auto;">' +
-            matches.map(m => '<div onclick="onSelectMatchCase(\'' + m.caseNum + '\')" style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:10px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;text-align:left;transition:all 0.15s;" onmouseover="this.style.background=\'#eff6ff\';this.style.borderColor=\'#93c5fd\'" onmouseout="this.style.background=\'#f8fafc\';this.style.borderColor=\'#e2e8f0\'">' +
-              '<div>' +
-                '<strong style="color:#0f172a;font-size:13.5px;">Case #' + m.caseNum + '</strong>' +
-                '<div style="font-size:11.5px;color:#64748b;margin-top:2px;">' + (m.hospitals.join(' / ') || 'Hospital N/A') + '</div>' +
-              '</div>' +
-              '<span style="font-size:11px;background:#e2e8f0;color:#334155;padding:3px 9px;border-radius:12px;font-weight:800;">' + m.count + ' logs</span>' +
-            '</div>').join('') +
-          '</div>' +
-        '</div>';
-      }
+      content.innerHTML = '<div class="audit-empty-state" style="padding:24px 16px;">' +
+        '<div class="audit-empty-icon" style="background:#eff6ff;">' +
+          '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>' +
+        '</div>' +
+        '<h3 class="audit-empty-title">Found ' + matches.length + ' Matching Cases</h3>' +
+        '<p class="audit-empty-desc">Multiple cases match <strong>"' + cleanTerm + '"</strong> across Google Sheets and the Claim Audit Report. Please select a case from the dropdown above to view the full audit history.</p>' +
+      '</div>';
     }
   } catch(err) {
-    console.error('Case audit search error:', err);
-    content.innerHTML = '<div class="audit-alert-box"><strong>Error connecting to Google Sheets.</strong><br>' + (err.message || 'Unable to retrieve search results.') + '</div>';
+    console.error('Audit search error:', err);
+    content.innerHTML = '<div class="audit-alert-box"><strong>Error searching records:</strong> ' + err.message + '</div>';
   } finally {
     auditIsSearching = false;
   }
 }
 
-async function onSelectMatchCase(caseNum) {
-  if(!caseNum) return;
-  const select = document.getElementById('auditMatchesSelect');
-  if(select) select.value = caseNum;
-  const input = document.getElementById('auditCaseInput');
-  if(input) input.value = caseNum;
-  await loadAndDisplayCaseAudit(caseNum);
-}
-
+// Load case combining Google Sheets activity trail + Claim Audit Report
 async function loadAndDisplayCaseAudit(caseNum) {
   const content = document.getElementById('auditReportContent');
   if(!content) return;
@@ -9649,19 +9763,31 @@ async function loadAndDisplayCaseAudit(caseNum) {
   content.innerHTML = '<div class="audit-loading-state">' +
     '<div class="audit-spinner"></div>' +
     '<div style="font-weight:800;color:#0f172a;font-size:14px;margin-bottom:4px;">Compiling Audit Trail...</div>' +
-    '<div style="font-size:12px;color:#64748b;">Fetching operational entries and doctor scrutiny logs for Case #' + caseNum + '...</div>' +
+    '<div style="font-size:12px;color:#64748b;">Fetching operational entries, doctor logs, and Claim Audit Report for Case #' + caseNum + '...</div>' +
   '</div>';
 
   try {
     const cleanCaseNum = String(caseNum).trim().replace(/['"\\]/g, '');
-    const caseRes = await queryGviz("select * where B = '" + cleanCaseNum + "' order by A asc", 'Cases');
-    const caseRows = caseRes.rows || [];
 
-    if(!caseRows || caseRows.length === 0) {
+    // 1. Retrieve Claim Audit master record
+    await ensureMasterDataLoaded().catch(() => {});
+    const masterRec = getMasterCaseRecord(cleanCaseNum);
+
+    // 2. Query Google Sheets Cases tab
+    let caseRows = [];
+    try {
+      const caseRes = await queryGviz("select * where B = '" + cleanCaseNum + "' order by A asc", 'Cases');
+      caseRows = caseRes.rows || [];
+    } catch(e) {
+      console.warn('Google Sheets Cases query failed, using master record if available:', e);
+    }
+
+    if((!caseRows || caseRows.length === 0) && !masterRec) {
       content.innerHTML = '<div class="audit-alert-box">No recorded activity found for Case #' + cleanCaseNum + '.</div>';
       return;
     }
 
+    // 3. Query Doctor scrutiny tabs if employees worked on case
     const docNamesToQuery = new Set();
     caseRows.forEach(r => {
       if(!r || !r.c) return;
@@ -9670,25 +9796,28 @@ async function loadAndDisplayCaseAudit(caseNum) {
         docNamesToQuery.add(uploader);
       }
     });
-    if(docNamesToQuery.size === 0) {
+    if(docNamesToQuery.size === 0 && caseRows.length > 0) {
       AUDIT_DOCTOR_LIST.forEach(d => docNamesToQuery.add(d));
     }
 
     const doctorRecords = [];
-    const docPromises = Array.from(docNamesToQuery).map(async d => {
-      try {
-        const dRes = await queryGviz("select * where B = '" + cleanCaseNum + "' order by A asc", d);
-        if(dRes && dRes.rows && dRes.rows.length > 0) {
-          dRes.rows.forEach(r => doctorRecords.push({ docName: d, row: r }));
+    if(docNamesToQuery.size > 0) {
+      const docPromises = Array.from(docNamesToQuery).map(async d => {
+        try {
+          const dRes = await queryGviz("select * where B = '" + cleanCaseNum + "' order by A asc", d);
+          if(dRes && dRes.rows && dRes.rows.length > 0) {
+            dRes.rows.forEach(r => doctorRecords.push({ docName: d, row: r }));
+          }
+        } catch(e) {
+          // tab query skipped
         }
-      } catch(e) {
-        // Tab query skipped
-      }
-    });
-    await Promise.all(docPromises);
+      });
+      await Promise.all(docPromises);
+    }
 
+    // 4. Ingest operational events
     const allEvents = [];
-    let hospitalName = '';
+    let hospitalName = masterRec ? (masterRec.hospital || '') : '';
 
     caseRows.forEach(r => {
       if(!r || !r.c) return;
@@ -9706,262 +9835,296 @@ async function loadAndDisplayCaseAudit(caseNum) {
         dateObj: dateInfo.date,
         uploader,
         isDoctor: uploader.startsWith('Dr ') || AUDIT_DOCTOR_LIST.includes(uploader),
-        hospital: hosp,
         activity,
         amt,
         discharge,
-        sourceTab: 'Cases',
-        rawF: c[5] ? (c[5].f || c[5].v) : '',
-        rawG: c[6] ? (c[6].f || c[6].v) : '',
-        packageCodes: [],
-        clinicalNotes: '',
-        doctorRemarks: ''
+        source: 'Operations Log'
       });
     });
 
+    // 5. Ingest doctor scrutiny events
     doctorRecords.forEach(dr => {
       const c = dr.row.c;
+      if(!c) return;
       const dateInfo = parseAuditDateCell(c[0]);
-      const uploader = dr.docName;
       const hosp = c[3] ? String(c[3].v || '').trim() : '';
       if(hosp && !hospitalName) hospitalName = hosp;
-      const activity = c[4] ? String(c[4].v || '').trim() : 'Medical Scrutiny';
-      const rawF = c[5] ? (c[5].f || c[5].v || '') : '';
-      const rawG = c[6] ? (c[6].f || c[6].v || '') : '';
-      const parsed = parseAuditDoctorCodes(rawF, rawG);
+      const pkgCode = c[4] ? String(c[4].v || '').trim() : '';
+      const notes = c[5] ? String(c[5].v || '').trim() : '';
+      const remarks = c[6] ? String(c[6].v || '').trim() : '';
 
-      const match = allEvents.find(e => e.uploader === uploader && e.dateStr === dateInfo.str);
-      if(match) {
-        match.packageCodes = parsed.codes;
-        match.clinicalNotes = parsed.clinical;
-        match.doctorRemarks = parsed.remarks;
-        match.rawF = rawF;
-        match.rawG = rawG;
-      } else {
-        allEvents.push({
-          dateStr: dateInfo.str,
-          dateObj: dateInfo.date,
-          uploader,
-          isDoctor: true,
-          hospital: hosp,
-          activity,
-          packageCodes: parsed.codes,
-          clinicalNotes: parsed.clinical,
-          doctorRemarks: parsed.remarks,
-          rawF,
-          rawG,
-          amt: null,
-          discharge: '',
-          sourceTab: dr.docName
-        });
-      }
+      allEvents.push({
+        dateStr: dateInfo.str,
+        dateObj: dateInfo.date,
+        uploader: dr.docName,
+        isDoctor: true,
+        activity: 'Clinical Doctor Scrutiny',
+        pkgCode,
+        clinicalNotes: notes,
+        doctorRemarks: remarks,
+        amt: null,
+        source: 'Doctor Scrutiny'
+      });
     });
 
+    // 6. Ingest final Bank Settlement event from Claim Audit Report if recorded
+    if(masterRec && masterRec.paidLacs > 0) {
+      const pDate = masterRec.paymentDate ? String(masterRec.paymentDate).trim() : '';
+      const pDateObj = pDate ? tryParseCustomDate(pDate) : null;
+      allEvents.push({
+        dateStr: pDate ? pDate.split('-').reverse().join('/') : 'Settlement Log',
+        dateObj: pDateObj,
+        uploader: 'Bank / Payer Settlement',
+        isDoctor: false,
+        activity: masterRec.rawStatus || 'Payment Settled',
+        amt: Math.round(masterRec.paidLacs * 100000),
+        discharge: 'UTR: ' + (masterRec.utr || 'Recorded') + ' (Claim Recovery Audit)',
+        source: 'Claim Audit Report'
+      });
+    }
+
+    // Chronological sorting (earliest first, latest last)
     allEvents.sort((a, b) => {
       if(a.dateObj && b.dateObj) return a.dateObj.getTime() - b.dateObj.getTime();
-      return a.dateStr.localeCompare(b.dateStr);
+      if(a.dateObj && !b.dateObj) return -1;
+      if(!a.dateObj && b.dateObj) return 1;
+      return 0;
     });
 
-    const auditData = {
+    currentLoadedAuditData = {
       caseNum: cleanCaseNum,
       hospitalName: hospitalName || 'Not recorded',
-      allEvents
+      allEvents,
+      doctorRecords,
+      masterRec
     };
-    currentLoadedAuditData = auditData;
-    renderAuditReport(auditData);
 
+    renderCaseAuditReport(cleanCaseNum, hospitalName, allEvents, doctorRecords, masterRec);
   } catch(err) {
-    console.error('Error compiling audit report:', err);
-    content.innerHTML = '<div class="audit-alert-box"><strong>Error generating audit report.</strong><br>' + (err.message || 'An error occurred while compiling records.') + '</div>';
+    console.error('Audit compilation error:', err);
+    content.innerHTML = '<div class="audit-alert-box"><strong>Error loading case:</strong> ' + err.message + '</div>';
   }
 }
 
-function renderAuditReport(data) {
+// Render Complete Audit Report
+function renderCaseAuditReport(caseNum, hospitalName, allEvents, doctorRecords, masterRec) {
   const content = document.getElementById('auditReportContent');
   if(!content) return;
 
-  const caseNum = data.caseNum;
-  const hospitalName = data.hospitalName;
-  const allEvents = data.allEvents;
+  function fmtAmt(val) {
+    if(val === null || val === undefined || isNaN(val)) return 'Not recorded';
+    return '₹' + Number(val).toLocaleString('en-IN');
+  }
 
-  const fmtAmt = amt => (amt !== null && amt !== undefined && !isNaN(amt)) ? '₹' + Number(amt).toLocaleString('en-IN') : '<span class="audit-not-recorded">Not recorded</span>';
-
-  // SECTION A: DR PA CODE
-  const drPa = allEvents.filter(e => e.isDoctor && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa')));
+  // --- SECTION A: DR PA CODE ---
+  const docPaEvents = allEvents.filter(e => e.isDoctor && (
+    (e.activity && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa'))) ||
+    e.pkgCode
+  ));
   let secA_Html = '';
-  if(drPa.length === 0) {
-    secA_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
-  } else {
-    secA_Html = drPa.map(e => {
-      const codeBadges = e.packageCodes && e.packageCodes.length > 0
-        ? e.packageCodes.map(c => {
-            const pm = lookupAuditPackageMaster(c);
-            const desc = pm ? ' <span style="font-weight:normal;color:#475569;">(' + (pm.p || pm.pr) + ')</span>' : '';
-            return '<span class="audit-code-pill">' + c + '</span>' + desc;
-          }).join('<br>')
-        : (e.rawF ? '<span class="audit-code-pill">' + e.rawF + '</span>' : '<span class="audit-not-recorded">Not recorded in detail</span>');
-
-      return '<div class="audit-sub-block">' +
-        '<div class="audit-row"><span class="audit-row-label">Doctor Name:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
-        '<div class="audit-row"><span class="audit-row-label">PA Package Code(s):</span><span class="audit-row-val">' + codeBadges + '</span></div>' +
-        '<div class="audit-row"><span class="audit-row-label">PA Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
-        '<div class="audit-row"><span class="audit-row-label">Related Remarks:</span><span class="audit-row-val">' + (e.doctorRemarks || e.clinicalNotes || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
-      '</div>';
-    }).join('');
-  }
-
-  // SECTION B: Employee PA Initiate Date – Amt
-  const empPa = allEvents.filter(e => !e.isDoctor && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa')));
-  let secB_Html = '';
-  if(empPa.length === 0) {
-    secB_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
-  } else {
-    secB_Html = empPa.map(e => '<div class="audit-sub-block">' +
-      '<div class="audit-row"><span class="audit-row-label">Employee Name:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">PA Initiate Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">PA Amount:</span><span class="audit-row-val" style="color:#16a34a;">' + fmtAmt(e.amt) + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">Status & Remarks:</span><span class="audit-row-val">' + e.activity + (e.discharge ? ' - ' + e.discharge : '') + '</span></div>' +
-    '</div>').join('');
-  }
-
-  // SECTION C: Employee EHM Date
-  const ehm = allEvents.filter(e => e.activity.toLowerCase().includes('enhance') || e.activity.toLowerCase().includes('ehm'));
-  let secC_Html = '';
-  if(ehm.length === 0) {
-    secC_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
-  } else {
-    secC_Html = ehm.map((e, idx) => '<div class="audit-sub-block">' +
-      '<div class="audit-sub-header">' +
-        '<span>Enhancement #' + (idx + 1) + '</span>' +
-        '<span style="font-size:11.5px;color:#64748b;font-weight:700;">' + e.dateStr + '</span>' +
-      '</div>' +
-      '<div class="audit-row"><span class="audit-row-label">Employee Name:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">EHM Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">Enhancement Amount:</span><span class="audit-row-val" style="color:#d97706;">' + fmtAmt(e.amt) + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">Status & Remarks:</span><span class="audit-row-val">' + e.activity + (e.discharge ? ' - ' + e.discharge : '') + '</span></div>' +
-    '</div>').join('');
-  }
-
-  // SECTION D: Dr CI QC Code
-  const drCi = allEvents.filter(e => e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('ci')));
-  const qc = allEvents.filter(e => e.activity.toLowerCase().includes('qc'));
-  let secD_Html = '';
-  if(drCi.length === 0 && qc.length === 0) {
-    secD_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
-  } else {
-    let ciBlocks = '';
-    if(drCi.length > 0) {
-      ciBlocks = drCi.map(e => {
-        const codeBadges = e.packageCodes && e.packageCodes.length > 0
-          ? e.packageCodes.map(c => {
-              const pm = lookupAuditPackageMaster(c);
-              const desc = pm ? ' <span style="font-weight:normal;color:#475569;">(' + (pm.p || pm.pr) + ')</span>' : '';
-              return '<span class="audit-code-pill">' + c + '</span>' + desc;
-            }).join('<br>')
-          : (e.rawF ? '<span class="audit-code-pill">' + e.rawF + '</span>' : '<span class="audit-not-recorded">Not recorded</span>');
-
+  if(docPaEvents.length === 0) {
+    // Check if any doctor scrutiny logged codes
+    const anyDocCode = allEvents.filter(e => e.isDoctor && e.pkgCode);
+    if(anyDocCode.length > 0) {
+      secA_Html = anyDocCode.map(e => {
+        const codes = e.pkgCode.split(/[,|\s]+/).filter(Boolean);
+        const codePills = codes.map(c => '<span class="audit-code-pill">' + c + '</span>').join('');
         return '<div class="audit-sub-block">' +
-          '<div class="audit-sub-header">Clinical Scrutiny (CI) Doctor</div>' +
-          '<div class="audit-row"><span class="audit-row-label">Doctor Name:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
-          '<div class="audit-row"><span class="audit-row-label">CI Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
-          '<div class="audit-row"><span class="audit-row-label">Package Code(s):</span><span class="audit-row-val">' + codeBadges + '</span></div>' +
+          '<div class="audit-sub-header"><strong>Doctor:</strong> ' + e.uploader + '</div>' +
+          '<div class="audit-row"><span class="audit-row-label">Package Code(s):</span><span class="audit-row-val">' + (codePills || e.pkgCode) + '</span></div>' +
+          '<div class="audit-row"><span class="audit-row-label">Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
           '<div class="audit-row"><span class="audit-row-label">Clinical Remarks:</span><span class="audit-row-val">' + (e.doctorRemarks || e.clinicalNotes || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
         '</div>';
       }).join('');
     } else {
-      ciBlocks = '<div class="audit-sub-block"><div class="audit-row"><span class="audit-row-label">Clinical Scrutiny (CI):</span> <span class="audit-row-val audit-not-recorded">Not recorded</span></div></div>';
+      secA_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span>No Doctor PA Code recorded in source scrutiny records</div>';
     }
-
-    let qcBlocks = '';
-    if(qc.length > 0) {
-      qcBlocks = qc.map(e => '<div class="audit-sub-block">' +
-        '<div class="audit-sub-header">Quality Check (QC) Audit</div>' +
-        '<div class="audit-row"><span class="audit-row-label">QC Employee:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
-        '<div class="audit-row"><span class="audit-row-label">QC Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
-        '<div class="audit-row"><span class="audit-row-label">QC Status & Remarks:</span><span class="audit-row-val">' + e.activity + (e.discharge ? ' - ' + e.discharge : '') + '</span></div>' +
-      '</div>').join('');
-    } else {
-      qcBlocks = '<div class="audit-sub-block"><div class="audit-row"><span class="audit-row-label">QC Audit:</span> <span class="audit-row-val audit-not-recorded">Not recorded in source log</span></div></div>';
-    }
-    secD_Html = ciBlocks + qcBlocks;
-  }
-
-  // SECTION E: Employees Claim Date – Amt
-  const empClaim = allEvents.filter(e => !e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('submit') || e.activity.toLowerCase().includes('resubmit')));
-  let secE_Html = '';
-  if(empClaim.length === 0) {
-    secE_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span> Not recorded in source data</div>';
   } else {
-    secE_Html = empClaim.map((e, idx) => '<div class="audit-sub-block">' +
-      '<div class="audit-sub-header">' +
-        '<span>Claim Activity #' + (idx + 1) + ' (' + e.activity + ')</span>' +
-        '<span style="font-size:11.5px;color:#64748b;font-weight:700;">' + e.dateStr + '</span>' +
-      '</div>' +
-      '<div class="audit-row"><span class="audit-row-label">Processed By:</span><span class="audit-row-val">' + e.uploader + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">CI Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">Claim Amount:</span><span class="audit-row-val" style="color:#0284c7;">' + fmtAmt(e.amt) + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">Submission Date:</span><span class="audit-row-val">' + (e.discharge ? e.discharge : e.dateStr) + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">Claim Status:</span><span class="audit-row-val">' + e.activity + '</span></div>' +
-      '<div class="audit-row"><span class="audit-row-label">Remarks:</span><span class="audit-row-val">' + (e.discharge || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
-    '</div>').join('');
+    secA_Html = docPaEvents.map(e => {
+      const codes = (e.pkgCode || '').split(/[,|\s]+/).filter(Boolean);
+      const codePills = codes.map(c => '<span class="audit-code-pill">' + c + '</span>').join('');
+      return '<div class="audit-sub-block">' +
+        '<div class="audit-sub-header"><strong>Doctor:</strong> ' + e.uploader + '</div>' +
+        '<div class="audit-row"><span class="audit-row-label">PA Package/Code:</span><span class="audit-row-val">' + (codePills || e.pkgCode || '<span class="audit-not-recorded">Not recorded separately</span>') + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">PA Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Remarks:</span><span class="audit-row-val">' + (e.doctorRemarks || e.clinicalNotes || e.discharge || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+      '</div>';
+    }).join('');
   }
 
-  // SECTION F: Discharge Amount & Final Case Status
-  let dischargeDate = '';
-  let claimAmount = null;
-  allEvents.forEach(e => {
-    if(e.discharge && !dischargeDate && (e.discharge.includes('/') || e.discharge.includes('-'))) {
-      dischargeDate = e.discharge;
-    }
-    if(!e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('submit')) && e.amt !== null && claimAmount === null) {
-      claimAmount = e.amt;
-    }
-  });
-  if(claimAmount === null) {
-    const anyAmt = allEvents.find(e => e.amt !== null);
-    if(anyAmt) claimAmount = anyAmt.amt;
+  // --- SECTION B: Employee PA Initiate Date – Amt ---
+  const empPaEvents = allEvents.filter(e => !e.isDoctor && e.activity && (
+    e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase() === 'pa'
+  ));
+  let secB_Html = '';
+  if(empPaEvents.length === 0) {
+    secB_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span>No Employee Preauth initiation entry recorded</div>';
+  } else {
+    secB_Html = empPaEvents.map(e => {
+      return '<div class="audit-sub-block">' +
+        '<div class="audit-sub-header"><strong>Employee:</strong> ' + e.uploader + '</div>' +
+        '<div class="audit-row"><span class="audit-row-label">PA Initiate Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">PA Amount:</span><span class="audit-row-val">' + (e.amt !== null ? fmtAmt(e.amt) : '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Status & Remarks:</span><span class="audit-row-val">' + (e.discharge || e.activity || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+      '</div>';
+    }).join('');
   }
+
+  // --- SECTION C: Employee EHM Date ---
+  const ehmEvents = allEvents.filter(e => !e.isDoctor && e.activity && (
+    e.activity.toLowerCase().includes('enhancement') || e.activity.toLowerCase().includes('ehm')
+  ));
+  let secC_Html = '';
+  if(ehmEvents.length === 0) {
+    secC_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span>No Enhancement (EHM) activity recorded for this case</div>';
+  } else {
+    secC_Html = ehmEvents.map((e, idx) => {
+      return '<div class="audit-sub-block">' +
+        '<div class="audit-sub-header"><strong>Enhancement #' + (idx + 1) + ':</strong> ' + e.uploader + '</div>' +
+        '<div class="audit-row"><span class="audit-row-label">EHM Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Enhancement Amount:</span><span class="audit-row-val">' + (e.amt !== null ? fmtAmt(e.amt) : '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Status & Remarks:</span><span class="audit-row-val">' + (e.discharge || e.activity || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // --- SECTION D: Dr CI QC Code ---
+  const ciQcDoctorEvents = allEvents.filter(e => e.isDoctor && (
+    (e.activity && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('ci') || e.activity.toLowerCase().includes('qc'))) ||
+    e.clinicalNotes || e.doctorRemarks
+  ));
+  let secD_Html = '';
+  if(ciQcDoctorEvents.length === 0) {
+    secD_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span>No Doctor CI / QC scrutiny recorded for this case</div>';
+  } else {
+    secD_Html = ciQcDoctorEvents.map(e => {
+      const codes = (e.pkgCode || '').split(/[,|\s]+/).filter(Boolean);
+      const codePills = codes.map(c => '<span class="audit-code-pill">' + c + '</span>').join('');
+      return '<div class="audit-sub-block">' +
+        '<div class="audit-sub-header"><strong>Clinical Doctor:</strong> ' + e.uploader + '</div>' +
+        '<div class="audit-row"><span class="audit-row-label">CI Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Package / Code Details:</span><span class="audit-row-val">' + (codePills || e.pkgCode || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">QC Employee Name:</span><span class="audit-row-val audit-not-recorded">Separate QC role not recorded in source</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Clinical Notes:</span><span class="audit-row-val">' + (e.clinicalNotes || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Doctor Remarks:</span><span class="audit-row-val">' + (e.doctorRemarks || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // --- SECTION E: Employees Claim Date – Amt ---
+  const empClaimEvents = allEvents.filter(e => !e.isDoctor && e.activity && (
+    e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('resubmit') || e.activity.toLowerCase().includes('query')
+  ));
+  let secE_Html = '';
+  if(empClaimEvents.length === 0) {
+    secE_Html = '<div class="audit-not-recorded-notice"><span class="audit-notice-dot"></span>No Employee Claim processing entries recorded</div>';
+  } else {
+    secE_Html = empClaimEvents.map(e => {
+      return '<div class="audit-sub-block">' +
+        '<div class="audit-sub-header"><strong>Employee:</strong> ' + e.uploader + '</div>' +
+        '<div class="audit-row"><span class="audit-row-label">Activity & Status:</span><span class="audit-row-val" style="font-weight:700;color:#2563eb;">' + e.activity + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Processing Date & Time:</span><span class="audit-row-val">' + e.dateStr + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Claim Amount:</span><span class="audit-row-val">' + (e.amt !== null ? fmtAmt(e.amt) : '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+        '<div class="audit-row"><span class="audit-row-label">Recorded Remarks / DOD:</span><span class="audit-row-val">' + (e.discharge || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // --- SECTION F: Discharge Amount & Final Case Status ---
   const latestEvent = allEvents[allEvents.length - 1];
-  const queryActivities = allEvents.filter(e => e.activity.toLowerCase().includes('query') || e.activity.toLowerCase().includes('resubmit'));
-  const queryDetails = queryActivities.length > 0
-    ? queryActivities.map(q => q.activity + ' by ' + q.uploader + ' on ' + q.dateStr).join('; ')
-    : '<span class="audit-not-recorded">None recorded</span>';
+  let claimAmt = null;
+  for(let i = allEvents.length - 1; i >= 0; i--) {
+    if(allEvents[i].amt !== null) { claimAmt = allEvents[i].amt; break; }
+  }
+  let dischargeDateStr = '';
+  for(let i = allEvents.length - 1; i >= 0; i--) {
+    if(allEvents[i].discharge && allEvents[i].discharge.match(/\d{1,2}[/\-]\d{1,2}/)) {
+      dischargeDateStr = allEvents[i].discharge;
+      break;
+    }
+  }
 
-  const secF_Html = '<div class="audit-sub-block">' +
-    '<div class="audit-row"><span class="audit-row-label">Date of Admission:</span><span class="audit-row-val audit-not-recorded">Not recorded in operational log</span></div>' +
-    '<div class="audit-row"><span class="audit-row-label">Date of Discharge:</span><span class="audit-row-val">' + (dischargeDate || '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
-    '<div class="audit-row"><span class="audit-row-label">Discharge Amount:</span><span class="audit-row-val audit-not-recorded">Not recorded separately</span></div>' +
-    '<div class="audit-row"><span class="audit-row-label">Claim Amount (Claimed):</span><span class="audit-row-val" style="color:#0284c7;font-weight:800;">' + fmtAmt(claimAmount) + '</span></div>' +
-    '<div class="audit-row"><span class="audit-row-label">Approved Amount:</span><span class="audit-row-val audit-not-recorded">Not recorded</span></div>' +
-    '<div class="audit-row"><span class="audit-row-label">Paid / Settled Amount:</span><span class="audit-row-val audit-not-recorded">Not recorded</span></div>' +
-    '<div class="audit-row"><span class="audit-row-label">Current Case Status:</span><span class="audit-row-val" style="color:#1e40af;font-weight:800;">' + (latestEvent ? latestEvent.activity : 'Not recorded') + '</span></div>' +
-    '<div class="audit-row"><span class="audit-row-label">Settlement Status:</span><span class="audit-row-val audit-not-recorded">Pending Settlement / Not recorded in source log</span></div>' +
-    '<div class="audit-row"><span class="audit-row-label">Rejection / Query Remarks:</span><span class="audit-row-val">' + queryDetails + '</span></div>' +
-  '</div>';
+  // If Master Record exists from master_report.surge.sh, use its live financial and status data
+  let finalStatusDisplay = '';
+  let statusColor = '#1e40af';
+  let badgeClass = 'underprocess';
+  let appAmtDisplay = '<span class="audit-not-recorded">Not recorded</span>';
+  let paidAmtDisplay = '<span class="audit-not-recorded">Not recorded</span>';
+  let settlementStatusDisplay = 'Pending Settlement / Not recorded in source log';
+  let doaDisplay = '<span class="audit-not-recorded">Not recorded in operational log</span>';
+  let dodDisplay = dischargeDateStr || '<span class="audit-not-recorded">Not recorded</span>';
 
-  // SECTION G: Complete Date-wise Audit Trail
-  const secG_Html = '<div class="audit-timeline">' +
+  if(masterRec) {
+    const rawSt = masterRec.rawStatus || masterRec.category || 'Under Process';
+    finalStatusDisplay = rawSt;
+    if(masterRec.category === 'PAID') {
+      badgeClass = 'paid';
+      statusColor = '#15803d';
+    } else if(masterRec.category === 'APPROVED_UNPAID') {
+      badgeClass = 'approved';
+      statusColor = '#1d4ed8';
+    } else if(masterRec.category === 'REJECTED') {
+      badgeClass = 'rejected';
+      statusColor = '#b91c1c';
+    } else {
+      badgeClass = 'underprocess';
+      statusColor = '#b45309';
+    }
+
+    if(masterRec.claimLacs) claimAmt = Math.round(masterRec.claimLacs * 100000);
+    if(masterRec.appLacs !== undefined && masterRec.appLacs !== null) {
+      appAmtDisplay = fmtAmt(Math.round(masterRec.appLacs * 100000));
+    }
+    if(masterRec.paidLacs !== undefined && masterRec.paidLacs !== null) {
+      paidAmtDisplay = '<strong style="color:#16a34a;">' + fmtAmt(Math.round(masterRec.paidLacs * 100000)) + '</strong>';
+    }
+    if(masterRec.paidLacs > 0) {
+      settlementStatusDisplay = '<strong style="color:#16a34a;">Settled</strong> • UTR: <strong>' + (masterRec.utr || 'Recorded') + '</strong>' + (masterRec.paymentDate ? ' (Paid: ' + masterRec.paymentDate + ')' : '');
+    } else if(masterRec.category === 'APPROVED_UNPAID') {
+      settlementStatusDisplay = '<strong style="color:#d97706;">Approved (Sent to Bank / Pending Payment)</strong>';
+    } else if(masterRec.category === 'REJECTED') {
+      settlementStatusDisplay = '<strong style="color:#dc2626;">Claim Rejected</strong>';
+    } else {
+      settlementStatusDisplay = '<span style="color:#2563eb;font-weight:700;">Under Process (' + (masterRec.rawStatus || 'In Review') + ')</span>';
+    }
+
+    if(masterRec.doa) doaDisplay = masterRec.doa;
+    if(masterRec.dod) dodDisplay = masterRec.dod;
+  } else {
+    finalStatusDisplay = latestEvent ? latestEvent.activity : 'Not recorded';
+  }
+
+  const queryEvents = allEvents.filter(e => e.activity && e.activity.toLowerCase().includes('query'));
+  const querySummary = queryEvents.length ? queryEvents.map(e => e.activity + ' by ' + e.uploader + ' on ' + e.dateStr).join('; ') : 'No rejections or unresolved queries recorded';
+
+  let secF_Html = '<div class="audit-row"><span class="audit-row-label">Date of Admission (DOA):</span><span class="audit-row-val">' + doaDisplay + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Date of Discharge (DOD):</span><span class="audit-row-val">' + dodDisplay + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Discharge Amount:</span><span class="audit-row-val">' + (claimAmt !== null ? fmtAmt(claimAmt) + ' (Included in Claim)' : '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Claim Amount:</span><span class="audit-row-val" style="font-weight:800;color:#0f172a;">' + (claimAmt !== null ? fmtAmt(claimAmt) : '<span class="audit-not-recorded">Not recorded</span>') + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Approved Amount:</span><span class="audit-row-val">' + appAmtDisplay + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Paid / Settled Amount:</span><span class="audit-row-val">' + paidAmtDisplay + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Current Case Status:</span><span class="audit-row-val" style="color:' + statusColor + ';font-weight:800;">' + finalStatusDisplay + (masterRec ? '<span class="audit-source-tag">Claim Audit Report</span>' : '') + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Settlement Status:</span><span class="audit-row-val">' + settlementStatusDisplay + '</span></div>' +
+    '<div class="audit-row"><span class="audit-row-label">Rejection / Query Log:</span><span class="audit-row-val">' + querySummary + '</span></div>';
+
+  // --- SECTION G: Complete Date-wise Audit Trail ---
+  let secG_Html = '<div class="audit-timeline">' +
     allEvents.map((e, idx) => {
-      let badgeCls = '';
-      const actLower = e.activity.toLowerCase();
-      if(actLower.includes('preauth') || actLower.includes('pa')) badgeCls = 'preauth';
-      else if(actLower.includes('enhance') || actLower.includes('ehm')) badgeCls = 'enhancement';
-      else if(actLower.includes('query')) badgeCls = 'query';
-      else if(actLower.includes('resubmit')) badgeCls = 'resubmit';
-      else if(actLower.includes('claim') || actLower.includes('submit')) badgeCls = 'claim';
-
-      const codePart = e.packageCodes && e.packageCodes.length > 0
-        ? e.packageCodes.map(c => '<span class="audit-code-pill">' + c + '</span>').join(' ')
-        : '';
-
+      let badgeClass = 'doctor';
+      if(!e.isDoctor) {
+        if(e.activity.toLowerCase().includes('claim')) badgeClass = 'claim';
+        else if(e.activity.toLowerCase().includes('query')) badgeClass = 'query';
+        else badgeClass = 'preauth';
+      }
+      const codes = (e.pkgCode || '').split(/[,|\s]+/).filter(Boolean);
+      const codePart = codes.map(c => '<span class="audit-code-pill">' + c + '</span>').join('');
       const remarks = e.doctorRemarks || e.clinicalNotes || e.discharge || '';
-
-      return '<div class="audit-timeline-item ' + (e.isDoctor ? 'doctor' : badgeCls) + '">' +
+      return '<div class="audit-timeline-item ' + badgeClass + '">' +
         '<div class="audit-timeline-dot"></div>' +
         '<div class="audit-timeline-content">' +
           '<div class="audit-timeline-top">' +
             '<span class="audit-timeline-date">#' + (idx + 1) + ' • ' + e.dateStr + '</span>' +
-            '<span class="audit-timeline-badge ' + badgeCls + '">' + e.activity + '</span>' +
+            '<span class="audit-timeline-badge">' + e.activity + '</span>' +
           '</div>' +
           '<div style="font-weight:800;color:#0f172a;margin-bottom:2px;">' +
             e.uploader + ' ' + (e.isDoctor ? '<span style="font-size:10.5px;color:#9333ea;font-weight:700;">(Clinical Doctor)</span>' : '<span style="font-size:10.5px;color:#0284c7;font-weight:700;">(Operations)</span>') +
@@ -9974,23 +10137,37 @@ function renderAuditReport(data) {
     }).join('') +
   '</div>';
 
-  // Assemble full UI - All sections OPEN by default and clearly delineated
+  // Assemble full UI - All sections OPEN by default
+  const patientHtml = masterRec && masterRec.patientName ?
+    '<div class="audit-patient-badge">' +
+      '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>' +
+      'Patient: <strong>' + masterRec.patientName + '</strong>' +
+    '</div>' : '';
+
+  const statusBadgeTop = masterRec ?
+    '<div style="margin-top:6px;"><span class="audit-status-badge ' + badgeClass + '">● ' + finalStatusDisplay + '</span></div>' : '';
+
   content.innerHTML = '<!-- Top Meta Card -->' +
     '<div class="audit-meta-card">' +
       '<div class="audit-meta-top">' +
-        '<div class="audit-case-number">' +
-          '<span>Case #' + caseNum + '</span>' +
-          '<button class="audit-copy-badge-btn" onclick="copyTextToClipboard(\'' + caseNum + '\', \'Case Number copied!\')" title="Copy Case Number">' +
-            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>' +
-            'Copy' +
-          '</button>' +
+        '<div>' +
+          '<div class="audit-case-number">' +
+            '<span>Case #' + caseNum + '</span>' +
+            '<button class="audit-copy-badge-btn" onclick="copyTextToClipboard(\'\' + caseNum + \'\', \'Case Number copied!\')" title="Copy Case Number">' +
+              '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>' +
+              'Copy' +
+            '</button>' +
+          '</div>' +
+          patientHtml +
+          statusBadgeTop +
         '</div>' +
         '<span class="audit-hosp-badge">' + hospitalName + '</span>' +
       '</div>' +
       '<div class="audit-meta-grid">' +
         '<div class="audit-meta-item"><strong>Activities</strong><span>' + allEvents.length + ' Recorded</span></div>' +
-        '<div class="audit-meta-item"><strong>First Recorded</strong><span>' + (allEvents[0] ? allEvents[0].dateStr : '—') + '</span></div>' +
-        '<div class="audit-meta-item"><strong>Last Updated</strong><span>' + (allEvents[allEvents.length-1] ? allEvents[allEvents.length-1].dateStr : '—') + '</span></div>' +
+        '<div class="audit-meta-item"><strong>Claim Amount</strong><span>' + (claimAmt !== null ? fmtAmt(claimAmt) : '—') + '</span></div>' +
+        '<div class="audit-meta-item"><strong>Paid Amount</strong><span style="color:#16a34a;font-weight:800;">' + (masterRec && masterRec.paidLacs ? fmtAmt(Math.round(masterRec.paidLacs * 100000)) : (claimAmt !== null ? '—' : '—')) + '</span></div>' +
+        '<div class="audit-meta-item"><strong>Current Status</strong><span style="color:' + statusColor + ';font-weight:800;">' + finalStatusDisplay + '</span></div>' +
       '</div>' +
     '</div>' +
 
@@ -10076,148 +10253,53 @@ function renderAuditReport(data) {
         '<svg class="audit-sec-toggle" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
       '</div>' +
       '<div class="audit-sec-body">' + secG_Html + '</div>' +
-    '</div>';
+    '</div>' +
+    '<div style="height:32px;"></div>';
 
   content.scrollTop = 0;
 }
 
 function copyCaseAuditReport() {
   if(!currentLoadedAuditData) {
-    showAuditToast('Please search and load a case first.');
+    showAuditToast('Please search and load a case before copying report.');
     return;
   }
-  const caseNum = currentLoadedAuditData.caseNum;
-  const hospitalName = currentLoadedAuditData.hospitalName;
-  const allEvents = currentLoadedAuditData.allEvents;
-  let lines = [];
+  const { caseNum, hospitalName, allEvents, masterRec } = currentLoadedAuditData;
+  const lines = [];
   lines.push('=======================================================');
-  lines.push('VASUS CASE AUDIT ASSISTANT - CASE AUDIT REPORT');
+  lines.push('VASUS CASE AUDIT ASSISTANT - CASE REPORT');
   lines.push('=======================================================');
   lines.push('Case Number: ' + caseNum);
+  if(masterRec && masterRec.patientName) lines.push('Patient Name: ' + masterRec.patientName);
   lines.push('Hospital Name: ' + hospitalName);
   lines.push('Total Recorded Activities: ' + allEvents.length);
-  lines.push('Audit Compiled: ' + new Date().toLocaleString('en-IN'));
-  lines.push('-------------------------------------------------------\n');
+  lines.push('Audit Timestamp: ' + new Date().toLocaleString('en-IN'));
+  lines.push('-------------------------------------------------------');
 
-  // A. DR PA CODE
-  lines.push('[A. DR PA CODE]');
-  const drPa = allEvents.filter(e => e.isDoctor && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa')));
-  if(drPa.length === 0) {
-    lines.push('Status: Not recorded\n');
-  } else {
-    drPa.forEach(e => {
-      lines.push('- Doctor: ' + e.uploader);
-      lines.push('  Date & Time: ' + e.dateStr);
-      lines.push('  Package Code(s): ' + (e.packageCodes.length ? e.packageCodes.join(', ') : (e.rawF || 'Not recorded in detail')));
-      lines.push('  Remarks: ' + (e.doctorRemarks || e.clinicalNotes || 'Not recorded'));
-    });
-    lines.push('');
-  }
+  const latestEvent = allEvents[allEvents.length - 1];
+  const finalStatus = masterRec ? (masterRec.rawStatus || masterRec.category) : (latestEvent ? latestEvent.activity : 'Not recorded');
+  lines.push('Latest Case Status: ' + finalStatus + (masterRec ? ' [Claim Audit Report]' : ''));
 
-  // B. Employee PA Initiate Date – Amt
-  lines.push('[B. EMPLOYEE PA INITIATE DATE – AMT]');
-  const empPa = allEvents.filter(e => !e.isDoctor && (e.activity.toLowerCase().includes('preauth') || e.activity.toLowerCase().includes('pa')));
-  if(empPa.length === 0) {
-    lines.push('Status: Not recorded\n');
-  } else {
-    empPa.forEach(e => {
-      lines.push('- Initiated By: ' + e.uploader);
-      lines.push('  Date & Time: ' + e.dateStr);
-      lines.push('  PA Amount: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : 'Not recorded'));
-      lines.push('  Status / Remarks: ' + e.activity + (e.discharge ? ' (' + e.discharge + ')' : ''));
-    });
-    lines.push('');
-  }
-
-  // C. Employee EHM Date
-  lines.push('[C. EMPLOYEE EHM DATE]');
-  const ehm = allEvents.filter(e => e.activity.toLowerCase().includes('enhance') || e.activity.toLowerCase().includes('ehm'));
-  if(ehm.length === 0) {
-    lines.push('Status: Not recorded\n');
-  } else {
-    ehm.forEach((e, i) => {
-      lines.push('- Enhancement #' + (i + 1) + ':');
-      lines.push('  Employee: ' + e.uploader);
-      lines.push('  Date & Time: ' + e.dateStr);
-      lines.push('  Enhancement Amount: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : 'Not recorded'));
-      lines.push('  Status / Remarks: ' + e.activity + (e.discharge ? ' (' + e.discharge + ')' : ''));
-    });
-    lines.push('');
-  }
-
-  // D. Dr CI QC Code
-  lines.push('[D. DR CI QC CODE]');
-  const drCi = allEvents.filter(e => e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('ci')));
-  const qc = allEvents.filter(e => e.activity.toLowerCase().includes('qc'));
-  if(drCi.length === 0 && qc.length === 0) {
-    lines.push('Status: Not recorded\n');
-  } else {
-    if(drCi.length > 0) {
-      drCi.forEach(e => {
-        lines.push('- Clinical Scrutiny (CI) Doctor: ' + e.uploader);
-        lines.push('  CI Date & Time: ' + e.dateStr);
-        lines.push('  Package Code(s): ' + (e.packageCodes.length ? e.packageCodes.join(', ') : (e.rawF || 'Not recorded')));
-        lines.push('  Clinical Remarks: ' + (e.doctorRemarks || e.clinicalNotes || 'Not recorded'));
-      });
-    } else {
-      lines.push('- Clinical Scrutiny (CI): Not recorded');
-    }
-    if(qc.length > 0) {
-      qc.forEach(e => {
-        lines.push('- QC Employee: ' + e.uploader);
-        lines.push('  QC Date & Time: ' + e.dateStr);
-        lines.push('  QC Status & Remarks: ' + e.activity + (e.discharge ? ' (' + e.discharge + ')' : ''));
-      });
-    } else {
-      lines.push('- QC Audit: Not recorded in source log');
-    }
-    lines.push('');
-  }
-
-  // E. Employees Claim Date – Amt
-  lines.push('[E. EMPLOYEES CLAIM DATE – AMT]');
-  const empClaim = allEvents.filter(e => !e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('submit') || e.activity.toLowerCase().includes('resubmit')));
-  if(empClaim.length === 0) {
-    lines.push('Status: Not recorded\n');
-  } else {
-    empClaim.forEach(e => {
-      lines.push('- Processed By: ' + e.uploader);
-      lines.push('  CI Date & Time: ' + e.dateStr);
-      lines.push('  Claim Amount: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : 'Not recorded'));
-      lines.push('  Claim Submission Date: ' + (e.discharge ? e.discharge : e.dateStr));
-      lines.push('  Claim Status: ' + e.activity);
-      lines.push('  Remarks: ' + (e.discharge || 'Not recorded'));
-    });
-    lines.push('');
-  }
-
-  // F. Discharge Amount & Final Case Status
-  lines.push('[F. DISCHARGE AMOUNT & FINAL CASE STATUS]');
-  let dischargeDate = '';
   let claimAmt = null;
-  allEvents.forEach(e => {
-    if(e.discharge && !dischargeDate && (e.discharge.includes('/') || e.discharge.includes('-'))) dischargeDate = e.discharge;
-    if(!e.isDoctor && (e.activity.toLowerCase().includes('claim') || e.activity.toLowerCase().includes('submit')) && e.amt !== null && claimAmt === null) claimAmt = e.amt;
-  });
-  if(claimAmt === null) {
-    const anyA = allEvents.find(e => e.amt !== null);
-    if(anyA) claimAmt = anyA.amt;
+  for(let i = allEvents.length - 1; i >= 0; i--) {
+    if(allEvents[i].amt !== null) { claimAmt = allEvents[i].amt; break; }
   }
-  const latest = allEvents[allEvents.length - 1];
-  lines.push('- Date of Admission: Not recorded in operational log');
-  lines.push('- Date of Discharge: ' + (dischargeDate || 'Not recorded'));
-  lines.push('- Discharge Amount: Not recorded separately');
-  lines.push('- Claim Amount: ' + (claimAmt !== null ? '₹' + Number(claimAmt).toLocaleString('en-IN') : 'Not recorded'));
-  lines.push('- Approved Amount: Not recorded');
-  lines.push('- Paid / Settled Amount: Not recorded');
-  lines.push('- Current Case Status: ' + (latest ? latest.activity : 'Not recorded'));
-  lines.push('- Payment / Settlement Status: Pending Settlement / Not recorded in source log');
-  lines.push('- Rejection / Query Details: ' + (allEvents.filter(e => e.activity.toLowerCase().includes('query') || e.activity.toLowerCase().includes('resubmit')).map(e => e.activity + ' by ' + e.uploader + ' on ' + e.dateStr).join('; ') || 'None recorded') + '\n');
+  if(masterRec && masterRec.claimLacs) claimAmt = Math.round(masterRec.claimLacs * 100000);
 
-  // G. Complete Date-wise Audit Trail
-  lines.push('[G. COMPLETE DATE-WISE AUDIT TRAIL]');
-  allEvents.forEach((e, idx) => {
-    lines.push((idx + 1) + '. [' + e.dateStr + '] ' + e.activity + ' | Performer: ' + e.uploader + ' | Code(s): ' + (e.packageCodes.length ? e.packageCodes.join(', ') : '-') + ' | Amt: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : '-') + ' | Remarks: ' + (e.doctorRemarks || e.clinicalNotes || e.discharge || '-'));
+  lines.push('Claim Amount: ' + (claimAmt !== null ? '₹' + Number(claimAmt).toLocaleString('en-IN') : 'Not recorded'));
+  if(masterRec && masterRec.appLacs !== undefined && masterRec.appLacs !== null) {
+    lines.push('Approved Amount: ₹' + Number(Math.round(masterRec.appLacs * 100000)).toLocaleString('en-IN'));
+  }
+  if(masterRec && masterRec.paidLacs !== undefined && masterRec.paidLacs !== null) {
+    lines.push('Paid / Settled Amount: ₹' + Number(Math.round(masterRec.paidLacs * 100000)).toLocaleString('en-IN'));
+  }
+  if(masterRec && masterRec.utr) lines.push('Settlement UTR: ' + masterRec.utr + (masterRec.paymentDate ? ' (Paid on: ' + masterRec.paymentDate + ')' : ''));
+  if(masterRec && masterRec.doa) lines.push('Date of Admission: ' + masterRec.doa);
+  if(masterRec && masterRec.dod) lines.push('Date of Discharge: ' + masterRec.dod);
+
+  lines.push('\nCHRONOLOGICAL AUDIT TRAIL:');
+  allEvents.forEach((e, i) => {
+    lines.push((i + 1) + '. [' + e.dateStr + '] ' + e.activity + ' | By: ' + e.uploader + ' | Amt: ' + (e.amt !== null ? '₹' + Number(e.amt).toLocaleString('en-IN') : '-') + ' | Details: ' + (e.doctorRemarks || e.clinicalNotes || e.discharge || '-'));
   });
   lines.push('\n================== END OF AUDIT REPORT ==================');
 
@@ -10229,22 +10311,64 @@ function printCaseAuditReport() {
     showAuditToast('Please search and load a case before printing.');
     return;
   }
-  const caseNum = currentLoadedAuditData.caseNum;
-  const hospitalName = currentLoadedAuditData.hospitalName;
-  const allEvents = currentLoadedAuditData.allEvents;
+  const { caseNum, hospitalName, allEvents, masterRec } = currentLoadedAuditData;
   const printContainer = document.getElementById('caseAuditPrintContainer');
   if(!printContainer) return;
 
   const content = document.getElementById('auditReportContent');
   if(!content) return;
 
+  const patientPart = masterRec && masterRec.patientName ? ' | Patient: <strong>' + masterRec.patientName + '</strong>' : '';
+  const statusPart = masterRec ? ' | Latest Status: <strong>' + (masterRec.rawStatus || masterRec.category) + '</strong>' : '';
+
   printContainer.innerHTML = '<div style="border-bottom:2px solid #000;padding-bottom:12px;margin-bottom:16px;">' +
     '<h2 style="margin:0 0 4px 0;font-size:18px;">VASUS CLAIM ANALYTICS - CASE AUDIT REPORT</h2>' +
-    '<div style="font-size:12px;color:#333;">Case Number: <strong>' + caseNum + '</strong> | Hospital: <strong>' + hospitalName + '</strong> | Total Activities: <strong>' + allEvents.length + '</strong></div>' +
+    '<div style="font-size:12px;color:#333;">Case Number: <strong>' + caseNum + '</strong>' + patientPart + ' | Hospital: <strong>' + hospitalName + '</strong>' + statusPart + ' | Total Activities: <strong>' + allEvents.length + '</strong></div>' +
     '<div style="font-size:11px;color:#666;">Generated on: ' + new Date().toLocaleString('en-IN') + '</div>' +
-  '</div>' + content.innerHTML;
+  '</div>' +
+  content.innerHTML;
 
   window.print();
+}
+
+function copyTextToClipboard(text, successMsg) {
+  if(navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(text).then(() => {
+      showAuditToast(successMsg || 'Copied to clipboard!');
+    }).catch(() => fallbackCopy(text, successMsg));
+  } else {
+    fallbackCopy(text, successMsg);
+  }
+}
+
+function fallbackCopy(text, successMsg) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand('copy');
+    showAuditToast(successMsg || 'Copied to clipboard!');
+  } catch(e) {
+    showAuditToast('Could not copy automatically. Please copy manually.');
+  }
+  document.body.removeChild(ta);
+}
+
+function showAuditToast(msg) {
+  let toast = document.getElementById('caseAuditToast');
+  if(!toast) {
+    toast = document.createElement('div');
+    toast.id = 'caseAuditToast';
+    toast.className = 'audit-toast';
+    document.body.appendChild(toast);
+  }
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3000);
 }
 
 </script>
@@ -10278,7 +10402,7 @@ function printCaseAuditReport() {
       </div>
       <div>
         <h3 class="audit-title">Vasus Case Audit Assistant</h3>
-        <div class="audit-status"><span class="audit-status-dot"></span> Live Google Sheets Connected</div>
+        <div class="audit-status"><span class="audit-status-dot"></span> Live Google Sheets Connected & Claim Audit Report Active</div>
       </div>
     </div>
     <div class="audit-header-actions">
