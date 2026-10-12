@@ -2143,6 +2143,32 @@ table.doc-leader-table th {
   border: 1px solid #bae6fd;
 }
 
+
+
+.btn-refresh-pkg {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 28px !important;
+  padding: 0 !important;
+  background: #2563eb !important;
+  color: #ffffff !important;
+  border: 1px solid #1d4ed8 !important;
+  border-radius: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+}
+.btn-refresh-pkg:hover {
+  background: #1d4ed8 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.35) !important;
+}
+.btn-refresh-pkg:active {
+  transform: translateY(0) !important;
+}
+
 </style>
 </head>
 <body>
@@ -3206,6 +3232,13 @@ table.doc-leader-table th {
           </label>
           <button id="btnCopySelected" onclick="triggerCopySelectedPackages()" class="secondary" style="display:inline-flex;align-items:center;gap:6px;padding:5px 12px;font-size:12px;font-weight:700;border-radius:6px;cursor:pointer;color:var(--text,#1e293b);background:var(--card-bg,#fff);border:1px solid var(--border,#cbd5e1)" title="Copy all selected packages">
             📋 Copy Selected (<span id="pkgSelectedCount">0</span>)
+          </button>
+          <button id="btnRefreshPackages" onclick="refreshPackageMaster(true)" class="btn-refresh-pkg" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:28px;padding:0;background:#2563eb;color:#ffffff;border:1px solid #1d4ed8;border-radius:6px;cursor:pointer;transition:all 0.2s cubic-bezier(0.16, 1, 0.3, 1);box-shadow:0 1px 2px rgba(0,0,0,0.08);" title="Refresh & Clear Selection / Filters">
+            <svg id="svgRefreshPkgIcon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:block;transition:transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
           </button>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
@@ -7116,6 +7149,24 @@ function formatProcedureNameForMultiCopy(p) {
 }
 
 function formatMultiPackageCopyItem(p, selections = {}) {
+  if (p.s === 'MEDISEP') {
+    const code = p.c;
+    const specialty = (p.sp || '').trim();
+    const procName = (p.pr || p.p || '').replace(/\s+/g, ' ').trim();
+    const los = (p.l !== undefined && p.l !== null && p.l !== '') ? ` - LOS (${p.l})` : ' - LOS ()';
+    let item = specialty ? `${code} - ${specialty} - ${procName}${los}` : `${code} - ${procName}${los}`;
+    if (selections.implant) {
+      item += ` (Imp - ${selections.implant})`;
+    }
+    if (selections.laterality) {
+      item += ` (Lat - ${selections.laterality})`;
+    }
+    if (selections.anesthesia) {
+      item += ` (Under ${selections.anesthesia})`;
+    }
+    return item;
+  }
+
   const code = p.c;
   const name = formatProcedureNameForMultiCopy(p);
   let item = `${code} - ${name}`;
@@ -7192,6 +7243,24 @@ function buildMultiPackageCopyString(selectedPkgs, selectionsMap = {}) {
 }
 
 function formatPackageCopyLine(p, selections = {}) {
+  if (p.s === 'MEDISEP') {
+    const code = p.c;
+    const specialty = (p.sp || '').trim();
+    const procName = (p.pr || p.p || '').replace(/\s+/g, ' ').trim();
+    const los = (p.l !== undefined && p.l !== null && p.l !== '') ? ` - LOS (${p.l})` : ' - LOS ()';
+    let line = specialty ? `${code} - ${specialty} - ${procName}${los}` : `${code} - ${procName}${los}`;
+    if (selections.implant) {
+      line += ` (Imp - ${selections.implant})`;
+    }
+    if (selections.laterality) {
+      line += ` - Laterality: ${selections.laterality}`;
+    }
+    if (selections.anesthesia) {
+      line += ` - Anesthesia: ${selections.anesthesia}`;
+    }
+    return line;
+  }
+
   const code = p.c;
   let name = p.pr || p.p || '';
   if (code === 'MG056A' && name.endsWith('disorders')) {
@@ -7302,6 +7371,52 @@ function toggleSelectAllVisiblePackages(isChecked) {
   renderPackageMasterTable();
 }
 
+
+function refreshPackageMaster(isManual = false) {
+  // 1. Clear selected package keys
+  selectedPkgKeys.clear();
+  updateCopySelectedBtn();
+
+  // 2. Uncheck all select-all checkboxes
+  const selectAll = document.getElementById('pkgSelectAllCheckbox');
+  if (selectAll) { selectAll.checked = false; selectAll.indeterminate = false; }
+  const headerSelectAll = document.getElementById('pkgHeaderSelectAllCheckbox');
+  if (headerSelectAll) { headerSelectAll.checked = false; headerSelectAll.indeterminate = false; }
+
+  // 3. Clear search input
+  const searchInput = document.getElementById('pkgSearchInput');
+  if (searchInput && searchInput.value) {
+    searchInput.value = '';
+  }
+
+  // 4. If manual click, also reset dropdowns
+  if (isManual) {
+    const sSel = document.getElementById('pkgSpecialtyFilter');
+    if (sSel) { sSel.value = 'ALL'; pkgSpecialtyFilter = 'ALL'; }
+    const tSel = document.getElementById('pkgTypeFilter');
+    if (tSel) { tSel.value = 'ALL'; pkgTypeFilter = 'ALL'; }
+  }
+  pkgPage = 1;
+
+  // 5. Spin animation on the refresh button icon
+  const icon = document.getElementById('svgRefreshPkgIcon');
+  if (icon) {
+    icon.style.transform = 'rotate(360deg)';
+    setTimeout(() => {
+      icon.style.transition = 'none';
+      icon.style.transform = 'rotate(0deg)';
+      setTimeout(() => { icon.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)'; }, 50);
+    }, 500);
+  }
+
+  // 6. Re-render table
+  renderPackageMasterTable();
+
+  if (isManual) {
+    showNotification('Package Master refreshed! Search & selections cleared.', 'info');
+  }
+}
+
 function triggerSinglePkgCopy(code, scheme) {
   const all = getRawPackageList();
   const pkg = all.find(p => p.c === code && (!scheme || p.s === scheme)) || all.find(p => p.c === code);
@@ -7313,6 +7428,7 @@ function triggerSinglePkgCopy(code, scheme) {
     const line = formatPackageCopyLine(pkg);
     copyTextToClipboard(line);
     showNotification(`Copied: ${line}`, 'success');
+    refreshPackageMaster(false);
   } else {
     activeCopyMode = 'single';
     activeSinglePkg = pkg;
@@ -7351,6 +7467,7 @@ function triggerCopySelectedPackages() {
     const multiString = buildMultiPackageCopyString(selectedPkgs);
     copyTextToClipboard(multiString);
     showNotification(`Copied ${selectedPkgs.length} packages to clipboard!`, 'success');
+    refreshPackageMaster(false);
   } else {
     // Some packages require input, show modal ONLY for those packages
     activeCopyMode = 'multi';
@@ -7431,11 +7548,13 @@ function executePkgCopyWithOptions() {
     const line = formatPackageCopyLine(p, sel);
     copyTextToClipboard(line);
     showNotification(`Copied: ${line}`, 'success');
+    refreshPackageMaster(false);
   } else if (activeCopyMode === 'multi' && activeMultiPkgs.length > 0) {
     activeMultiPkgs.forEach(p => recordPackageCopyClick(p.c, p.s));
     const multiString = buildMultiPackageCopyString(activeMultiPkgs, selectionsMap);
     copyTextToClipboard(multiString);
     showNotification(`Copied ${activeMultiPkgs.length} packages to clipboard!`, 'success');
+    refreshPackageMaster(false);
   }
 
   closePkgCopyOptionsModal();
