@@ -3240,6 +3240,10 @@ table.doc-leader-table th {
               <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
             </svg>
           </button>
+          <div id="pkgSyncIndicator" style="display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:4px 9px;border-radius:6px;background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0;user-select:none;transition:all 0.3s ease" title="Firebase Real-time Cloud Sync active. All package edits & deletions update automatically on every screen.">
+            <span id="pkgSyncDot" style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#16a34a"></span>
+            <span id="pkgSyncText">Cloud Live</span>
+          </div>
         </div>
         <div style="display:flex;align-items:center;gap:8px">
           <span>Rows per page:</span>
@@ -3872,6 +3876,10 @@ table.doc-leader-table th {
     <button class="close-modal" onclick="closeDownload()">Cancel</button>
   </div>
 </div>
+
+<!-- Firebase App & Firestore SDKs (Real-time Team Cloud Sync) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
 <!-- SheetJS & Package Master Data -->
 <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
@@ -6476,6 +6484,7 @@ window.addEventListener('DOMContentLoaded', () => {
   if(typeof initPackageMasterTab === 'function') initPackageMasterTab();
   filterDashboard();
   if(typeof fetchLiveImprovementData === 'function') fetchLiveImprovementData(false);
+  if(typeof initFirebaseSync === 'function') initFirebaseSync();
 });
 
 
@@ -8081,8 +8090,116 @@ async function submitPkgPassword() {
 }
 
 /**
- * LOCAL STORAGE OVERRIDES FOR PACKAGES (Persistence across page refresh)
+ * FIREBASE REAL-TIME CLOUD SYNC & PACKAGE OVERRIDES ENGINE
  */
+const firebaseConfig = {
+  apiKey: "AIzaSyCidveErmy0wNT_IJ-EOjOoqhlkt0jvszQ",
+  authDomain: "vasus-claim-analytics.firebaseapp.com",
+  projectId: "vasus-claim-analytics",
+  storageBucket: "vasus-claim-analytics.firebasestorage.app",
+  messagingSenderId: "279563708498",
+  appId: "1:279563708498:web:9449ec0c3a86f18ce3978b",
+  measurementId: "G-XLBM44TYF7"
+};
+
+let db = null;
+let isFirebaseReady = false;
+let BASELINE_PACKAGE_MASTER_DATA = null;
+
+function captureBaselinePackageData() {
+  if (!BASELINE_PACKAGE_MASTER_DATA && window.PACKAGE_MASTER_DATA) {
+    BASELINE_PACKAGE_MASTER_DATA = {
+      medisep: window.PACKAGE_MASTER_DATA.medisep.map(p => ({ ...p })),
+      kasp: window.PACKAGE_MASTER_DATA.kasp.map(p => ({ ...p }))
+    };
+  }
+}
+
+function updateSyncIndicator(status) {
+  const dot = document.getElementById('pkgSyncDot');
+  const text = document.getElementById('pkgSyncText');
+  const box = document.getElementById('pkgSyncIndicator');
+  if (!dot || !text || !box) return;
+
+  if (status === 'synced') {
+    dot.style.background = '#16a34a';
+    text.textContent = 'Cloud Live';
+    box.style.background = '#f0fdf4';
+    box.style.color = '#16a34a';
+    box.style.borderColor = '#bbf7d0';
+    box.title = 'Firebase Real-time Cloud Sync active. All package edits & deletions update automatically on every screen.';
+  } else if (status === 'syncing') {
+    dot.style.background = '#eab308';
+    text.textContent = 'Syncing...';
+    box.style.background = '#fefce8';
+    box.style.color = '#854d0e';
+    box.style.borderColor = '#fef08a';
+    box.title = 'Uploading package changes to Firebase Cloud...';
+  } else if (status === 'connecting') {
+    dot.style.background = '#3b82f6';
+    text.textContent = 'Connecting...';
+    box.style.background = '#eff6ff';
+    box.style.color = '#1d4ed8';
+    box.style.borderColor = '#bfdbfe';
+    box.title = 'Connecting to Firebase Cloud Database...';
+  } else {
+    dot.style.background = '#94a3b8';
+    text.textContent = 'Offline Cache';
+    box.style.background = '#f8fafc';
+    box.style.color = '#64748b';
+    box.style.borderColor = '#e2e8f0';
+    box.title = 'Working in offline mode using local storage.';
+  }
+}
+
+function initFirebaseSync() {
+  try {
+    if (typeof firebase !== 'undefined') {
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+      db = firebase.firestore();
+      isFirebaseReady = true;
+      updateSyncIndicator('connecting');
+
+      // Realtime listener on Firestore 'package_master_sync/overrides'
+      db.collection('package_master_sync').doc('overrides').onSnapshot(doc => {
+        if (doc && doc.exists) {
+          const cloudData = doc.data() || {};
+          const cloudOverrides = {
+            added: cloudData.added || [],
+            edited: cloudData.edited || {},
+            deleted: cloudData.deleted || []
+          };
+          try {
+            localStorage.setItem("vasus_pkg_overrides", JSON.stringify(cloudOverrides));
+          } catch(e) {}
+          applyStoredPackageOverrides(cloudOverrides);
+          if (typeof renderPackageMasterTable === 'function') {
+            renderPackageMasterTable();
+          }
+          updateSyncIndicator('synced');
+        } else {
+          // If no doc exists in cloud yet, seed with local overrides if any exist
+          const local = getStoredPkgOverrides();
+          if (local && (local.added.length > 0 || Object.keys(local.edited).length > 0 || local.deleted.length > 0)) {
+            db.collection('package_master_sync').doc('overrides').set(local);
+          }
+          updateSyncIndicator('synced');
+        }
+      }, err => {
+        console.warn('Firestore real-time sync listener error:', err);
+        updateSyncIndicator('offline');
+      });
+    } else {
+      updateSyncIndicator('offline');
+    }
+  } catch(e) {
+    console.warn('Firebase init error:', e);
+    updateSyncIndicator('offline');
+  }
+}
+
 function getStoredPkgOverrides() {
   try {
     const raw = localStorage.getItem("vasus_pkg_overrides");
@@ -8098,13 +8215,37 @@ function saveStoredPkgOverrides(overrides) {
   try {
     localStorage.setItem("vasus_pkg_overrides", JSON.stringify(overrides));
   } catch(e) {
-    console.error("Error saving pkg overrides:", e);
+    console.error("Error saving pkg overrides to localStorage:", e);
+  }
+
+  // Real-time Cloud Push
+  if (db && isFirebaseReady) {
+    updateSyncIndicator('syncing');
+    db.collection('package_master_sync').doc('overrides').set(overrides)
+      .then(() => {
+        updateSyncIndicator('synced');
+        if (typeof showNotification === 'function') {
+          showNotification('Saved & synced live to all team members!', 'success');
+        }
+      })
+      .catch(err => {
+        console.error('Firebase save error:', err);
+        updateSyncIndicator('offline');
+      });
   }
 }
 
-function applyStoredPackageOverrides() {
+function applyStoredPackageOverrides(customOverrides = null) {
   if (!window.PACKAGE_MASTER_DATA) return;
-  const overrides = getStoredPkgOverrides();
+  captureBaselinePackageData();
+
+  // Reset to clean baseline first
+  if (BASELINE_PACKAGE_MASTER_DATA) {
+    window.PACKAGE_MASTER_DATA.medisep = BASELINE_PACKAGE_MASTER_DATA.medisep.map(p => ({ ...p }));
+    window.PACKAGE_MASTER_DATA.kasp = BASELINE_PACKAGE_MASTER_DATA.kasp.map(p => ({ ...p }));
+  }
+
+  const overrides = customOverrides || getStoredPkgOverrides();
   let overridesModified = false;
   
   // 1. Edits
