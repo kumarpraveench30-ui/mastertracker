@@ -1,0 +1,5583 @@
+{
+  "BM001A": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM001B": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM001C": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM001D": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM002A": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM002B": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM002C": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM002D": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM003A": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM003B": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM003C": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM003D": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM004A": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM004B": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM004C": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM004D": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM005A": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM005B": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM006A": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "BM006B": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "ID003KLC": [
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    }
+  ],
+  "ID003KLD": [
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    }
+  ],
+  "IN006A": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "IN012KLA": [
+    {
+      "code": "BA00.Z",
+      "title": "Essential hypertension, unspecified"
+    },
+    {
+      "code": "BA00.Y",
+      "title": "Other specified essential hypertension"
+    },
+    {
+      "code": "BA03/BA00.Z",
+      "title": "Hypertensive crisis [Essential hypertension, unspecified]"
+    },
+    {
+      "code": "BA03/BA00.Y",
+      "title": "Hypertensive crisis [Other specified essential hypertension]"
+    },
+    {
+      "code": "BA03/BA00.Z/BA03",
+      "title": "Hypertensive crisis [Essential (primary) hypertension, unspecified, with mention of hypertensive crisis]"
+    }
+  ],
+  "MC011A": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "MC017A": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "MG002A": [
+    {
+      "code": "1G40",
+      "title": "Sepsis without septic shock"
+    },
+    {
+      "code": "1D9Y/1G40",
+      "title": "Viral sepsis without mention of septic shock"
+    },
+    {
+      "code": "JB40.0",
+      "title": "Puerperal sepsis"
+    },
+    {
+      "code": "1C41&XN9ZG/1G40",
+      "title": "Sepsis due to unspecified staphylococcus without mention of septic shock"
+    },
+    {
+      "code": "1C41",
+      "title": "Bacterial infection of unspecified site"
+    }
+  ],
+  "MG002B": [
+    {
+      "code": "1G40",
+      "title": "Sepsis without septic shock"
+    },
+    {
+      "code": "1D9Y/1G40",
+      "title": "Viral sepsis without mention of septic shock"
+    },
+    {
+      "code": "JB40.0",
+      "title": "Puerperal sepsis"
+    },
+    {
+      "code": "1C41&XN9ZG/1G40",
+      "title": "Sepsis due to unspecified staphylococcus without mention of septic shock"
+    },
+    {
+      "code": "1C41",
+      "title": "Bacterial infection of unspecified site"
+    }
+  ],
+  "MG003A": [
+    {
+      "code": "1F45",
+      "title": "Malaria without parasitological confirmation"
+    },
+    {
+      "code": "1F4Z",
+      "title": "Malaria, unspecified"
+    },
+    {
+      "code": "1F42.Z",
+      "title": "Plasmodium malariae malaria without complication"
+    },
+    {
+      "code": "1F44",
+      "title": "Other parasitologically confirmed malaria"
+    },
+    {
+      "code": "KA64.Y",
+      "title": "Other specified parasitic diseases in the fetus or newborn"
+    }
+  ],
+  "MG003B": [
+    {
+      "code": "1F45",
+      "title": "Malaria without parasitological confirmation"
+    },
+    {
+      "code": "1F4Z",
+      "title": "Malaria, unspecified"
+    },
+    {
+      "code": "1F42.Z",
+      "title": "Plasmodium malariae malaria without complication"
+    },
+    {
+      "code": "1F44",
+      "title": "Other parasitologically confirmed malaria"
+    },
+    {
+      "code": "KA64.Y",
+      "title": "Other specified parasitic diseases in the fetus or newborn"
+    }
+  ],
+  "MG004A": [
+    {
+      "code": "1D2Z",
+      "title": "Dengue fever, unspecified"
+    },
+    {
+      "code": "1D22",
+      "title": "Severe dengue"
+    },
+    {
+      "code": "1D21",
+      "title": "Dengue with warning signs"
+    },
+    {
+      "code": "1D20",
+      "title": "Dengue without warning signs"
+    },
+    {
+      "code": "QA08.5",
+      "title": "Special screening examination for other viral diseases"
+    }
+  ],
+  "MG004B": [
+    {
+      "code": "1D2Z",
+      "title": "Dengue fever, unspecified"
+    },
+    {
+      "code": "1D22",
+      "title": "Severe dengue"
+    },
+    {
+      "code": "1D21",
+      "title": "Dengue with warning signs"
+    },
+    {
+      "code": "1D20",
+      "title": "Dengue without warning signs"
+    },
+    {
+      "code": "QA08.5",
+      "title": "Special screening examination for other viral diseases"
+    }
+  ],
+  "MG004C": [
+    {
+      "code": "1D2Z",
+      "title": "Dengue fever, unspecified"
+    },
+    {
+      "code": "1D22",
+      "title": "Severe dengue"
+    },
+    {
+      "code": "1D21",
+      "title": "Dengue with warning signs"
+    },
+    {
+      "code": "1D20",
+      "title": "Dengue without warning signs"
+    },
+    {
+      "code": "QA08.5",
+      "title": "Special screening examination for other viral diseases"
+    }
+  ],
+  "MG012A": [
+    {
+      "code": "1E50.Z",
+      "title": "Acute viral hepatitis, unspecified"
+    },
+    {
+      "code": "1E50.Y",
+      "title": "Other specified acute viral hepatitis"
+    },
+    {
+      "code": "KA62.9",
+      "title": "Congenital viral hepatitis"
+    },
+    {
+      "code": "DB97.Y",
+      "title": "Other specified inflammatory liver disease"
+    },
+    {
+      "code": "1E50.1",
+      "title": "Acute hepatitis B"
+    }
+  ],
+  "MG016A": [
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    }
+  ],
+  "MG017A": [
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    }
+  ],
+  "MG021A": [
+    {
+      "code": "GC08.Z",
+      "title": "Urinary tract infection, site and agent not specified"
+    },
+    {
+      "code": "JA62.Y",
+      "title": "Infections of genitourinary tract in pregnancy, other specified site"
+    },
+    {
+      "code": "KA65.2",
+      "title": "Neonatal urinary tract infection"
+    },
+    {
+      "code": "JA62.Z",
+      "title": "Infection of genitourinary tract in pregnancy, site unspecified"
+    },
+    {
+      "code": "JA62.3",
+      "title": "Infections of other parts of urinary tract in pregnancy"
+    }
+  ],
+  "MG036A": [
+    {
+      "code": "BC81.3Z",
+      "title": "Atrial fibrillation, unspecified"
+    },
+    {
+      "code": "BC81.3Y",
+      "title": "Other specified atrial fibrillation"
+    },
+    {
+      "code": "BC81.32",
+      "title": "Permanent atrial fibrillation"
+    },
+    {
+      "code": "BC65.Y",
+      "title": "Other specified cardiac arrhythmia associated with genetic disorder"
+    },
+    {
+      "code": "BC81.31",
+      "title": "Persistent atrial fibrillation"
+    }
+  ],
+  "MG038A": [
+    {
+      "code": "BD1Z",
+      "title": "Heart failure, unspecified"
+    },
+    {
+      "code": "BD1Y",
+      "title": "Other specified heart failure"
+    },
+    {
+      "code": "BD1Z&XT5R",
+      "title": "Acute heart failure"
+    },
+    {
+      "code": "BD1Z&XT8W",
+      "title": "Chronic heart failure"
+    },
+    {
+      "code": "MC82.4",
+      "title": "Cardiopulmonary arrest"
+    }
+  ],
+  "MG039A": [
+    {
+      "code": "CA23.32",
+      "title": "Unspecified asthma, uncomplicated"
+    },
+    {
+      "code": "CA23",
+      "title": "Asthma"
+    },
+    {
+      "code": "CA23.3",
+      "title": "Unspecified asthma"
+    },
+    {
+      "code": "CA23.0",
+      "title": "Allergic asthma"
+    },
+    {
+      "code": "CA23.31",
+      "title": "Unspecified asthma with status asthmaticus"
+    }
+  ],
+  "MG039B": [
+    {
+      "code": "CA23.32",
+      "title": "Unspecified asthma, uncomplicated"
+    },
+    {
+      "code": "CA23",
+      "title": "Asthma"
+    },
+    {
+      "code": "CA23.3",
+      "title": "Unspecified asthma"
+    },
+    {
+      "code": "CA23.0",
+      "title": "Allergic asthma"
+    },
+    {
+      "code": "CA23.31",
+      "title": "Unspecified asthma with status asthmaticus"
+    }
+  ],
+  "MG040C": [
+    {
+      "code": "CA23.32",
+      "title": "Unspecified asthma, uncomplicated"
+    },
+    {
+      "code": "CA23",
+      "title": "Asthma"
+    },
+    {
+      "code": "CA23.3",
+      "title": "Unspecified asthma"
+    },
+    {
+      "code": "CA23.0",
+      "title": "Allergic asthma"
+    },
+    {
+      "code": "CA23.31",
+      "title": "Unspecified asthma with status asthmaticus"
+    }
+  ],
+  "MG051A": [
+    {
+      "code": "8D64.Z",
+      "title": "Hydrocephalus, unspecified"
+    },
+    {
+      "code": "LA04.Z",
+      "title": "Congenital hydrocephalus, unspecified"
+    },
+    {
+      "code": "8D64.1Z",
+      "title": "Non-communicating hydrocephalus, unspecified"
+    },
+    {
+      "code": "KB05.Z",
+      "title": "Neonatal hydrocephalus, unspecified"
+    },
+    {
+      "code": "LA04.Y",
+      "title": "Other specified congenital hydrocephalus"
+    }
+  ],
+  "MG058A": [
+    {
+      "code": "5A11",
+      "title": "Type 2 diabetes mellitus"
+    },
+    {
+      "code": "BD54/5A11",
+      "title": "Diabetic foot ulcer [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "5A24/5A11",
+      "title": "Uncontrolled or unstable diabetes mellitus [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "5A13",
+      "title": "Diabetes mellitus, other specified type"
+    },
+    {
+      "code": "5A2Y/5A11",
+      "title": "Other specified acute complications of diabetes mellitus [Type 2 diabetes mellitus]"
+    }
+  ],
+  "MG059A": [
+    {
+      "code": "5A11",
+      "title": "Type 2 diabetes mellitus"
+    },
+    {
+      "code": "BD54/5A11",
+      "title": "Diabetic foot ulcer [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "5A24/5A11",
+      "title": "Uncontrolled or unstable diabetes mellitus [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "5A13",
+      "title": "Diabetes mellitus, other specified type"
+    },
+    {
+      "code": "5A2Y/5A11",
+      "title": "Other specified acute complications of diabetes mellitus [Type 2 diabetes mellitus]"
+    }
+  ],
+  "MG062A": [
+    {
+      "code": "BA00.Z",
+      "title": "Essential hypertension, unspecified"
+    },
+    {
+      "code": "BA00.Y",
+      "title": "Other specified essential hypertension"
+    },
+    {
+      "code": "BA03/BA00.Z",
+      "title": "Hypertensive crisis [Essential hypertension, unspecified]"
+    },
+    {
+      "code": "BA03/BA00.Y",
+      "title": "Hypertensive crisis [Other specified essential hypertension]"
+    },
+    {
+      "code": "BA03/BA00.Z/BA03",
+      "title": "Hypertensive crisis [Essential (primary) hypertension, unspecified, with mention of hypertensive crisis]"
+    }
+  ],
+  "MG063A": [
+    {
+      "code": "BA00.Z",
+      "title": "Essential hypertension, unspecified"
+    },
+    {
+      "code": "BA00.Y",
+      "title": "Other specified essential hypertension"
+    },
+    {
+      "code": "BA03/BA00.Z",
+      "title": "Hypertensive crisis [Essential hypertension, unspecified]"
+    },
+    {
+      "code": "BA03/BA00.Y",
+      "title": "Hypertensive crisis [Other specified essential hypertension]"
+    },
+    {
+      "code": "BA03/BA00.Z/BA03",
+      "title": "Hypertensive crisis [Essential (primary) hypertension, unspecified, with mention of hypertensive crisis]"
+    }
+  ],
+  "MG081KLA": [
+    {
+      "code": "GC08.Z",
+      "title": "Urinary tract infection, site and agent not specified"
+    },
+    {
+      "code": "JA62.Y",
+      "title": "Infections of genitourinary tract in pregnancy, other specified site"
+    },
+    {
+      "code": "KA65.2",
+      "title": "Neonatal urinary tract infection"
+    },
+    {
+      "code": "JA62.Z",
+      "title": "Infection of genitourinary tract in pregnancy, site unspecified"
+    },
+    {
+      "code": "JA62.3",
+      "title": "Infections of other parts of urinary tract in pregnancy"
+    }
+  ],
+  "MG082KLA": [
+    {
+      "code": "GC08.Z",
+      "title": "Urinary tract infection, site and agent not specified"
+    },
+    {
+      "code": "JA62.Y",
+      "title": "Infections of genitourinary tract in pregnancy, other specified site"
+    },
+    {
+      "code": "KA65.2",
+      "title": "Neonatal urinary tract infection"
+    },
+    {
+      "code": "JA62.Z",
+      "title": "Infection of genitourinary tract in pregnancy, site unspecified"
+    },
+    {
+      "code": "JA62.3",
+      "title": "Infections of other parts of urinary tract in pregnancy"
+    }
+  ],
+  "MN003A": [
+    {
+      "code": "BD1Z",
+      "title": "Heart failure, unspecified"
+    },
+    {
+      "code": "BD1Y",
+      "title": "Other specified heart failure"
+    },
+    {
+      "code": "BD1Z&XT5R",
+      "title": "Acute heart failure"
+    },
+    {
+      "code": "BD1Z&XT8W",
+      "title": "Chronic heart failure"
+    },
+    {
+      "code": "MC82.4",
+      "title": "Cardiopulmonary arrest"
+    }
+  ],
+  "MN004A": [
+    {
+      "code": "1G40",
+      "title": "Sepsis without septic shock"
+    },
+    {
+      "code": "1D9Y/1G40",
+      "title": "Viral sepsis without mention of septic shock"
+    },
+    {
+      "code": "JB40.0",
+      "title": "Puerperal sepsis"
+    },
+    {
+      "code": "1C41&XN9ZG/1G40",
+      "title": "Sepsis due to unspecified staphylococcus without mention of septic shock"
+    },
+    {
+      "code": "1C41",
+      "title": "Bacterial infection of unspecified site"
+    }
+  ],
+  "MN010A": [
+    {
+      "code": "8D64.Z",
+      "title": "Hydrocephalus, unspecified"
+    },
+    {
+      "code": "LA04.Z",
+      "title": "Congenital hydrocephalus, unspecified"
+    },
+    {
+      "code": "8D64.1Z",
+      "title": "Non-communicating hydrocephalus, unspecified"
+    },
+    {
+      "code": "KB05.Z",
+      "title": "Neonatal hydrocephalus, unspecified"
+    },
+    {
+      "code": "LA04.Y",
+      "title": "Other specified congenital hydrocephalus"
+    }
+  ],
+  "MO019A": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "MO019B": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "MO019C": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "MO019D": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "MO019E": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "MO019F": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "MO019G": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "MO019H": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "MP005D": [
+    {
+      "code": "BA00.Z",
+      "title": "Essential hypertension, unspecified"
+    },
+    {
+      "code": "BA00.Y",
+      "title": "Other specified essential hypertension"
+    },
+    {
+      "code": "BA03/BA00.Z",
+      "title": "Hypertensive crisis [Essential hypertension, unspecified]"
+    },
+    {
+      "code": "BA03/BA00.Y",
+      "title": "Hypertensive crisis [Other specified essential hypertension]"
+    },
+    {
+      "code": "BA03/BA00.Z/BA03",
+      "title": "Hypertensive crisis [Essential (primary) hypertension, unspecified, with mention of hypertensive crisis]"
+    }
+  ],
+  "MP012A": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "MP020B": [
+    {
+      "code": "CA23.32",
+      "title": "Unspecified asthma, uncomplicated"
+    },
+    {
+      "code": "CA23",
+      "title": "Asthma"
+    },
+    {
+      "code": "CA23.3",
+      "title": "Unspecified asthma"
+    },
+    {
+      "code": "CA23.0",
+      "title": "Allergic asthma"
+    },
+    {
+      "code": "CA23.31",
+      "title": "Unspecified asthma with status asthmaticus"
+    }
+  ],
+  "MP026A": [
+    {
+      "code": "DC50.Z",
+      "title": "Peritonitis, unspecified"
+    },
+    {
+      "code": "DC50.0",
+      "title": "Primary peritonitis"
+    },
+    {
+      "code": "DC50.1Y",
+      "title": "Other specified secondary peritonitis"
+    },
+    {
+      "code": "DC50.1Y&XN9ZG",
+      "title": "Staphylococcal peritonitis"
+    },
+    {
+      "code": "DC50.01",
+      "title": "Other specified primary peritonitis"
+    }
+  ],
+  "MP040D": [
+    {
+      "code": "1G40",
+      "title": "Sepsis without septic shock"
+    },
+    {
+      "code": "1D9Y/1G40",
+      "title": "Viral sepsis without mention of septic shock"
+    },
+    {
+      "code": "JB40.0",
+      "title": "Puerperal sepsis"
+    },
+    {
+      "code": "1C41&XN9ZG/1G40",
+      "title": "Sepsis due to unspecified staphylococcus without mention of septic shock"
+    },
+    {
+      "code": "1C41",
+      "title": "Bacterial infection of unspecified site"
+    }
+  ],
+  "SB001A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB005A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB005B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB005C": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB005D": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB006A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB007A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB007B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB007C": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB009A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB010A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB010B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB011A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB012A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB012B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB013A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB014A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB015A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB015B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB016A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB017A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB018A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB018B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB019A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB019B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB019C": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SB020A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SC016A": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "SC016B": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "SC051A": [
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    }
+  ],
+  "SC052A": [
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    }
+  ],
+  "SE014A": [
+    {
+      "code": "9A61.1",
+      "title": "Pterygium"
+    },
+    {
+      "code": "LD26.40",
+      "title": "Multiple pterygium syndrome"
+    },
+    {
+      "code": "EE10.Y",
+      "title": "Other specified acquired deformities of the nail plate"
+    },
+    {
+      "code": "LA60",
+      "title": "Webbed neck"
+    },
+    {
+      "code": "LD26.4Y",
+      "title": "Other specified arthrogryposis syndromes"
+    }
+  ],
+  "SE020A": [
+    {
+      "code": "9B10.0Z",
+      "title": "Age-related cataract, unspecified"
+    },
+    {
+      "code": "9B10.00",
+      "title": "Coronary age-related cataract"
+    },
+    {
+      "code": "9B10.0Y",
+      "title": "Other specified age-related cataract"
+    },
+    {
+      "code": "9B10.01",
+      "title": "Punctate age-related cataract"
+    },
+    {
+      "code": "9B10.1Z",
+      "title": "Infantile or juvenile cataract, unspecified"
+    }
+  ],
+  "SE020B": [
+    {
+      "code": "9B10.0Z",
+      "title": "Age-related cataract, unspecified"
+    },
+    {
+      "code": "9B10.00",
+      "title": "Coronary age-related cataract"
+    },
+    {
+      "code": "9B10.0Y",
+      "title": "Other specified age-related cataract"
+    },
+    {
+      "code": "9B10.01",
+      "title": "Punctate age-related cataract"
+    },
+    {
+      "code": "9B10.1Z",
+      "title": "Infantile or juvenile cataract, unspecified"
+    }
+  ],
+  "SE027B": [
+    {
+      "code": "9C61.Z",
+      "title": "Glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.4Z",
+      "title": "Developmental glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.12",
+      "title": "Primary angle closure glaucoma"
+    },
+    {
+      "code": "9C61.0Z",
+      "title": "Primary open-angle glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.2A",
+      "title": "Glaucoma due to drugs"
+    }
+  ],
+  "SE027C": [
+    {
+      "code": "9C61.Z",
+      "title": "Glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.4Z",
+      "title": "Developmental glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.12",
+      "title": "Primary angle closure glaucoma"
+    },
+    {
+      "code": "9C61.0Z",
+      "title": "Primary open-angle glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.2A",
+      "title": "Glaucoma due to drugs"
+    }
+  ],
+  "SE027D": [
+    {
+      "code": "9C61.Z",
+      "title": "Glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.4Z",
+      "title": "Developmental glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.12",
+      "title": "Primary angle closure glaucoma"
+    },
+    {
+      "code": "9C61.0Z",
+      "title": "Primary open-angle glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.2A",
+      "title": "Glaucoma due to drugs"
+    }
+  ],
+  "SE028A": [
+    {
+      "code": "9C61.Z",
+      "title": "Glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.4Z",
+      "title": "Developmental glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.12",
+      "title": "Primary angle closure glaucoma"
+    },
+    {
+      "code": "9C61.0Z",
+      "title": "Primary open-angle glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.2A",
+      "title": "Glaucoma due to drugs"
+    }
+  ],
+  "SE041KLA": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SG006A": [
+    {
+      "code": "DA61",
+      "title": "Peptic ulcer, site unspecified"
+    },
+    {
+      "code": "DA61&XT5R",
+      "title": "Acute peptic ulcer, site unspecified"
+    },
+    {
+      "code": "DA61&XT8W",
+      "title": "Chronic peptic ulcer, site unspecified"
+    },
+    {
+      "code": "DA61/ME24.3Y",
+      "title": "Peptic ulcer, unspecified as acute or chronic, with perforation"
+    },
+    {
+      "code": "DA60.Y&XA6P89",
+      "title": "Ulcer of pylorus"
+    }
+  ],
+  "SG017A": [
+    {
+      "code": "DB10.Z",
+      "title": "Appendicitis, unspecified"
+    },
+    {
+      "code": "DB10.Y",
+      "title": "Other specified appendicitis"
+    },
+    {
+      "code": "DB10.0",
+      "title": "Acute appendicitis"
+    },
+    {
+      "code": "DB10.02",
+      "title": "Acute appendicitis without localised or generalised peritonitis"
+    },
+    {
+      "code": "DB10.1",
+      "title": "Chronic appendicitis"
+    }
+  ],
+  "SG017B": [
+    {
+      "code": "DB10.Z",
+      "title": "Appendicitis, unspecified"
+    },
+    {
+      "code": "DB10.Y",
+      "title": "Other specified appendicitis"
+    },
+    {
+      "code": "DB10.0",
+      "title": "Acute appendicitis"
+    },
+    {
+      "code": "DB10.02",
+      "title": "Acute appendicitis without localised or generalised peritonitis"
+    },
+    {
+      "code": "DB10.1",
+      "title": "Chronic appendicitis"
+    }
+  ],
+  "SG018A": [
+    {
+      "code": "DB10.Z",
+      "title": "Appendicitis, unspecified"
+    },
+    {
+      "code": "DB10.Y",
+      "title": "Other specified appendicitis"
+    },
+    {
+      "code": "DB10.0",
+      "title": "Acute appendicitis"
+    },
+    {
+      "code": "DB10.02",
+      "title": "Acute appendicitis without localised or generalised peritonitis"
+    },
+    {
+      "code": "DB10.1",
+      "title": "Chronic appendicitis"
+    }
+  ],
+  "SG019A": [
+    {
+      "code": "DB10.Z",
+      "title": "Appendicitis, unspecified"
+    },
+    {
+      "code": "DB10.Y",
+      "title": "Other specified appendicitis"
+    },
+    {
+      "code": "DB10.0",
+      "title": "Acute appendicitis"
+    },
+    {
+      "code": "DB10.02",
+      "title": "Acute appendicitis without localised or generalised peritonitis"
+    },
+    {
+      "code": "DB10.1",
+      "title": "Chronic appendicitis"
+    }
+  ],
+  "SG039A": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "SG039B": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "SG039C": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "SG039D": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "SG040A": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "SG040B": [
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    }
+  ],
+  "SG050A": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG050B": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG050C": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG050D": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG050E": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG051A": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG051B": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG051C": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG051D": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG052A": [
+    {
+      "code": "DD56",
+      "title": "Incisional hernia"
+    },
+    {
+      "code": "DD56/ME24.2",
+      "title": "Incisional hernia with obstruction, without gangrene"
+    },
+    {
+      "code": "DD56/ME24.8",
+      "title": "Incisional hernia with gangrene"
+    }
+  ],
+  "SG053A": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG053B": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SG101KLA": [
+    {
+      "code": "BA00.Z",
+      "title": "Essential hypertension, unspecified"
+    },
+    {
+      "code": "BA00.Y",
+      "title": "Other specified essential hypertension"
+    },
+    {
+      "code": "BA03/BA00.Z",
+      "title": "Hypertensive crisis [Essential hypertension, unspecified]"
+    },
+    {
+      "code": "BA03/BA00.Y",
+      "title": "Hypertensive crisis [Other specified essential hypertension]"
+    },
+    {
+      "code": "BA03/BA00.Z/BA03",
+      "title": "Hypertensive crisis [Essential (primary) hypertension, unspecified, with mention of hypertensive crisis]"
+    }
+  ],
+  "SL010A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SL017B": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SL033A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SL033B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SL033C": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SL033D": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SL035B": [
+    {
+      "code": "GC08.Z",
+      "title": "Urinary tract infection, site and agent not specified"
+    },
+    {
+      "code": "JA62.Y",
+      "title": "Infections of genitourinary tract in pregnancy, other specified site"
+    },
+    {
+      "code": "KA65.2",
+      "title": "Neonatal urinary tract infection"
+    },
+    {
+      "code": "JA62.Z",
+      "title": "Infection of genitourinary tract in pregnancy, site unspecified"
+    },
+    {
+      "code": "JA62.3",
+      "title": "Infections of other parts of urinary tract in pregnancy"
+    }
+  ],
+  "SM004A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SM004B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SM015KLA": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SM016KLA": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SN001A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SN009B": [
+    {
+      "code": "BA00.Z",
+      "title": "Essential hypertension, unspecified"
+    },
+    {
+      "code": "BA00.Y",
+      "title": "Other specified essential hypertension"
+    },
+    {
+      "code": "BA03/BA00.Z",
+      "title": "Hypertensive crisis [Essential hypertension, unspecified]"
+    },
+    {
+      "code": "BA03/BA00.Y",
+      "title": "Hypertensive crisis [Other specified essential hypertension]"
+    },
+    {
+      "code": "BA03/BA00.Z/BA03",
+      "title": "Hypertensive crisis [Essential (primary) hypertension, unspecified, with mention of hypertensive crisis]"
+    }
+  ],
+  "SN023A": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "SO003A": [
+    {
+      "code": "JA01.Z",
+      "title": "Ectopic pregnancy, unspecified"
+    },
+    {
+      "code": "JA01.Y",
+      "title": "Other specified ectopic pregnancy"
+    },
+    {
+      "code": "KA01.4",
+      "title": "Fetus or newborn affected by ectopic pregnancy"
+    },
+    {
+      "code": "JA05.4",
+      "title": "Renal failure following abortion, ectopic or molar pregnancy"
+    },
+    {
+      "code": "JA05.2",
+      "title": "Embolism following abortion, ectopic or molar pregnancy"
+    }
+  ],
+  "SO015A": [
+    {
+      "code": "GA10.Z",
+      "title": "Endometriosis of unspecified site"
+    },
+    {
+      "code": "GA10.C1",
+      "title": "Endometriosis of intestine"
+    },
+    {
+      "code": "GA10.H",
+      "title": "Endometriosis in cutaneous scar"
+    },
+    {
+      "code": "GA11",
+      "title": "Adenomyosis"
+    },
+    {
+      "code": "GA10.B5",
+      "title": "Deep ovarian endometriosis"
+    }
+  ],
+  "SO052A": [
+    {
+      "code": "JA01.Z",
+      "title": "Ectopic pregnancy, unspecified"
+    },
+    {
+      "code": "JA01.Y",
+      "title": "Other specified ectopic pregnancy"
+    },
+    {
+      "code": "KA01.4",
+      "title": "Fetus or newborn affected by ectopic pregnancy"
+    },
+    {
+      "code": "JA05.4",
+      "title": "Renal failure following abortion, ectopic or molar pregnancy"
+    },
+    {
+      "code": "JA05.2",
+      "title": "Embolism following abortion, ectopic or molar pregnancy"
+    }
+  ],
+  "SO054E": [
+    {
+      "code": "JB22.Z",
+      "title": "Single delivery by caesarean section, unspecified"
+    },
+    {
+      "code": "JB22.0",
+      "title": "Delivery by elective caesarean section"
+    },
+    {
+      "code": "KA05.4",
+      "title": "Fetus or newborn affected by caesarean delivery"
+    },
+    {
+      "code": "JA84.2",
+      "title": "Maternal care due to uterine scar from previous surgery"
+    },
+    {
+      "code": "JB22.1",
+      "title": "Delivery by emergency caesarean section"
+    }
+  ],
+  "SO058A": [
+    {
+      "code": "JB22.Z",
+      "title": "Single delivery by caesarean section, unspecified"
+    },
+    {
+      "code": "JB22.0",
+      "title": "Delivery by elective caesarean section"
+    },
+    {
+      "code": "KA05.4",
+      "title": "Fetus or newborn affected by caesarean delivery"
+    },
+    {
+      "code": "JA84.2",
+      "title": "Maternal care due to uterine scar from previous surgery"
+    },
+    {
+      "code": "JB22.1",
+      "title": "Delivery by emergency caesarean section"
+    }
+  ],
+  "SP002A": [
+    {
+      "code": "5A11",
+      "title": "Type 2 diabetes mellitus"
+    },
+    {
+      "code": "BD54/5A11",
+      "title": "Diabetic foot ulcer [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "5A24/5A11",
+      "title": "Uncontrolled or unstable diabetes mellitus [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "5A13",
+      "title": "Diabetes mellitus, other specified type"
+    },
+    {
+      "code": "5A2Y/5A11",
+      "title": "Other specified acute complications of diabetes mellitus [Type 2 diabetes mellitus]"
+    }
+  ],
+  "SP006A": [
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    }
+  ],
+  "SP007A": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "SP007B": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "SP007C": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "SS013A": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SS015A": [
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    }
+  ],
+  "SS016A": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "ST001B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST003A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST003B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST003C": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST003D": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST004A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST004B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST005A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST005B": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST006A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "ST007A": [
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    }
+  ],
+  "SU007A": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SU014A": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SU014B": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SU016A": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SU033A": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SU034A": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SU037A": [
+    {
+      "code": "GC08.Z",
+      "title": "Urinary tract infection, site and agent not specified"
+    },
+    {
+      "code": "JA62.Y",
+      "title": "Infections of genitourinary tract in pregnancy, other specified site"
+    },
+    {
+      "code": "KA65.2",
+      "title": "Neonatal urinary tract infection"
+    },
+    {
+      "code": "JA62.Z",
+      "title": "Infection of genitourinary tract in pregnancy, site unspecified"
+    },
+    {
+      "code": "JA62.3",
+      "title": "Infections of other parts of urinary tract in pregnancy"
+    }
+  ],
+  "SU041B": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SU066B": [
+    {
+      "code": "GC08.Z",
+      "title": "Urinary tract infection, site and agent not specified"
+    },
+    {
+      "code": "JA62.Y",
+      "title": "Infections of genitourinary tract in pregnancy, other specified site"
+    },
+    {
+      "code": "KA65.2",
+      "title": "Neonatal urinary tract infection"
+    },
+    {
+      "code": "JA62.Z",
+      "title": "Infection of genitourinary tract in pregnancy, site unspecified"
+    },
+    {
+      "code": "JA62.3",
+      "title": "Infections of other parts of urinary tract in pregnancy"
+    }
+  ],
+  "SU066C": [
+    {
+      "code": "GC08.Z",
+      "title": "Urinary tract infection, site and agent not specified"
+    },
+    {
+      "code": "JA62.Y",
+      "title": "Infections of genitourinary tract in pregnancy, other specified site"
+    },
+    {
+      "code": "KA65.2",
+      "title": "Neonatal urinary tract infection"
+    },
+    {
+      "code": "JA62.Z",
+      "title": "Infection of genitourinary tract in pregnancy, site unspecified"
+    },
+    {
+      "code": "JA62.3",
+      "title": "Infections of other parts of urinary tract in pregnancy"
+    }
+  ],
+  "SU093A": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SU094A": [
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    }
+  ],
+  "SV004A": [
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    }
+  ],
+  "ID003KLM": [
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    }
+  ],
+  "ID003KLN": [
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    }
+  ],
+  "_catalog": [
+    {
+      "code": "DD56",
+      "title": "Incisional hernia"
+    },
+    {
+      "code": "DD56/ME24.2",
+      "title": "Incisional hernia with obstruction, without gangrene"
+    },
+    {
+      "code": "DD56/ME24.8",
+      "title": "Incisional hernia with gangrene"
+    },
+    {
+      "code": "DD5Z",
+      "title": "Hernias, unspecified"
+    },
+    {
+      "code": "DD51",
+      "title": "Inguinal hernia"
+    },
+    {
+      "code": "DD51/ME24.2",
+      "title": "Unilateral or unspecified inguinal hernia, with obstruction, without gangrene"
+    },
+    {
+      "code": "DD51&XT44",
+      "title": "Unilateral or unspecified inguinal hernia, without obstruction or gangrene, recurrent"
+    },
+    {
+      "code": "DD51&XK9J",
+      "title": "Bilateral inguinal hernia, without obstruction or gangrene"
+    },
+    {
+      "code": "DD53",
+      "title": "Umbilical hernia"
+    },
+    {
+      "code": "LB03.Y",
+      "title": "Other specified structural developmental anomalies of umbilical cord"
+    },
+    {
+      "code": "DD54",
+      "title": "Paraumbilical hernia"
+    },
+    {
+      "code": "DD5Z&XA1LM1",
+      "title": "Hernias, unspecified [Periumbilical region]"
+    },
+    {
+      "code": "DD5Y&XA1LM1",
+      "title": "Other specified hernias [Periumbilical region]"
+    },
+    {
+      "code": "DD52",
+      "title": "Femoral hernia"
+    },
+    {
+      "code": "DD52/ME24.2",
+      "title": "Unilateral or unspecified femoral hernia, with obstruction, without gangrene"
+    },
+    {
+      "code": "DD52&XK9J",
+      "title": "Bilateral femoral hernia, without obstruction or gangrene"
+    },
+    {
+      "code": "DD52&XK9J/ME24.2",
+      "title": "Bilateral femoral hernia, with obstruction, without gangrene"
+    },
+    {
+      "code": "DD52&XK9J&XT44",
+      "title": "Recurrent bilateral femoral hernia, without obstruction or gangrene"
+    },
+    {
+      "code": "DD5Z&XA3KX0",
+      "title": "Abdominal wall hernia"
+    },
+    {
+      "code": "DD5Y&XA3KX0",
+      "title": "Spigelian hernia"
+    },
+    {
+      "code": "DD5Y",
+      "title": "Other specified hernias"
+    },
+    {
+      "code": "FB32.Y",
+      "title": "Other specified disorders of muscles"
+    },
+    {
+      "code": "DD50.1",
+      "title": "Pelvic hernia"
+    },
+    {
+      "code": "FB4Y",
+      "title": "Other specified disorders of synovium or tendon"
+    },
+    {
+      "code": "DB10.Z",
+      "title": "Appendicitis, unspecified"
+    },
+    {
+      "code": "DB10.Y",
+      "title": "Other specified appendicitis"
+    },
+    {
+      "code": "DB10.0",
+      "title": "Acute appendicitis"
+    },
+    {
+      "code": "DB10.02",
+      "title": "Acute appendicitis without localised or generalised peritonitis"
+    },
+    {
+      "code": "DB10.1",
+      "title": "Chronic appendicitis"
+    },
+    {
+      "code": "DC11.Z",
+      "title": "Cholelithiasis, unspecified"
+    },
+    {
+      "code": "DC11.Y",
+      "title": "Other specified cholelithiasis"
+    },
+    {
+      "code": "DC11.3",
+      "title": "Calculus of gallbladder or cystic duct without cholecystitis or cholangitis"
+    },
+    {
+      "code": "DC11.6&XA6R80",
+      "title": "Cholelithiasis of common bile duct"
+    },
+    {
+      "code": "DC11.6",
+      "title": "Calculus of bile duct without cholangitis or cholecystitis"
+    },
+    {
+      "code": "DC12.Z",
+      "title": "Cholecystitis, unspecified"
+    },
+    {
+      "code": "DC12.Y",
+      "title": "Other specified cholecystitis"
+    },
+    {
+      "code": "DC12.0Z",
+      "title": "Acute cholecystitis, unspecified"
+    },
+    {
+      "code": "DC12.1",
+      "title": "Chronic cholecystitis"
+    },
+    {
+      "code": "DC11.0&XA8KL9",
+      "title": "Cholelithiasis with acute cholecystitis"
+    },
+    {
+      "code": "DB60.Z",
+      "title": "Haemorrhoids, unspecified"
+    },
+    {
+      "code": "JA61.4",
+      "title": "Haemorrhoids in pregnancy"
+    },
+    {
+      "code": "JB41.2",
+      "title": "Haemorrhoids in the puerperium"
+    },
+    {
+      "code": "DB62",
+      "title": "Residual haemorrhoidal skin tags"
+    },
+    {
+      "code": "DB60.0",
+      "title": "First degree haemorrhoids"
+    },
+    {
+      "code": "DB50.0",
+      "title": "Anal fissure"
+    },
+    {
+      "code": "LB17.Y",
+      "title": "Other specified structural developmental anomalies of anal canal"
+    },
+    {
+      "code": "DB50.0&XT5R",
+      "title": "Acute anal fissure"
+    },
+    {
+      "code": "DB50.0&XT8W",
+      "title": "Chronic anal fissure"
+    },
+    {
+      "code": "DB50.Z",
+      "title": "Fissure or fistula of anal regions, unspecified"
+    },
+    {
+      "code": "DB50.1",
+      "title": "Anal fistula"
+    },
+    {
+      "code": "DB31.0&XA39S6",
+      "title": "Fistula of large intestine [Anal Canal]"
+    },
+    {
+      "code": "DB36.11",
+      "title": "Ischiorectal abscess"
+    },
+    {
+      "code": "DB31.0&XA3ML6",
+      "title": "Fistula of large intestine [Sphincter ani muscle]"
+    },
+    {
+      "code": "DB70.00",
+      "title": "Anal abscess"
+    },
+    {
+      "code": "DB30.Y",
+      "title": "Other specified obstruction of large intestine"
+    },
+    {
+      "code": "DB30.Z",
+      "title": "Obstruction of large intestine, unspecified"
+    },
+    {
+      "code": "CA25.0",
+      "title": "Classical cystic fibrosis"
+    },
+    {
+      "code": "DA93.0",
+      "title": "Paralytic ileus"
+    },
+    {
+      "code": "DB30.2",
+      "title": "Adhesions of large intestine with obstruction"
+    },
+    {
+      "code": "DC50.Z",
+      "title": "Peritonitis, unspecified"
+    },
+    {
+      "code": "DC50.0",
+      "title": "Primary peritonitis"
+    },
+    {
+      "code": "DC50.1Y",
+      "title": "Other specified secondary peritonitis"
+    },
+    {
+      "code": "DC50.1Y&XN9ZG",
+      "title": "Staphylococcal peritonitis"
+    },
+    {
+      "code": "DC50.01",
+      "title": "Other specified primary peritonitis"
+    },
+    {
+      "code": "DA61",
+      "title": "Peptic ulcer, site unspecified"
+    },
+    {
+      "code": "DA61&XT5R",
+      "title": "Acute peptic ulcer, site unspecified"
+    },
+    {
+      "code": "DA61&XT8W",
+      "title": "Chronic peptic ulcer, site unspecified"
+    },
+    {
+      "code": "DA61/ME24.3Y",
+      "title": "Peptic ulcer, unspecified as acute or chronic, with perforation"
+    },
+    {
+      "code": "DA60.Y&XA6P89",
+      "title": "Ulcer of pylorus"
+    },
+    {
+      "code": "BA40.Z",
+      "title": "Angina pectoris, unspecified"
+    },
+    {
+      "code": "BA40.Y",
+      "title": "Other specified angina pectoris"
+    },
+    {
+      "code": "BA40.0",
+      "title": "Unstable angina"
+    },
+    {
+      "code": "BA41.Z",
+      "title": "Acute myocardial infarction, unspecified"
+    },
+    {
+      "code": "BA41.0",
+      "title": "Acute ST elevation myocardial infarction"
+    },
+    {
+      "code": "BA60.3",
+      "title": "Ventricular septal defect as current complication following acute myocardial infarction"
+    },
+    {
+      "code": "BA60.6",
+      "title": "Rupture of papillary muscle or chordae tendineae as current complication following acute myocardial infarction"
+    },
+    {
+      "code": "BA60.Y",
+      "title": "Other specified current complications following acute myocardial infarction"
+    },
+    {
+      "code": "BA8Z",
+      "title": "Diseases of coronary artery, unspecified"
+    },
+    {
+      "code": "BA8Y",
+      "title": "Other specified diseases of coronary artery"
+    },
+    {
+      "code": "BA52.Z",
+      "title": "Coronary atherosclerosis, unspecified site"
+    },
+    {
+      "code": "BA84/BA52.Z",
+      "title": "Chronic total occlusion of coronary artery [Coronary atherosclerosis, unspecified site]"
+    },
+    {
+      "code": "BA85.Z&XA3B03",
+      "title": "Coronary vasospastic disease, unspecified [Coronary arteries]"
+    },
+    {
+      "code": "BA6Z",
+      "title": "Ischaemic heart diseases, unspecified"
+    },
+    {
+      "code": "BA4Z",
+      "title": "Acute ischaemic heart disease, unspecified"
+    },
+    {
+      "code": "BA5Z",
+      "title": "Chronic ischaemic heart disease, unspecified"
+    },
+    {
+      "code": "BA5Y",
+      "title": "Other specified chronic ischaemic heart disease"
+    },
+    {
+      "code": "QC67",
+      "title": "Family history of ischaemic heart disease or other diseases of the circulatory system"
+    },
+    {
+      "code": "BD1Z",
+      "title": "Heart failure, unspecified"
+    },
+    {
+      "code": "BD1Y",
+      "title": "Other specified heart failure"
+    },
+    {
+      "code": "BD1Z&XT5R",
+      "title": "Acute heart failure"
+    },
+    {
+      "code": "BD1Z&XT8W",
+      "title": "Chronic heart failure"
+    },
+    {
+      "code": "MC82.4",
+      "title": "Cardiopulmonary arrest"
+    },
+    {
+      "code": "BC81.3Z",
+      "title": "Atrial fibrillation, unspecified"
+    },
+    {
+      "code": "BC81.3Y",
+      "title": "Other specified atrial fibrillation"
+    },
+    {
+      "code": "BC81.32",
+      "title": "Permanent atrial fibrillation"
+    },
+    {
+      "code": "BC65.Y",
+      "title": "Other specified cardiac arrhythmia associated with genetic disorder"
+    },
+    {
+      "code": "BC81.31",
+      "title": "Persistent atrial fibrillation"
+    },
+    {
+      "code": "BB70.Z",
+      "title": "Aortic valve stenosis, unspecified"
+    },
+    {
+      "code": "BB70.Y",
+      "title": "Other specified aortic valve stenosis"
+    },
+    {
+      "code": "LA8A.20",
+      "title": "Congenital aortic valvar stenosis"
+    },
+    {
+      "code": "BC02.30",
+      "title": "Stenosis of the neoaortic valve of pulmonary origin"
+    },
+    {
+      "code": "BB72.Z",
+      "title": "Aortic valve stenosis with insufficiency, unspecified"
+    },
+    {
+      "code": "LA87.10",
+      "title": "Congenital mitral regurgitation"
+    },
+    {
+      "code": "BB61.Z",
+      "title": "Mitral valve insufficiency, unspecified"
+    },
+    {
+      "code": "BB63.Z",
+      "title": "Mitral valve stenosis with insufficiency, unspecified"
+    },
+    {
+      "code": "BC00",
+      "title": "Multiple valve disease"
+    },
+    {
+      "code": "BC01/BB61.Z",
+      "title": "Mitral prosthetic valve regurgitation"
+    },
+    {
+      "code": "LA88.4Z",
+      "title": "Ventricular septal defect, unspecified"
+    },
+    {
+      "code": "LA88.4Y",
+      "title": "Other specified ventricular septal defect"
+    },
+    {
+      "code": "BC41.0",
+      "title": "Acquired interventricular communication"
+    },
+    {
+      "code": "LA88.41",
+      "title": "Perimembranous central ventricular septal defect"
+    },
+    {
+      "code": "LA87.4Z",
+      "title": "Common atrioventricular junction with atrioventricular septal defect, unspecified"
+    },
+    {
+      "code": "NC72.Z",
+      "title": "Fracture of femur, unspecified"
+    },
+    {
+      "code": "NC72.Y",
+      "title": "Other specified fracture of femur"
+    },
+    {
+      "code": "NC72.7",
+      "title": "Multiple fractures of femur"
+    },
+    {
+      "code": "FB80.B",
+      "title": "Pathological fracture"
+    },
+    {
+      "code": "NC72.5",
+      "title": "Fracture of shaft of femur"
+    },
+    {
+      "code": "NC92.2",
+      "title": "Fracture of shaft of tibia"
+    },
+    {
+      "code": "FB80.8",
+      "title": "Nonunion of fracture"
+    },
+    {
+      "code": "NC92.1Y",
+      "title": "Other specified fracture of upper end of tibia"
+    },
+    {
+      "code": "NC92.3",
+      "title": "Fracture of lower end of tibia"
+    },
+    {
+      "code": "NC32.Y&XA3WG1",
+      "title": "Fracture of radius, unspecified"
+    },
+    {
+      "code": "NC32.3",
+      "title": "Fracture of shaft of radius"
+    },
+    {
+      "code": "NC32.1&XA0ZF7",
+      "title": "Fracture of neck of radius"
+    },
+    {
+      "code": "NC12.3",
+      "title": "Fracture of shaft of humerus"
+    },
+    {
+      "code": "NC12.4Z",
+      "title": "Fracture of lower end of humerus, unspecified"
+    },
+    {
+      "code": "NC12.2Z",
+      "title": "Fracture of upper end of humerus, unspecified site"
+    },
+    {
+      "code": "NC12.0Z",
+      "title": "Fracture of clavicle, unspecified"
+    },
+    {
+      "code": "NC12.0Y",
+      "title": "Other specified fracture of clavicle"
+    },
+    {
+      "code": "NC12.01",
+      "title": "Fracture of shaft of clavicle"
+    },
+    {
+      "code": "FA01.Z",
+      "title": "Osteoarthritis of knee, unspecified"
+    },
+    {
+      "code": "FA01.0",
+      "title": "Primary osteoarthritis of knee"
+    },
+    {
+      "code": "FA05&XA8RL1",
+      "title": "Polyosteoarthritis [Knee joint]"
+    },
+    {
+      "code": "FA01.2",
+      "title": "Other secondary osteoarthritis of knee"
+    },
+    {
+      "code": "FA01.1",
+      "title": "Post traumatic osteoarthritis of knee"
+    },
+    {
+      "code": "FA00.Z",
+      "title": "Osteoarthritis of hip, unspecified"
+    },
+    {
+      "code": "FA00.0",
+      "title": "Primary osteoarthritis of hip"
+    },
+    {
+      "code": "FA05&XA4XS4",
+      "title": "Polyosteoarthritis [Hip joint]"
+    },
+    {
+      "code": "FA00.2",
+      "title": "Other secondary osteoarthritis of hip"
+    },
+    {
+      "code": "FA00.1",
+      "title": "Post traumatic osteoarthritis of hip"
+    },
+    {
+      "code": "NC13.0",
+      "title": "Dislocation of shoulder joint"
+    },
+    {
+      "code": "LB91",
+      "title": "Congenital shoulder dislocation"
+    },
+    {
+      "code": "FA34.2",
+      "title": "Recurrent instability of joint"
+    },
+    {
+      "code": "NC13.4",
+      "title": "Dislocation of other or unspecified parts of shoulder girdle"
+    },
+    {
+      "code": "FA34.2&XA05J7",
+      "title": "Recurrent instability of joint [Shoulder joint]"
+    },
+    {
+      "code": "NC93.3Z",
+      "title": "Tear of meniscus, current, unspecified"
+    },
+    {
+      "code": "GB70.0Z",
+      "title": "Calculus of kidney, unspecified"
+    },
+    {
+      "code": "GB70.0Y",
+      "title": "Other specified calculus of kidney"
+    },
+    {
+      "code": "GB70.0Y&XA21J4",
+      "title": "Calculus of renal pelvis"
+    },
+    {
+      "code": "GB70.0Y&XA0AC1",
+      "title": "Calculus of renal calyces"
+    },
+    {
+      "code": "GB70.00",
+      "title": "Staghorn calculus"
+    },
+    {
+      "code": "GB70.1",
+      "title": "Calculus of ureter"
+    },
+    {
+      "code": "GB71.0&XA4P63",
+      "title": "Calculus in bladder [Ureteric orifice]"
+    },
+    {
+      "code": "GB56.2",
+      "title": "Hydronephrosis with ureteral orifice obstruction"
+    },
+    {
+      "code": "GB58",
+      "title": "Pyonephrosis"
+    },
+    {
+      "code": "GB71.Z",
+      "title": "Calculus of lower urinary tract, unspecified"
+    },
+    {
+      "code": "GA90",
+      "title": "Hyperplasia of prostate"
+    },
+    {
+      "code": "GC03",
+      "title": "Urethral stricture"
+    },
+    {
+      "code": "LB31.2",
+      "title": "Fetal lower urinary tract obstruction"
+    },
+    {
+      "code": "1A70.0Y",
+      "title": "Other specified gonococcal infection of lower genitourinary tract without periurethral or accessory gland abscess"
+    },
+    {
+      "code": "GC01.0",
+      "title": "Bladder neck obstruction"
+    },
+    {
+      "code": "GC72",
+      "title": "Postprocedural urethral stricture"
+    },
+    {
+      "code": "GB56.4",
+      "title": "Other or unspecified hydronephrosis"
+    },
+    {
+      "code": "LB31.0",
+      "title": "Congenital hydronephrosis"
+    },
+    {
+      "code": "GB56.3",
+      "title": "Hydronephrosis due to bladder obstruction"
+    },
+    {
+      "code": "1B12.5",
+      "title": "Tuberculosis of the genitourinary system"
+    },
+    {
+      "code": "GC08.Z",
+      "title": "Urinary tract infection, site and agent not specified"
+    },
+    {
+      "code": "JA62.Y",
+      "title": "Infections of genitourinary tract in pregnancy, other specified site"
+    },
+    {
+      "code": "KA65.2",
+      "title": "Neonatal urinary tract infection"
+    },
+    {
+      "code": "JA62.Z",
+      "title": "Infection of genitourinary tract in pregnancy, site unspecified"
+    },
+    {
+      "code": "JA62.3",
+      "title": "Infections of other parts of urinary tract in pregnancy"
+    },
+    {
+      "code": "1G40",
+      "title": "Sepsis without septic shock"
+    },
+    {
+      "code": "1D9Y/1G40",
+      "title": "Viral sepsis without mention of septic shock"
+    },
+    {
+      "code": "JB40.0",
+      "title": "Puerperal sepsis"
+    },
+    {
+      "code": "1C41&XN9ZG/1G40",
+      "title": "Sepsis due to unspecified staphylococcus without mention of septic shock"
+    },
+    {
+      "code": "1C41",
+      "title": "Bacterial infection of unspecified site"
+    },
+    {
+      "code": "CA40.0Z",
+      "title": "Bacterial pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.0Y",
+      "title": "Pneumonia due to other specified bacteria"
+    },
+    {
+      "code": "MG52.00/1B10.Z",
+      "title": "Multi-drug resistant Mycobacterium tuberculosis [Tuberculous pneumonia, without mention of bacteriological or histological confirmation]"
+    },
+    {
+      "code": "CA40.1Z",
+      "title": "Viral pneumonia, unspecified"
+    },
+    {
+      "code": "CA40.1Y",
+      "title": "Pneumonia due to other specified virus"
+    },
+    {
+      "code": "1D82.Y/CA40.1Z",
+      "title": "Pneumonia due to Cytomegalovirus"
+    },
+    {
+      "code": "CA40.11",
+      "title": "Pneumonia due to Respiratory syncytial virus"
+    },
+    {
+      "code": "CA40.10",
+      "title": "Pneumonia due to Adenovirus"
+    },
+    {
+      "code": "1D2Z",
+      "title": "Dengue fever, unspecified"
+    },
+    {
+      "code": "1D22",
+      "title": "Severe dengue"
+    },
+    {
+      "code": "1D21",
+      "title": "Dengue with warning signs"
+    },
+    {
+      "code": "1D20",
+      "title": "Dengue without warning signs"
+    },
+    {
+      "code": "QA08.5",
+      "title": "Special screening examination for other viral diseases"
+    },
+    {
+      "code": "1F45",
+      "title": "Malaria without parasitological confirmation"
+    },
+    {
+      "code": "1F4Z",
+      "title": "Malaria, unspecified"
+    },
+    {
+      "code": "1F42.Z",
+      "title": "Plasmodium malariae malaria without complication"
+    },
+    {
+      "code": "1F44",
+      "title": "Other parasitologically confirmed malaria"
+    },
+    {
+      "code": "KA64.Y",
+      "title": "Other specified parasitic diseases in the fetus or newborn"
+    },
+    {
+      "code": "1A07.Z",
+      "title": "Typhoid fever, unspecified"
+    },
+    {
+      "code": "1A07.Y",
+      "title": "Other specified typhoid fever"
+    },
+    {
+      "code": "1A07.Y/CA40.0Z",
+      "title": "Typhoid pneumonia"
+    },
+    {
+      "code": "1D49",
+      "title": "Crimean-Congo haemorrhagic fever"
+    },
+    {
+      "code": "BB4Y",
+      "title": "Other specified acute or subacute endocarditis"
+    },
+    {
+      "code": "5A11",
+      "title": "Type 2 diabetes mellitus"
+    },
+    {
+      "code": "BD54/5A11",
+      "title": "Diabetic foot ulcer [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "5A24/5A11",
+      "title": "Uncontrolled or unstable diabetes mellitus [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "5A13",
+      "title": "Diabetes mellitus, other specified type"
+    },
+    {
+      "code": "5A2Y/5A11",
+      "title": "Other specified acute complications of diabetes mellitus [Type 2 diabetes mellitus]"
+    },
+    {
+      "code": "BA00.Z",
+      "title": "Essential hypertension, unspecified"
+    },
+    {
+      "code": "BA00.Y",
+      "title": "Other specified essential hypertension"
+    },
+    {
+      "code": "BA03/BA00.Z",
+      "title": "Hypertensive crisis [Essential hypertension, unspecified]"
+    },
+    {
+      "code": "BA03/BA00.Y",
+      "title": "Hypertensive crisis [Other specified essential hypertension]"
+    },
+    {
+      "code": "BA03/BA00.Z/BA03",
+      "title": "Hypertensive crisis [Essential (primary) hypertension, unspecified, with mention of hypertensive crisis]"
+    },
+    {
+      "code": "CA22.Z",
+      "title": "Chronic obstructive pulmonary disease, unspecified"
+    },
+    {
+      "code": "CA22.1",
+      "title": "Certain specified chronic obstructive pulmonary disease"
+    },
+    {
+      "code": "CA22.0",
+      "title": "Chronic obstructive pulmonary disease with acute exacerbation, unspecified"
+    },
+    {
+      "code": "CA22.1&XS7U",
+      "title": "Other specified chronic obstructive pulmonary disease, moderate airflow limitation"
+    },
+    {
+      "code": "CA22.1&XS80",
+      "title": "Other specified chronic obstructive pulmonary disease, mild airflow limitation"
+    },
+    {
+      "code": "CA23.32",
+      "title": "Unspecified asthma, uncomplicated"
+    },
+    {
+      "code": "CA23",
+      "title": "Asthma"
+    },
+    {
+      "code": "CA23.3",
+      "title": "Unspecified asthma"
+    },
+    {
+      "code": "CA23.0",
+      "title": "Allergic asthma"
+    },
+    {
+      "code": "CA23.31",
+      "title": "Unspecified asthma with status asthmaticus"
+    },
+    {
+      "code": "1E50.Z",
+      "title": "Acute viral hepatitis, unspecified"
+    },
+    {
+      "code": "1E50.Y",
+      "title": "Other specified acute viral hepatitis"
+    },
+    {
+      "code": "KA62.9",
+      "title": "Congenital viral hepatitis"
+    },
+    {
+      "code": "DB97.Y",
+      "title": "Other specified inflammatory liver disease"
+    },
+    {
+      "code": "1E50.1",
+      "title": "Acute hepatitis B"
+    },
+    {
+      "code": "DB93.1",
+      "title": "Hepatic cirrhosis"
+    },
+    {
+      "code": "KB8Y",
+      "title": "Other specified digestive system disorders of fetus or newborn"
+    },
+    {
+      "code": "DB93",
+      "title": "Hepatic fibrosis or cirrhosis"
+    },
+    {
+      "code": "DB93.Y",
+      "title": "Other specified hepatic fibrosis or cirrhosis"
+    },
+    {
+      "code": "CA25.Z/DB93.1",
+      "title": "Liver cirrhosis in unspecified cystic fibrosis"
+    },
+    {
+      "code": "GB60.Z",
+      "title": "Acute kidney failure, stage unspecified"
+    },
+    {
+      "code": "GB60.2",
+      "title": "Acute kidney failure, stage 3"
+    },
+    {
+      "code": "GB60.0",
+      "title": "Acute kidney failure, stage 1"
+    },
+    {
+      "code": "GB60.1",
+      "title": "Acute kidney failure, stage 2"
+    },
+    {
+      "code": "GB61.Z",
+      "title": "Chronic kidney disease, stage unspecified"
+    },
+    {
+      "code": "GB61.1",
+      "title": "Chronic kidney disease, stage 2"
+    },
+    {
+      "code": "GB61.0",
+      "title": "Chronic kidney disease, stage 1"
+    },
+    {
+      "code": "GB61.2",
+      "title": "Chronic kidney disease, stage 3a"
+    },
+    {
+      "code": "GB61.4",
+      "title": "Chronic kidney disease, stage 4"
+    },
+    {
+      "code": "9B10.0Z",
+      "title": "Age-related cataract, unspecified"
+    },
+    {
+      "code": "9B10.00",
+      "title": "Coronary age-related cataract"
+    },
+    {
+      "code": "9B10.0Y",
+      "title": "Other specified age-related cataract"
+    },
+    {
+      "code": "9B10.01",
+      "title": "Punctate age-related cataract"
+    },
+    {
+      "code": "9B10.1Z",
+      "title": "Infantile or juvenile cataract, unspecified"
+    },
+    {
+      "code": "9C61.Z",
+      "title": "Glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.4Z",
+      "title": "Developmental glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.12",
+      "title": "Primary angle closure glaucoma"
+    },
+    {
+      "code": "9C61.0Z",
+      "title": "Primary open-angle glaucoma, unspecified"
+    },
+    {
+      "code": "9C61.2A",
+      "title": "Glaucoma due to drugs"
+    },
+    {
+      "code": "9B73.3",
+      "title": "Serous retinal detachment"
+    },
+    {
+      "code": "9B73.0",
+      "title": "Retinal detachment with retinal break"
+    },
+    {
+      "code": "9B73.Z",
+      "title": "Retinal detachments or breaks, unspecified"
+    },
+    {
+      "code": "9B73.Y",
+      "title": "Other specified retinal detachments or breaks"
+    },
+    {
+      "code": "9B73.4",
+      "title": "Retinal breaks without detachment"
+    },
+    {
+      "code": "9B71.0Z",
+      "title": "Diabetic retinopathy, unspecified"
+    },
+    {
+      "code": "9B71.01",
+      "title": "Proliferative diabetic retinopathy"
+    },
+    {
+      "code": "9B71.00",
+      "title": "Nonproliferative diabetic retinopathy"
+    },
+    {
+      "code": "9B71.00&XS25",
+      "title": "Severe nonproliferative diabetic retinopathy"
+    },
+    {
+      "code": "9B71.00&XS5W",
+      "title": "Mild nonproliferative diabetic retinopathy"
+    },
+    {
+      "code": "9A61.1",
+      "title": "Pterygium"
+    },
+    {
+      "code": "LD26.40",
+      "title": "Multiple pterygium syndrome"
+    },
+    {
+      "code": "EE10.Y",
+      "title": "Other specified acquired deformities of the nail plate"
+    },
+    {
+      "code": "LA60",
+      "title": "Webbed neck"
+    },
+    {
+      "code": "LD26.4Y",
+      "title": "Other specified arthrogryposis syndromes"
+    },
+    {
+      "code": "AB01",
+      "title": "Chronic otitis media"
+    },
+    {
+      "code": "AB17",
+      "title": "Adhesive middle ear disease"
+    },
+    {
+      "code": "AA82",
+      "title": "Chronic serous or mucoid otitis media"
+    },
+    {
+      "code": "AA8Z",
+      "title": "Nonsuppurative otitis media, unspecified"
+    },
+    {
+      "code": "AA91.Z",
+      "title": "Chronic suppurative otitis media, unspecified"
+    },
+    {
+      "code": "CA0F.Y",
+      "title": "Other specified chronic diseases of tonsils or adenoids"
+    },
+    {
+      "code": "CA0F.Z",
+      "title": "Chronic diseases of tonsils or adenoids, unspecified"
+    },
+    {
+      "code": "NA07.61&XA7E38",
+      "title": "Chronic traumatic subdural haemorrhage [Cerebellar tonsil]"
+    },
+    {
+      "code": "CA0D",
+      "title": "Deviated nasal septum"
+    },
+    {
+      "code": "CA0A.Z",
+      "title": "Chronic rhinosinusitis, unspecified"
+    },
+    {
+      "code": "CA0A.Y&XA91G8",
+      "title": "Chronic frontal sinusitis"
+    },
+    {
+      "code": "CA0A.Y&XA1R64",
+      "title": "Chronic maxillary sinusitis"
+    },
+    {
+      "code": "CA0A.Y&XA58F6",
+      "title": "Chronic ethmoidal sinusitis"
+    },
+    {
+      "code": "CA0A.Y&XA4U67",
+      "title": "Chronic sphenoidal sinusitis"
+    },
+    {
+      "code": "JB20.Z",
+      "title": "Single spontaneous delivery, unspecified"
+    },
+    {
+      "code": "JB20.Y",
+      "title": "Single spontaneous delivery with other specified presentation"
+    },
+    {
+      "code": "JB20.1",
+      "title": "Spontaneous breech delivery"
+    },
+    {
+      "code": "JB20.0",
+      "title": "Spontaneous vertex delivery"
+    },
+    {
+      "code": "JB22.Z",
+      "title": "Single delivery by caesarean section, unspecified"
+    },
+    {
+      "code": "JB22.0",
+      "title": "Delivery by elective caesarean section"
+    },
+    {
+      "code": "KA05.4",
+      "title": "Fetus or newborn affected by caesarean delivery"
+    },
+    {
+      "code": "JA84.2",
+      "title": "Maternal care due to uterine scar from previous surgery"
+    },
+    {
+      "code": "JB22.1",
+      "title": "Delivery by emergency caesarean section"
+    },
+    {
+      "code": "JA01.Z",
+      "title": "Ectopic pregnancy, unspecified"
+    },
+    {
+      "code": "JA01.Y",
+      "title": "Other specified ectopic pregnancy"
+    },
+    {
+      "code": "KA01.4",
+      "title": "Fetus or newborn affected by ectopic pregnancy"
+    },
+    {
+      "code": "JA05.4",
+      "title": "Renal failure following abortion, ectopic or molar pregnancy"
+    },
+    {
+      "code": "JA05.2",
+      "title": "Embolism following abortion, ectopic or molar pregnancy"
+    },
+    {
+      "code": "2E86.0",
+      "title": "Leiomyoma of uterus"
+    },
+    {
+      "code": "2C90.Y",
+      "title": "Other specified malignant neoplasms of kidney, except renal pelvis"
+    },
+    {
+      "code": "GA10.Z",
+      "title": "Endometriosis of unspecified site"
+    },
+    {
+      "code": "GA10.C1",
+      "title": "Endometriosis of intestine"
+    },
+    {
+      "code": "GA10.H",
+      "title": "Endometriosis in cutaneous scar"
+    },
+    {
+      "code": "GA11",
+      "title": "Adenomyosis"
+    },
+    {
+      "code": "GA10.B5",
+      "title": "Deep ovarian endometriosis"
+    },
+    {
+      "code": "GA18.6",
+      "title": "Other or unspecified ovarian cysts"
+    },
+    {
+      "code": "LB45.2",
+      "title": "Developmental ovarian cyst"
+    },
+    {
+      "code": "GA18.0",
+      "title": "Follicular cyst of ovary"
+    },
+    {
+      "code": "GA18.4",
+      "title": "Para ovarian cyst"
+    },
+    {
+      "code": "NA07.6Z",
+      "title": "Traumatic subdural haemorrhage, unspecified whether acute or chronic"
+    },
+    {
+      "code": "NA07.60",
+      "title": "Acute traumatic subdural haemorrhage"
+    },
+    {
+      "code": "NA07.61",
+      "title": "Chronic traumatic subdural haemorrhage"
+    },
+    {
+      "code": "8A60.5/NA07.6Z",
+      "title": "Epilepsy due to injuries to the head [Traumatic subdural haemorrhage, unspecified whether acute or chronic]"
+    },
+    {
+      "code": "8A60.5/NA07.60",
+      "title": "Epilepsy due to injuries to the head [Acute traumatic subdural haemorrhage]"
+    },
+    {
+      "code": "NA07.5",
+      "title": "Traumatic epidural haemorrhage"
+    },
+    {
+      "code": "JB64.4",
+      "title": "Diseases of the circulatory system complicating pregnancy, childbirth or the puerperium"
+    },
+    {
+      "code": "8B03",
+      "title": "Nontraumatic epidural haemorrhage"
+    },
+    {
+      "code": "KA40.08",
+      "title": "Extradural or epidural haemorrhage due to birth injury"
+    },
+    {
+      "code": "KA82.Z",
+      "title": "Intracranial nontraumatic haemorrhage of fetus or newborn, unspecified"
+    },
+    {
+      "code": "8B00.Z",
+      "title": "Intracerebral haemorrhage, site unspecified"
+    },
+    {
+      "code": "NA07.1",
+      "title": "Traumatic intracerebral haemorrhage"
+    },
+    {
+      "code": "8B00.1",
+      "title": "Lobar haemorrhage"
+    },
+    {
+      "code": "8B00.0",
+      "title": "Deep hemispheric haemorrhage"
+    },
+    {
+      "code": "8B00.4",
+      "title": "Intraventricular haemorrhage without parenchymal haemorrhage"
+    },
+    {
+      "code": "8D64.Z",
+      "title": "Hydrocephalus, unspecified"
+    },
+    {
+      "code": "LA04.Z",
+      "title": "Congenital hydrocephalus, unspecified"
+    },
+    {
+      "code": "8D64.1Z",
+      "title": "Non-communicating hydrocephalus, unspecified"
+    },
+    {
+      "code": "KB05.Z",
+      "title": "Neonatal hydrocephalus, unspecified"
+    },
+    {
+      "code": "LA04.Y",
+      "title": "Other specified congenital hydrocephalus"
+    },
+    {
+      "code": "2A00.5",
+      "title": "Primary neoplasm of brain of unknown or unspecified type"
+    },
+    {
+      "code": "2A00",
+      "title": "Primary neoplasms of brain"
+    },
+    {
+      "code": "2A00.1Z",
+      "title": "Embryonal tumours of brain, unspecified"
+    },
+    {
+      "code": "2A00.1Y",
+      "title": "Other specified embryonal tumours of brain"
+    },
+    {
+      "code": "8E40.0&XA6HA2",
+      "title": "Neoplastic meningitis [Cerebral meninges]"
+    },
+    {
+      "code": "NE2Z",
+      "title": "Burns, unspecified"
+    },
+    {
+      "code": "NE11",
+      "title": "Burn of unspecified body region"
+    },
+    {
+      "code": "FB82.1",
+      "title": "Osteochondrosis or osteochondritis dissecans"
+    },
+    {
+      "code": "ND9Z",
+      "title": "Burns of external body surface, unspecified site"
+    },
+    {
+      "code": "QD85",
+      "title": "Burnout"
+    },
+    {
+      "code": "ND9Y",
+      "title": "Burns of external body surface, other specified site"
+    },
+    {
+      "code": "NE10",
+      "title": "Burns of multiple body regions"
+    },
+    {
+      "code": "NE00",
+      "title": "Burn of eye or ocular adnexa"
+    },
+    {
+      "code": "NE00&XA3RB1",
+      "title": "Chemical burn of eyelid"
+    },
+    {
+      "code": "ND91.Z",
+      "title": "Burn of face except eye, depth of burn unspecified"
+    },
+    {
+      "code": "NE0Z",
+      "title": "Burns of unspecified internal organ"
+    },
+    {
+      "code": "ND91.0",
+      "title": "Burn of face except eye or ocular adnexa, epidermal burn"
+    },
+    {
+      "code": "NE02",
+      "title": "Burn of other internal organs"
+    }
+  ]
+,
+  "MC016A": [
+    {"code": "BC63.Z", "title": "heart block NOS"}
+  ],
+  "MC017A": [
+    {"code": "BB01.0", "title": "Pulmonary veno-occlusive disease"}
+  ],
+  "MG002B": [
+    {"code": "1G41", "title": "Sepsis with septic shock"}
+  ],
+  "MG004A": [
+    {"code": "1D2Z", "title": "Dengue Fever"}
+  ],
+  "MG006A": [
+    {"code": "1A07.Z", "title": "Typhoid fever, unspecified"}
+  ],
+  "MG008A": [
+    {"code": "1B91", "title": "Leptospirosis"}
+  ],
+  "MG020B": [
+    {"code": "1B10.Z", "title": "tuberculous pleura"}
+  ],
+  "MG025A": [
+    {"code": "MD90.1", "title": "Vomiting"}
+  ],
+  "MG027A": [
+    {"code": "CA24", "title": "Bronchiectasis"}
+  ],
+  "MG029A": [
+    {"code": "CA22.Z", "title": "Chronic obstructive pulmonary disease, unspecified"}
+  ],
+  "MG030A": [
+    {"code": "CB0Z", "title": "interstitial lung disease NOS"}
+  ],
+  "MG034A": [
+    {"code": "ME04.Z", "title": "Ascites, Unspecified"}
+  ],
+  "MG036A": [
+    {"code": "BC81.3Z", "title": "Atrial Fibrillation"}
+  ],
+  "MG040A": [
+    {"code": "CB41.20", "title": "Respiratory failure, unspecified, Type I"}
+  ],
+  "MG040B": [
+    {"code": "CB41.21", "title": "type 2 respiratory failure, unspecified"}
+  ],
+  "MG041A": [
+    {"code": "ME24.9Z", "title": "upper GI bleed"}
+  ],
+  "MG044A": [
+    {"code": "MF56", "title": "Renal colic"}
+  ],
+  "MG049B": [
+    {"code": "8B10.Z", "title": "Transient ischaemic attack"}
+  ],
+  "MG060C": [
+    {"code": "5C72", "title": "Hypo-osmolality or hyponatraemia"}
+  ],
+  "MG066A": [
+    {"code": "4A84.Z", "title": "Anaphylaxis, unspecified"}
+  ],
+  "MG070A": [
+    {"code": "PA78", "title": "Venomous snake bite"}
+  ],
+  "MG072D": [
+    {"code": "GB61.5", "title": "Chronic kidney disease, stage 5"}
+  ],
+  "MP005E": [
+    {"code": "8.00E+47", "title": "Metabolic encephalopathy"}
+  ],
+  "MP005F": [
+    {"code": "DB99.5", "title": "Hepatic Encephalopathy"}
+  ],
+  "MP018A": [
+    {"code": "MD11.C", "title": "Wheezing"}
+  ],
+  "MP021A": [
+    {"code": "MD81.4", "title": "abdominal pain NOS"}
+  ],
+  "MP026A": [
+    {"code": "GB41", "title": "Nephrotic syndrome"}
+  ],
+  "SB005B": [
+    {"code": "NC53.6Z", "title": "fracture of finger"}
+  ],
+  "SB007C": [
+    {"code": "NC32.Z", "title": "Fracture of forearm"}
+  ],
+  "SB013A": [
+    {"code": "NC32.3", "title": "Fracture of shaft of radius"}
+  ],
+  "SB014A": [
+    {"code": "NC32.7", "title": "Multiple fractures of forearm"}
+  ],
+  "SB031C": [
+    {"code": "NC72.2Z", "title": "Fracture of neck of femur"}
+  ],
+  "SB036A": [
+    {"code": "NC93.62", "title": "Rupture of anterior cruciate ligament"}
+  ],
+  "SB038A": [
+    {"code": "FB81.Z", "title": "avascular necrosis"}
+  ],
+  "SB049A": [
+    {"code": "NC93.3Z", "title": "Tear of meniscus, current, unspecified"}
+  ],
+  "SB065A": [
+    {"code": "FB50.Z", "title": "Bursitis, unspecified"}
+  ],
+  "SB070B": [
+    {"code": "QB51.7", "title": "Presence of orthopaedic joint implants"}
+  ],
+  "SB071B": [
+    {"code": "QB84", "title": "Follow-Up Care Involving Removal Of Fracture Plate Or Other Internal Fixation Device"}
+  ],
+  "SE002A": [
+    {"code": "9A03.1Z", "title": "Entropion of eyelid, unspecified"}
+  ],
+  "SE020A": [
+    {"code": "9B10.ZC", "title": "Cataract, unspecified"}
+  ],
+  "SE022A": [
+    {"code": "MC1Y", "title": "Blurred vision"}
+  ],
+  "SE024A": [
+    {"code": "9B11.0", "title": "Aphakia"}
+  ],
+  "SG010A": [
+    {"code": "DC10.2", "title": "Choledochoduodenal fistula"}
+  ],
+  "SG013A": [
+    {"code": "DE12.0", "title": "complications of ileostomy"}
+  ],
+  "SG019A": [
+    {"code": "DB10.01", "title": "Appendicular abscess"}
+  ],
+  "SG021C": [
+    {"code": "2F90.0", "title": "Neoplasms of unknown behaviour of colon"}
+  ],
+  "SG021D": [
+    {"code": "2B90.Z", "title": "Malignant neoplasms of colon, unspecified"}
+  ],
+  "SG029A": [
+    {"code": "DB35.Z", "title": "Polyp of rectum"}
+  ],
+  "SG031A": [
+    {"code": "DB50.0", "title": "Anal fissure"}
+  ],
+  "SG032A": [
+    {"code": "DB60.3", "title": "Haemorrhoids (bleeding) with prolapsed tissue that cannot be manually reduced"}
+  ],
+  "SG050A": [
+    {"code": "DD51", "title": "Inguinal Hernia"}
+  ],
+  "SG051A": [
+    {"code": "DD55", "title": "Epigastric hernia"}
+  ],
+  "SG051B": [
+    {"code": "DD53", "title": "Umbilical hernia"}
+  ],
+  "SG051C": [
+    {"code": "DD54", "title": "Paraumbilical hernia"}
+  ],
+  "SG051D": [
+    {"code": "DD5Y", "title": "Spigelian hernia"}
+  ],
+  "SG052A": [
+    {"code": "DD56", "title": "Incisional hernia"}
+  ],
+  "SG056A": [
+    {"code": "GB00.Z", "title": "hydrocele"}
+  ],
+  "SG057A": [
+    {"code": "GB0Y", "title": "epididymal cyst"}
+  ],
+  "SG064A": [
+    {"code": "2B61.Z", "title": "Malignant neoplasms of base of tongue, unspecified"}
+  ],
+  "SG087A": [
+    {"code": "ND56.Z", "title": "injury NOS"}
+  ],
+  "SG090B": [
+    {"code": "ND12.Y", "title": "Other specified open wound of ankle or foot"}
+  ],
+  "SG095A": [
+    {"code": "BD74.1Z", "title": "Lower Limb Varicose Veins, Not Further Specified"}
+  ],
+  "SG096C": [
+    {"code": "GA2Y", "title": "Abnormal Uterine Bleeding"}
+  ],
+  "SL006A": [
+    {"code": "9A11.2", "title": "Dacryocystitis"}
+  ],
+  "SL011A": [
+    {"code": "CA0E", "title": "Hypertrophy of nasal turbinates"}
+  ],
+  "SL015A": [
+    {"code": "CA0F.Y", "title": "adenoiditis NOS"}
+  ],
+  "SL023A": [
+    {"code": "CA0H.2", "title": "Nodules of vocal cords"}
+  ],
+  "SL023C": [
+    {"code": "ND72.2Z", "title": "Foreign body in pharynx, unspecified"}
+  ],
+  "SL034B": [
+    {"code": "NA02.7Z", "title": "Fracture of mandible, unspecified"}
+  ],
+  "SM005A": [
+    {"code": "CA0C", "title": "Cyst or mucocele of nose or nasal sinus"}
+  ],
+  "SN007A": [
+    {"code": "2A00", "title": "Primary neoplasms of brain"}
+  ],
+  "SN015D": [
+    {"code": "2A00.5", "title": "brain tumour NOS"}
+  ],
+  "SN017A": [
+    {"code": "2F37.0", "title": "Non-secreting pituitary adenoma"}
+  ],
+  "SN038A": [
+    {"code": "FA80.9", "title": "Intervertebral disc degeneration of lumbar spine with prolapsed disc"}
+  ],
+  "SN038B": [
+    {"code": "NB52.0", "title": "compression fracture of lumbar spine"}
+  ],
+  "SN044A": [
+    {"code": "8B82.0", "title": "Trigeminal neuralgia"}
+  ],
+  "SN046A": [
+    {"code": "8C10.0", "title": "Carpal tunnel syndrome"}
+  ],
+  "SO001A": [
+    {"code": "2E67.0", "title": "Carcinoma in situ of endometrium"}
+  ],
+  "SO008A": [
+    {"code": "GA15.0", "title": "cervical polyp"}
+  ],
+  "SO024B": [
+    {"code": "MF50.2Z", "title": "Urinary incontinence"}
+  ],
+  "SO025A": [
+    {"code": "GC40.2Z", "title": "vaginal vault prolapse"}
+  ],
+  "SO040A": [
+    {"code": "JA01.Z", "title": "Ectopic pregnancy, unspecified"}
+  ],
+  "SO050A": [
+    {"code": "GA15.6", "title": "cervical incompetence"}
+  ],
+  "SO053B": [
+    {"code": "GB40", "title": "RPGN"}
+  ],
+  "SS002A": [
+    {"code": "LA31.2", "title": "Ankyloglossia"}
+  ],
+  "SU003D": [
+    {"code": "2C90.0", "title": "renal cell carcinoma NOS"}
+  ],
+  "SU007A": [
+    {"code": "GB70.0Z", "title": "Calculus of kidney"}
+  ],
+  "SU014A": [
+    {"code": "GB70.0ZC", "title": "alculus of kidney"}
+  ],
+  "SU033A": [
+    {"code": "GB56.Y", "title": "Obstructive nephropathy"}
+  ],
+  "SU041A": [
+    {"code": "GB71.0", "title": "vesical calculi"}
+  ],
+  "SU055A": [
+    {"code": "2C94.Z", "title": "Malignant neoplasms of bladder, unspecified"}
+  ],
+  "SU080A": [
+    {"code": "GA90", "title": "Hyperplasia of prostate"}
+  ],
+  "SU082A": [
+    {"code": "2C81.Y", "title": "Carcinoma of penis"}
+  ],
+  "SU086A": [
+    {"code": "2F97", "title": "Testis tumour NOS"}
+  ],
+  "SV005B": [
+    {"code": "BC20.Z", "title": "RHD - rheumatic heart disease"}
+  ],
+  "SB009A": [
+    {"code": "NC72.6Z", "title": "Fracture of lower end of femur, unspecified"},
+    {"code": "NC92.3", "title": "Fracture of lower end of tibia"},
+    {"code": "NC32.5Z", "title": "fracture of distal end of radius"},
+    {"code": "NC72.Z", "title": "Fracture of femur, unspecified"},
+    {"code": "NC92.1Z", "title": "fracture of proximal end of tibia"},
+    {"code": "NC32.0", "title": "Fracture of upper end of ulna"},
+    {"code": "NC12.2Z", "title": "Fracture of upper end of humerus, unspecified site"},
+    {"code": "NC12.40", "title": "Supracondylar fracture of humerus"},
+    {"code": "NC12.4Z", "title": "fracture of distal end of humerus"}
+  ],
+  "MG038A": [
+    {"code": "BA8Z", "title": "CAD - coronary artery disease"},
+    {"code": "BA41.1", "title": "NSTEMI - Non ST Elevation Myocardial Infarction"},
+    {"code": "BD1Z", "title": "Heart failure, unspecified"},
+    {"code": "BC81.Z", "title": "SVT - supraventricular tachycardia"},
+    {"code": "BD10", "title": "Congestive heart failure"},
+    {"code": "MC81.0", "title": "Tachycardia, unspecified"},
+    {"code": "BA40.0", "title": "Unstable angina"},
+    {"code": "BB40", "title": "Acute or subacute infectious endocarditis"},
+    {"code": "BC63.2Z", "title": "complete heart block"},
+    {"code": "BA41.Z", "title": "myocardial infarct NOS"}
+  ]
+}
